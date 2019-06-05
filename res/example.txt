@@ -1,0 +1,70 @@
+Exemplo de uma venda com cartão de crédito
+
+1 - Arquivo de solicitação da compra 
+
+C:\CLIENTE\REQ\IntPos.001 (P1 no fluxo de arquivos)
+
+000-000 = CRT
+001-000= 4321
+002-000 = 1234
+003-000 = 260,70
+004-000 = 0
+999-999 = 0
+
+2 - Arquivo de confirmação de recebimento 
+C:\CLIENTE\RESP\IntPos.Sts (P2 no fluxo de arquivos)
+000-000 = CRT
+001-000 = 4321
+999-999 = 0
+
+3 - Arquivo de resposta 
+C:\CLIENTE\RESP\IntPos.001 (P4 no fluxo de arquivos)
+
+000-000 = CRT
+001-000 = 4321
+002-000 = 1234
+003-000 = 260,70
+004-000 = 0
+009-000 = 0
+010-000 = AMERICAN EXPRESS
+010-001 = 06
+011-000 = 48
+012-000 = 000000006
+013-000 = 160006
+015-000 = 1606100044
+018-000 = 01
+022-000 = 16061998
+023-000 = 100044
+027-000 = 061616000606
+028-000 = 29
+029-001 = 
+029-002 =                  AMEX
+029-003 = 
+029-004 =          COMPROVANTE DE OPERACAO
+029-005 = 
+029-006 =   AMEX - 376400000000016 - 10/02
+029-007 = 
+029-008 =   010101010101010
+029-009 = 
+029-010 =   PDV = SW000001          NSU = 6  ONL-D
+029-011 =   16/06/1998  10:00:44  AUTORIZ.= 160006
+029-012 =   VENDA CREDITO A VISTA
+029-013 = 
+029-014 =          VALOR VENDA:           260,70
+029-015 =          VALOR FINAL:           260,70
+029-016 = 
+029-017 = 
+029-018 =   RECONHECO E PAGAREI IMPORTANCIA ACIMA
+029-019 = 
+029-020 =   ______________________________________
+029-021 = 
+029-022 =                      
+029-023 = 
+029-024 = 
+029-025 =           CONFIRA A ASSINATURA
+029-026 = 
+029-027 =              000000000000000
+029-028 = 
+029-029 =                                  (SiTef)
+030-000 =     TRANSACAO OK
+999-999 = 0

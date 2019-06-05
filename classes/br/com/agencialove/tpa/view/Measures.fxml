@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.MeasuresController">
+   <children>
+   		<Pane layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
+	         <children>
+			   		<Label styleClass="txt-label-service-measures" alignment="CENTER" contentDisplay="CENTER" layoutY="0" prefHeight="80" prefWidth="1024.0" text="Escolha o gabarito em que a sua encomenda se encaixa">
+
+					</Label>			            
+	         </children>
+      	</Pane>
+      	
+      	
+   <Pane layoutX="0.0" layoutY="90" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
+      <Label styleClass="txt-label-measures" alignment="CENTER" layoutX="-120" layoutY="14.0" prefHeight="130.0" prefWidth="832.0" text="Objeto fora dos padrões? Dirija-se ao guichê." textAlignment="CENTER" wrapText="true">
+        
+      </Label>
+      <Button fx:id="btnMeasures" alignment="CENTER" layoutX="387.0" layoutY="490.0" styleClass="bt-next" mnemonicParsing="false" onAction="#btnMeasureAction" prefHeight="103.0" prefWidth="319.0" text="Clique aqui quando estiver pronto para pesar!" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnPackageP" onAction="#btnPackageAction" translateY="140" translateX="150" layoutX="0" layoutY="100" mnemonicParsing="false" prefHeight="130" prefWidth="130" styleClass="packageEncomendaP" text="">							              
+				   			
+		</Button>	
+ 		<Button fx:id="btnPackageM" onAction="#btnPackageAction" translateY="115" translateX="170" layoutX="150" layoutY="100" mnemonicParsing="false" prefHeight="180" prefWidth="180" styleClass="packageEncomendaM" text="">							              
+ 		
+ 		</Button>			           
+ 		<Button fx:id="btnPackageG" onAction="#btnPackageAction" translateY="80" translateX="190" layoutX="350" layoutY="100" mnemonicParsing="false" prefHeight="250" prefWidth="250" styleClass="packageEncomendaG" text="">							              
+ 		
+ 		</Button>			           
+   </Pane>
+   </children>
+         <Pane layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0"  styleClass="footer-page">
+         <children>
+            <Button fx:id="btnBack" styleClass="bt-voltar" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" text="Voltar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNext" disable="true" styleClass="bt-next" layoutX="813.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" text="Avançar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+</AnchorPane>

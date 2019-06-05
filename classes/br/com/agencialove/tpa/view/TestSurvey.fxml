@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.TestSurveyController">
+   <children>
+
+   <Pane layoutX="0.0" layoutY="90" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
+	  <Label styleClass="txt-label" alignment="CENTER" layoutX="14.0" layoutY="128.0" prefHeight="127.0" prefWidth="1000.0" text="Deseja responder nossa pesquisa de satisfação?" wrapText="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnYes" styleClass="btn-yes-prepost-confirmation" layoutX="226.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="80.0" prefWidth="240.0" text="Sim">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn-yes" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnNo" styleClass="btn-yes-prepost-confirmation"  layoutX="567.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="80.0" prefWidth="240.0" text="Nao">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn-no" />
+         </styleClass>
+      </Button>
+    </Pane>	
+         
+        
+    
+   </children>
+</AnchorPane>

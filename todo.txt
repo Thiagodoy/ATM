@@ -1,0 +1,20 @@
+- remover legendas de "Tela Inicial", "Tela de Consulta";
+- tirar janela de alerta;
+- problema nas cores das coixas de texto;
+- aumentar a fonte do botão de "Próximo" na tela de postagem;
+- aumentar a fonte no borão de "Busca de CEP";
+- colocar botões de navegação;
+- colocar sessão
+- substituir janelas de mensagem por telas com gif/vídeo;
+- colocar máscara de valor nas caixas de texto (número, moeda etc.);
+- colocar teclado virtual;
+- desenhar simulador de terminal e preparar o sistema para enviar para os correios testarem e opinarem sobre o processo e o sistema;
+- a tela de seleção do tipo de serviço está confusa, deve ser remodelada;
+-- não é "solicitar serviço de envio" é "selecionar serviço de envio";
+-- o usuário clica em cima de todo e serviço, não apenas de botões em baixo (como no autoatendimento dos cinemas);
+
+
+Pontos para reunião com o pessoal dos correios
+==============================================
+1) o usuário pode selecionar mais de um serviço adicional?
+2) é possível uma etapa de validação do software com a equipe técnica do correios antes da probe?

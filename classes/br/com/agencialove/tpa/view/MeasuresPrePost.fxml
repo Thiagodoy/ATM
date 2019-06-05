@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.MeasuresPrePostController">
+   <children>
+      <Label styleClass="txt-label" fx:id="lbTitle" alignment="CENTER" layoutX="131.0" layoutY="14.0" prefHeight="130.0" prefWidth="832.0" text="Coloque a encomenda sobre a balança e afaste as maos." textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnMeasures" alignment="CENTER" layoutX="387.0" layoutY="490.0" styleClass="bt-next" mnemonicParsing="false" onAction="#btnMeasureAction" prefHeight="103.0" prefWidth="319.0" text="Clique aqui quando estiver pronto para pesar!" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+            <Button fx:id="btnPackageP" onAction="#btnPackageAction" translateY="140" translateX="150" layoutX="0" layoutY="100" mnemonicParsing="false" prefHeight="130" prefWidth="130" styleClass="packageEncomendaP" text="">							              
+				   			
+		</Button>	
+ 		<Button fx:id="btnPackageM" onAction="#btnPackageAction" translateY="115" translateX="170" layoutX="120" layoutY="100" mnemonicParsing="false" prefHeight="180" prefWidth="180" styleClass="packageEncomendaM" text="">							              
+ 		
+ 		</Button>			           
+ 		<Button fx:id="btnPackageG" onAction="#btnPackageAction" translateY="80" translateX="190" layoutX="290" layoutY="100" mnemonicParsing="false" prefHeight="250" prefWidth="250" styleClass="packageEncomendaG" text="">							              
+ 		
+ 		</Button>			           
+ 		<Button fx:id="btnPackageL" onAction="#btnPackageAction" translateY="140" translateX="210" layoutX="530" layoutY="100" mnemonicParsing="false" prefHeight="130" prefWidth="130" styleClass="packageEncomendaE" text="">							              
+ 		
+ 		</Button>		
+     <!--  <RadioButton fx:id="rbEnvelope" layoutX="395.0" layoutY="246.0" mnemonicParsing="false" onAction="#rbSelectAction" text="Envelope">
+         <toggleGroup>
+            <ToggleGroup fx:id="g1" />
+         </toggleGroup>
+         <font>
+            <Font size="26.0" />
+         </font>
+      </RadioButton>
+      <Label fx:id="lbTitle11" styleClass="additional-service" alignment="CENTER" layoutX="334.0" layoutY="137.0" prefHeight="130.0" prefWidth="425.0" text="Por favor, informe tambem o formato da embalagem:" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="rbBox" layoutX="395.0" layoutY="325.0" mnemonicParsing="false" onAction="#rbSelectAction" text="Caixa" toggleGroup="$g1">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="rbCylinder" layoutX="395.0" layoutY="403.0" mnemonicParsing="false" onAction="#rbSelectAction" text="Cilindro" toggleGroup="$g1">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </RadioButton>  -->
+   </children>
+         <Pane fx:id="paneSearch" layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0"  styleClass="footer-page">
+         <children>
+            <Button fx:id="btnBack" styleClass="bt-voltar" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" text="Voltar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNext" disable="false" styleClass="bt-next" layoutX="813.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" text="Avançar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+</AnchorPane>

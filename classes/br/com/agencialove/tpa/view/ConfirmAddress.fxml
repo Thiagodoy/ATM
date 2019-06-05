@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.ConfirmAddressController">
+    <children>
+        <Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="118.0" prefWidth="1024.0" styleClass="txt-label" text="Confirmaçao dos dados." wrapText="true">
+            <font>
+                <Font size="48.0" />
+            </font>
+        </Label>
+        <Pane layoutX="50.0" layoutY="100.0" prefHeight="505.0" prefWidth="923.0" style="-fx-border-color: #000;">
+            <children>
+                <Label layoutX="15.0" layoutY="10.0" styleClass="label-confirmation" text="Logradouro">
+                    <font>
+                        <Font name="System Bold" size="41.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbLogradouroConfirmacao" layoutX="15.0" layoutY="40.0" maxWidth="400.0" prefHeight="25.0" prefWidth="400.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>x
+                </Label>
+                <Label layoutX="460.0" layoutY="10.0" styleClass="label-confirmation" text="Número">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbNumeroConfirmacao" layoutX="460.0" layoutY="40.0" maxHeight="180.0" prefHeight="25.0" prefWidth="180.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="660.0" layoutY="10" styleClass="label-confirmation" text="Complemento">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbComplementoConfirmacao" layoutX="660.0" layoutY="40.0" maxWidth="250.0" prefWidth="250.0" styleClass="label-response-confirmation" wrapText="true">
+	               <font>
+	                  <Font size="18.0" />
+	               </font>
+               </Label>
+                <Label layoutX="15.0" layoutY="110.0" styleClass="label-confirmation" text="Bairro">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbBairro" layoutX="17.0" layoutY="140.0" maxHeight="300.0" prefHeight="25.0" prefWidth="300.0" styleClass="label-response-confirmation" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+                <Label layoutX="330.0" layoutY="110.0" styleClass="label-confirmation" text="Estado">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbEstadoConfirmacao" layoutX="330.0" layoutY="140.0" maxHeight="80.0" prefHeight="25.0" prefWidth="80.0" styleClass="label-response-confirmation">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="660.0" layoutY="110.0" styleClass="label-confirmation" text="CEP">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbCEPConfirmacao" layoutX="660.0" layoutY="140.0" maxWidth="180.0" prefWidth="180.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="460.0" layoutY="110.0" styleClass="label-confirmation" text="Cidade">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbCidadeConfirmacao" layoutX="460.0" layoutY="140.0" maxWidth="180.0" prefWidth="180.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="15.0" layoutY="210.0" styleClass="label-confirmation" text="Nome/Razo social do destinatário">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbNomeDestinatarioConfirmacao" layoutX="15.0" layoutY="240.0" maxWidth="400.0" prefWidth="400.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="460.0" layoutY="210.0" styleClass="label-confirmation" text="CPF/CPNJ do destinatário">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbCPFDestinatario" layoutX="460.0" layoutY="240.0" maxWidth="400.0" prefWidth="400.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="460.0" layoutY="310.0" styleClass="label-confirmation" text="E-mail">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbEmailConfirmacao" layoutX="460.0" layoutY="340.0" maxWidth="400.0" prefWidth="400.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="15.0" layoutY="310.0" styleClass="label-confirmation" text="Celular do destinatário">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lbCelularDestinatarioConfirmacao" layoutX="15.0" layoutY="340.0" maxWidth="400.0" prefWidth="400.0" styleClass="label-response-confirmation" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+      <Pane fx:id="paneSearch" layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0" styleClass="footer-page">
+         <children>
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-voltar" text="Voltar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNext" layoutX="813.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-next" text="Avançar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
