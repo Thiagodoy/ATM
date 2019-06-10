@@ -89,7 +89,7 @@ public class ArduinoController implements IController {
 
 	@FXML public void btnStateBoxAction(final ActionEvent event) {
 		try {
-			final CollectBoxState state = this.service.getBoxState();
+			final CollectBoxState state = this.service.getBoxState(4);
 			this.txtResult.appendText(state.toString());
 			this.txtResult.appendText("\r\n");
 		} catch (final IOException e) {
@@ -99,7 +99,7 @@ public class ArduinoController implements IController {
 
 	@FXML public void btnOpenBoxAction(final ActionEvent event) {
 		try {
-			final CollectBoxState state = this.service.openBox();
+			final CollectBoxState state = this.service.openBox(4);
 			this.txtResult.appendText(state.toString());
 			this.txtResult.appendText("\r\n");
 		} catch (final IOException e) {
@@ -109,7 +109,7 @@ public class ArduinoController implements IController {
 
 	@FXML public void btnCloseBoxAction(final ActionEvent event) {
 		try {
-			final CollectBoxState state = this.service.closeBox();
+			final CollectBoxState state = this.service.closeBox(4);
 			this.txtResult.appendText(state.toString());
 			this.txtResult.appendText("\r\n");
 		} catch (final IOException e) {

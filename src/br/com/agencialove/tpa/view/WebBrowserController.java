@@ -3,6 +3,7 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,11 +23,11 @@ public class WebBrowserController implements IController {
 	@FXML
 	private Label titleLabel;
 
-
+	private Url url;
+	
 	@Override
 	public void initialize(final URL url, final ResourceBundle resourceBundle) {
-		final WebEngine webEngine = this.webView.getEngine();
-		webEngine.load("http://www.correios.com.br");
+		
 	}
 
 	@FXML
@@ -38,4 +39,10 @@ public class WebBrowserController implements IController {
 	public void clear() {
 		if(this.webView != null) this.webView.getEngine().load("http://www.correios.com.br");
 	}
+	
+	public void loadUrl(Url url) {
+		final WebEngine webEngine = this.webView.getEngine();
+		webEngine.load(url.getUrl());
+	}
+	
 }

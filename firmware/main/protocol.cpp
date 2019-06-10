@@ -26,9 +26,18 @@ static const char* Protocol::COMMAND_RECHARGE_D2     = "RECHARGE_D2:";
 static const char* Protocol::COMMAND_RECHARGE_D3     = "RECHARGE_D3:";
 static const char* Protocol::COMMAND_RECHARGE_D4     = "RECHARGE_D4:";
                    
-static const char* Protocol::COMMAND_BOX_STATE       = "BOX_STATE";
-static const char* Protocol::COMMAND_BOX_OPEN        = "BOX_OPEN";
-static const char* Protocol::COMMAND_BOX_CLOSE       = "BOX_CLOSE";
+static const char* Protocol::COMMAND_BOX_P_STATE       = "BOX_P_STATE";
+static const char* Protocol::COMMAND_BOX_P_OPEN        = "BOX_P_OPEN";
+static const char* Protocol::COMMAND_BOX_P_CLOSE       = "BOX_P_CLOSE";
+
+static const char* Protocol::COMMAND_BOX_M_STATE       = "BOX_M_STATE";
+static const char* Protocol::COMMAND_BOX_M_OPEN        = "BOX_M_OPEN";
+static const char* Protocol::COMMAND_BOX_M_CLOSE       = "BOX_M_CLOSE";
+
+static const char* Protocol::COMMAND_BOX_G_STATE       = "BOX_G_STATE";
+static const char* Protocol::COMMAND_BOX_G_OPEN        = "BOX_G_OPEN";
+static const char* Protocol::COMMAND_BOX_G_CLOSE       = "BOX_G_CLOSE";
+
 static const char* Protocol::COMMAND_WEIGHT          = "WEIGHT";
                    
 static const char* Protocol::COMMAND_ALARM_RED       = "ALARM_RED";
@@ -52,26 +61,44 @@ static const char* Protocol::RESP_WARNING_LOW_LEVEL_D   = "[RESP]WARNING_LOW_LEV
 static const char* Protocol::RESP_ERROR_NOT_DISPENSED_D = "[RESP]ERROR_NOT_DISPENSED_D";
 static const char* Protocol::RESP_ERROR_BLOCKED_D       = "[RESP]ERROR_BLOCKED_D";  
                    
-static const char* Protocol::RESP_BOX_CLOSED            = "[RESP]BOX_CLOSED";
-static const char* Protocol::RESP_BOX_OPEN_FULL         = "[RESP]BOX_OPEN_FULL";
-static const char* Protocol::RESP_BOX_OPEN_HALF         = "[RESP]BOX_OPEN_HALF";
-static const char* Protocol::RESP_BOX_BLOCKED           = "[RESP]BOX_BLOCKED";
-static const char* Protocol::RESP_BOX_WORKING_OPENING   = "[RESP]BOX_WORKING_OPENING";
-static const char* Protocol::RESP_BOX_WORKING_CLOSING   = "[RESP]BOX_WORKING_CLOSING";
+static const char* Protocol::RESP_BOX_P_CLOSED            = "[RESP]BOX_P_CLOSED";
+static const char* Protocol::RESP_BOX_P_OPEN_FULL         = "[RESP]BOX_P_OPEN_FULL";
+static const char* Protocol::RESP_BOX_P_OPEN_HALF         = "[RESP]BOX_P_OPEN_HALF";
+static const char* Protocol::RESP_BOX_P_BLOCKED           = "[RESP]BOX_P_BLOCKED";
+static const char* Protocol::RESP_BOX_P_WORKING_OPENING   = "[RESP]BOX_P_WORKING_OPENING";
+static const char* Protocol::RESP_BOX_P_WORKING_CLOSING   = "[RESP]BOX_P_WORKING_CLOSING";
+
+static const char* Protocol::RESP_BOX_M_CLOSED            = "[RESP]BOX_M_CLOSED";
+static const char* Protocol::RESP_BOX_M_OPEN_FULL         = "[RESP]BOX_M_OPEN_FULL";
+static const char* Protocol::RESP_BOX_M_OPEN_HALF         = "[RESP]BOX_M_OPEN_HALF";
+static const char* Protocol::RESP_BOX_M_BLOCKED           = "[RESP]BOX_M_BLOCKED";
+static const char* Protocol::RESP_BOX_M_WORKING_OPENING   = "[RESP]BOX_M_WORKING_OPENING";
+static const char* Protocol::RESP_BOX_M_WORKING_CLOSING   = "[RESP]BOX_M_WORKING_CLOSING";
+
+static const char* Protocol::RESP_BOX_G_CLOSED            = "[RESP]BOX_G_CLOSED";
+static const char* Protocol::RESP_BOX_G_OPEN_FULL         = "[RESP]BOX_G_OPEN_FULL";
+static const char* Protocol::RESP_BOX_G_OPEN_HALF         = "[RESP]BOX_G_OPEN_HALF";
+static const char* Protocol::RESP_BOX_G_BLOCKED           = "[RESP]BOX_G_BLOCKED";
+static const char* Protocol::RESP_BOX_G_WORKING_OPENING   = "[RESP]BOX_G_WORKING_OPENING";
+static const char* Protocol::RESP_BOX_G_WORKING_CLOSING   = "[RESP]BOX_G_WORKING_CLOSING";
 
 static const char* Protocol::RESP_UNRECOGNIZED          = "[RESP]UNRECOGNIZED";
                        
 /******** CallbacksProtocol:: **********/
-static const char* Protocol::CALLBACK_FAIL                  = "[CB]FAIL";
-static const char* Protocol::CALLBACK_SCALE_OFFLINE         = "[CB]SCALE_OFFLINE";
-static const char* Protocol::CALLBACK_IDLE_D                = "[CB]IDLE_D";
-static const char* Protocol::CALLBACK_WORKING_D             = "[CB]WORKING_D";
-static const char* Protocol::CALLBACK_READY_TO_REMOVE_D     = "[CB]READY_TO_REMOVE_D";
-static const char* Protocol::CALLBACK_WARNING_EMPTY_D       = "[CB]CALLBACK_WARNING_EMPTY_D";
-static const char* Protocol::CALLBACK_WARNING_LOW_LEVEL_D   = "[CB]CALLBACK_WARNING_LOW_LEVEL_D";
-static const char* Protocol::CALLBACK_ERROR_BLOCKED_D       = "[CB]CALLBACK_ERROR_BLOCKED_D";
-static const char* Protocol::CALLBACK_BOX_WORKING_OPENING   = "[CB]BOX_WORKING_OPENING";
-static const char* Protocol::CALLBACK_BOX_WORKING_CLOSING   = "[CB]BOX_WORKING_CLOSING";
+static const char* Protocol::CALLBACK_FAIL                    = "[CB]FAIL";
+static const char* Protocol::CALLBACK_SCALE_OFFLINE           = "[CB]SCALE_OFFLINE";
+static const char* Protocol::CALLBACK_IDLE_D                  = "[CB]IDLE_D";
+static const char* Protocol::CALLBACK_WORKING_D               = "[CB]WORKING_D";
+static const char* Protocol::CALLBACK_READY_TO_REMOVE_D       = "[CB]READY_TO_REMOVE_D";
+static const char* Protocol::CALLBACK_WARNING_EMPTY_D         = "[CB]CALLBACK_WARNING_EMPTY_D";
+static const char* Protocol::CALLBACK_WARNING_LOW_LEVEL_D     = "[CB]CALLBACK_WARNING_LOW_LEVEL_D";
+static const char* Protocol::CALLBACK_ERROR_BLOCKED_D         = "[CB]CALLBACK_ERROR_BLOCKED_D";
+static const char* Protocol::CALLBACK_BOX_P_WORKING_OPENING   = "[CB]BOX_P_WORKING_OPENING";
+static const char* Protocol::CALLBACK_BOX_P_WORKING_CLOSING   = "[CB]BOX_P_WORKING_CLOSING";
+static const char* Protocol::CALLBACK_BOX_M_WORKING_OPENING   = "[CB]BOX_M_WORKING_OPENING";
+static const char* Protocol::CALLBACK_BOX_M_WORKING_CLOSING   = "[CB]BOX_M_WORKING_CLOSING";
+static const char* Protocol::CALLBACK_BOX_G_WORKING_OPENING   = "[CB]BOX_G_WORKING_OPENING";
+static const char* Protocol::CALLBACK_BOX_G_WORKING_CLOSING   = "[CB]BOX_G_WORKING_CLOSING";
 
 static const char* Protocol::CALLBACK_UNRECOGNIZED_COMM    = "[CB]UNRECOGNIZED_COMM";
 
@@ -103,15 +130,41 @@ static String Protocol::translateDispenserState(int dispenserState, int dispense
   };
 }
 
-static String Protocol::translateBoxState(int boxState){
+static String Protocol::translateBoxPState(int boxState){
   Logger::debug("Translate box code " + String(boxState));
   switch(boxState){
-    case Box::CODE_CLOSED: return String(Protocol::RESP_BOX_CLOSED);
-    case Box::CODE_OPEN_FULL: return String(Protocol::RESP_BOX_OPEN_FULL);
-    case Box::CODE_OPEN_HALF: return String(Protocol::RESP_BOX_OPEN_HALF);
-    case Box::CODE_BLOCKED: return String(Protocol::RESP_BOX_BLOCKED);
-    case Box::CODE_WORKING_OPENING: return String(Protocol::CALLBACK_BOX_WORKING_OPENING);
-    case Box::CODE_WORKING_CLOSING: return String(Protocol::CALLBACK_BOX_WORKING_CLOSING);
+    case Box::CODE_CLOSED: return String(Protocol::RESP_BOX_P_CLOSED);
+    case Box::CODE_OPEN_FULL: return String(Protocol::RESP_BOX_P_OPEN_FULL);
+    case Box::CODE_OPEN_HALF: return String(Protocol::RESP_BOX_P_OPEN_HALF);
+    case Box::CODE_BLOCKED: return String(Protocol::RESP_BOX_P_BLOCKED);
+    case Box::CODE_WORKING_OPENING: return String(Protocol::CALLBACK_BOX_P_WORKING_OPENING);
+    case Box::CODE_WORKING_CLOSING: return String(Protocol::CALLBACK_BOX_P_WORKING_CLOSING);
+    default: return Protocol::RESP_FAIL;
+  };
+}
+
+static String Protocol::translateBoxMState(int boxState){
+  Logger::debug("Translate box code " + String(boxState));
+  switch(boxState){
+    case Box::CODE_CLOSED: return String(Protocol::RESP_BOX_M_CLOSED);
+    case Box::CODE_OPEN_FULL: return String(Protocol::RESP_BOX_M_OPEN_FULL);
+    case Box::CODE_OPEN_HALF: return String(Protocol::RESP_BOX_M_OPEN_HALF);
+    case Box::CODE_BLOCKED: return String(Protocol::RESP_BOX_M_BLOCKED);
+    case Box::CODE_WORKING_OPENING: return String(Protocol::CALLBACK_BOX_M_WORKING_OPENING);
+    case Box::CODE_WORKING_CLOSING: return String(Protocol::CALLBACK_BOX_M_WORKING_CLOSING);
+    default: return Protocol::RESP_FAIL;
+  };
+}
+
+static String Protocol::translateBoxGState(int boxState){
+  Logger::debug("Translate box code " + String(boxState));
+  switch(boxState){
+    case Box::CODE_CLOSED: return String(Protocol::RESP_BOX_G_CLOSED);
+    case Box::CODE_OPEN_FULL: return String(Protocol::RESP_BOX_G_OPEN_FULL);
+    case Box::CODE_OPEN_HALF: return String(Protocol::RESP_BOX_G_OPEN_HALF);
+    case Box::CODE_BLOCKED: return String(Protocol::RESP_BOX_G_BLOCKED);
+    case Box::CODE_WORKING_OPENING: return String(Protocol::CALLBACK_BOX_G_WORKING_OPENING);
+    case Box::CODE_WORKING_CLOSING: return String(Protocol::CALLBACK_BOX_G_WORKING_CLOSING);
     default: return Protocol::RESP_FAIL;
   };
 }
@@ -129,10 +182,22 @@ void Protocol::setDispenser1(Dispenser *pDispenser1){
   this->dispenser1->setWorkingCallback(&Protocol::dispenser1WorkingCallback);
 }
 
-void Protocol::setBox(Box *pBox){
-  this->box = pBox;
-  this->box->setOpeningCallback(&Protocol::boxOpeningCallback);
-  this->box->setClosingCallback(&Protocol::boxClosingCallback);
+void Protocol::setBoxP(Box *pBox){
+  this->boxP = pBox;
+  this->boxP->setOpeningCallback(&Protocol::boxPOpeningCallback);
+  this->boxP->setClosingCallback(&Protocol::boxPClosingCallback);
+}
+
+void Protocol::setBoxM(Box *pBox){
+  this->boxM = pBox;
+  this->boxM->setOpeningCallback(&Protocol::boxMOpeningCallback);
+  this->boxM->setClosingCallback(&Protocol::boxMClosingCallback);
+}
+
+void Protocol::setBoxG(Box *pBox){
+  this->boxG = pBox;
+  this->boxG->setOpeningCallback(&Protocol::boxGOpeningCallback);
+  this->boxG->setClosingCallback(&Protocol::boxGClosingCallback);
 }
 
 void Protocol::send(String message){
@@ -234,30 +299,92 @@ void Protocol::receive(String message){
   }
 
   /************************
-   ********* Box **********
+   ********* Box P ********
    ************************/
-  if(message == String(Protocol::COMMAND_BOX_STATE)){
-    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_STATE));
-    int iState = this->box->getState();
-    String sState = this->translateBoxState(iState);
+  if(message == String(Protocol::COMMAND_BOX_P_STATE)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_P_STATE));
+    int iState = this->boxP->getState();
+    String sState = this->translateBoxPState(iState);
     
     this->send(sState);
     return;
   }
 
-  if(message == String(Protocol::COMMAND_BOX_OPEN)){
-    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_OPEN));
-    int iState = this->box->open();
-    String sState = this->translateBoxState(iState);
+  if(message == String(Protocol::COMMAND_BOX_P_OPEN)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_P_OPEN));
+    int iState = this->boxP->open();
+    String sState = this->translateBoxPState(iState);
     
     this->send(sState);
     return;
   }
   
-  if(message == String(Protocol::COMMAND_BOX_CLOSE)){
-    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_CLOSE));
-    int iState = this->box->close();
-    String sState = this->translateBoxState(iState);
+  if(message == String(Protocol::COMMAND_BOX_P_CLOSE)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_P_CLOSE));
+    int iState = this->boxP->close();
+    String sState = this->translateBoxPState(iState);
+    
+    this->send(sState);
+    return;
+  }
+
+  /************************
+   ********* Box M ********
+   ************************/
+
+  if(message == String(Protocol::COMMAND_BOX_M_STATE)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_M_STATE));
+    int iState = this->boxM->getState();
+    String sState = this->translateBoxMState(iState);
+    
+    this->send(sState);
+    return;
+  }
+
+  if(message == String(Protocol::COMMAND_BOX_M_OPEN)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_M_OPEN));
+    int iState = this->boxM->open();
+    String sState = this->translateBoxMState(iState);
+    
+    this->send(sState);
+    return;
+  }
+  
+  if(message == String(Protocol::COMMAND_BOX_M_CLOSE)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_M_CLOSE));
+    int iState = this->boxM->close();
+    String sState = this->translateBoxMState(iState);
+    
+    this->send(sState);
+    return;
+  }
+
+
+  /************************
+   ********* Box G ********
+   ************************/
+  if(message == String(Protocol::COMMAND_BOX_G_STATE)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_G_STATE));
+    int iState = this->boxG->getState();
+    String sState = this->translateBoxGState(iState);
+    
+    this->send(sState);
+    return;
+  }
+
+  if(message == String(Protocol::COMMAND_BOX_G_OPEN)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_G_OPEN));
+    int iState = this->boxG->open();
+    String sState = this->translateBoxGState(iState);
+    
+    this->send(sState);
+    return;
+  }
+  
+  if(message == String(Protocol::COMMAND_BOX_G_CLOSE)){
+    Logger::debug("Command recognized " + String(Protocol::COMMAND_BOX_G_CLOSE));
+    int iState = this->boxG->close();
+    String sState = this->translateBoxGState(iState);
     
     this->send(sState);
     return;
@@ -280,10 +407,26 @@ static void Protocol::dispenser1WorkingCallback(Dispenser *dispenser){
   Serial.println(String(Protocol::CALLBACK_WORKING_D) + dispenser->getId()); 
 }
 
-static void Protocol::boxOpeningCallback(int boxState){
-  Serial.println(String(Protocol::translateBoxState(boxState))); 
+static void Protocol::boxPOpeningCallback(int boxState){
+  Serial.println(String(Protocol::translateBoxPState(boxState))); 
 }
 
-static void Protocol::boxClosingCallback(int boxState){
-  Serial.println(String(Protocol::translateBoxState(boxState))); 
+static void Protocol::boxPClosingCallback(int boxState){
+  Serial.println(String(Protocol::translateBoxPState(boxState))); 
+}
+
+static void Protocol::boxMOpeningCallback(int boxState){
+  Serial.println(String(Protocol::translateBoxMState(boxState))); 
+}
+
+static void Protocol::boxMClosingCallback(int boxState){
+  Serial.println(String(Protocol::translateBoxMState(boxState))); 
+}
+
+static void Protocol::boxGOpeningCallback(int boxState){
+  Serial.println(String(Protocol::translateBoxGState(boxState))); 
+}
+
+static void Protocol::boxGClosingCallback(int boxState){
+  Serial.println(String(Protocol::translateBoxGState(boxState))); 
 }

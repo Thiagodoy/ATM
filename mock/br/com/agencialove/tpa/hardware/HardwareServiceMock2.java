@@ -37,18 +37,18 @@ public class HardwareServiceMock2 implements IHardwareService {
 	}
 
 	@Override
-	public CollectBoxState getBoxState() throws IOException {
-		return this.hardwareService.getBoxState();
+	public CollectBoxState getBoxState(Integer boxId) throws IOException {
+		return this.hardwareService.getBoxState(boxId);
 	}
 
 	@Override
-	public CollectBoxState openBox() throws IOException {
-		return this.hardwareService.openBox();
+	public CollectBoxState openBox(Integer boxId) throws IOException {
+		return this.hardwareService.openBox(boxId);
 	}
 
 	@Override
-	public CollectBoxState closeBox() throws IOException {
-		return this.hardwareService.closeBox();
+	public CollectBoxState closeBox(Integer boxId) throws IOException {
+		return this.hardwareService.closeBox(boxId);
 	}
 
 	@Override

@@ -16,11 +16,11 @@ public interface IHardwareService {
 
 	int getInventory(Dispenser d) throws IOException;
 
-	CollectBoxState getBoxState() throws IOException;
+	CollectBoxState getBoxState(Integer boxId) throws IOException;
 
-	CollectBoxState openBox() throws IOException;
+	CollectBoxState openBox(Integer boxId) throws IOException;
 
-	CollectBoxState closeBox() throws IOException;
+	CollectBoxState closeBox(Integer boxId) throws IOException;
 
 	void turnOnScale() throws IOException;
 

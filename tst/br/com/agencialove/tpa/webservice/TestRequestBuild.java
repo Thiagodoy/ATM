@@ -166,8 +166,8 @@ class TestRequestBuild {
 		}
 
 		final IHardwareService hs = Session.getHardwareService();
-		hs.openBox();
-		hs.closeBox();
+		hs.openBox(4);
+		hs.closeBox(4);
 	}
 
 }

@@ -9,6 +9,7 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.SessionType;
 import javafx.event.ActionEvent;
@@ -24,7 +25,10 @@ public class StartController implements IController {
 
 	@FXML
 	private void btnConsultingAction(final ActionEvent e) {
+		Scene scene = Windows.WEB_BROWSER.getScene();
 		Session.setScene(Windows.WEB_BROWSER.getScene());
+		WebBrowserController controller = (WebBrowserController) scene.getUserData();
+		controller.loadUrl(Url.CORREIOS);
 	}
 
 	@FXML

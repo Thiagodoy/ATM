@@ -189,8 +189,9 @@ public class HardwareServiceImpl implements IHardwareService {
 	}
 
 	@Override
-	public CollectBoxState getBoxState() throws IOException {
-		final ArduinoMessage m = HardwareServiceImpl.arduinoService.sendCommand(ArduinoCommands.STATE_BOX);
+	public CollectBoxState getBoxState(Integer boxId) throws IOException {
+		ArduinoCommands command = boxId.equals(4) ? ArduinoCommands.OPEN_BOX_P : boxId.equals(5) ? ArduinoCommands.OPEN_BOX_M : ArduinoCommands.OPEN_BOX_G ;
+		final ArduinoMessage m = HardwareServiceImpl.arduinoService.sendCommand(command);
 		if(m == null) {
 			throw new IOException("Não foi possível comunicar com o Arduino para recuperar o estado da gaveta coletora!");
 
@@ -202,12 +203,13 @@ public class HardwareServiceImpl implements IHardwareService {
 	}
 
 	@Override
-	public CollectBoxState openBox() throws IOException {
+	public CollectBoxState openBox(Integer boxId) throws IOException {
 		ArduinoMessage m = null;
 
 		final long timeout = System.currentTimeMillis() + HardwareServiceImpl.TIMEOUT;
 		while(timeout > System.currentTimeMillis()) {
-			m = HardwareServiceImpl.arduinoService.sendCommand(ArduinoCommands.OPEN_BOX);
+			ArduinoCommands command = boxId.equals(4) ? ArduinoCommands.OPEN_BOX_P : boxId.equals(5) ? ArduinoCommands.OPEN_BOX_M : ArduinoCommands.OPEN_BOX_G ;
+			m = HardwareServiceImpl.arduinoService.sendCommand(command);
 
 			if(m == null) {
 				Thread.yield();
@@ -239,12 +241,14 @@ public class HardwareServiceImpl implements IHardwareService {
 	}
 
 	@Override
-	public CollectBoxState closeBox() throws IOException {
+	public CollectBoxState closeBox(Integer boxId) throws IOException {
 		ArduinoMessage m = null;
 
 		final long timeout = System.currentTimeMillis() + HardwareServiceImpl.TIMEOUT;
 		while(timeout > System.currentTimeMillis()) {
-			m = HardwareServiceImpl.arduinoService.sendCommand(ArduinoCommands.OPEN_BOX);
+			
+			ArduinoCommands command = boxId.equals(4) ? ArduinoCommands.OPEN_BOX_P : boxId.equals(5) ? ArduinoCommands.OPEN_BOX_M : ArduinoCommands.OPEN_BOX_G ;
+			m = HardwareServiceImpl.arduinoService.sendCommand(command);
 
 			if(m == null) {
 				Thread.yield();
@@ -327,12 +331,30 @@ public class HardwareServiceImpl implements IHardwareService {
 
 	private CollectBoxState messageToBoxState(final ArduinoMessage m) {
 		switch (m.getProtocol()) {
-		case RESP_BOX_OPEN_FULL: return CollectBoxState.OPEN_FULL;
-		case RESP_BOX_OPEN_HALF: return CollectBoxState.OPEN_HALF;
-		case RESP_BOX_CLOSED: return CollectBoxState.CLOSED;
-		case RESP_BOX_WORKING_OPENING: return CollectBoxState.WORKING_OPENING;
-		case RESP_BOX_WORKING_CLOSING: return CollectBoxState.WORKING_CLOSING;
-		case RESP_BOX_BLOCKED: return CollectBoxState.BLOCKED;
+		case RESP_BOX_P_OPEN_FULL:
+		case RESP_BOX_M_OPEN_FULL:
+		case RESP_BOX_G_OPEN_FULL:
+			return CollectBoxState.OPEN_FULL;
+		case RESP_BOX_P_OPEN_HALF:
+		case RESP_BOX_M_OPEN_HALF:
+		case RESP_BOX_G_OPEN_HALF:
+			return CollectBoxState.OPEN_HALF;
+		case RESP_BOX_P_CLOSED:
+		case RESP_BOX_M_CLOSED:
+		case RESP_BOX_G_CLOSED:
+			return CollectBoxState.CLOSED;
+		case RESP_BOX_P_WORKING_OPENING:
+		case RESP_BOX_M_WORKING_OPENING:
+		case RESP_BOX_G_WORKING_OPENING:
+			return CollectBoxState.WORKING_OPENING;
+		case RESP_BOX_P_WORKING_CLOSING:
+		case RESP_BOX_M_WORKING_CLOSING:
+		case RESP_BOX_G_WORKING_CLOSING:
+			return CollectBoxState.WORKING_CLOSING;
+		case RESP_BOX_P_BLOCKED:
+		case RESP_BOX_M_BLOCKED:
+		case RESP_BOX_G_BLOCKED:
+			return CollectBoxState.BLOCKED;
 		default: return null;
 		}
 	}

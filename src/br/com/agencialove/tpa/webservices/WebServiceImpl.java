@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
@@ -30,12 +32,12 @@ public class WebServiceImpl implements IWebService{
 	@Override
 	public List<Address> getAddressFromZip(final String zipCode) {
 		final List<Address> ret = new ArrayList<>();
-
+		
+		final String url = this.mountUrl(zipCode);
 		try {
 			final OkHttpClient client = new OkHttpClient();
 			final Request request = new Request.Builder()
-
-					.url("http://wsmobile.correios.com.br/DNECWService/rest/personalizada/listar?q=" + zipCode)
+					.url(url)
 					.get()
 					.build();
 
@@ -73,6 +75,18 @@ public class WebServiceImpl implements IWebService{
 		return ret;
 	}
 
+	private String mountUrl(String zip) {
+		Pattern p = Pattern.compile("^\\d{2}\\.?\\d{3}-?\\d{3}$");
+		Matcher m = p.matcher(zip);
+		boolean isZipCode = m.find();
+		
+		String urlZip = "http://wsmobile.correios.com.br/DNECWService/rest//cep/" + zip.replace(".", "").replace("-", "");
+		String urlCustom = "http://wsmobile.correios.com.br/DNECWService/rest/personalizada/listar?q=" + zip;
+		
+		
+		return isZipCode ? urlZip : urlCustom;
+	}	
+	
 	@Override
 	public List<ServicesResponse> getAvailableServices(final ServicesRequest ppr) {
 		final List<ServicesResponse> lstResponse = new ArrayList<>();

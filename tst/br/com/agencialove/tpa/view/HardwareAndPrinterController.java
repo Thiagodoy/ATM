@@ -96,7 +96,7 @@ public class HardwareAndPrinterController implements IController {
 
 	@FXML public void btnStateBoxAction(final ActionEvent event) {
 		try {
-			final CollectBoxState state = this.hardwareService.getBoxState();
+			final CollectBoxState state = this.hardwareService.getBoxState(4);
 			this.txtResult.appendText(state.toString());
 			this.txtResult.appendText("\r\n");
 		} catch (final IOException e) {
@@ -106,7 +106,7 @@ public class HardwareAndPrinterController implements IController {
 
 	@FXML public void btnOpenBoxAction(final ActionEvent event) {
 		try {
-			final CollectBoxState state = this.hardwareService.openBox();
+			final CollectBoxState state = this.hardwareService.openBox(4);
 			this.txtResult.appendText(state.toString());
 			this.txtResult.appendText("\r\n");
 		} catch (final IOException e) {
@@ -116,7 +116,7 @@ public class HardwareAndPrinterController implements IController {
 
 	@FXML public void btnCloseBoxAction(final ActionEvent event) {
 		try {
-			final CollectBoxState state = this.hardwareService.closeBox();
+			final CollectBoxState state = this.hardwareService.closeBox(4);
 			this.txtResult.appendText(state.toString());
 			this.txtResult.appendText("\r\n");
 		} catch (final IOException e) {

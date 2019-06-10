@@ -37,12 +37,26 @@ public enum ArduinoProtocol {
 	RESP_ERROR_BLOCKED_D4 ("[RESP]ERROR_BLOCKED_D4", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.DISPENSER, ArduinoProtocol.State.ERROR_BLOCKED, Dispenser.D),
 
 
-	RESP_BOX_CLOSED ("[RESP]BOX_CLOSED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.CLOSED, Dispenser.NONE),
-	RESP_BOX_OPEN_FULL ("[RESP]BOX_OPEN_FULL", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_FULL, Dispenser.NONE),
-	RESP_BOX_OPEN_HALF ("[RESP]BOX_OPEN_HALF", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_HALF, Dispenser.NONE),
-	RESP_BOX_BLOCKED ("[RESP]BOX_BLOCKED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.ERROR_BLOCKED, Dispenser.NONE),
-	RESP_BOX_WORKING_OPENING ("[RESP]BOX_WORKING_OPENING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
-	RESP_BOX_WORKING_CLOSING ("[RESP]BOX_WORKING_CLOSING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	RESP_BOX_P_CLOSED ("[RESP]BOX_P_CLOSED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.CLOSED, Dispenser.NONE),
+	RESP_BOX_P_OPEN_FULL ("[RESP]BOX_P_OPEN_FULL", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_FULL, Dispenser.NONE),
+	RESP_BOX_P_OPEN_HALF ("[RESP]BOX_P_OPEN_HALF", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_HALF, Dispenser.NONE),
+	RESP_BOX_P_BLOCKED ("[RESP]BOX_P_BLOCKED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.ERROR_BLOCKED, Dispenser.NONE),
+	RESP_BOX_P_WORKING_OPENING ("[RESP]BOX_P_WORKING_OPENING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	RESP_BOX_P_WORKING_CLOSING ("[RESP]BOX_P_WORKING_CLOSING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	
+	RESP_BOX_M_CLOSED ("[RESP]BOX_M_CLOSED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.CLOSED, Dispenser.NONE),
+	RESP_BOX_M_OPEN_FULL ("[RESP]BOX_M_OPEN_FULL", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_FULL, Dispenser.NONE),
+	RESP_BOX_M_OPEN_HALF ("[RESP]BOX_M_OPEN_HALF", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_HALF, Dispenser.NONE),
+	RESP_BOX_M_BLOCKED ("[RESP]BOX_M_BLOCKED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.ERROR_BLOCKED, Dispenser.NONE),
+	RESP_BOX_M_WORKING_OPENING ("[RESP]BOX_M_WORKING_OPENING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	RESP_BOX_M_WORKING_CLOSING ("[RESP]BOX_M_WORKING_CLOSING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	
+	RESP_BOX_G_CLOSED ("[RESP]BOX_G_CLOSED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.CLOSED, Dispenser.NONE),
+	RESP_BOX_G_OPEN_FULL ("[RESP]BOX_G_OPEN_FULL", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_FULL, Dispenser.NONE),
+	RESP_BOX_G_OPEN_HALF ("[RESP]BOX_G_OPEN_HALF", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.OPENED_HALF, Dispenser.NONE),
+	RESP_BOX_G_BLOCKED ("[RESP]BOX_G_BLOCKED", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.ERROR_BLOCKED, Dispenser.NONE),
+	RESP_BOX_G_WORKING_OPENING ("[RESP]BOX_G_WORKING_OPENING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	RESP_BOX_G_WORKING_CLOSING ("[RESP]BOX_G_WORKING_CLOSING", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
 
 	RESP_MEASURES ("[RESP]MEASURES", ArduinoProtocol.Type.RESP, ArduinoProtocol.Object.METER, ArduinoProtocol.State.IDLE, Dispenser.NONE),
 
@@ -76,9 +90,13 @@ public enum ArduinoProtocol {
 	CALLBACK_WARNING_LOW_LEVEL_D4 ("[CB]CALLBACK_WARNING_LOW_LEVEL_D4", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.DISPENSER, ArduinoProtocol.State.WARNING, Dispenser.D),
 	CALLBACK_ERROR_BLOCKED_D4 ("[CB]CALLBACK_ERROR_BLOCKED_D4", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.DISPENSER, ArduinoProtocol.State.ERROR_BLOCKED, Dispenser.D),
 
-	CALLBACK_BOX_WORKING_OPENING ("[CB]BOX_WORKING_OPENING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
-	CALLBACK_BOX_WORKING_CLOSING ("[CB]BOX_WORKING_CLOSING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
-
+	CALLBACK_BOX_P_WORKING_OPENING ("[CB]BOX_P_WORKING_OPENING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	CALLBACK_BOX_P_WORKING_CLOSING ("[CB]BOX_P_WORKING_CLOSING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	CALLBACK_BOX_M_WORKING_OPENING ("[CB]BOX_M_WORKING_OPENING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	CALLBACK_BOX_M_WORKING_CLOSING ("[CB]BOX_M_WORKING_CLOSING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	CALLBACK_BOX_G_WORKING_OPENING ("[CB]BOX_G_WORKING_OPENING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	CALLBACK_BOX_G_WORKING_CLOSING ("[CB]BOX_G_WORKING_CLOSING", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.BOX, ArduinoProtocol.State.WORKING, Dispenser.NONE),
+	
 
 	CALLBACK_UNRECOGNIZED_COMM ("[CB]UNRECOGNIZED_COMM", ArduinoProtocol.Type.CALLBACK, ArduinoProtocol.Object.NONE, ArduinoProtocol.State.ERROR, Dispenser.NONE),
 	DEBUG ("[DEBUG]", ArduinoProtocol.Type.DEBUG, ArduinoProtocol.Object.NONE, ArduinoProtocol.State.NONE, Dispenser.NONE);

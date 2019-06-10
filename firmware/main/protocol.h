@@ -102,9 +102,18 @@ static const char* Protocol::CALLBACK_UNRECOGNIZED_COMM    = "[CB]UNRECOGNIZED_C
     static const char* COMMAND_RECHARGE_D3;
     static const char* COMMAND_RECHARGE_D4;
 
-    static const char* COMMAND_BOX_STATE;
-    static const char* COMMAND_BOX_OPEN;
-    static const char* COMMAND_BOX_CLOSE;
+    static const char* COMMAND_BOX_P_STATE;
+    static const char* COMMAND_BOX_P_OPEN;
+    static const char* COMMAND_BOX_P_CLOSE;
+
+    static const char* COMMAND_BOX_M_STATE;
+    static const char* COMMAND_BOX_M_OPEN;
+    static const char* COMMAND_BOX_M_CLOSE;
+
+    static const char* COMMAND_BOX_G_STATE;
+    static const char* COMMAND_BOX_G_OPEN;
+    static const char* COMMAND_BOX_G_CLOSE;
+    
     static const char* COMMAND_WEIGHT;
 
     static const char* COMMAND_ALARM_RED;
@@ -129,12 +138,26 @@ static const char* Protocol::CALLBACK_UNRECOGNIZED_COMM    = "[CB]UNRECOGNIZED_C
     static const char* RESP_ERROR_BLOCKED_D;
     
              
-    static const char* RESP_BOX_CLOSED;
-    static const char* RESP_BOX_OPEN_FULL;
-    static const char* RESP_BOX_OPEN_HALF;
-    static const char* RESP_BOX_BLOCKED;
-    static const char* RESP_BOX_WORKING_OPENING;
-    static const char* RESP_BOX_WORKING_CLOSING;
+    static const char* RESP_BOX_P_CLOSED;
+    static const char* RESP_BOX_P_OPEN_FULL;
+    static const char* RESP_BOX_P_OPEN_HALF;
+    static const char* RESP_BOX_P_BLOCKED;
+    static const char* RESP_BOX_P_WORKING_OPENING;
+    static const char* RESP_BOX_P_WORKING_CLOSING;
+
+    static const char* RESP_BOX_M_CLOSED;
+    static const char* RESP_BOX_M_OPEN_FULL;
+    static const char* RESP_BOX_M_OPEN_HALF;
+    static const char* RESP_BOX_M_BLOCKED;
+    static const char* RESP_BOX_M_WORKING_OPENING;
+    static const char* RESP_BOX_M_WORKING_CLOSING;
+
+    static const char* RESP_BOX_G_CLOSED;
+    static const char* RESP_BOX_G_OPEN_FULL;
+    static const char* RESP_BOX_G_OPEN_HALF;
+    static const char* RESP_BOX_G_BLOCKED;
+    static const char* RESP_BOX_G_WORKING_OPENING;
+    static const char* RESP_BOX_G_WORKING_CLOSING;
 
     static const char* RESP_UNRECOGNIZED;
 
@@ -147,21 +170,36 @@ static const char* Protocol::CALLBACK_UNRECOGNIZED_COMM    = "[CB]UNRECOGNIZED_C
     static const char* CALLBACK_WARNING_EMPTY_D;
     static const char* CALLBACK_WARNING_LOW_LEVEL_D;
     static const char* CALLBACK_ERROR_BLOCKED_D;
-    static const char* CALLBACK_BOX_WORKING_OPENING;
-    static const char* CALLBACK_BOX_WORKING_CLOSING;
+    
+    static const char* CALLBACK_BOX_P_WORKING_OPENING;
+    static const char* CALLBACK_BOX_P_WORKING_CLOSING;    
+    static const char* CALLBACK_BOX_G_WORKING_OPENING;
+    static const char* CALLBACK_BOX_G_WORKING_CLOSING;    
+    static const char* CALLBACK_BOX_M_WORKING_OPENING;
+    static const char* CALLBACK_BOX_M_WORKING_CLOSING;
+    
     static const char* CALLBACK_UNRECOGNIZED_COMM;
   
     /******** Methods ***********/
 
     static void dispenser1WorkingCallback(Dispenser *dispenser);
-    static void boxOpeningCallback(int boxState);
-    static void boxClosingCallback(int boxState);
+    
+    static void boxPOpeningCallback(int boxState);
+    static void boxPClosingCallback(int boxState);    
+    static void boxMOpeningCallback(int boxState);
+    static void boxMClosingCallback(int boxState);
+    static void boxGOpeningCallback(int boxState);
+    static void boxGClosingCallback(int boxState);
     
     void communicate(void);
     void receive(String command);
     void send(String message);
     void sendDispenserCallback(int dispenserState, int dispenserId);
     void sendScaleCallback(int scaleState);
+
+    /*
+     * Analisar
+     */
     void sendBoxCallback();
 
     static String translateDispenserState(int dispenserState, int dispenserId);
@@ -170,6 +208,8 @@ static const char* Protocol::CALLBACK_UNRECOGNIZED_COMM    = "[CB]UNRECOGNIZED_C
     void setAlarm(Alarm *pAlarm);
     void setScale(Scale *pScale);
     void setDispenser1(Dispenser *pDispenser1);
-    void setBox(Box *box);
+    
+    void setBoxP(Box *box);
+    void setBoxM(Box *box);
+    void setBoxG(Box *box);
  };
-

@@ -18,16 +18,43 @@
 #define ALARM_RED 48
 #define ALARM_YELLOW 50
 
-#define BOX_MOTOR_OPEN 47
-#define BOX_MOTOR_CLOSE 46
-#define BOX_OPENED 31
-#define BOX_CLOSED 33
-#define BOX_BLOCKED 35
+/*
+ * Definição das Box P
+*/
+#define BOX_P_MOTOR_OPEN 47
+#define BOX_P_MOTOR_CLOSE 46
+#define BOX_P_OPENED 31
+#define BOX_P_CLOSED 33
+#define BOX_P_BLOCKED 35
+
+/*
+ * Definição das Box M
+*/
+#define BOX_M_MOTOR_OPEN 47
+#define BOX_M_MOTOR_CLOSE 46
+#define BOX_M_OPENED 31
+#define BOX_M_CLOSED 33
+#define BOX_M_BLOCKED 35
+
+/*
+ * Definição das Box G
+*/
+#define BOX_G_MOTOR_OPEN 47
+#define BOX_G_MOTOR_CLOSE 46
+#define BOX_G_OPENED 31
+#define BOX_G_CLOSED 33
+#define BOX_G_BLOCKED 35
 
 Alarm alarm(RELAY_MODE, ALARM_RED, ALARM_YELLOW);
 Dispenser dispenser1(1, RELAY_MODE, D1_MOTOR, D1_REMOVED, D1_EMPTY);
 Dispenser dispenser2(2, RELAY_MODE, D2_MOTOR, D2_REMOVED, D2_EMPTY);
-Box box(RELAY_MODE, BOX_MOTOR_OPEN, BOX_MOTOR_CLOSE, BOX_CLOSED, BOX_OPENED, BOX_BLOCKED);
+
+/*
+ * Definição das boxs
+ */
+Box boxP(RELAY_MODE, BOX_P_MOTOR_OPEN, BOX_P_MOTOR_CLOSE, BOX_P_CLOSED, BOX_P_OPENED, BOX_P_BLOCKED);
+Box boxM(RELAY_MODE, BOX_M_MOTOR_OPEN, BOX_M_MOTOR_CLOSE, BOX_M_CLOSED, BOX_M_OPENED, BOX_M_BLOCKED);
+Box boxG(RELAY_MODE, BOX_G_MOTOR_OPEN, BOX_G_MOTOR_CLOSE, BOX_G_CLOSED, BOX_G_OPENED, BOX_G_BLOCKED);
 
 Protocol protocol;
 
@@ -45,12 +72,18 @@ void setup() {
   dispenser1.configure(20,5,2000,5000);
   Logger::debug("Dispenser configured");
 
-  box.setup();
-  Logger::debug("Box set up");
+  boxP.setup();
+  boxM.setup();
+  boxG.setup();
+  Logger::debug("Boxs set up");
 
   protocol.setDispenser1(&dispenser1);
   protocol.setAlarm(&alarm);
-  protocol.setBox(&box);
+  
+  protocol.setBoxP(&boxP);
+  protocol.setBoxM(&boxM);
+  protocol.setBoxG(&boxG);
+  
   Logger::debug("Protocol configured");
 
   Logger::debug("Relay mode: " + String(RELAY_MODE));
@@ -58,8 +91,12 @@ void setup() {
     digitalWrite(D1_MOTOR, HIGH); //start with HIGH in motor relay
     digitalWrite(ALARM_RED, HIGH); //start with HIGH in alarm red light
     digitalWrite(ALARM_YELLOW, HIGH); //start with HIGH in alarm yellow light
-    digitalWrite(BOX_MOTOR_OPEN, HIGH); //start with HIGH in alarm red light
-    digitalWrite(BOX_MOTOR_CLOSE, HIGH); //start with HIGH in alarm yellow light
+    digitalWrite(BOX_P_MOTOR_OPEN, HIGH); //start with HIGH in alarm red light
+    digitalWrite(BOX_P_MOTOR_CLOSE, HIGH); //start with HIGH in alarm yellow light
+    digitalWrite(BOX_M_MOTOR_OPEN, HIGH); //start with HIGH in alarm red light
+    digitalWrite(BOX_M_MOTOR_CLOSE, HIGH); //start with HIGH in alarm yellow light
+    digitalWrite(BOX_G_MOTOR_OPEN, HIGH); //start with HIGH in alarm red light
+    digitalWrite(BOX_G_MOTOR_CLOSE, HIGH); //start with HIGH in alarm yellow light
   }
 }
 
@@ -84,4 +121,3 @@ void serialFlush(void){
   while(Serial.available() > 0)
     Serial.read();
 }
-

@@ -1,5 +1,6 @@
 package br.com.agencialove.tpa.view;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.agencialove.tpa.hardware.IHardwareService;
+import br.com.agencialove.tpa.model.PackageMeasures;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,10 +24,9 @@ public class OpenBoxController implements IController {
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
 		final IHardwareService hs = Session.getHardwareService();
-		try {
-
-			hs.closeBox();
-
+		try {			
+			PackageMeasures meansures = (PackageMeasures) Session.getSession().get(Session.MEASURES);
+			hs.closeBox(Integer.valueOf(meansures.getType()));
 		} catch (final IOException ex) {
 			Logger.getGlobal().log(Level.SEVERE, "Erro ao abrir a gaveta coletora", ex); //$NON-NLS-1$
 			Session.error();
@@ -44,9 +45,8 @@ public class OpenBoxController implements IController {
 	public void startCollectProcess() {
 		final IHardwareService hs = Session.getHardwareService();
 		try {
-
-			hs.openBox();
-
+			PackageMeasures meansures = (PackageMeasures) Session.getSession().get(Session.MEASURES);
+			hs.openBox(Integer.valueOf(meansures.getType()));
 		} catch (final IOException ex) {
 			Logger.getGlobal().log(Level.SEVERE, "Erro ao abrir a gaveta coletora", ex); //$NON-NLS-1$
 			Session.error();

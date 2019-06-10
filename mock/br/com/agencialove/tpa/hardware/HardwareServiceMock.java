@@ -79,17 +79,17 @@ public class HardwareServiceMock implements IHardwareService {
 	}
 
 	@Override
-	public CollectBoxState getBoxState() throws IOException {
+	public CollectBoxState getBoxState(Integer boxId) throws IOException {
 		return CollectBoxState.CLOSED;
 	}
 
 	@Override
-	public CollectBoxState openBox() throws IOException {
+	public CollectBoxState openBox(Integer boxId) throws IOException {
 		return CollectBoxState.OPEN_FULL;
 	}
 
 	@Override
-	public CollectBoxState closeBox() throws IOException {
+	public CollectBoxState closeBox(Integer boxId) throws IOException {
 		return CollectBoxState.CLOSED;
 	}
 
