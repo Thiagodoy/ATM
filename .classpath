@@ -32,5 +32,8 @@
 	<classpathentry kind="lib" path="libdev/opentest4j-1.1.1.jar"/>
 	<classpathentry kind="lib" path="libdev/testfx-core-4.0.15-alpha.jar"/>
 	<classpathentry kind="lib" path="libdev/testfx-junit5-4.0.15-alpha.jar"/>
+	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/jsch-0.1.55.jar"/>
+	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/apache-commons-net.jar"/>
+	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/quartz.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
