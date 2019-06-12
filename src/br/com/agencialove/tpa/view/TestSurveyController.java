@@ -3,6 +3,7 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +20,9 @@ public class TestSurveyController implements IController {
 
 	@FXML
 	private void btnYesAction(final ActionEvent e) {
-		final Scene scene = Windows.FINISH.getScene();
+		final Scene scene = Windows.WEB_BROWSER.getScene();
+		WebBrowserController controller = (WebBrowserController) scene.getUserData();
+		controller.loadUrl(Url.SATISFACAO);
 		Session.setScene(scene);
 	}
 

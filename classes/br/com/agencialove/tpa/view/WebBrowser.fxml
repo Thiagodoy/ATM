@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane stylesheets="@styles/style.css" prefHeight="778.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.WebBrowserController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.WebBrowserController">
     <children>
       <VBox prefHeight="718.0" prefWidth="1024.0">
          <children>
@@ -19,11 +19,16 @@
       </VBox>
         <Pane layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0" styleClass="footer-page">
                <children>
-                  <Button fx:id="btnBackToStartWindow" styleClass="bt-voltar" layoutX="14.0" layoutY="8.0" prefHeight="45.0" prefWidth="182.0" mnemonicParsing="false" onAction="#btnBackToStartWindow" text="Voltar">
+                  <Button fx:id="btnBackToStartWindow" disable="true" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBackToStartWindow" prefHeight="45.0" prefWidth="182.0" styleClass="bt-voltar" text="Voltar" visible="false">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
+            <Button fx:id="btnFinalize" disable="true" layoutX="829.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBackToStartWindow" prefHeight="45.0" prefWidth="182.0" styleClass="bt-voltar" text="Concluir" visible="false">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
                </children>
             </Pane>
     </children>
