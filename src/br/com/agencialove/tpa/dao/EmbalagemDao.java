@@ -30,11 +30,13 @@ public class EmbalagemDao {
 		Session session = HibernateUtils.getSessionFactory().openSession();	
 		session.getTransaction().begin();
 		
-		list.parallelStream().forEach(e->{
-			session.save(e);
+		list.forEach(e->{
+			session.saveOrUpdate(e);
 		});
 		
-		session.getTransaction().commit();		
+		session.flush();
+		session.getTransaction().commit();	
+		
 	}
 	
 

@@ -11,8 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 import br.com.agencialove.tpa.utils.Status;
 
@@ -109,20 +108,22 @@ public class Embalagem implements Serializable{
 	private Double taxaEfetividade;
 	
 	@Column(name = "TEMPO_RESPOSTA")
-	private String tempoPostagem;
+	private String tempoPostagem;	
 	
-	public Status getStatus() {
+
+	@Column(name = "STATUS")	
+	private String status;
+
+	
+	
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	@Column(name = "STATUS")
-	@Enumerated(EnumType.STRING)
-	private Status status;
-
+	
 	public Long getId() {
 		return id;
 	}

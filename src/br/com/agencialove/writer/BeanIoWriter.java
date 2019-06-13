@@ -17,25 +17,25 @@ import java.util.Optional;
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 
+import br.com.agencialove.tpa.utils.Stream;
+
 
 
 
 public class BeanIoWriter {
-
-    //private BeanErrorHandler beanErrorHandler;
-
    
-    public static <T> Optional<File> writer(List<T>list, String nameFile) {
-        
+    public static <T> Optional<File> writer(List<T>list, String nameFile,Stream stream) {       
         
         BeanWriter writer = null;
+        File file = null;
         
         try {
             StreamFactory factory = StreamFactory.newInstance();
-            InputStream stream = factory.getClass().getClassLoader().getResourceAsStream("");
-            factory.load(stream);
-            Writer out = new BufferedWriter(new FileWriter("out.txt"));
-            writer = factory.createWriter("",out);
+            //InputStream str = factory.getClass().getClassLoader().getResourceAsStream(stream.getStreamFile());
+            factory.load(stream.getStreamFile());
+            file = new File(nameFile);
+            Writer out = new BufferedWriter(new FileWriter(file));
+            writer = factory.createWriter(stream.getStreamId(),out);
             
             
             for (T t : list) {
@@ -48,10 +48,14 @@ public class BeanIoWriter {
 
 
         } catch (Exception ex) {
-        }
+        	ex.printStackTrace();
+        	
+        }finally {
+        	
+		}
 
         
-        return null;
+        return Optional.ofNullable(file);
         
     }
 

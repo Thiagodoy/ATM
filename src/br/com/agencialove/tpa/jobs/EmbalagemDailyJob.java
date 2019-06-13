@@ -18,30 +18,29 @@ import br.com.agencialove.tpa.ftp.ClientFtpImpl;
 import br.com.agencialove.tpa.ftp.IClientFtp;
 import br.com.agencialove.tpa.model.Embalagem;
 import br.com.agencialove.tpa.utils.Status;
+import br.com.agencialove.tpa.utils.Stream;
 import br.com.agencialove.writer.BeanIoWriter;
 
-public class DailyJob implements Job {
+public class EmbalagemDailyJob implements Job {
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 
 
 		LocalDateTime min =  LocalDate.now().minusDays(1).atStartOfDay();
-		LocalDateTime max = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.NOON);
+		LocalDateTime max = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.MAX);
 		
 		List<Embalagem>embalagens =  EmbalagemDao.list(min, max);		
 
-		String dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd").format(min);
-		//AAAAMMDD_BD_ATM_JPS
-		//AAAAMMDD_BD_ATM_JPS_Embalagens
+		String dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd").format(min);		
 		String fileName = MessageFormat.format("{0}_BD_ATM_JPS.txt", dateFormat);
 		
-		Optional<File> opt = BeanIoWriter.<Embalagem>writer(embalagens, fileName);
+		Optional<File> opt = BeanIoWriter.<Embalagem>writer(embalagens, fileName, Stream.EMBALAGEM);
 		
 		if(opt.isPresent()) {
 			
 			embalagens.parallelStream().forEach(e->{
-				e.setStatus(Status.WRITED);
+				e.setStatus(Status.WRITED.name());
 			});
 			
 			EmbalagemDao.save(embalagens);		
@@ -57,7 +56,7 @@ public class DailyJob implements Job {
 		
 		
 		
-		//Altera o status
+	
 		
 		
 		
