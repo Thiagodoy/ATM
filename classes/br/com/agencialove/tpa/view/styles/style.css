@@ -12,11 +12,13 @@
 }
 
 .bt-tela-inicial{
-    -fx-background-color: #e3c255;
-    -fx-background-radius: 4em 0 4em 0;
-    -fx-text-fill: #3881c5;
+    -fx-background-color: #0083CA;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #fff;
     -fx-font-size: 26px;
     -fx-min-width: 20em;
+    -fx-width: 700px;	
+    -fx-font-family:Trebuchet MS;	
 }
 
 .pane-tela-inicial{
