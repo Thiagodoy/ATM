@@ -5,15 +5,10 @@
  */
 
 package br.com.agencialove.tpa.view;
-
-import static br.com.agencialove.tpa.view.Windows.DESCANSO;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import com.sun.java.swing.plaf.windows.resources.windows;
 
 import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;

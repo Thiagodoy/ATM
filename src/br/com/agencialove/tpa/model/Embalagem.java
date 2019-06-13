@@ -1,13 +1,20 @@
 package br.com.agencialove.tpa.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.agencialove.tpa.utils.Status;
 
 
 
@@ -15,6 +22,7 @@ import javax.persistence.Id;
 public class Embalagem implements Serializable{
 
 	private static final long serialVersionUID = 3242355L;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +36,11 @@ public class Embalagem implements Serializable{
 	private String modeloAtm;
 	
 	@Column(name = "DATA_TRANSACAO")
-	private Date dataTransacao;
+	//@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime dataTransacao;
 	
-	@Column(name = "HORA_TRANSACAO")
-	private String horaTransacao;
+//	@Column(name = "HORA_TRANSACAO")
+//	private String horaTransacao;
 	
 	@Column(name = "NOME_COMPRADOR")
 	private String nomeComprador;
@@ -101,6 +110,18 @@ public class Embalagem implements Serializable{
 	
 	@Column(name = "TEMPO_RESPOSTA")
 	private String tempoPostagem;
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	@Column(name = "STATUS")
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
 	public Long getId() {
 		return id;
@@ -126,21 +147,21 @@ public class Embalagem implements Serializable{
 		this.modeloAtm = modeloAtm;
 	}
 
-	public Date getDataTransacao() {
+	public LocalDateTime getDataTransacao() {
 		return dataTransacao;
 	}
 
-	public void setDataTransacao(Date dataTransacao) {
+	public void setDataTransacao(LocalDateTime dataTransacao) {
 		this.dataTransacao = dataTransacao;
 	}
 
-	public String getHoraTransacao() {
-		return horaTransacao;
-	}
-
-	public void setHoraTransacao(String horaTransacao) {
-		this.horaTransacao = horaTransacao;
-	}
+//	public String getHoraTransacao() {
+//		return horaTransacao;
+//	}
+//
+//	public void setHoraTransacao(String horaTransacao) {
+//		this.horaTransacao = horaTransacao;
+//	}
 
 	public String getNomeComprador() {
 		return nomeComprador;
