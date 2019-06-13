@@ -29,6 +29,7 @@ import br.com.agencialove.tpa.hardware.arduino.Working;
 import br.com.agencialove.tpa.model.OverAttemptsType;
 import br.com.agencialove.tpa.view.IController;
 import br.com.agencialove.tpa.view.OverAttemptsController;
+import br.com.agencialove.tpa.view.StartController;
 import br.com.agencialove.tpa.view.Windows;
 import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.webservices.WebServiceImpl;
@@ -283,7 +284,12 @@ public class Session{
 
 	public static void setScene(final Scene scene) {
 		Session.primaryStage.setScene(scene);
-		Session.primaryStage.setFullScreen(true);
+		//Session.primaryStage.setFullScreen(true);
+		
+		if(scene.getUserData() instanceof StartController) {
+			StartController controller = (StartController) scene.getUserData();
+			controller.activeRest();
+		}
 	}
 
 }

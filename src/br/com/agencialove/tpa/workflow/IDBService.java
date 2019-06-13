@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.agencialove.tpa.model.Data;
+import br.com.agencialove.tpa.model.Encomenda;
 import br.com.agencialove.tpa.model.Pack;
 
 public interface IDBService {
@@ -17,6 +18,7 @@ public interface IDBService {
 	List<Pack> listPacks() throws SQLException;
 
 	boolean insertData(Data data) throws SQLException;
+	//boolean insertEncomenda(Encomenda encomenda) throws SQLException;
 
 	Data getDataById(String id) throws SQLException;
 

@@ -9,6 +9,7 @@ public enum Windows {
 	/* *************
 	 * * Main Flow *
 	 * *************/
+	DESCANSO("DESCANSO","Descanso.fxml"), //Start screen
 	START("START_WINDOW","Start.fxml"), //Start screen
 	TEST_CONFIRMATION("TEST_CONFIRMATION_WINDOW","TestConfirmation.fxml"), //Device on test confirmation to proceed
 	SEARCH_ZIP("SEARCH_ZIP_WINDOW","SearchZip.fxml"), //Search ZipCode

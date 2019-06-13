@@ -11,6 +11,7 @@ import java.util.List;
 
 import br.com.agencialove.tpa.model.Pack;
 import br.com.agencialove.tpa.model.Data;
+import br.com.agencialove.tpa.model.Encomenda;
 import javafx.scene.image.Image;
 
 public class DBServiceImpl implements IDBService{
@@ -235,6 +236,8 @@ public class DBServiceImpl implements IDBService{
 
 		return ret;
 	}
+
+	
 
 
 }
