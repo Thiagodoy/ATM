@@ -5,14 +5,14 @@ package br.com.agencialove.writer;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.FileWriter;
-import java.io.IOException;
+
 import java.io.InputStream;
-import java.io.LineNumberReader;
+
 import java.io.Writer;
 import java.util.List;
+import java.util.Optional;
 
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
@@ -25,7 +25,7 @@ public class BeanIoWriter {
     //private BeanErrorHandler beanErrorHandler;
 
    
-    public <T> File writer(List<T>list, String nameFile) {
+    public static <T> Optional<File> writer(List<T>list, String nameFile) {
         
         
         BeanWriter writer = null;
