@@ -33,6 +33,7 @@
 	<classpathentry kind="lib" path="libdev/testfx-core-4.0.15-alpha.jar"/>
 	<classpathentry kind="lib" path="libdev/testfx-junit5-4.0.15-alpha.jar"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/jsch-0.1.55.jar"/>
 	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/apache-commons-net.jar"/>
 	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/quartz.jar"/>
@@ -52,5 +53,10 @@
 	<classpathentry kind="lib" path="C:/Users/LcDias/Desktop/TrampoDev/Projetos/PROJETO ATM/atm/lib/quartz.jar"/>
 	<classpathentry kind="lib" path="C:/Users/LcDias/Desktop/TrampoDev/Projetos/PROJETO ATM/atm/lib/jsch-0.1.55.jar"/>
 >>>>>>> bfc040bd0773387a2ff07ea8ddd787329a9a4308
+=======
+	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/jsch-0.1.55.jar"/>
+	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/apache-commons-net.jar"/>
+	<classpathentry kind="lib" path="E:/Documentos/Projeto - Correios/atm/lib/quartz.jar"/>
+>>>>>>> parent of bfc040b... Alterações
 	<classpathentry kind="output" path="classes"/>
 </classpath>
