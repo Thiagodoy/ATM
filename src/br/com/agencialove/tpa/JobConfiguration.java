@@ -1,5 +1,7 @@
 package br.com.agencialove.tpa;
 
+import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
+
 import java.util.Date;
 
 import org.quartz.JobBuilder;
@@ -11,13 +13,11 @@ import org.quartz.SimpleTrigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
-
-import br.com.agencialove.tpa.jobs.EmbalagemDailyJob;
+import br.com.agencialove.tpa.jobs.EmbalagemMonthlyJob;
 
 public class JobConfiguration {
 
-	public static void start() {
+	public static void config() {
 
 		SchedulerFactory shedFact = new StdSchedulerFactory();
 		try {
@@ -25,7 +25,7 @@ public class JobConfiguration {
 			
 			scheduler.start();
 
-			JobDetail detail = JobBuilder.newJob(EmbalagemDailyJob.class).withIdentity("WRITE-JOB-", "process-file")
+			JobDetail detail = JobBuilder.newJob(EmbalagemMonthlyJob.class).withIdentity("WRITE-JOB-", "process-file")
 					.withDescription("Processing files").build();
 
 			SimpleTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger-", "process-file")

@@ -12,6 +12,8 @@ public class TesteJobs {
 
 	public static void main(String[] args) {
 
+		FolderConfiguration.config();
+		
 		Session session = HibernateUtils.getSessionFactory().openSession();
 		session.beginTransaction();
 
@@ -21,11 +23,11 @@ public class TesteJobs {
 			emp.setNomeAgencia("Correios Araraquara");
 			emp.setBandeira(12l);
 			emp.setDisponibilidadeAtm(10.1d);
-			emp.setEmail("thiago@thiago.com" + i);			
+			emp.setEmail("Felipe.com" + i);			
 			emp.setCpfCnpj(1232342342424l);
 			emp.setEndereco("Avenia Uchoa 393 araraquara");
 			emp.setModeloAtm("JPS ATM");
-			emp.setNomeComprador("thiago oliveira de souza");
+			emp.setNomeComprador("Thiasdfgo" + i);
 			emp.setStatus(Status.NO_WRITED.name());
 			emp.setDataTransacao(LocalDateTime.now().minusDays(1));
 			session.save(emp);
@@ -34,7 +36,8 @@ public class TesteJobs {
 
 		session.getTransaction().commit();
 		
-		JobConfiguration.start();
+		
+		JobConfiguration.config();
 
 	}
 

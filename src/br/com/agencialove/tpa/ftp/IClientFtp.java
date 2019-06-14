@@ -7,6 +7,6 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 
 public interface IClientFtp {
-	void uploadFile(File file)throws Exception;
+	boolean uploadFile(File file);
 }
 	
