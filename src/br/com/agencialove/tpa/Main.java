@@ -21,7 +21,7 @@ public class Main extends Application{
 	public static void main(final String[] args) throws SQLException, FileNotFoundException{
 		Session.setAllMocks();	
 		
-		FolderConfiguration.config();
+	//	FolderConfiguration.config();
 		//final IDBService dbService = Session.getDBService();
 
 		//dbService.createDBIfNoExits();
