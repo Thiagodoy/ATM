@@ -11,12 +11,32 @@
     font-size: 56px;
 }
 
+.tela-inicial{
+   -fx-background-color: #fff;
+}
+
+.barra-topo{
+-fx-pref-width: 720px;
+-fx-pref-height: 93,5px;
+-fx-background-image: url("../img/bar-93.png");
+
+}
+
+.pane-logo{
+ -fx-pref-width: 212px;
+-fx-pref-height: 44px;
+-fx-background-image: url("../img/logo-topo.png");	
+}
+
 .bt-tela-inicial{
     -fx-background-color: #0083CA;
     -fx-background-radius: 10px;
     -fx-text-fill: #fff;
     -fx-font-size: 26px;
-    -fx-min-width: 20em;
+    -fx-pref-width: 700px;
+    -fx-pref-height: 100px;	
+    -fx-font-family:"Trebuchet MS";
+	
 }
 
 .pane-tela-inicial{
@@ -27,6 +47,10 @@
     /*-fx-translate-x: -180;*/
     -fx-background-repeat: no-repeat;
 }
+
+
+
+
 
 
 .button-click{
