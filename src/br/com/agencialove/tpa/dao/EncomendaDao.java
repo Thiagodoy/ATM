@@ -41,5 +41,24 @@ public class EncomendaDao {
 		
 	}
 	
+	
+	public static void save(Encomenda encomenda) {
+
+		Session session = HibernateUtils.getSessionFactory().openSession();
+		session.getTransaction().begin();
+		session.save(encomenda);		
+		session.getTransaction().commit();
+
+	}
+	
+	public static void deleteAll() {
+
+		Session session = HibernateUtils.getSessionFactory().openSession();
+		Query query = session.createQuery("delete from Encomenda e");
+		query.executeUpdate();
+		session.getTransaction().commit();
+
+	}
+	
 
 }

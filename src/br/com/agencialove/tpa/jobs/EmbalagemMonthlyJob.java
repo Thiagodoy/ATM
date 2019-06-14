@@ -43,12 +43,8 @@ public class EmbalagemMonthlyJob implements Job {
 
 				String dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd").format(min);
 				String fileName = MessageFormat.format(NAME_FILE, dateFormat);
-
 				File file = new File(fileName);
-
-				BeanIoWriter.<Embalagem>writer(embalagens, file, Stream.EMBALAGEM);
-
-				
+				BeanIoWriter.<Embalagem>writer(embalagens, file, Stream.EMBALAGEM);				
 			}
 
 			IClientFtp ftp = new ClientFtpImpl();
@@ -62,6 +58,7 @@ public class EmbalagemMonthlyJob implements Job {
 			for (File file : files) {
 				boolean isUploaded = ftp.uploadFile(file);
 				if (isUploaded) {
+					EmbalagemDao.deleteAll();
 					FileDeleteStrategy.FORCE.delete(file);
 				}
 			}

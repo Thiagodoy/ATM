@@ -22,6 +22,7 @@ public class Main extends Application{
 		Session.setAllMocks();	
 		
 		FolderConfiguration.config();
+		JobConfiguration.config();
 		//final IDBService dbService = Session.getDBService();
 
 		//dbService.createDBIfNoExits();

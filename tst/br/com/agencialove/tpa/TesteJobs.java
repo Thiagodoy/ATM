@@ -37,7 +37,7 @@ public class TesteJobs {
 		session.getTransaction().commit();
 		
 		
-		JobConfiguration.start();
+		JobConfiguration.config();
 
 	}
 

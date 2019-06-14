@@ -40,20 +40,10 @@ public class EncomendaMonthlyJob implements Job {
 			List<Encomenda> encomendas = EncomendaDao.list(min, max, Status.WRITED);
 
 			if (!encomendas.isEmpty()) {
-
 				String dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd").format(min);
 				String fileName = MessageFormat.format(NAME_FILE, dateFormat);
-
 				File file = new File(fileName);
-
-				boolean writedFile = BeanIoWriter.<Encomenda>writer(encomendas, file, Stream.EMBALAGEM);
-
-				if (writedFile) {
-					encomendas.parallelStream().forEach(e -> {
-						e.setStatus(Status.WRITED.name());
-					});
-					EncomendaDao.save(encomendas);
-				}
+				BeanIoWriter.<Encomenda>writer(encomendas, file, Stream.EMBALAGEM);				
 			}
 
 			IClientFtp ftp = new ClientFtpImpl();
@@ -62,13 +52,13 @@ public class EncomendaMonthlyJob implements Job {
 			List<File> files = Arrays.asList(uploadFolder.listFiles())
 					.stream()
 					.filter(f->f.getName().contains("BD_ATM_JPS_Mensal.txt"))
-					.collect(Collectors.toList());
-			
+					.collect(Collectors.toList());		
 			
 
 			for (File file : files) {
 				boolean isUploaded = ftp.uploadFile(file);
 				if (isUploaded) {
+					EncomendaDao.deleteAll();
 					FileDeleteStrategy.FORCE.delete(file);
 				}
 			}
