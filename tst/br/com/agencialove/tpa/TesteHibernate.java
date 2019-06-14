@@ -12,6 +12,7 @@ import br.com.agencialove.tpa.dao.EmbalagemDao;
 import br.com.agencialove.tpa.model.Embalagem;
 import br.com.agencialove.tpa.model.Encomenda;
 import br.com.agencialove.tpa.utils.HibernateUtils;
+import br.com.agencialove.tpa.utils.Status;
 
 
  
@@ -60,7 +61,7 @@ public class TesteHibernate
      session.getTransaction().commit();
 	   
 	   
-	  List<Embalagem>liest = EmbalagemDao.list(min, max);
+	  List<Embalagem>liest = EmbalagemDao.list(min, max, Status.NO_WRITED);
 	  
 	  for (Embalagem embalagem : liest) {
 		System.out.println(embalagem);

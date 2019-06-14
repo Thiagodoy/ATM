@@ -19,7 +19,9 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
 	public static void main(final String[] args) throws SQLException, FileNotFoundException{
-		Session.setAllMocks();		
+		Session.setAllMocks();	
+		
+		FolderConfiguration.config();
 		//final IDBService dbService = Session.getDBService();
 
 		//dbService.createDBIfNoExits();

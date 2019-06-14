@@ -1,37 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beanio xmlns="http://www.beanio.org/2012/03" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
-
-  <stream name="employeeFile" format="csv">
-    <record name="employee" class="br.com.agencialove.tpa.model.Embalagem">
-     	<field name="nomeAgencia" />
-		<field name="modeloAtm" />
-		<field name="dataTransacao" />
-		<field name="nomeComprador" />
-		<field name="cpfCnpj" />
-		<field name="endereco" />
-		<field name="telefone" />
-		<field name="email" />
-		<field name="valorCompra" />
-		<field name="embalagemTipo1" />
-		<field name="quantidadeTipo1" />
-		<field name="valorTipo1" />
-		<field name="embalagemTipo2" />
-		<field name="quantidadeTipo2" />
-		<field name="valorTipo2" />
-		<field name="embalagemTipo4B" />
-		<field name="quantidadeTipo4B" />
-		<field name="valorTipo4B" />
-		<field name="bandeira" />
-		<field name="numeroCartao" />
-		<field name="nsu" />
-		<field name="tipoPagamento" />
-		<field name="disponibilidadeAtm" />
-		<field name="funcionamentoRegular" />
-		<field name="taxaEfetividade" />
-		<field name="tempoPostagem" />
-      <field name="hireDate" format="MMddyyyy" />
-    </record>
-  </stream>
+<beanio xmlns="http://www.beanio.org/2012/03"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
+    
+       
+    
+    <stream name="embalagem" format="csv">
+    	<parser>
+           <property name="delimiter" value=";" />
+        </parser>
+    
+        <record name="employee" class="br.com.agencialove.tpa.model.Embalagem">
+            <field name="nomeAgencia" />
+            <field name="modeloAtm" />
+           <!--  <field name="dataTransacao" format="MMddyyyy" /> --> 
+            <field name="nomeComprador" />
+            <field name="cpfCnpj" />
+            <field name="endereco" />
+            <field name="telefone" />
+            <field name="email" />
+            <field name="valorCompra" />
+            <field name="embalagemTipo1" />
+            <field name="quantidadeTipo1" />
+            <field name="valorTipo1" />
+            <field name="embalagemTipo2" />
+            <field name="quantidadeTipo2" />
+            <field name="valorTipo2" />
+            <field name="embalagemTipo4B" />
+            <field name="quantidadeTipo4B" />
+            <field name="valorTipo4B" />
+            <field name="bandeira" />
+            <field name="numeroCartao" />
+            <field name="nsu" />
+            <field name="tipoPagamento" />
+            <field name="disponibilidadeAtm" />
+            <field name="funcionamentoRegular" />
+            <field name="taxaEfetividade" />
+            <field name="tempoPostagem" />
+        </record>
+    </stream>
 </beanio>
