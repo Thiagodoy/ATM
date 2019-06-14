@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.StartController">
+    <children>
+      <VBox prefHeight="778.0" prefWidth="1024.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="63.0" prefWidth="1024.0">
+               <children>
+                  <Label fx:id="titleLabel" alignment="CENTER" prefHeight="60.0" prefWidth="1024.0" styleClass="txt-label" text="Terminal de Auto-Atendimento" textAlignment="CENTER">
+                     <font>
+                        <Font size="46.0" />
+                     </font>
+                  </Label>
+                  <Line endX="1022.0" layoutY="63.0" startX="1.0" stroke="#e3c255" strokeWidth="3.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="657.0" prefWidth="1034.0">
+               <children>
+                  <Button fx:id="btnConsulting" layoutX="231.0" layoutY="135.0" mnemonicParsing="false" onAction="#btnConsultingAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Consulta no Portal dos Correios" textAlignment="CENTER" />
+                  <Button fx:id="btnPost" layoutX="228.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnPostAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Postagem de Encomendas" />
+                  <Button fx:id="btnBuyPackage" layoutX="226.0" layoutY="527.0" mnemonicParsing="false" onAction="#btnPrePostingAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Finalização do pré-atendimento" />
+                  <Button fx:id="btnPrePosting" layoutX="220.0" layoutY="395.0" mnemonicParsing="false" onAction="#btnBuyPackageAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Venda de Embalagem" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
