@@ -1,64 +1,47 @@
 package br.com.agencialove.writer;
 
-
-
-
 import java.io.BufferedWriter;
 import java.io.File;
-
 import java.io.FileWriter;
-
-import java.io.InputStream;
-
 import java.io.Writer;
 import java.util.List;
-import java.util.Optional;
 
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 
 import br.com.agencialove.tpa.utils.Stream;
 
-
-
-
 public class BeanIoWriter {
-   
-    public static <T> Optional<File> writer(List<T>list, String nameFile,Stream stream) {       
-        
-        BeanWriter writer = null;
-        File file = null;
-        
-        try {
-            StreamFactory factory = StreamFactory.newInstance();
-            //InputStream str = factory.getClass().getClassLoader().getResourceAsStream(stream.getStreamFile());
-            factory.load(stream.getStreamFile());
-            file = new File(nameFile);
-            Writer out = new BufferedWriter(new FileWriter(file));
-            writer = factory.createWriter(stream.getStreamId(),out);
-            
-            
-            for (T t : list) {
-            	writer.write(t);
+
+	public static <T> boolean writer(List<T> list, File file, Stream stream) {
+
+		BeanWriter writer = null;
+		Writer out = null;
+
+		try {
+			StreamFactory factory = StreamFactory.newInstance();
+			factory.load(stream.getStreamFile());
+
+			out = new BufferedWriter(new FileWriter(file));
+			writer = factory.createWriter(stream.getStreamId(), out);
+
+			for (T t : list) {
+				writer.write(t);
 			}
-            
-            writer.flush();
-            writer.close();
 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
 
-
-        } catch (Exception ex) {
-        	ex.printStackTrace();
-        	
-        }finally {
-        	
+		} finally {
+			if (writer != null) {
+				writer.flush();
+				writer.close();
+			}
 		}
 
-        
-        return Optional.ofNullable(file);
-        
-    }
+		return true;
 
-  
+	}
+
 }
-

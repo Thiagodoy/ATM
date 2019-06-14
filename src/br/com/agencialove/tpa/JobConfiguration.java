@@ -14,6 +14,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 
 import br.com.agencialove.tpa.jobs.EmbalagemDailyJob;
+import br.com.agencialove.tpa.jobs.EmbalagemMonthlyJob;
 
 public class JobConfiguration {
 
@@ -25,7 +26,7 @@ public class JobConfiguration {
 			
 			scheduler.start();
 
-			JobDetail detail = JobBuilder.newJob(EmbalagemDailyJob.class).withIdentity("WRITE-JOB-", "process-file")
+			JobDetail detail = JobBuilder.newJob(EmbalagemMonthlyJob.class).withIdentity("WRITE-JOB-", "process-file")
 					.withDescription("Processing files").build();
 
 			SimpleTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger-", "process-file")
