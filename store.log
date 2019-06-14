@@ -1,2 +1,0 @@
-/*C2*/SET SCHEMA PUBLIC
-alter table PUBLIC.ENCOMENDA add column STATUS varchar(255)
