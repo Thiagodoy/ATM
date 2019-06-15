@@ -17,12 +17,12 @@ public class Main extends Application{
 	public static void main(final String[] args) throws SQLException, FileNotFoundException{
 		Session.setSomeMocks();	
 		
-<<<<<<< HEAD
+
 		FolderConfiguration.config();
 		JobConfiguration.config();
-=======
+
 	//	FolderConfiguration.config();
->>>>>>> 474eaa5d329b2bc1d0f5eff51457604fe62479d6
+
 		//final IDBService dbService = Session.getDBService();
 
 		//dbService.createDBIfNoExits();

@@ -31,6 +31,8 @@
                   <Pane layoutX="762.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
                </children>
             </Pane>
+            
+            
          </children>
       </VBox>
     </children>
