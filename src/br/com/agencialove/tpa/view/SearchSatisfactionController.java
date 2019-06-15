@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-public class TestSurveyController implements IController {
+public class SearchSatisfactionController implements IController {
 
 	@FXML
 	private Button btnYes;

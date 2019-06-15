@@ -57,26 +57,31 @@ public class SelectPackageController implements IController {
 			Session.reset();
 		else
 			Session.setScene(this.previousScene);
-
+		
 	}
 
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
 		Session.getSession().put(Session.SELECTED_PACKAGE, this.selectedPack);
 
-		final Scene nextScene = Windows.PAYMENT.getScene();
+		final Scene nextScene = Windows.DETAIL_PACKAGE_SELECTED.getScene();
+		DetailPackageSelectedController control = (DetailPackageSelectedController)Windows.DETAIL_PACKAGE_SELECTED.getScene().getUserData();
+		control.populateInfo();
+		control.setPreviousScene(Windows.SELECT_PACKAGE.getScene());
 		Session.setScene(nextScene);
 	}
 
 	@Override
 	public void initialize(final URL url, final ResourceBundle resourceBundle) {
-	}
-
+	}	
+	
 	@Override
 	public void clear() {
 		if (this.hbox != null)
 			this.hbox.getChildren().clear();
 	}
+	
+	
 
 	public Scene getPreviousScene() {
 		return this.previousScene;
@@ -101,6 +106,26 @@ public class SelectPackageController implements IController {
 			Session.error();
 		}
 
+	}
+	
+	
+	public void loadInfo() {		
+		
+		Pack p = (Pack) Session.getSession().get(Session.SELECTED_PACKAGE);
+		
+		this.options.forEach(b->{
+			
+			String id = p.getDimensoes() + p.getValor();
+			if(b.getId().equals(id)) {
+				VBox box = (VBox) b.getChildrenUnmodifiable().get(0);
+				box.getChildren().forEach(c->{
+					if(c instanceof TextField) {
+						TextField field = (TextField) c;
+						field.setText(p.getQuantidade().toString());
+					}
+				});
+			}
+		});
 	}
 
 	private Button newButton(final Pack p) {

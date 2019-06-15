@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
+import br.com.agencialove.tpa.view.NfeChooseController;
+import br.com.agencialove.tpa.view.Windows;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -44,7 +46,7 @@ public class Main extends Application{
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
 		new Session(primaryStage);
-		Session.setScene(START.getScene());
+		Session.setScene(Windows.START.getScene());
 		Platform.setImplicitExit(true);
 		primaryStage.show();
 	}

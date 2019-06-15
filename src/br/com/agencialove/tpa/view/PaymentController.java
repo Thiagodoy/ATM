@@ -7,6 +7,11 @@ import java.util.logging.Logger;
 
 import javax.print.PrintException;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.sun.glass.events.MouseEvent;
+
 import br.com.agencialove.tpa.Messages;
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.dao.PostagemDao;
@@ -27,17 +32,20 @@ import br.com.agencialove.tpa.model.rest.EmiteEtiquetaRequest;
 import br.com.agencialove.tpa.model.rest.PrePost;
 import br.com.agencialove.tpa.model.rest.PrePostResponse;
 import br.com.agencialove.tpa.model.rest.ServicesResponse;
+import br.com.agencialove.tpa.utils.Utils;
 import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.SessionType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PaymentController implements IController {
@@ -89,8 +97,11 @@ public class PaymentController implements IController {
 			this.nextScene = Windows.REMOVE_PACKAGE.getScene();			
 			Pack pack = (Pack)Session.getSession().get(Session.SELECTED_PACKAGE);
 			ServicesResponse selectedService = new  ServicesResponse();
-			selectedService.setCodigoServico("04022");
-			selectedService.setValor(pack.getValor());
+			selectedService.setCodigoServico("04022");			
+			Double valor = Utils.parse(pack.getValor());
+			Long qtd = Long.valueOf(pack.getQuantidade());			
+			Double valorTotal = (valor * qtd);			
+			selectedService.setValor(valorTotal.toString().replace(",", "."));
 			selectedService.setDescricaoServico("Venda de embalagem");
 			Session.getSession().put(Session.SELECTED_SERVICE,selectedService);
 			
@@ -115,12 +126,48 @@ public class PaymentController implements IController {
 
 	@FXML
 	private void btnNoAction(final ActionEvent e) {
+		
+		final SessionType type = (SessionType) Session.getSession().get(Session.SESSION_TYPE);
+		
+		switch (type) {
+		case PACKAGE:
+			
+			
+			JFXButton button = new JFXButton("Teste do Thiago");
+			
+			JFXDialogLayout layout = new JFXDialogLayout();
+			layout.setBody(new Text("Deseja realmente cancelar a operação"));
+			JFXDialog dialog = new JFXDialog(null, layout, JFXDialog.DialogTransition.TOP);
+			button.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (event)->{
+				dialog.close();
+			});
+			
+			dialog.show();
+			
+			
+			break;
+		case PRE_POSTING:
+		case SERVICE:
+		break;
+
+		default:
+			break;
+		}
+		
+		
+		
+		
 		this.sender = (Address) Session.getSession().get(Session.SENDER_ADDRESS);
 		this.receiver = (Address) Session.getSession().get(Session.RECEIVER_ADDRESS);
 		this.services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
 		this.measures = (PackageMeasures) Session.getSession().get(Session.MEASURES);
 		final ServicesResponse selectedService = (ServicesResponse)Session.getSession().get(Session.SELECTED_SERVICE);
 
+		
+		//:TODO Caso seja compra de pack cancelar a compra e direcionar para o menu principal
+		
+		
+		
 		//gera PLP [IWebService.serviceRegisterResponse]
 		final IWebService webService = Session.getWebService();
 		final PrePost req = webService.getPrePostRequest(PaymentController.this.sender, PaymentController.this.receiver, PaymentController.this.services, PaymentController.this.measures, selectedService);
@@ -190,6 +237,9 @@ public class PaymentController implements IController {
 		//TODO exitir alert e continuar
 		try {printerService.printTicket(toPrint);}catch(final PrintException e) {};
 
+		//:FIXME quando for pack não tem a necessidade de chamar os servicos abaixo
+		
+		
 		//gera PLP [IWebService.serviceRegisterResponse]
 		final IWebService webService = Session.getWebService();
 		final PrePost req = webService.getPrePostRequest(PaymentController.this.sender, PaymentController.this.receiver, PaymentController.this.services, PaymentController.this.measures, PaymentController.this.selectedService);
