@@ -11,60 +11,50 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.TestConfirmationController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="back" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.TestConfirmationController">
    <children>
-   		<Pane fx:id="headerPane" layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
-	         <children>
-			   		<Label styleClass="txt-label-service-teste" alignment="CENTER" contentDisplay="CENTER" layoutY="25" prefHeight="30" prefWidth="1024.0" text="POSTAGEM NACIONAL">
-
-					</Label>			            
-	         </children>
-      	</Pane>
       	
-      	<Pane fx:id="separatorPane" layoutX="0.0" layoutY="82" prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
-	         
-      	</Pane>
-      	
-      	<Pane fx:id="contentPane" layoutX="0.0" layoutY="90" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
+      	<Pane fx:id="contentPane" layoutY="122.0" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
 	         <children>
-			   		<Label styleClass="sub-txt-label-tela-teste" alignment="CENTER" contentDisplay="CENTER" layoutY="28" prefHeight="30" prefWidth="1024.0" text="Terminal em fase experimental">
+      					<Label alignment="CENTER" contentDisplay="CENTER" layoutX="365.0" layoutY="184.0" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label" text="Pagamento exclusivo com cartão de crédito ou débito.">
 
 					</Label>
-					<Label styleClass="sub-txt-label" alignment="CENTER" contentDisplay="CENTER" layoutY="95" prefHeight="30" prefWidth="1024.0" text="Pagamento exclusivo com cartão de crédito ou débito.">
+      					<ImageView fx:id="imgPackage" fitHeight="45.0" fitWidth="60.0" layoutX="310" layoutY="200" pickOnBounds="true" preserveRatio="true">
+      						<image>
+      							<Image url="@img/icon1.jpeg" />
+      						</image>
+      					</ImageView>
+      	                    
+                      	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="30" layoutY="205" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="Seu produto precisa estar embalado!">
 
 					</Label>
-					<ImageView fx:id="imgPackage" layoutX="310" layoutY="200" fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-						<image>
-							<Image url="@img/icon1.jpeg" />
-						</image>
-					</ImageView>
-	                    
-                	<Label styleClass="sub-txt-label-observations" alignment="CENTER" contentDisplay="CENTER" layoutX="30"  layoutY="205" prefHeight="30" prefWidth="1024.0" text="Seu produto precisa estar embalado!">
-
-					</Label>
-                	<ImageView fx:id="imgPackage" layoutX="310" layoutY="280" fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-						<image>
-							<Image url="@img/icon2.jpeg" />
-						</image>
-					</ImageView>
-                	<Label styleClass="sub-txt-label-observations" alignment="CENTER" contentDisplay="CENTER" layoutX="40"  layoutY="260" prefHeight="30" prefWidth="1024.0" text="Não transportamos objetos explosivos, gases"></Label>
-                	<Label styleClass="sub-txt-label-observations" alignment="CENTER" contentDisplay="CENTER" layoutX="40"  layoutY="285" prefHeight="30" prefWidth="1024.0" text="inflamáveis, tóxicos, oxidantes, radioativos,"></Label>
-                	<Label styleClass="sub-txt-label-observations" alignment="CENTER" contentDisplay="CENTER" layoutX="40"  layoutY="310" prefHeight="30" prefWidth="1024.0" text="corrosivos, biológicos, armas e munições."></Label>
+                	<ImageView fx:id="imgPackage" fitHeight="45.0" fitWidth="60.0" layoutX="310" layoutY="280" pickOnBounds="true" preserveRatio="true">
+      						<image>
+      							<Image url="@img/icon2.jpeg" />
+      						</image>
+      					</ImageView>
+                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="260" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="Não transportamos objetos explosivos, gases" />
+                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="285" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="inflamáveis, tóxicos, oxidantes, radioativos," />
+                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="310" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="corrosivos, biológicos, armas e munições." />
                 	
-					
-					 <Button fx:id="btnYes" layoutX="226.0" layoutY="420" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" text="Sim">
-				         <styleClass>
-				            <String fx:value="btn" />
-				            <String fx:value="btn-yes" />
-				         </styleClass>
-				      </Button>
-				      <Button fx:id="btnNo" layoutX="567.0" layoutY="420" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="65" prefWidth="240.0" text="Nao">
-				         <styleClass>
-				            <String fx:value="btn" />
-				            <String fx:value="btn-no" />
-				         </styleClass>
-			     	 </Button>      			            
+            					
+      					 <Button fx:id="btnYes" layoutX="563.0" layoutY="434.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Prosseguir" />
+      				      <Button fx:id="btnNo" layoutX="62.0" layoutY="424.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Voltar" />
+      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="18.0" prefHeight="64.0" prefWidth="806.0" styleClass="sub-txt-label-tela-teste" text="Terminal em fase experimental">
+
+					</Label>      			            
 	         </children>
+      	</Pane>
+   		<Pane fx:id="headerPane" layoutY="-1.0" prefHeight="80" prefWidth="482.0" styleClass="header-page-service">
+         <children>
+      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="47.0" prefHeight="60.0" prefWidth="488.0" styleClass="txt-label-service-teste" text="Postagem Nacional">
+
+					</Label>
+         </children>
+      	</Pane>
+      	
+            	<Pane fx:id="separatorPane" layoutX="2.0" layoutY="109.0" prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
+	         
       	</Pane>
    
      

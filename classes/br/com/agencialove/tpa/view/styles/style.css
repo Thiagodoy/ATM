@@ -11,8 +11,17 @@
     font-size: 56px;
 }
 
+
+/*Tela Start*/
+
 .tela-inicial{
    -fx-background-color: #fff;
+}
+
+.back{
+   -fx-background-color: #fff;	
+   -fx-pref-width: 1024px;
+   -fx-pref-height: 778px;
 }
 
 .barra-topo{
@@ -38,6 +47,37 @@
     -fx-font-family:"Trebuchet MS";
 	
 }
+
+
+/*Botões*/
+.bt-blue-sm{
+   -fx-background-color: #0083CA;
+   -fx-background-radius: 10px;
+   -fx-text-fill: #fff;
+   -fx-font-size: 26px;
+   -fx-pref-width: 435px;
+   -fx-pref-height: 80px;	
+   -fx-font-family:"Trebuchet MS";
+}
+
+.bt-proximo{
+}
+
+
+/* Tela TestConfirmation */
+
+.testeteste{
+  -fx-font-family:"Trebuchet MS";
+  -fx-font-size: 40px;	
+}
+
+
+
+
+
+
+
+
 
 .pane-tela-inicial{
     -fx-background-image: url("https://www.correios.com.br/portal_css/Sunburst%20Theme/++theme++correios.site.tema/images/footer_background.png");
@@ -181,11 +221,9 @@
 }
 
 .header-page-service{
-    -fx-background-color: #DCDCDC;
-    -fx-background-position: -150px -80px;
-    -fx-background-repeat: no-repeat;
-    -fx-height: 100%;
-   	-fx-width: 150%;
+    -fx-pref-width: 1024px;
+    -fx-pref-height: 111px;
+    -fx-background-color: #EEF0EF;
 }
 
 .sub-header-page{
@@ -268,8 +306,9 @@
 }
 
 .txt-label-service-teste{
-    -fx-font-size: 20px;
-	-fx-text-fill: #A9A9A9;
+    -fx-font-size: 40px;
+    -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
 }
 
 .txt-label-service-measures{
@@ -296,9 +335,10 @@
 }
 
 .sub-txt-label-tela-teste{
-    -fx-font-size: 41px;
-    -fx-text-fill: #696969;
-    -fx-font-weight: bold
+    -fx-font-size: 55px;
+    -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
+   
 }
 
 .label-fulfillment{
