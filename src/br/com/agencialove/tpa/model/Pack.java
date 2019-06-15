@@ -8,6 +8,7 @@ public class Pack {
 	private String dimensoes;
 	private String valor;
 	private String dispenser;
+	private Long quantidade;
 	private Image imagem;
 	public Pack() {
 	}
@@ -17,6 +18,14 @@ public class Pack {
 		this.dimensoes = pDimensoes;
 		this.valor = pValor;
 		this.dispenser = pDispenser;
+	}
+	
+	
+	public Long getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(Long quantidade) {
+		this.quantidade = quantidade;
 	}
 	public String getValor() {
 		return this.valor;
@@ -53,5 +62,6 @@ public class Pack {
 	}
 	public void setDimensoes(final String dimensoes) {
 		this.dimensoes = dimensoes;
-	}
+	}	
+	
 }

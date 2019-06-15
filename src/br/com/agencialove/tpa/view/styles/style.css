@@ -49,7 +49,7 @@
 }
 
 
-/*Botões*/
+/*Botï¿½es*/
 .bt-blue-sm{
    -fx-background-color: #0083CA;
    -fx-background-radius: 10px;
@@ -527,6 +527,10 @@
 	-fx-font-weight: bold;
 }
 
+.selected-package{
+	-fx-border-color: red;
+}
+
 /*Dialig Alert*/
 
 .alert{
@@ -534,4 +538,7 @@
 }
 
 /*End*/
+
+
+
 

@@ -68,14 +68,14 @@ public class StartController implements IController {
 
 	public void activeRest() {	
 		
-		timer = new Timer();
-		
-		timer.schedule(new TimerTask() {			
-			@Override
-			public void run() {
-				Platform.runLater(()-> Session.setScene( Windows.DESCANSO.getScene()));				
-			}
-		}, 30000);
+//		timer = new Timer();
+//		
+//		timer.schedule(new TimerTask() {			
+//			@Override
+//			public void run() {
+//				Platform.runLater(()-> Session.setScene( Windows.DESCANSO.getScene()));				
+//			}
+//		}, 30000);
 
 	}
 
