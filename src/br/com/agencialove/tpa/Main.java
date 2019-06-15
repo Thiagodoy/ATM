@@ -31,7 +31,7 @@ public class Main extends Application{
 //		dbService.appendPack(p3, new FileInputStream("res/img/caixa.png"));
 //		dbService.appendPack(p4, new FileInputStream("res/img/envelope.jpg"));
 
-		Agencia agencia = new Agencia("1", "AC S�o Bernardo do Campo", "34028316312423", "00024525", "JPS", "ATM JPS COMPLETA", "0074290380", "12345678911", "12", "1", "2018-10-09", "21:29:21", "C", "12");
+		Agencia agencia = new Agencia("1", "AC São Bernardo do Campo", "34028316312423", "00024525", "JPS", "ATM JPS COMPLETA", "0074290380", "12345678911", "12", "1", "2018-10-09", "21:29:21", "C", "12");
 		AgenciaDao.save(agencia);	
 
 		Application.launch(Main.class, args);
