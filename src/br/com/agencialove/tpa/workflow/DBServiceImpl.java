@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.agencialove.tpa.model.Pack;
-import br.com.agencialove.tpa.model.Data;
-import br.com.agencialove.tpa.model.Encomenda;
+import br.com.agencialove.tpa.model.Agencia;
+import br.com.agencialove.tpa.model.Postagem;
 import javafx.scene.image.Image;
 
 public class DBServiceImpl implements IDBService{
@@ -45,14 +45,14 @@ public class DBServiceImpl implements IDBService{
 	}
 	
 	@Override
-	public Data getDataById(final String dCode) throws SQLException {
+	public Agencia getDataById(final String dCode) throws SQLException {
 		final PreparedStatement ps = this.conn.prepareStatement("SELECT txCodigo, txNomeAgencia, txCNPJAgencia, txMcuUnidade, txNomeFornecedor, txModeloAtm, txCartaoPostagem, txNumeroPlp, txRegistroObjeto, txAutorizacaoDoPagamento, txData, txHora, txCreditoDebito, txValorVenda FROM dados WHERE txCodigo = ?");
 		ps.setString(1, dCode);
 		final ResultSet rs = ps.executeQuery();
 
-		Data ret = null;
+		Agencia ret = null;
 		while(rs.next()) {
-			ret = new Data();
+			ret = new Agencia();
 			ret.setCodigo(rs.getString("txCodigo"));
 			ret.setNomeAgencia(rs.getString("txNomeAgencia"));
 			ret.setCnpjAgencia(rs.getString("txCnpjAgencia"));
@@ -140,8 +140,8 @@ public class DBServiceImpl implements IDBService{
 	}
 
 	@Override
-	public boolean insertData(final Data data) throws SQLException {
-		final Data d = this.getDataById(data.getCodigo());
+	public boolean insertData(final Agencia data) throws SQLException {
+		final Agencia d = this.getDataById(data.getCodigo());
 		final PreparedStatement ps;
 		if(d == null) {
 			ps = this.conn.prepareStatement("INSERT INTO dados (txCodigo, txNomeAgencia, txCNPJAgencia, txMcuUnidade, txNomeFornecedor, txModeloAtm, txCartaoPostagem, txNumeroPlp, txRegistroObjeto, txAutorizacaoDoPagamento, txData, txHora, txCreditoDebito, txValorVenda) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -184,14 +184,14 @@ public class DBServiceImpl implements IDBService{
 	}
 	
 	@Override
-	public List<Data> listDados() throws SQLException {
-		final List<Data> ret = new ArrayList<Data>();
+	public List<Agencia> listDados() throws SQLException {
+		final List<Agencia> ret = new ArrayList<Agencia>();
 
 		final PreparedStatement ps = this.conn.prepareStatement("SELECT txCodigo, txNomeAgencia, txCNPJAgencia, txMcuUnidade, txNomeFornecedor, txModeloAtm, txCartaoPostagem, txNumeroPlp, txRegistroObjeto, txAutorizacaoDoPagamento, txData, txHora, txCreditoDebito, txValorVenda FROM dados");
 		final ResultSet rs = ps.executeQuery();
 
 		while(rs.next()) {
-			final Data data = new Data();
+			final Agencia data = new Agencia();
 			data.setCodigo(rs.getString("txCodigo"));
 			data.setNomeAgencia(rs.getString("txNomeAgencia"));
 			data.setCnpjAgencia(rs.getString("txCnpjAgencia"));

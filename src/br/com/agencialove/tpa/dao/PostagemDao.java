@@ -7,14 +7,14 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 
-import br.com.agencialove.tpa.model.Encomenda;
+import br.com.agencialove.tpa.model.Postagem;
 import br.com.agencialove.tpa.utils.HibernateUtils;
 import br.com.agencialove.tpa.utils.Status;
 
-public class EncomendaDao {
+public class PostagemDao {
 	
 	@SuppressWarnings("unchecked")
-	public static List<Encomenda> list(LocalDateTime start, LocalDateTime end, Status status){
+	public static List<Postagem> list(LocalDateTime start, LocalDateTime end, Status status){
 		
 		Session session = HibernateUtils.getSessionFactory().openSession();	
 		
@@ -27,7 +27,7 @@ public class EncomendaDao {
 	}
 	
 	
-	public static void save(List<Encomenda> list){
+	public static void save(List<Postagem> list){
 		
 		Session session = HibernateUtils.getSessionFactory().openSession();	
 		session.getTransaction().begin();
@@ -42,11 +42,11 @@ public class EncomendaDao {
 	}
 	
 	
-	public static void save(Encomenda encomenda) {
+	public static void save(Postagem postagem) {
 
 		Session session = HibernateUtils.getSessionFactory().openSession();
 		session.getTransaction().begin();
-		session.save(encomenda);		
+		session.save(postagem);		
 		session.getTransaction().commit();
 
 	}

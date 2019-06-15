@@ -18,8 +18,8 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import br.com.agencialove.tpa.jobs.EmbalagemDailyJob;
 import br.com.agencialove.tpa.jobs.EmbalagemMonthlyJob;
-import br.com.agencialove.tpa.jobs.EncomendaDailyJob;
-import br.com.agencialove.tpa.jobs.EncomendaMonthlyJob;
+import br.com.agencialove.tpa.jobs.PostagemDailyJob;
+import br.com.agencialove.tpa.jobs.PostagemMonthlyJob;
 
 public class JobConfiguration {
 
@@ -57,7 +57,7 @@ public class JobConfiguration {
 
 	private static void jobEncomendaMonthlyJob(Scheduler scheduler) throws SchedulerException {
 		String cron = properties.getProperty("job-encomenda-monthly");
-		JobDetail detail = JobBuilder.newJob(EncomendaMonthlyJob.class).withIdentity("EncomendaMonthlyJob", "process-file")
+		JobDetail detail = JobBuilder.newJob(PostagemMonthlyJob.class).withIdentity("EncomendaMonthlyJob", "process-file")
 				.withDescription("Processing files").build();
 		CronTrigger crontrigger = TriggerBuilder.newTrigger().withIdentity("EncomendaMonthlyJobTrigger", "process-file")
 				.withSchedule(cronSchedule(cron).withMisfireHandlingInstructionFireAndProceed()).build();
@@ -67,7 +67,7 @@ public class JobConfiguration {
 	
 	private static void jobEncomendaDailyJob(Scheduler scheduler) throws SchedulerException {
 		String cron = properties.getProperty("job-encomenda-daily");
-		JobDetail detail = JobBuilder.newJob(EncomendaDailyJob.class).withIdentity("EncomendaDailyJob", "process-file")
+		JobDetail detail = JobBuilder.newJob(PostagemDailyJob.class).withIdentity("EncomendaDailyJob", "process-file")
 				.withDescription("Processing files").build();
 		CronTrigger crontrigger = TriggerBuilder.newTrigger().withIdentity("EncomendaDailyJobTrigger", "process-file")
 				.withSchedule(cronSchedule(cron).withMisfireHandlingInstructionFireAndProceed()).build();

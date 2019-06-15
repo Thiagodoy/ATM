@@ -1,6 +1,10 @@
 package br.com.agencialove.tpa.model;
 
+import br.com.agencialove.tpa.model.rest.*;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,8 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.agencialove.tpa.model.rest.ServicesResponse;
+
 @Entity
-public class Encomenda implements Serializable{
+public class Postagem implements Serializable{
 	
 	private static final long serialVersionUID = -1798070786993154676L;
 	
@@ -39,7 +45,7 @@ public class Encomenda implements Serializable{
 	private String codigoRastreio;
 	
 	@Column(name = "NUMERO_PLP")
-	private Long numeroPlp;
+	private String numeroPlp;
 	
 	@Column(name = "VALOR_VENDA")
 	private Double valorVenda;
@@ -132,11 +138,56 @@ public class Encomenda implements Serializable{
 	private String destinatarioTelefone;
 	
 	@Column(name = "DESTINATARIO_EMAIL")
-	private String destinatarioEmail;
-	
+	private String destinatarioEmail;	
 	
 	@Column(name = "STATUS")
 	private String status;
+	
+	
+	public Postagem() {
+		
+	}
+	
+	public Postagem(Address sender,Address receiver, AdditionalServices additionalServices,PackageMeasures measures, ServicesResponse servicesResponse, Agencia agencia, PaymentData paymentData ) {
+		this.remetenteNome = sender.getPerson().getName();
+		this.remetenteEmail = sender.getPerson().getEmail();
+		this.remetenteEndereco = sender.toFormatedAddress();
+		this.remetenteTelefone = sender.getPerson().getCellPhone();
+		
+		this.destinatarioNome = receiver.getPerson().getName();
+		this.destinatarioEmail = receiver.getPerson().getEmail();
+		this.destinatarioEndereco = receiver.toFormatedAddress();
+		this.destinatarioTelefone = receiver.getPerson().getCellPhone();
+		
+		this.nomeAgencia = agencia.getNomeAgencia();
+		this.modeloAtm = agencia.getModeloAtm();
+		this.cnpjAgencia = Long.valueOf(agencia.getCnpjAgencia());
+		this.mcu = Long.valueOf(agencia.getMcuUnidade());
+		this.numeroCartaoPostagem = Long.valueOf(agencia.getCartaoPostagem());		
+		
+		this.horaTransacao = paymentData.getHoraTransacao();
+		this.bandeira = Long.valueOf(paymentData.getBandeira());
+		this.valorVenda = Double.valueOf(paymentData.getValue().replace(",", "."));
+		this.tipoPagamento = paymentData.getFormaPagamento();	
+		
+		
+		//:FIXME precisa definir de onde vira		
+		this.tipoServico = 1l;
+		this.valorMp = 0.0d;
+		this.valorAr = 0.0d;
+		this.valorVd = 0.0d;
+		this.inscricaoEstadual = 1l;
+		
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");		
+		if(paymentData.getDataTransacao() != null) {
+			try {
+				this.dataTransacao = formatter.parse(paymentData.getDataTransacao());
+			} catch (ParseException e) {			
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
 	public Long getId() {
@@ -187,10 +238,10 @@ public class Encomenda implements Serializable{
 	public void setCodigoRastreio(String codigoRastreio) {
 		this.codigoRastreio = codigoRastreio;
 	}
-	public Long getNumeroPlp() {
+	public String getNumeroPlp() {
 		return numeroPlp;
 	}
-	public void setNumeroPlp(Long numeroPlp) {
+	public void setNumeroPlp(String numeroPlp) {
 		this.numeroPlp = numeroPlp;
 	}
 	public Double getValorVenda() {

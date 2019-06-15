@@ -8,15 +8,21 @@ import java.util.logging.Logger;
 import javax.print.PrintException;
 
 import br.com.agencialove.tpa.Messages;
+import br.com.agencialove.tpa.dao.AgenciaDao;
+import br.com.agencialove.tpa.dao.PostagemDao;
 import br.com.agencialove.tpa.hardware.IPrinterService;
 import br.com.agencialove.tpa.hardware.ITEFService;
 import br.com.agencialove.tpa.hardware.ITEFService.TEFCallback;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.Address;
+import br.com.agencialove.tpa.model.Agencia;
 import br.com.agencialove.tpa.model.OverAttemptsType;
+import br.com.agencialove.tpa.model.Pack;
 import br.com.agencialove.tpa.model.PackageMeasures;
 import br.com.agencialove.tpa.model.PaymentData;
 import br.com.agencialove.tpa.model.PaymentResult;
+import br.com.agencialove.tpa.model.Postagem;
+import br.com.agencialove.tpa.model.Relatorio;
 import br.com.agencialove.tpa.model.rest.EmiteEtiquetaRequest;
 import br.com.agencialove.tpa.model.rest.PrePost;
 import br.com.agencialove.tpa.model.rest.PrePostResponse;
@@ -80,7 +86,14 @@ public class PaymentController implements IController {
 			this.nextScene = Windows.REMOVE_STICK.getScene();
 			break;
 		case PACKAGE:
-			this.nextScene = Windows.REMOVE_PACKAGE.getScene();
+			this.nextScene = Windows.REMOVE_PACKAGE.getScene();			
+			Pack pack = (Pack)Session.getSession().get(Session.SELECTED_PACKAGE);
+			ServicesResponse selectedService = new  ServicesResponse();
+			selectedService.setCodigoServico("04022");
+			selectedService.setValor(pack.getValor());
+			selectedService.setDescricaoServico("Venda de embalagem");
+			Session.getSession().put(Session.SELECTED_SERVICE,selectedService);
+			
 			break;
 		case PRE_POSTING:
 			this.nextScene = Windows.REMOVE_STICK.getScene();
@@ -186,7 +199,21 @@ public class PaymentController implements IController {
 		final String nEtq = resp.getNumeroEtiqueta();
 
 		Session.getSession().put(Session.ID_PLP, plp);
-
+		
+		ServicesResponse service = (ServicesResponse)Session.getSession().get(Session.SELECTED_SERVICE);
+		
+		Agencia agencia = AgenciaDao.getAgencia();		
+		Relatorio relatorio = new Relatorio(this.sender, this.receiver,this.services, this.measures, service,agencia, paymentData,nEtq,plp);
+		
+		
+		// Gera um relatorio
+		this.persistInfo(relatorio);
+		
+		
+		
+		
+		
+		
 
 		//prepara objeto para as requisições ao WebService
 		final EmiteEtiquetaRequest eer = new EmiteEtiquetaRequest();
@@ -207,11 +234,36 @@ public class PaymentController implements IController {
 		if(this.services.isValueDeclaration()) {
 			webService.getPdfBytesDeclaracaoDeConteudo(eer);
 		}
+		
+		
+		
+		
+		
 
 		Platform.runLater(()->{Session.setScene(this.nextScene);});
 
 		this.setDefaultView(false);
 
+	}
+	
+	private void persistInfo(Relatorio relatorio) {
+		
+		
+		final SessionType type = (SessionType) Session.getSession().get(Session.SESSION_TYPE);
+		switch(type){
+		case SERVICE:			
+			Postagem postagem = new Postagem(relatorio.getSender(), relatorio.getReceiver(), relatorio.getAdditionalServices(), relatorio.getMeasures(),relatorio.getServicesResponse(),relatorio.getAgencia(),  relatorio.getPaymentData());
+			postagem.setCodigoRastreio(relatorio.getEtiqueta());
+			postagem.setNumeroPlp(relatorio.getPlp());
+			PostagemDao.save(postagem);		
+			
+			break;
+		case PACKAGE:
+			
+			break;		
+		}
+		
+		
 	}
 
 	private class PaymentTEFCallback implements TEFCallback {

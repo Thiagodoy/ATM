@@ -1,25 +1,69 @@
 package br.com.agencialove.tpa.model;
 
-import javafx.scene.image.Image;
+import java.io.Serializable;
 
-public class Data {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Agencia implements Serializable {
+	
+	private static final long serialVersionUID = 213452L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+	
+	@Column(name = "CODIGO")
 	private String codigo;
+	
+	@Column(name = "NOME_AGENCIA")
 	private String nomeAgencia;
+	
+	@Column(name = "CNPJ_AGENCIA")
 	private String cnpjAgencia;
+	
+	@Column(name = "MCU_UNIDADE")
 	private String mcuUnidade;
+	
+	@Column(name = "NOME_FORNECEDOR")
 	private String nomeFornecedor;
+	
+	@Column(name = "MODELO_ATM")
 	private String modeloAtm;
+	
+	@Column(name = "CARTAO_POSTAGEM")
 	private String cartaoPostagem;
+	
+	@Column(name = "NUMERO_PLP")
 	private String numeroPlp;
+	
+	@Column(name = "REGISTRO_OBJETO")
 	private String registroObjeto;
+	
+	@Column(name = "AUTORIZACAO_PAGAMENTO")
 	private String autorizacaoPagamento;
+	
+	@Column(name = "DATA")
 	private String data;
+	
+	@Column(name = "HORA")
 	private String hora;
+	
+	@Column(name = "CREDITO_DEBITO")
 	private String creditoDebito;
+	
+	@Column(name = "VALOR_VENDA")
 	private String valorVenda;
-	public Data() {
+	
+	public Agencia() {
 	}
-	public Data(final String dCodigo, final String dNomeAgencia, final String dCnpjAgencia, final String dMcuUnidade, final String dNomeFornecedor, final String dModeloAtm, final String dCartaoPostagem, final String dNumeroPlp, final String dRegistroObjeto, final String dAutorizacaoPagamento, final String dData, final String dHora, final String dCreditoDebito, final String dValorVenda ) {
+	
+	public Agencia(final String dCodigo, final String dNomeAgencia, final String dCnpjAgencia, final String dMcuUnidade, final String dNomeFornecedor, final String dModeloAtm, final String dCartaoPostagem, final String dNumeroPlp, final String dRegistroObjeto, final String dAutorizacaoPagamento, final String dData, final String dHora, final String dCreditoDebito, final String dValorVenda ) {
 		this.codigo = dCodigo;
 		this.nomeAgencia = dNomeAgencia;
 		this.cnpjAgencia = dCnpjAgencia;
