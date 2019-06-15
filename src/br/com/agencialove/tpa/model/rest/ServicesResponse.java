@@ -17,6 +17,9 @@ public class ServicesResponse {
 	private String valorSemAdicionais;
 	private String valorTotal;
 
+	public ServicesResponse() {
+		
+	}
 	public ServicesResponse(final String codigoServico, final String descricaoServico, final String valor, final String prazoEntrega, final String valorMaoPropria, final String valorAvisoRecebimento, final String valorValorDeclarado, final String entregaDomiciliar, final String entregaSabado, final String codigoErro, final String msgErro, final String observacao, final String valorSemAdicionais) {
 		this.codigoServico = codigoServico;
 		this.descricaoServico = descricaoServico;

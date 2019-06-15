@@ -2,15 +2,11 @@ package br.com.agencialove.tpa;
 
 import static br.com.agencialove.tpa.view.Windows.START;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
-import br.com.agencialove.tpa.model.Data;
-import br.com.agencialove.tpa.model.Pack;
-import br.com.agencialove.tpa.utils.HibernateUtils;
-import br.com.agencialove.tpa.view.Windows;
-import br.com.agencialove.tpa.workflow.IDBService;
+import br.com.agencialove.tpa.dao.AgenciaDao;
+import br.com.agencialove.tpa.model.Agencia;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -19,7 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
 	public static void main(final String[] args) throws SQLException, FileNotFoundException{
-		Session.setAllMocks();	
+		Session.setSomeMocks();	
 		
 		FolderConfiguration.config();
 		JobConfiguration.config();
@@ -35,9 +31,8 @@ public class Main extends Application{
 //		dbService.appendPack(p3, new FileInputStream("res/img/caixa.png"));
 //		dbService.appendPack(p4, new FileInputStream("res/img/envelope.jpg"));
 
-		new Data("1", "AC S�o Bernardo do Campo", "34028316312423", "00024525", "JPS", "ATM JPS COMPLETA", "0074290380", "12345678911", "12", "1", "2018-10-09", "21:29:21", "C", "12");
-
-		//dbService.insertData(d1);
+		Agencia agencia = new Agencia("1", "AC São Bernardo do Campo", "34028316312423", "00024525", "JPS", "ATM JPS COMPLETA", "0074290380", "12345678911", "12", "1", "2018-10-09", "21:29:21", "C", "12");
+		AgenciaDao.save(agencia);	
 
 		Application.launch(Main.class, args);
 	}

@@ -1,5 +1,8 @@
 package br.com.agencialove.tpa.model;
 
+import java.text.MessageFormat;
+import java.util.Optional;
+
 public class Address {
 
 	private Person person;
@@ -131,5 +134,17 @@ public class Address {
 				", NEIGHBORHOOD='" + this.neighborhood + '\'' +
 				", TYPE='" + this.type + '\'' +
 				'}';
+	}
+	
+	public String toFormatedAddress() {
+		String street = Optional.ofNullable(this.street).isPresent() ? this.street : "";
+		String neighborhood = Optional.ofNullable(this.neighborhood).isPresent() ? this.neighborhood : "";
+		String number = Optional.ofNullable(this.number).isPresent() ? this.number : "";
+		String city = Optional.ofNullable(this.city).isPresent() ? this.city : "";
+		String state = Optional.ofNullable(this.state).isPresent() ? this.state : "";
+		String complement = Optional.ofNullable(this.complement).isPresent() ? this.complement : "";
+		String zipCode = Optional.ofNullable(this.zip).isPresent() ? this.zip : "";
+		
+		return MessageFormat.format("Endereço: {0}, n° {1} - {2}, {3} - {4} \nComplemento: {5}\nCep{6}",street,number, neighborhood, city,state,complement,zipCode );
 	}
 }

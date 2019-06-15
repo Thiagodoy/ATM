@@ -227,7 +227,14 @@ public class TEFServiceImpl implements ITEFService {
 			ret.setId(fields.get("001-000"));
 			ret.setCode(fields.get("002-000"));
 			ret.setValue(fields.get("003-000"));
-			ret.setCurrency("0".equals(fields.get("004-000"))?"REAL":"DOLAR");
+			ret.setCurrency("0".equals(fields.get("004-000"))?"REAL":"DOLAR");			
+			ret.setBandeira(fields.get("010-003"));
+			ret.setCnpjCpf(fields.get("007-000"));
+			ret.setNsu(fields.get("012-000"));
+			ret.setNumeroCartao(fields.get("010-004"));
+			ret.setHoraTransacao(fields.get("023-000"));
+			ret.setDataTransacao(fields.get("022-000"));
+			ret.setFormaPagamento(fields.get("210-023"));
 
 			return ret;
 		}
