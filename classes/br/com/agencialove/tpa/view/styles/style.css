@@ -49,7 +49,7 @@
 }
 
 
-/*Botï¿½es*/
+/*Botões*/
 .bt-blue-sm{
    -fx-background-color: #0083CA;
    -fx-background-radius: 10px;
@@ -63,29 +63,6 @@
 .bt-proximo{
 }
 
-.bt-cancelar{
-   -fx-background-color: #e17a35;
-   -fx-background-radius: 10px;
-   -fx-text-fill: #fff;
-   -fx-font-size: 26px;
-   -fx-pref-width: 435px;
-   -fx-pref-height: 80px;	
-   -fx-font-family:"Trebuchet MS";
-}
-
-.seta-voltar{
-   -fx-pref-width: 25px;
-   -fx-pref-height: 30px;
-   -fx-background-image: url("../img/voltar.png");
-    -fx-background-repeat: no-repeat;			
-}
-
-.seta-next{
-   -fx-pref-width: 25px;
-   -fx-pref-height: 30px;
-   -fx-background-image: url("../img/seta-next.png");
-    -fx-background-repeat: no-repeat;		
-}
 
 /* Tela TestConfirmation */
 
@@ -341,16 +318,10 @@
 }
 
 
-.label-text{
-   -fx-font-size: 25px;
-    -fx-text-fill: #82858C;
-    -fx-font-family:"Trebuchet MS";
-}
 
 .sub-txt-label{
-    -fx-font-size: 36px;
-    -fx-text-fill: #82858C;
-    -fx-font-family:"Trebuchet MS";
+	-fx-font-size: 20px;
+	-fx-text-fill: #ACACAC;
 }
 
 .txt-label-measures{
@@ -556,10 +527,6 @@
 	-fx-font-weight: bold;
 }
 
-.selected-package{
-	-fx-border-color: red;
-}
-
 /*Dialig Alert*/
 
 .alert{
@@ -567,7 +534,4 @@
 }
 
 /*End*/
-
-
-
 

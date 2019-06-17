@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+
 import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.SessionType;
@@ -17,6 +19,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
@@ -29,6 +32,9 @@ public class StartController implements IController {
 	
 
 	@FXML
+	private StackPane stake;
+	
+	@FXML
 	private void btnConsultingAction(final ActionEvent e) {		
 		Scene scene = Windows.WEB_BROWSER.getScene();	
 		this.cancelTime();
@@ -38,7 +44,8 @@ public class StartController implements IController {
 	}
 
 	@FXML
-	private void btnPostAction(final ActionEvent e) {		
+	private void btnPostAction(final ActionEvent e) {	
+		
 		Session.setScene(Windows.TEST_CONFIRMATION.getScene());
 		this.cancelTime();
 		Session.getSession().put(Session.SESSION_TYPE, SessionType.SERVICE);

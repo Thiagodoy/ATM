@@ -32,7 +32,7 @@ public class OpenBoxController implements IController {
 			Session.error();
 		}
 
-		final Scene scene = Windows.TEST_SURVEY.getScene();
+		final Scene scene = Windows.SEARCH_SATISFACTION.getScene();
 		Session.setScene(scene);
 	}
 
