@@ -14,27 +14,34 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.DetailPackageSelectedController">
 	<children>
-      <Button fx:id="btnBack" layoutX="109.0" layoutY="644.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-voltar" text="Voltar">
+      <Button fx:id="btnBack" layoutX="49.0" layoutY="567.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnNext" layoutX="674.0" layoutY="636.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-next" text="Prosseguir">
+      <Button fx:id="btnNext" layoutX="539.0" layoutY="568.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-       <Button fx:id="btnCancel" layoutX="333.0" layoutY="703.0" onAction="#btnCancelAction" mnemonicParsing="false" prefHeight="45.0" prefWidth="342.0" styleClass="bt-next" text="Cancelar">
+       <Button fx:id="btnCancel" layoutX="295.0" layoutY="673.0" mnemonicParsing="false" onAction="#btnCancelAction" prefHeight="45.0" prefWidth="342.0" styleClass="bt-cancelar" text="Cancelar">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="tableView" layoutX="404.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="218.0">
+      <TableView fx:id="tableView" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columns>
           <TableColumn fx:id="colProduto" prefWidth="497.0" text="Produto" />
           <TableColumn fx:id="colQuantidade" minWidth="0.0" prefWidth="135.0" text="Quantidade" />
             <TableColumn fx:id="colValor" prefWidth="131.0" text="Valor" />
         </columns>
       </TableView>
+      <Pane layoutX="66.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+      <Pane layoutX="934.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Pane prefHeight="100.0" prefWidth="1024.0" style="-fx-background-color: efcc30;" styleClass="header-resumo-compra">
+         <children>
+            <Label layoutX="400.0" layoutY="32.0" prefHeight="36.0" prefWidth="224.0" styleClass="label-text-resumo" text="Resumo da Compra" textAlignment="CENTER" />
+         </children>
+      </Pane>
 	</children>
 </AnchorPane>
