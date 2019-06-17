@@ -334,6 +334,11 @@
     -fx-font-family:"Trebuchet MS";
 }
 
+.label-resumo-compra{
+   -fx-font-family:"Trebuchet MS";
+   
+}
+
 .linha{
   -fx-background-color: #FFD700;
   -fx-pref-width: 1024px;
@@ -350,6 +355,11 @@
 .label-text{
    -fx-font-size: 25px;
     -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
+}
+
+.label-text-resumo{
+    -fx-font-size: 25px;
     -fx-font-family:"Trebuchet MS";
 }
 
