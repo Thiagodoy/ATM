@@ -64,7 +64,7 @@
 
 .table-view .column-header{
   -fx-background-color:#fff;
- 
+   -fx-padding: 0 0 10px 0 ;
 }
 
 .table-view .column-header .filler{
@@ -89,6 +89,16 @@
     -fx-padding:5px;
     -fx-font-size:20px;
 }
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #fff;	
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #ccc;	
+}
+
+
 
 
 
