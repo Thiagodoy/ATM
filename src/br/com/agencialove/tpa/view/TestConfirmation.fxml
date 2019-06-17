@@ -14,35 +14,39 @@
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="back" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.TestConfirmationController">
    <children>
       	
-      	<Pane fx:id="contentPane" layoutY="122.0" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
+      	<Pane fx:id="contentPane" layoutX="1.0" layoutY="128.0" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
 	         <children>
-      					<Label alignment="CENTER" contentDisplay="CENTER" layoutX="365.0" layoutY="184.0" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label" text="Pagamento exclusivo com cartão de crédito ou débito.">
+      					<Label alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="65.0" prefHeight="64.0" prefWidth="783.0" styleClass="sub-txt-label" text="Pagamento exclusivo com cartão de">
 
 					</Label>
-      					<ImageView fx:id="imgPackage" fitHeight="45.0" fitWidth="60.0" layoutX="310" layoutY="200" pickOnBounds="true" preserveRatio="true">
+      					<ImageView fx:id="imgPackage" fitHeight="90.0" fitWidth="76.0" layoutX="179.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
       						<image>
       							<Image url="@img/icon1.jpeg" />
       						</image>
       					</ImageView>
       	                    
-                      	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="30" layoutY="205" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="Seu produto precisa estar embalado!">
+                      	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="210.0" prefHeight="30" prefWidth="874.0" styleClass="label-text" text="Seu produto precisa estar embalado!">
 
 					</Label>
-                	<ImageView fx:id="imgPackage" fitHeight="45.0" fitWidth="60.0" layoutX="310" layoutY="280" pickOnBounds="true" preserveRatio="true">
+                	<ImageView fx:id="imgPackage" fitHeight="71.0" fitWidth="68.0" layoutX="183.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
       						<image>
       							<Image url="@img/icon2.jpeg" />
       						</image>
       					</ImageView>
-                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="260" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="Não transportamos objetos explosivos, gases" />
-                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="285" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="inflamáveis, tóxicos, oxidantes, radioativos," />
-                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="310" prefHeight="30" prefWidth="1024.0" styleClass="sub-txt-label-observations" text="corrosivos, biológicos, armas e munições." />
+                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="283.0" prefHeight="30" prefWidth="550.0" styleClass="label-text" text="Não transportamos objetos explosivos, gases" />
+                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="318.0" prefHeight="30" prefWidth="1024.0" styleClass="label-text" text="inflamáveis, tóxicos, oxidantes, radioativos," />
+                	<Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="350.0" prefHeight="30" prefWidth="1024.0" styleClass="label-text" text="corrosivos, biológicos, armas e munições." />
                 	
             					
-      					 <Button fx:id="btnYes" layoutX="563.0" layoutY="434.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Prosseguir" />
-      				      <Button fx:id="btnNo" layoutX="62.0" layoutY="424.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Voltar" />
-      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="18.0" prefHeight="64.0" prefWidth="806.0" styleClass="sub-txt-label-tela-teste" text="Terminal em fase experimental">
+      					 <Button fx:id="btnYes" layoutX="539.0" layoutY="433.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Prosseguir" />
+      				      <Button fx:id="btnNo" layoutX="49.0" layoutY="433.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Voltar" />
+      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="64.0" prefWidth="806.0" styleClass="sub-txt-label-tela-teste" text="Terminal em fase experimental">
 
-					</Label>      			            
+					</Label>
+            <Button layoutX="290.0" layoutY="542.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="105.0" prefHeight="64.0" prefWidth="783.0" styleClass="sub-txt-label" text="crédito ou débito." />
+            <Pane layoutX="71.0" layoutY="458.0" prefHeight="165.0" prefWidth="154.0" styleClass="seta-voltar" />
+            <Pane layoutX="932.0" layoutY="458.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />      			            
 	         </children>
       	</Pane>
    		<Pane fx:id="headerPane" layoutY="-1.0" prefHeight="80" prefWidth="482.0" styleClass="header-page-service">
@@ -53,7 +57,7 @@
          </children>
       	</Pane>
       	
-            	<Pane fx:id="separatorPane" layoutX="2.0" layoutY="109.0" prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
+            	<Pane fx:id="separatorPane" layoutY="109.0" prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
 	         
       	</Pane>
    
