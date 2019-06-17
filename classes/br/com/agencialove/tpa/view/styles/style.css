@@ -64,7 +64,7 @@
 
 .table-view .column-header{
   -fx-background-color:#fff;
-   -fx-padding: 0 0 10px 0 ;
+  
 }
 
 .table-view .column-header .filler{
@@ -75,6 +75,7 @@
   -fx-font-size:22px;
   -fx-font-family:"Trebuchet MS";
   -fx-text-fill: #82858C;
+   -fx-padding: 0 0 10px 0 ;
 }
 
 .table-view .column-header-background .filler{
@@ -91,14 +92,14 @@
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #fff;	
-}
+    
+    -fx-background-color: -fx-table-cell-border-color, #eeeeee;	
+}	
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #ccc;	
+   -fx-background-color: -fx-table-cell-border-color, #fff;
+
 }
-
-
 
 
 

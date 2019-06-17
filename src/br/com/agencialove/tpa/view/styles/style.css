@@ -75,7 +75,7 @@
   -fx-font-size:22px;
   -fx-font-family:"Trebuchet MS";
   -fx-text-fill: #82858C;
-   -fx-padding: 0 0 10px 0 ;
+   -fx-padding:25px;
 }
 
 .table-view .column-header-background .filler{
