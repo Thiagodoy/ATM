@@ -9,11 +9,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
+
+
 <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.StartController">
     <children>
+	      <StackPane fx:id="stake" prefHeight="778.0" prefWidth="1024.0"> 
+	      <children>
       <VBox prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" AnchorPane.topAnchor="0.0">
          <children>
+         
             <Pane prefHeight="657.0" prefWidth="1034.0">
+           
                <children>
                   <Button fx:id="btnConsulting" layoutX="162.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnConsultingAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Consulta no Portal dos Correios" textAlignment="CENTER" />
                   <Button fx:id="btnPost" layoutX="162.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnPostAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Postagem de Encomendas">
@@ -35,5 +41,7 @@
             
          </children>
       </VBox>
+      </children>
+      </StackPane>
     </children>
 </AnchorPane>

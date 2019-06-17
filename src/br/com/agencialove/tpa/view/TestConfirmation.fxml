@@ -51,7 +51,7 @@
       	</Pane>
    		<Pane fx:id="headerPane" layoutY="-1.0" prefHeight="80" prefWidth="482.0" styleClass="header-page-service">
          <children>
-      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="47.0" prefHeight="60.0" prefWidth="488.0" styleClass="txt-label-service-teste" text="Postagem Nacional">
+      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="26.0" prefHeight="60.0" prefWidth="488.0" styleClass="txt-label-service-teste" text="Postagem Nacional">
 
 					</Label>
          </children>
