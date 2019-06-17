@@ -27,6 +27,7 @@ public enum Windows {
 	SEARCH_SATISFACTION("SEARCH_SATISFACTION","SearchSatisfaction.fxml"),
 	SATISFACTION_SURVEY("SATISFACTION_SURVEY_WINDOW","SatisfactionSurvey.fxml"),
 	FINISH("FINISHING_WINDOW","Finish.fxml"),
+	BUYER_INFORMATION("BUYER_INFORMATION","BuyerInformation.fxml"),
 	
 	DETAIL_PACKAGE_SELECTED("DETAIL_PACKAGE_SELECTED","DetailPackageSelected.fxml"),
 
