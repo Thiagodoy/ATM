@@ -49,6 +49,73 @@
 }
 
 
+
+
+.label3{
+	-fx-font-size: 30px;
+}
+
+/* Table */
+
+.table_view{
+   -fx-background-color:fff;
+  
+}
+
+.table-view .column-header{
+  -fx-background-color:#fff;
+ -fx-table-cell-border-color
+  
+}
+
+.table-view .column-header .filler{
+ 
+}
+
+.table-view .column-header .label{
+  -fx-font-size:22px;
+  -fx-font-family:"Trebuchet MS";
+  -fx-text-fill: #82858C;
+   -fx-padding:20px;
+}
+
+.table-view .column-header-background .filler{
+ -fx-background-color:#fff;
+ -fx-text-fill: #f00;
+ 
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #8e8d89;
+    -fx-font-family:"Trebuchet MS";
+    -fx-padding:5px;
+    -fx-font-size:20px;
+}
+
+.table-row-cell{
+    
+    -fx-background-color:#eeeeee;
+    -fx-table-cell-border-color	:tranparent;
+}	
+
+.table-row-cell:odd{
+   -fx-background-color:#fff;
+    -fx-table-cell-border-color	:tranparent;
+}
+
+
+
+
+
+
+
+
+
+
+.col-prod{
+  -fx-text-fill: #f00;
+}
+
 /*Botões*/
 .bt-blue-sm{
    -fx-background-color: #0083CA;
@@ -60,7 +127,10 @@
    -fx-font-family:"Trebuchet MS";
 }
 
-.bt-proximo{
+.font-resumo{
+    -fx-font-family:"Trebuchet MS";
+ 
+
 }
 
 .bt-cancelar{
@@ -334,6 +404,11 @@
     -fx-font-family:"Trebuchet MS";
 }
 
+.label-resumo-compra{
+   -fx-font-family:"Trebuchet MS";
+   
+}
+
 .linha{
   -fx-background-color: #FFD700;
   -fx-pref-width: 1024px;
@@ -352,6 +427,8 @@
     -fx-text-fill: #82858C;
     -fx-font-family:"Trebuchet MS";
 }
+
+
 
 .sub-txt-label{
     -fx-font-size: 36px;
