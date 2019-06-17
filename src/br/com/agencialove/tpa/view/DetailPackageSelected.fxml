@@ -28,8 +28,8 @@
       <TableView fx:id="tableView" layoutY="82.0" prefHeight="412.0" prefWidth="1024.0" styleClass="table_view" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="82.0">
         <columns>
           <TableColumn fx:id="colProduto" prefWidth="497.0" text="Produto" />
-          <TableColumn fx:id="colQuantidade" minWidth="0.0" prefWidth="135.0" text="Quantidade" />
-            <TableColumn fx:id="colValor" prefWidth="131.0" text="Valor" />
+          <TableColumn fx:id="colQuantidade" minWidth="0.0" prefWidth="191.0" text="Quantidade" />
+            <TableColumn fx:id="colValor" prefWidth="147.0" text="Valor" />
         </columns>
       </TableView>
       <Pane layoutX="66.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
