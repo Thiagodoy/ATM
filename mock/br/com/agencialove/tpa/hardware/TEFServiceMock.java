@@ -4,38 +4,48 @@ import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+
 import br.com.agencialove.tpa.model.PaymentData;
 import br.com.agencialove.tpa.model.PaymentResult;
+import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Platform;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.text.Text;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 public class TEFServiceMock implements ITEFService {
 
+	
+	
+	public static final boolean payment = true;
+	
 	public TEFServiceMock(final Stage pStage) {
+		
+		
 	}
 
 	@Override
 	public void charge(final String value, final String code, final String description, final TEFCallback callback) {
 
 		final Timer timer = new Timer();
+		
+		
 
 		timer.schedule(new TimerTask() {
-
+				
+			
 			@Override
 			public void run() {
 				Platform.runLater(() -> {
-					final ButtonType btnSuccess = new ButtonType("Sucesso", ButtonData.YES);
-					final ButtonType btnFail = new ButtonType("Falha", ButtonData.NO);
-					final Dialog<ButtonType> dialog = new Dialog<ButtonType>();
-					dialog.setContentText("O pagamento foi realizado com sucesso?");
-					dialog.getDialogPane().getButtonTypes().add(btnSuccess);
-					dialog.getDialogPane().getButtonTypes().add(btnFail);
 
-					final Optional<ButtonType> result = dialog.showAndWait();
-					if(result.isPresent() && result.get() == btnSuccess) {
+					
+					
+					if(payment) {
 
 						final PaymentData ret1 = new PaymentData();
 						ret1.setId("1234567");
@@ -81,6 +91,6 @@ public class TEFServiceMock implements ITEFService {
 						callback.charged(PaymentResult.FAIL, ret2, "Não foi possível cobrar");
 					}
 				});
-			}}, 2000);
+			}}, 5000);
 	}
 }

@@ -64,8 +64,6 @@
 
 .table-view .column-header{
   -fx-background-color:#fff;
- -fx-table-cell-border-color
-  
 }
 
 .table-view .column-header .filler{
@@ -118,7 +116,7 @@
   -fx-text-fill: #f00;
 }
 
-/*Botões*/
+/*Botï¿½es*/
 .bt-blue-sm{
    -fx-background-color: #0083CA;
    -fx-background-radius: 10px;

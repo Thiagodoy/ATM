@@ -30,7 +30,7 @@ public class FulfillAddressController implements IController {
 	private TextField txtLogradouro;
 
 	@FXML
-	private MaskField txtNumero;
+	private TextField txtNumero;
 
 	@FXML
 	private TextField txtBairro;
@@ -54,7 +54,7 @@ public class FulfillAddressController implements IController {
 	private TextField txtCPF;
 
 	@FXML
-	private MaskField txtCelular;
+	private TextField txtCelular;
 
 	@FXML
 	private TextField txtEmail;
@@ -136,9 +136,11 @@ public class FulfillAddressController implements IController {
 		this.address.getPerson().setType(this.type);
 		this.address.getPerson().setName(this.txtNome.getText().trim());
 		this.address.getPerson().setCPF_CPNJ(this.txtCPF.getText().trim());
-		this.address.getPerson().setCellPhone(this.txtCelular.getPlainText().trim());
+		this.address.getPerson().setCellPhone(this.txtCelular.getText().trim());
+		//this.address.getPerson().setCellPhone(this.txtCelular.getPlainText().trim());
 		this.address.getPerson().setEmail(this.txtEmail.getText().trim());
-		this.address.setNumber(this.txtNumero.getPlainText().trim());
+		//this.address.setNumber(this.txtNumero.getPlainText().trim());
+		this.address.setNumber(this.txtNumero.getText().trim());
 		this.address.setComplement(this.txtComplemento.getText().trim());
 	}
 
@@ -200,14 +202,14 @@ public class FulfillAddressController implements IController {
 	@Override
 	public void clear() {
 		if(this.txtLogradouro != null) this.txtLogradouro.setText("");
-		if(this.txtNumero != null) {this.txtNumero.setText(""); this.txtNumero.setPlainText(""); this.txtNumero.clear(); this.txtNumero.requestFocus();};
+		//if(this.txtNumero != null) {this.txtNumero.setText(""); this.txtNumero.setPlainText(""); this.txtNumero.clear(); this.txtNumero.requestFocus();};
 		if(this.txtComplemento != null) this.txtComplemento.setText("");
 		if(this.lblCidade != null) this.lblCidade.getItems().clear();
 		if(this.lblEstado != null) this.lblEstado.getItems().clear();
 		if(this.txtCEP != null) this.txtCEP.setText("");
 		if(this.txtNome != null) this.txtNome.setText("");
 		if(this.txtCPF != null) this.txtCPF.setText("");
-		if(this.txtCelular != null) {this.txtCelular.setText(""); this.txtCelular.setPlainText(""); this.txtCelular.clear();};
+		//if(this.txtCelular != null) {this.txtCelular.setText(""); this.txtCelular.setPlainText(""); this.txtCelular.clear();};
 		if(this.txtEmail != null) this.txtEmail.setText("");
 		if(this.btnNext != null) this.btnNext.setDisable(true);
 	}
