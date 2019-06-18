@@ -1,13 +1,10 @@
 package br.com.agencialove.tpa;
 
-import static br.com.agencialove.tpa.view.Windows.START;
-
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
-import br.com.agencialove.tpa.view.NfeChooseController;
 import br.com.agencialove.tpa.view.Windows;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Application;

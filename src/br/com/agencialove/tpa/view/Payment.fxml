@@ -13,44 +13,51 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.PaymentController">
 	<children>
-		<Pane  layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
-	         <children>
-			   		<Label styleClass="txt-label-service-teste" alignment="CENTER" contentDisplay="CENTER" layoutX="40"  layoutY="25" prefHeight="30" prefWidth="1024.0" text="POSTAGEM NACIONAL">
+      <StackPane fx:id="stake" prefHeight="778.0" prefWidth="1024.0">
+         <children>
+      	
+      		<Pane prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
+      	         <children>
+      			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="25" prefHeight="30" prefWidth="1024.0" styleClass="txt-label-service-teste" text="POSTAGEM NACIONAL">
 
 					</Label>			            
-	         </children>
+      	         </children>
+            	</Pane>
+            		<Pane prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
       	</Pane>
-      		<Pane layoutX="0.0" layoutY="80" prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
-      	</Pane>
-		<Pane layoutX="0.0" layoutY="90" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
-		  <Label fx:id="lblInitial" style="-fx-font-weight: bold" alignment="CENTER" contentDisplay="CENTER" layoutY="8" layoutX="40" prefHeight="118.0" prefWidth="1024.0" styleClass="txt-label" text="Deseja realizar o pagamento?" wrapText="true">
-	            <font>
-	                <Font size="48.0" />
-	            </font>
-	        </Label>
-	        <Label fx:id="lblRetry" visible="false" style="-fx-font-weight: bold" alignment="CENTER" contentDisplay="CENTER" layoutY="8" layoutX="40" prefHeight="118.0" prefWidth="1024.0" styleClass="txt-label" text="Não foi possível realizar o pagamento. Deseja tentar novamente?" wrapText="true">
-	            <font>
-	                <Font size="48.0" />
-	            </font>
-	        </Label>
-	        <Label fx:id="lblCharging" visible="false" style="-fx-font-weight: bold" alignment="CENTER" contentDisplay="CENTER" layoutY="8" layoutX="40" prefHeight="118.0" prefWidth="1024.0" styleClass="txt-label" text="Confira o valor e digite sua senha no teclado numérico à sua direita." wrapText="true">
-	            <font>
-	                <Font size="48.0" />
-	            </font>
-	        </Label>			
-			<ImageView fx:id="imgInstruction" fitHeight="279.0" fitWidth="525.0" layoutX="290.0" layoutY="250" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #fff;" rotate="90.0">
-				<image>
-					<Image url="@img/cardAnimation.gif" />
-				</image>
-			</ImageView>			
-		</Pane>
+      		<Pane prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
+         <children>
+         		  <Label fx:id="lblInitial" alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="8" prefHeight="118.0" prefWidth="1024.0" style="-fx-font-weight: bold" styleClass="txt-label" text="Deseja realizar o pagamento?" wrapText="true">
+         	            <font>
+         	                <Font size="48.0" />
+         	            </font>
+         	        </Label>
+         	        <Label fx:id="lblRetry" alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="8" prefHeight="118.0" prefWidth="1024.0" style="-fx-font-weight: bold" styleClass="txt-label" text="Não foi possível realizar o pagamento. Deseja tentar novamente?" visible="false" wrapText="true">
+         	            <font>
+         	                <Font size="48.0" />
+         	            </font>
+         	        </Label>
+         	        <Label fx:id="lblCharging" alignment="CENTER" contentDisplay="CENTER" layoutX="40" layoutY="8" prefHeight="118.0" prefWidth="1024.0" style="-fx-font-weight: bold" styleClass="txt-label" text="Confira o valor e digite sua senha no teclado numérico à sua direita." visible="false" wrapText="true">
+         	            <font>
+         	                <Font size="48.0" />
+         	            </font>
+         	        </Label>			
+         			<ImageView fx:id="imgInstruction" fitHeight="279.0" fitWidth="525.0" layoutX="290.0" layoutY="250" pickOnBounds="true" preserveRatio="true" rotate="90.0" style="-fx-background-color: #fff;">
+         				<image>
+         					<Image url="@img/cardAnimation.gif" />
+         				</image>
+         			</ImageView>
+         </children>			
+      		</Pane>
+         </children>
+      </StackPane>
 		
-		<Button fx:id="btnNo" alignment="CENTER" styleClass="btn-yes-prepost-confirmation" layoutX="250" layoutY="590.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="50" prefWidth="150" textFill="RED" text="Não" textAlignment="CENTER" wrapText="true">		 
+		<Button fx:id="btnNo" alignment="CENTER" layoutX="250" layoutY="590.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="50" prefWidth="150" styleClass="btn-yes-prepost-confirmation" text="Não" textAlignment="CENTER" textFill="RED" wrapText="true">		 
 	         <font>
 	            <Font size="30" />
 	         </font>
       	</Button>
-      	<Button fx:id="btnYes" alignment="CENTER" styleClass="btn-yes-prepost-confirmation" layoutX="700" layoutY="590.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="50" prefWidth="150" textFill="RED" text="Sim" textAlignment="CENTER" wrapText="true">		 
+      	<Button fx:id="btnYes" alignment="CENTER" layoutX="700" layoutY="590.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="50" prefWidth="150" styleClass="btn-yes-prepost-confirmation" text="Sim" textAlignment="CENTER" textFill="RED" wrapText="true">		 
 	         <font>
 	            <Font size="30" />
 	         </font>

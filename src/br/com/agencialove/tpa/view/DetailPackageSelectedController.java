@@ -42,7 +42,7 @@ public class DetailPackageSelectedController implements IController {
 
 	@FXML
 	public void btnNextAction(final ActionEvent e) {
-		Scene nextScene = Windows.PAYMENT.getScene();
+		Scene nextScene = Windows.BUYER_INFORMATION.getScene();
 		Session.setScene(nextScene);
 	}
 

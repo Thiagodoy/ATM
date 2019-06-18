@@ -156,13 +156,6 @@ public class Embalagem implements Serializable{
 		this.dataTransacao = dataTransacao;
 	}
 
-//	public String getHoraTransacao() {
-//		return horaTransacao;
-//	}
-//
-//	public void setHoraTransacao(String horaTransacao) {
-//		this.horaTransacao = horaTransacao;
-//	}
 
 	public String getNomeComprador() {
 		return nomeComprador;
