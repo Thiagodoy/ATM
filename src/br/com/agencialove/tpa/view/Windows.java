@@ -29,6 +29,7 @@ public enum Windows {
 	SATISFACTION_SURVEY("SATISFACTION_SURVEY_WINDOW","SatisfactionSurvey.fxml"),
 	FINISH("FINISHING_WINDOW","Finish.fxml"),
 	BUYER_INFORMATION("BUYER_INFORMATION","BuyerInformation.fxml"),
+	SEND_NFE_EMAIL("SEND_NFE_EMAIL","SendNfeEmail.fxml"),
 	
 	DETAIL_PACKAGE_SELECTED("DETAIL_PACKAGE_SELECTED","DetailPackageSelected.fxml"),
 
