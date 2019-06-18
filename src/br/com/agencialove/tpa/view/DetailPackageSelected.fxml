@@ -27,16 +27,16 @@
       </Button>
       <TableView fx:id="tableView" layoutX="1.0" layoutY="100.0" prefHeight="412.0" prefWidth="1024.0" styleClass="table_view" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="colProduto" prefWidth="497.0" text="Produto" />
-          <TableColumn fx:id="colQuantidade" minWidth="0.0" prefWidth="191.0" text="Quantidade" />
-            <TableColumn fx:id="colValor" prefWidth="147.0" text="Valor" />
+          <TableColumn fx:id="colProduto" prefWidth="497.0" style="-fx-alignment: CENTER;" text="Produto" />
+          <TableColumn fx:id="colQuantidade" minWidth="0.0" prefWidth="191.0" style="-fx-alignment: CENTER;" text="Quantidade" />
+            <TableColumn fx:id="colValor" prefWidth="147.0" style="-fx-alignment: CENTER;" text="Valor" />
         </columns>
       </TableView>
       <Pane layoutX="66.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
       <Pane layoutX="934.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
       <Pane prefHeight="100.0" prefWidth="1024.0" style="-fx-background-color: efcc30;" styleClass="header-resumo-compra">
          <children>
-            <Label layoutX="381.0" layoutY="28.0" style="-fx-font-size: 30px; -fx-font-family: &quot;Trebuchet MSl&quot;;" styleClass="font-resumo" text="Resumo da Compra" />
+            <Label alignment="CENTER" layoutX="364.0" layoutY="28.0" prefHeight="45.0" prefWidth="296.0" style="-fx-font-size: 30px; -fx-font-family: &quot;Trebuchet MSl&quot;; -fx-text-alignment: centered;" styleClass="font-resumo" text="Resumo da Compra" />
          </children>
       </Pane>
 	</children>
