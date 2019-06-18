@@ -14,6 +14,7 @@ import com.squareup.okhttp.Response;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.PackageMeasures;
+import br.com.agencialove.tpa.model.ZipType;
 import br.com.agencialove.tpa.model.rest.EmiteEtiquetaRequest;
 import br.com.agencialove.tpa.model.rest.PrePost;
 import br.com.agencialove.tpa.model.rest.PrePostGet;
@@ -430,7 +431,82 @@ public class WebServiceMock implements IWebService{
 	@Override
 	public PrePost getPrePostRequest(final Address pSender, final Address pReceiver, final AdditionalServices pServices,
 			final PackageMeasures pMeasures, final ServicesResponse servicesResponse) {
-		// TODO Auto-generated method stub
+		
+		
+		final PrePost req = new PrePost();
+		req.setBairroDestinatario("Vila Harmonia");
+		req.setComplementoDestinatario("Próximo ao balão das roseira");
+		req.setEmailDestinatario("danilopietroheitordossantos..danilopietroheitordossantos@santander.com.br");
+		req.setNomeDestinatario("Danilo Pietro Heitor dos Santos");
+		req.setNumeroEndDestinatario("2323");
+		req.setCelularDestinatario("(91) 98537-7810");
+		req.setTelefoneDestinatario("(91) 3888-2603");
+		req.setCpf_cnpj_destinatario("339.861.195-82");
+		req.setUfDestinatario("MG");
+		req.setCepDestinatario("66030-050");
+		req.setCidadeDestinatario("Belém");
+		req.setLogradouroDestinatario("Passagem Paulo Roberto\n");
+
+		if(pSender.getPerson().getType() == ZipType.SENDER) {
+			req.setBairroRemetente(pSender.getNeighborhood());
+			req.setComplementoRemetente(pSender.getComplement());
+			req.setEmailRemetente(pSender.getPerson().getEmail());
+			req.setNomeRemetente("Patrícia Emanuelly Marina Assis");
+			req.setNumeroEndRemetente("Cajazeiras");
+			req.setCelularRemetente("(71) 99126-8615");
+			req.setTelefoneRemetente("(71) 3608-7243");
+			req.setCpf_cnpj_remetente("461.169.241-82");
+			req.setUfRemetente("SP");
+			req.setCepRemetente("41342-1000");
+			req.setCidadeRemetente("Rio Preto");
+			req.setLogradouroRemetente("");
+		}
+
+		req.setFormaPagamento("1");
+		req.setCartaoPostagem("");
+		req.setCentroCustoCliente("0069950016");
+		req.setCodigoAdministrativo("17000190");
+		req.setCodigoObjetoCliente("");
+		req.setCodigoServicoAdicional("025");
+		req.setCodigoServicoPostagem("");
+		req.setCodigoUsuarioPostal("");
+		req.setDataPostagemSara("");
+		req.setDescricaoObjeto("");
+		req.setDimensaoAltura("18");
+		req.setDimensaoComprimento("18");
+		req.setDimensaoDiametro("0");
+		req.setDimensaoLargura("13.5");
+		req.setFormaPagamento("1");
+		req.setIdPlp("");
+		req.setMcuUnidadePostagem("");
+		req.setTipoArquivo("Postagem");
+		req.setNaturezaNotaFiscal("");
+		//AQui
+		req.setNomeUnidadePostagem("");
+		req.setNumeroComprovantePostagem("");
+		req.setNumeroContrato("9992157880");
+		req.setNumeroDiretoria("10");
+		req.setNumeroEndDestinatario(pReceiver.getNumber());
+		req.setNumeroEtiqueta("XX999999999BB");
+		req.setNumeroNotaFiscal("000000000");
+		req.setPeso("15");
+		req.setRt1("");
+		req.setRt2("");
+		req.setSerieNotaFiscal("");
+		req.setStatusProcessamento("0");
+		req.setTipoObjeto("001");
+		req.setUfDestinatario(pReceiver.getStreet());
+		req.setValorACobrar("000000,00");
+		req.setValorCobrado("");
+		req.setValorDeclarado(pServices.getContentValue());
+		req.setValorGlobal("");
+		req.setValorNotaFiscal("");
+		req.setVersaoArquivo("2.3");
+		
+		
+		
+		
+		
 		return null;
 	}
 

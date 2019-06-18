@@ -197,6 +197,7 @@ public class Session{
 		Session.tefService = new TEFServiceMock(Session.primaryStage);
 		Session.printerService = new PrinterServiceMock();
 		Session.webService = new WebServiceMock();
+		Session.dbService = Session.getDBService();
 	}
 
 	public static void setSomeMocks() {

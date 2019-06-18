@@ -35,8 +35,6 @@ public class DetailPackageSelectedController implements IController {
 
 	@FXML
 	public void btnBackAction(final ActionEvent e) {
-		SelectPackageController control = (SelectPackageController) previousScene.getUserData();
-		control.loadInfo();
 		Session.setScene(previousScene);
 	}
 

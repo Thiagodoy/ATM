@@ -21,6 +21,7 @@ public enum Windows {
 	NFE_CHOOSE("NFE_CHOOSE_WINDOW","NfeChoose.fxml"),
 	CHECKOUT("CHECKOUT_WINDOW", "Checkout.fxml"),
 	PAYMENT("PAYMENT_WINDOW","Payment.fxml"),
+	PAYMENT_NEW("PAYMENT_NEW","PaymentNew.fxml"),
 	PRE_POSTAGEM_CONFIRMATION_CONTROLLER("PRE_POSTAGEM_CONFIRMATION_CONTROLLER_WINDOW", "PrePostagemConfirmation.fxml"),
 	REMOVE_STICK("REMOVE_STICK_WINDOW","RemoveStick.fxml"),
 	OPEN_BOX("OPEN_BOX_WINDOW", "OpenBox.fxml"),

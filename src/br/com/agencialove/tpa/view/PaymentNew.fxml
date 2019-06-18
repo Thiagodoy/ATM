@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.PaymentNewController">
+   <children>
+      <StackPane layoutX="332.0" layoutY="314.0" prefHeight="778.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane fx:id="panelProsseguir" prefHeight="778.0" prefWidth="1028.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="404.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                     <image>
+                        <Image url="@img/cardAnimation.gif" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="678.0" layoutY="582.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="275.0" styleClass="btn-blue" text="Processeguir" />
+                  <Button layoutX="69.0" layoutY="585.0" mnemonicParsing="false" prefWidth="243.0" styleClass="bt-cancelar" text="Cancelar" />
+               </children>
+            </Pane>
+            <Pane fx:id="panelSucesso" prefHeight="778.0" prefWidth="1024.0" visible="false">
+               <children>
+                  <Label layoutX="484.0" layoutY="381.0" text="Sucesso" />
+               </children>
+            </Pane>
+            <Pane fx:id="panelErro" layoutX="10.0" layoutY="10.0" prefHeight="778.0" prefWidth="1024.0" visible="false">
+               <children>
+                  <Label layoutX="484.0" layoutY="381.0" text="Erro" />
+               </children>
+            </Pane>
+            <Pane fx:id="panelLoading" layoutX="10.0" layoutY="10.0" prefHeight="778.0" prefWidth="1024.0" visible="false">
+               <children>
+                  <Label layoutX="428.0" layoutY="381.0" text="Pagamento sendo processado ..." />
+                  <ProgressBar fx:id="progressBar" layoutX="412.0" layoutY="363.0" prefWidth="200.0" progress="0.0" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
