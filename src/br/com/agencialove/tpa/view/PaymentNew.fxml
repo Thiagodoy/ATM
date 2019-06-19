@@ -26,6 +26,8 @@
                <children>
                   <Label layoutX="428.0" layoutY="381.0" text="Pagamento sendo processado ..." />
                   <ProgressBar fx:id="progressBar" layoutX="412.0" layoutY="363.0" prefWidth="200.0" progress="0.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
+                  <Pane layoutX="762.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
                </children>
             </Pane>
             <Pane fx:id="panelProsseguir" prefHeight="778.0" prefWidth="1028.0" visible="true">
