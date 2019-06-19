@@ -2,18 +2,12 @@ package br.com.agencialove.tpa.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
-import br.com.agencialove.tpa.utils.Status;
 
 
 
@@ -87,7 +81,7 @@ public class Embalagem implements Serializable{
 	private Double valorTipo4B;
 	
 	@Column(name = "BANDEIRA")
-	private Long bandeira;
+	private String bandeira;
 	
 	@Column(name = "NUMERO_CARTAO")
 	private String numeroCartao;
@@ -156,13 +150,6 @@ public class Embalagem implements Serializable{
 		this.dataTransacao = dataTransacao;
 	}
 
-//	public String getHoraTransacao() {
-//		return horaTransacao;
-//	}
-//
-//	public void setHoraTransacao(String horaTransacao) {
-//		this.horaTransacao = horaTransacao;
-//	}
 
 	public String getNomeComprador() {
 		return nomeComprador;
@@ -284,11 +271,11 @@ public class Embalagem implements Serializable{
 		this.valorTipo4B = valorTipo4B;
 	}
 
-	public Long getBandeira() {
+	public String getBandeira() {
 		return bandeira;
 	}
 
-	public void setBandeira(Long bandeira) {
+	public void setBandeira(String bandeira) {
 		this.bandeira = bandeira;
 	}
 

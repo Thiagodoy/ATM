@@ -11,13 +11,166 @@
     font-size: 56px;
 }
 
+
+/*Tela Start*/
+
+.tela-inicial{
+   -fx-background-color: #fff;
+}
+
+.back{
+   -fx-background-color: #fff;	
+   -fx-pref-width: 1024px;
+   -fx-pref-height: 778px;
+}
+
+.barra-topo{
+-fx-pref-width: 720px;
+-fx-pref-height: 93,5px;
+-fx-background-image: url("../img/bar-93.png");
+
+}
+
+.pane-logo{
+ -fx-pref-width: 212px;
+-fx-pref-height: 44px;
+-fx-background-image: url("../img/logo-topo.png");	
+}
+
 .bt-tela-inicial{
     -fx-background-color: #0083CA;
-    -fx-background-radius: 4em 0 4em 0;
+    -fx-background-radius: 10px;
     -fx-text-fill: #fff;
     -fx-font-size: 26px;
-    -fx-min-width: 20em;
+    -fx-pref-width: 700px;
+    -fx-pref-height: 100px;	
+    -fx-font-family:"Trebuchet MS";
+	
 }
+
+
+
+
+.label3{
+	-fx-font-size: 30px;
+}
+
+/* Table */
+
+.table_view{
+   -fx-background-color:fff;
+  
+}
+
+.table-view .column-header{
+  -fx-background-color:#fff;
+}
+
+.table-view .column-header .filler{
+ 
+}
+
+.table-view .column-header .label{
+  -fx-font-size:22px;
+  -fx-font-family:"Trebuchet MS";
+  -fx-text-fill: #82858C;
+  -fx-padding:20px;
+}
+
+.table-view .column-header-background .filler{
+ -fx-background-color:#fff;
+ -fx-text-fill: #f00;
+ 
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #8e8d89;
+    -fx-font-family:"Trebuchet MS";
+    -fx-padding:5px;
+    -fx-font-size:20px;
+    -fx-text-alignment:center;
+}
+
+.table-row-cell{
+    -fx-background-color:#eeeeee;
+    -fx-table-cell-border-color	:tranparent;
+    -fx-text-alignment:center;
+}	
+
+.table-row-cell:odd{
+    -fx-background-color:#fff;
+    -fx-table-cell-border-color	:tranparent;
+    -fx-text-alignment:center;
+}
+
+
+
+
+
+
+
+
+
+
+.col-prod{
+  -fx-text-fill: #f00;
+}
+
+/*Bot�es*/
+.bt-blue-sm{
+   -fx-background-color: #0083CA;
+   -fx-background-radius: 10px;
+   -fx-text-fill: #fff;
+   -fx-font-size: 26px;
+   -fx-pref-width: 435px;
+   -fx-pref-height: 80px;	
+   -fx-font-family:"Trebuchet MS";
+}
+
+.font-resumo{
+    -fx-font-family:"Trebuchet MS";
+ 
+
+}
+
+.bt-cancelar{
+   -fx-background-color: #e17a35;
+   -fx-background-radius: 10px;
+   -fx-text-fill: #fff;
+   -fx-font-size: 26px;
+   -fx-pref-width: 435px;
+   -fx-pref-height: 80px;	
+   -fx-font-family:"Trebuchet MS";
+}
+
+.seta-voltar{
+   -fx-pref-width: 25px;
+   -fx-pref-height: 30px;
+   -fx-background-image: url("../img/voltar.png");
+    -fx-background-repeat: no-repeat;			
+}
+
+.seta-next{
+   -fx-pref-width: 25px;
+   -fx-pref-height: 30px;
+   -fx-background-image: url("../img/seta-next.png");
+    -fx-background-repeat: no-repeat;		
+}
+
+/* Tela TestConfirmation */
+
+.testeteste{
+  -fx-font-family:"Trebuchet MS";
+  -fx-font-size: 40px;	
+}
+
+
+
+
+
+
+
+
 
 .pane-tela-inicial{
     -fx-background-image: url("https://www.correios.com.br/portal_css/Sunburst%20Theme/++theme++correios.site.tema/images/footer_background.png");
@@ -27,6 +180,10 @@
     /*-fx-translate-x: -180;*/
     -fx-background-repeat: no-repeat;
 }
+
+
+
+
 
 
 .button-click{
@@ -157,11 +314,9 @@
 }
 
 .header-page-service{
-    -fx-background-color: #DCDCDC;
-    -fx-background-position: -150px -80px;
-    -fx-background-repeat: no-repeat;
-    -fx-height: 100%;
-   	-fx-width: 150%;
+    -fx-pref-width: 1024px;
+    -fx-pref-height: 111px;
+    -fx-background-color: #EEF0EF;
 }
 
 .sub-header-page{
@@ -244,8 +399,20 @@
 }
 
 .txt-label-service-teste{
-    -fx-font-size: 20px;
-	-fx-text-fill: #A9A9A9;
+    -fx-font-size: 40px;
+    -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
+}
+
+.label-resumo-compra{
+   -fx-font-family:"Trebuchet MS";
+   
+}
+
+.linha{
+  -fx-background-color: #FFD700;
+  -fx-pref-width: 1024px;
+   -fx-pref-height: 7px;	
 }
 
 .txt-label-service-measures{
@@ -255,10 +422,18 @@
 }
 
 
+.label-text{
+   -fx-font-size: 25px;
+    -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
+}
+
+
 
 .sub-txt-label{
-	-fx-font-size: 20px;
-	-fx-text-fill: #ACACAC;
+    -fx-font-size: 36px;
+    -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
 }
 
 .txt-label-measures{
@@ -272,9 +447,10 @@
 }
 
 .sub-txt-label-tela-teste{
-    -fx-font-size: 41px;
-    -fx-text-fill: #696969;
-    -fx-font-weight: bold
+    -fx-font-size: 55px;
+    -fx-text-fill: #82858C;
+    -fx-font-family:"Trebuchet MS";
+   
 }
 
 .label-fulfillment{

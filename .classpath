@@ -51,6 +51,8 @@
 	<classpathentry kind="lib" path="lib/logback-classic-1.2.3.jar"/>
 	<classpathentry kind="lib" path="lib/logback-access-1.2.3.jar"/>
 	<classpathentry kind="lib" path="lib/org.apache.commons.io.jar"/>
+	<classpathentry kind="lib" path="lib/jfoenix-8.0.8.jar"/>
+	
 	
 	
 	

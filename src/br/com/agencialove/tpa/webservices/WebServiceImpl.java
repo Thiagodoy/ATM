@@ -80,7 +80,7 @@ public class WebServiceImpl implements IWebService{
 		Matcher m = p.matcher(zip);
 		boolean isZipCode = m.find();
 		
-		String urlZip = "http://wsmobile.correios.com.br/DNECWService/rest//cep/" + zip.replace(".", "").replace("-", "");
+		String urlZip = "http://wsmobile.correios.com.br/DNECWService/rest/cep/" + zip.replace(".", "").replace("-", "");
 		String urlCustom = "http://wsmobile.correios.com.br/DNECWService/rest/personalizada/listar?q=" + zip;
 		
 		

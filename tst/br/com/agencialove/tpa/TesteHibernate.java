@@ -10,7 +10,7 @@ import org.hibernate.Session;
 
 import br.com.agencialove.tpa.dao.EmbalagemDao;
 import br.com.agencialove.tpa.model.Embalagem;
-import br.com.agencialove.tpa.model.Encomenda;
+import br.com.agencialove.tpa.model.Postagem;
 import br.com.agencialove.tpa.utils.HibernateUtils;
 import br.com.agencialove.tpa.utils.Status;
 

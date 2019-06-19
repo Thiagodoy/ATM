@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.SearchSatisfactionController">
+   <children>
+
+   <Pane layoutY="122.0" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
+   <children>
+   	  <Label alignment="CENTER" layoutX="96.0" layoutY="146.0" prefHeight="70.0" prefWidth="833.0" styleClass="sub-txt-label" text="Você pode responder nossa" wrapText="true">
+            <font>
+               <Font size="36.0" />
+            </font>
+         </Label>
+         <Button fx:id="btnYes" layoutX="49.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="80.0" prefWidth="240.0" styleClass="bt-blue-sm" text="Sim" />
+         <Button fx:id="btnNo" layoutX="539.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="80.0" prefWidth="240.0" styleClass="bt-blue-sm" text="Nao" />
+            <Label alignment="CENTER" layoutX="96.0" layoutY="206.0" prefHeight="70.0" prefWidth="833.0" styleClass="sub-txt-label" text="pesquisa de satisfação?" wrapText="true">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+   </children>
+    </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="header-page-service">
+         <children>
+            <Label layoutX="310.0" layoutY="32.0" styleClass="txt-label-service-teste" text="Pesquisa de Satisfação" />
+         </children>
+      </Pane>
+      <Pane layoutY="107.0" prefHeight="7.0" prefWidth="1024.0" styleClass="footer-page" />	
+         
+        
+    
+   </children>
+</AnchorPane>

@@ -11,9 +11,10 @@
         <property name="hibernate.connection.username">sa</property>   
         <property name="hibernate.connection.password"></property>   
         <property name="hibernate.connection.url">jdbc:hsqldb:file:store;hsqldb.lock_file=false</property>   
-        <property name="hibernate.hbm2ddl.auto">update</property> 
+        <property name="hibernate.hbm2ddl.auto">create</property> 
         <property name="connection.pool_size">5</property>  
-        <mapping class="br.com.agencialove.tpa.model.Encomenda" />
+        <mapping class="br.com.agencialove.tpa.model.Postagem"/>
+        <mapping class="br.com.agencialove.tpa.model.Agencia"/>
         <mapping class="br.com.agencialove.tpa.model.Embalagem" />
     </session-factory>
 </hibernate-configuration>

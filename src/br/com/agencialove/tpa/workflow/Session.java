@@ -73,7 +73,7 @@ public class Session{
 	public Session(final Stage pPrimaryStage) {
 		Session.primaryStage = pPrimaryStage;
 		Session.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-		Session.primaryStage.setFullScreen(true);
+		//Session.primaryStage.setFullScreen(true);
 	}
 
 	public static Map<String,Object> getSession() {
@@ -197,6 +197,7 @@ public class Session{
 		Session.tefService = new TEFServiceMock(Session.primaryStage);
 		Session.printerService = new PrinterServiceMock();
 		Session.webService = new WebServiceMock();
+		Session.dbService = Session.getDBService();
 	}
 
 	public static void setSomeMocks() {
