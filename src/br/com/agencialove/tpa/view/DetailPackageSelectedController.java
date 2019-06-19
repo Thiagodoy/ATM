@@ -40,7 +40,7 @@ public class DetailPackageSelectedController implements IController {
 
 	@FXML
 	public void btnNextAction(final ActionEvent e) {
-		Scene nextScene = Windows.BUYER_INFORMATION.getScene();
+		Scene nextScene = Windows.PAYMENT_NEW.getScene();
 		Session.setScene(nextScene);
 	}
 
@@ -80,7 +80,7 @@ public class DetailPackageSelectedController implements IController {
 		infoTotal.setQuantidade("");
 
 		double valor = Double.valueOf(pack.getValor().replace(",", ".").replace("R$", ""));
-		Double total = (valor * pack.getQuantidade());
+		Double total = (valor * 1);
 		infoTotal.setValor(Utils.format(total));
 
 		this.packages.add(infoTotal);

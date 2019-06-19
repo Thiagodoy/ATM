@@ -14,9 +14,14 @@ public class Relatorio {
 	private PaymentData paymentData;
 	private String etiqueta;
 	private String plp;
+	private RelatorioType type;
 	
 	
+	public enum RelatorioType {POSTAGEM,EMBALAGEM}
 	
+	public Relatorio() {
+		
+	}
 	
 	public Relatorio(Address sender, Address receiver, AdditionalServices additionalServices, PackageMeasures measures,
 			ServicesResponse servicesResponse, Agencia agencia, PaymentData paymentData, String etiqueta, String plp) {
@@ -30,6 +35,39 @@ public class Relatorio {
 		this.paymentData = paymentData;
 		this.etiqueta = etiqueta;
 		this.plp = plp;
+		
+	}
+	
+	
+	public Embalagem getEmbalagem() {
+		
+		Embalagem embalagem = new Embalagem();
+		embalagem.setBandeira(this.paymentData.getBandeira());
+		embalagem.setModeloAtm(agencia.getModeloAtm());
+		embalagem.setNomeAgencia(agencia.getNomeAgencia());		
+		embalagem.setNumeroCartao(paymentData.getNumeroCartao());
+			
+		
+		return embalagem;
+	}
+	
+	public Postagem getPostagem() {
+		
+		Postagem postagem = new Postagem(this.getSender(), this.getReceiver(),
+				this.getAdditionalServices(), this.getMeasures(), this.getServicesResponse(),
+				this.getAgencia(), this.getPaymentData());
+		postagem.setCodigoRastreio(this.getEtiqueta());
+		postagem.setNumeroPlp(this.getPlp());
+		
+		return postagem;
+	}
+	
+	public RelatorioType getType() {
+		return type;
+	}
+
+	public void setType(RelatorioType type) {
+		this.type = type;
 	}
 	
 	

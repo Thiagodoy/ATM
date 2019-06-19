@@ -18,7 +18,7 @@ public class BuyerInformationController implements IController {
 	public void btnYesAction() {		
 		
 		//:TODO IMPLEMENTAR A VALIDAÇão das informaçoes		
-		Session.setScene(Windows.PAYMENT.getScene());
+		Session.setScene(Windows.SEARCH_SATISFACTION.getScene());
 	}
 	
 	@Override

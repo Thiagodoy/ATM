@@ -21,7 +21,7 @@ public class TesteJobs {
 
 			Embalagem emp = new Embalagem();
 			emp.setNomeAgencia("Correios Araraquara");
-			emp.setBandeira(12l);
+			emp.setBandeira("" + 12);
 			emp.setDisponibilidadeAtm(10.1d);
 			emp.setEmail("Felipe.com" + i);			
 			emp.setCpfCnpj(1232342342424l);

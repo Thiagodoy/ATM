@@ -61,7 +61,7 @@ public class SelectPackageController implements IController {
 	private void btnNextAction(final ActionEvent e) {
 		Session.getSession().put(Session.SELECTED_PACKAGE, this.selectedPack);
 
-		Scene nextScene = Windows.BUYER_INFORMATION.getScene();
+		Scene nextScene = Windows.DETAIL_PACKAGE_SELECTED.getScene();
 		Session.setScene(nextScene);
 	}
 

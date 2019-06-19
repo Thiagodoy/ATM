@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import br.com.agencialove.tpa.model.PaymentData;
 import br.com.agencialove.tpa.model.PaymentResult;
+import javafx.concurrent.Task;
 
 public class TEFServiceImpl implements ITEFService {
 	private static String TEF_REQ_PATH = "/home/mendes/tmp/tef/req";
@@ -93,7 +94,7 @@ public class TEFServiceImpl implements ITEFService {
 		return String.valueOf(ret);
 	}
 
-	private class TEFTimer extends TimerTask{
+	private class TEFTimer extends Task<Void>{
 
 		private boolean confirmed = false;
 
@@ -111,7 +112,7 @@ public class TEFServiceImpl implements ITEFService {
 		}
 
 		@Override
-		public void run() {
+		public  Void call() {
 
 			boolean finished = false;
 			while(!finished) {
@@ -191,6 +192,8 @@ public class TEFServiceImpl implements ITEFService {
 					finished = true;;
 				}
 			}
+			
+			return null;
 
 		}
 
@@ -238,5 +241,7 @@ public class TEFServiceImpl implements ITEFService {
 
 			return ret;
 		}
+
+		
 	}
 }
