@@ -1,4 +1,4 @@
-.error{
+﻿.error{
     -fx-border-color:#ff0000;
     -fx-border-width:2px;
 }
@@ -48,7 +48,15 @@
 	
 }
 
+.input-default{
+   -fx-background-radius: 10px;
+}
 
+.label-itens{
+-fx-font-family:"Trebuchet MS";
+ -fx-text-fill: #ff0;
+-fx-font-size: 20px;
+}
 
 
 .label3{
