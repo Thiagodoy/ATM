@@ -17,7 +17,6 @@ import br.com.agencialove.tpa.model.PaymentData;
 import br.com.agencialove.tpa.model.PaymentResult;
 import br.com.agencialove.tpa.model.rest.ServicesResponse;
 import br.com.agencialove.tpa.utils.Utils;
-import br.com.agencialove.tpa.view.PaymentController.PaymentTEFCallback;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.SessionType;
 import javafx.event.ActionEvent;

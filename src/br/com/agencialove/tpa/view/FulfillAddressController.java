@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.ZipType;
-import br.com.agencialove.tpa.utils.MaskField;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.Validator;
 import javafx.event.ActionEvent;

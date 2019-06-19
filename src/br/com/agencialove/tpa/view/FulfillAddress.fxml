@@ -12,38 +12,37 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="778.0" prefWidth="1024.0"  stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FulfillAddressController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FulfillAddressController">
    <children>
-      <Label styleClass="txt-label" fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="60.0" prefWidth="1024.0" text="Complemente os dados">
+      <Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="60.0" prefWidth="1024.0" styleClass="txt-label" text="Complemente os dados">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
       <Pane layoutX="157.0" layoutY="103.0" prefHeight="450.0" prefWidth="710.0" style="-fx-border-color: #000;">
          <children>
-            <Label styleClass="label-fulfillment" layoutX="20.0" layoutY="20.0" text="Logradouro">
+            <Label layoutX="20.0" layoutY="20.0" styleClass="label-fulfillment" text="Logradouro">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtLogradouro" disable="true" onKeyReleased="#mandatoryTextFieldReleased" layoutX="20.0" layoutY="42.0" prefHeight="40.0" prefWidth="493.0">
+            <TextField fx:id="txtLogradouro" disable="true" layoutX="20.0" layoutY="42.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="493.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
             
-            <Label styleClass="label-fulfillment" layoutX="522.0" layoutY="20.0" text="Numero">
+            <Label layoutX="522.0" layoutY="20.0" styleClass="label-fulfillment" text="Numero">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNumero"  onKeyReleased="#mandatoryTextFieldReleased" layoutX="524.0" layoutY="42.0" prefHeight="40.0" prefWidth="174.0" >
+            <TextField fx:id="txtNumero" layoutX="524.0" layoutY="42.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="174.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label styleClass="label-fulfillment" layoutX="20.0" layoutY="87.0" text="Bairro">
+            <Label layoutX="20.0" layoutY="87.0" styleClass="label-fulfillment" text="Bairro">
                <font>
                   <Font size="18.0" />
                </font>
@@ -54,7 +53,7 @@
                </font>
             </TextField>
 
-            <Label styleClass="label-fulfillment" layoutX="203.0" layoutY="87.0" text="Complemento">
+            <Label layoutX="203.0" layoutY="87.0" styleClass="label-fulfillment" text="Complemento">
                <font>
                   <Font size="18.0" />
                </font>
@@ -64,70 +63,67 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <ComboBox  styleClass="label-fulfillment" fx:id="lblCidade" disable="true" layoutX="20.0" layoutY="159.0" prefHeight="40.0" prefWidth="271.0" />
-            <ComboBox styleClass="label-fulfillment" fx:id="lblEstado" disable="true" layoutX="308.0" layoutY="159.0" prefHeight="40.0" prefWidth="206.0" />
-            <Label styleClass="label-fulfillment" layoutX="20.0" layoutY="213.0" text="Nome/Razo social do destinatario">
+            <ComboBox fx:id="lblCidade" disable="true" layoutX="20.0" layoutY="159.0" prefHeight="40.0" prefWidth="271.0" styleClass="label-fulfillment" />
+            <ComboBox fx:id="lblEstado" disable="true" layoutX="308.0" layoutY="159.0" prefHeight="40.0" prefWidth="206.0" styleClass="label-fulfillment" />
+            <Label layoutX="20.0" layoutY="213.0" styleClass="label-fulfillment" text="Nome/Razo social do destinatario">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNome" onKeyReleased="#mandatoryTextFieldReleased" layoutX="20.0" layoutY="235.0" prefHeight="39.0" prefWidth="683.0">
+            <TextField fx:id="txtNome" layoutX="20.0" layoutY="235.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="39.0" prefWidth="683.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label styleClass="label-fulfillment" layoutX="20.0" layoutY="288.0" text="CPF">
+            <Label layoutX="20.0" layoutY="288.0" styleClass="label-fulfillment" text="CPF">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField  fx:id="txtCPF" onKeyReleased="#mandatoryTextFieldReleased" layoutX="20.0" layoutY="310.0" prefHeight="40.0" prefWidth="258.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            
-            <Label styleClass="label-fulfillment" layoutX="298.0" layoutY="288.0" text="E-mail">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtEmail" onKeyReleased="#mandatoryTextFieldReleased" layoutX="294.0" layoutY="310.0" prefHeight="40.0" prefWidth="407.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtCEP" editable="false" disable="true" layoutX="527.0" layoutY="158.0" prefHeight="40.0" prefWidth="174.0">
+            <TextField fx:id="txtCPF" layoutX="20.0" layoutY="310.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="258.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
             
-         	<Label layoutX="20.0"  styleClass="label-fulfillment" layoutY="378" text="Celular">
+            <Label layoutX="298.0" layoutY="288.0" styleClass="label-fulfillment" text="E-mail">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCelular"  onKeyReleased="#mandatoryTextFieldReleased" layoutX="20.0" layoutY="400" prefHeight="40.0" prefWidth="258.0">
+            <TextField fx:id="txtEmail" layoutX="294.0" layoutY="310.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="407.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtCEP" disable="true" editable="false" layoutX="527.0" layoutY="158.0" prefHeight="40.0" prefWidth="174.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            
+         	<Label layoutX="20.0" layoutY="378" styleClass="label-fulfillment" text="Celular">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCelular" layoutX="20.0" layoutY="400" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="258.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
          </children>
       </Pane>
-      <Pane fx:id="paneSearch" layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0" styleClass="footer-page">
-         <children>
-            <Button fx:id="btnBack" styleClass="bt-voltar" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" text="Voltar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnNext" styleClass="bt-next" layoutX="813.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" text="Avançar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
+      <Button fx:id="btnBack" layoutX="88.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnNext" layoutX="550.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="306.0" layoutY="671.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
    </children>
 </AnchorPane>
