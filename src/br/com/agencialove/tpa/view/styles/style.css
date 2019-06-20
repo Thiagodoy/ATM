@@ -53,9 +53,10 @@
 }
 
 .label-remetente{
+-fx-font-size:40px;
   -fx-text-fill: #000;
 -fx-font-family:"Trebuchet MS";
- -fx-font-size: 40px;
+ 
 }
 
 .input-default{
@@ -65,8 +66,18 @@
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
     -fx-pref-height: 45px; 
-    -fx-text-fill: #444;
-   
+    -fx-text-fill: #ff0; 
+}
+
+.input-search{
+   -fx-border-radius: 8px;
+   -fx-background-radius: 8px;
+   -fx-border-color:#aaa;
+   -fx-border-width:2px;
+   -fx-font-family:"Trebuchet MS";
+    -fx-pref-height: 50px; 
+    -fx-text-fill: #444; 
+    -fx-font-size: 18px;
 }
 
 .label-itens{
