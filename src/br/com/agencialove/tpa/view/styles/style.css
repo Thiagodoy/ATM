@@ -217,6 +217,16 @@
 
 }
 
+.bt-mais{
+-fx-background-color: #0083CA;
+-fx-text-fill: #fff;
+ -fx-background-radius: 50%;
+ -fx-pref-width: 30px;
+   -fx-pref-height: 30px;	
+
+
+}
+
 .bt-cancelar{
    -fx-background-color: #e17a35;
    -fx-background-radius: 10px;
