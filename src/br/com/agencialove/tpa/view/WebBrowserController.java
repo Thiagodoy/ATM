@@ -9,11 +9,13 @@ import com.itextpdf.text.Element;
 
 import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
+import br.com.agencialove.tpa.workflow.SessionType;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
@@ -35,6 +37,8 @@ public class WebBrowserController implements IController {
 
 	private Url url;
 	
+	private Scene nextScene;
+	
 	@Override
 	public void initialize(final URL url, final ResourceBundle resourceBundle) {
 		
@@ -47,7 +51,7 @@ public class WebBrowserController implements IController {
 	
 	@FXML
 	private void btnFinalize(final ActionEvent e) {
-		Session.setScene(Windows.FINISH.getScene());
+		Session.setScene(nextScene);
 	}
 
 	@Override
@@ -66,6 +70,24 @@ public class WebBrowserController implements IController {
 				this.btnFinalize.setDisable(false);
 	
 		}
+		
+		
+		final SessionType type = (SessionType) Session.getSession().get(Session.SESSION_TYPE);
+		
+		if(type != null) {
+			
+			if(type == SessionType.PACKAGE) {
+								
+			}else if(type ==SessionType.PRE_POSTING || type == SessionType.SERVICE) {
+				
+			}
+			
+			
+			
+		}
+		
+		
+		
 	}
 
 	
