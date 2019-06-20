@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.SearchZipController">
     <children>
-        <TableView fx:id="tableView" layoutX="12.0" layoutY="266.0" prefHeight="227.0" prefWidth="1001.0" style="-fx-font-size: 22;">
+        <TableView fx:id="tableView" layoutX="12.0" layoutY="296.0" prefHeight="192.0" prefWidth="1001.0" stylesheets="@styles/style.css">
         	<columnResizePolicy>
             	<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         	</columnResizePolicy>
@@ -22,19 +22,19 @@
        			<Label text="" />
     		</placeholder>
 	        <columns>
-				<TableColumn id="tbcolStreet" text="Logradouro/Nome">
+				<TableColumn id="tbcolStreet" prefWidth="300.0" resizable="false" text="Logradouro">
 					 <cellValueFactory><PropertyValueFactory property="street" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolQuarter" text="Bairro">
+				<TableColumn id="tbcolQuarter" prefWidth="250.0" resizable="false" text="Bairro">
 					<cellValueFactory><PropertyValueFactory property="neighborhood" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolCity" text="Cidade">
+				<TableColumn id="tbcolCity" prefWidth="100.0" text="Cidade">
 					<cellValueFactory><PropertyValueFactory property="city" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolState" text="UF">
+				<TableColumn id="tbcolState" prefWidth="100.0" resizable="false" text="UF">
 					<cellValueFactory><PropertyValueFactory property="state" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolZip" text="CEP">
+				<TableColumn id="tbcolZip" prefWidth="110.0" resizable="false" text="CEP">
 					<cellValueFactory><PropertyValueFactory property="zip" /></cellValueFactory>
 				</TableColumn>
 			</columns> 
@@ -62,12 +62,12 @@
          </font>
       </Button>
       <Button layoutX="295.0" layoutY="676.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
-          <TextField fx:id="txtCep" layoutX="112.0" layoutY="203.0" prefHeight="60.0" prefWidth="800.0" promptText="CEP ou Endereço" styleClass="input-default">
+          <TextField fx:id="txtCep" layoutX="162.0" layoutY="204.0" prefHeight="60.0" prefWidth="700.0" promptText="CEP ou Endereço" styleClass="input-search">
               <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
               </font>
           </TextField>
-          <Button fx:id="btnSearch" layoutX="837.0" layoutY="206.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnSearchAction" prefHeight="23.0" prefWidth="73.0" styleClass="btn-search-img">
+          <Button fx:id="btnSearch" layoutX="787.0" layoutY="207.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnSearchAction" prefHeight="23.0" prefWidth="73.0" styleClass="btn-search-img">
               <font>
                   <Font size="24.0" />
               </font>
@@ -78,10 +78,12 @@
          </children>
       </Pane>
       <Pane layoutY="110.0" prefHeight="200.0" prefWidth="200.0" styleClass="linha" />
-      <Label layoutX="453.0" layoutY="149.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="label-remetente" text="Qual o endereço do Remetente?">
+      <Label layoutX="245.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-size: 36px;" styleClass="label-remetente" text="Qual o endereço do Destinatário?">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
          </font>
       </Label>
+      <Pane layoutX="73.0" layoutY="596.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+      <Pane layoutX="934.0" layoutY="596.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
     </children>
 </AnchorPane>

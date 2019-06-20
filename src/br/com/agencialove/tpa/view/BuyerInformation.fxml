@@ -9,32 +9,33 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.BuyerInformationController">
    <children>
-      <TextField layoutX="142.0" layoutY="195.0" prefHeight="38.0" prefWidth="740.0" promptText="Nome Completo *" styleClass="input-default">
+      <TextField layoutX="142.0" layoutY="195.0" fx:id="nome" prefHeight="38.0" prefWidth="740.0" promptText="Nome Completo *" styleClass="input-default">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField layoutX="142.0" layoutY="255.0" prefHeight="38.0" prefWidth="740.0" promptText="CPF/CNPJ*" styleClass="input-default">
+      <TextField layoutX="142.0" fx:id="cnpfCnpj" layoutY="255.0" prefHeight="38.0" prefWidth="740.0" promptText="CPF/CNPJ*" styleClass="input-default">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField layoutX="142.0" layoutY="375.0" prefHeight="38.0" prefWidth="740.0" promptText="Endereço" styleClass="input-default">
+      <TextField layoutX="142.0" fx:id="endereco" layoutY="375.0" prefHeight="38.0" prefWidth="740.0" promptText="Endereço" styleClass="input-default">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField layoutX="142.0" layoutY="315.0" prefHeight="38.0" prefWidth="740.0" promptText="E-mail*" styleClass="input-default">
+      <TextField layoutX="142.0" fx:id="email" layoutY="315.0" prefHeight="38.0" prefWidth="740.0" promptText="E-mail*" styleClass="input-default">
          <font>
             <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="142.0" layoutY="495.0" prefHeight="38.0" prefWidth="740.0" promptText="Telefone" styleClass="input-default">
+         </font>         	
+       </TextField>
+      <TextField layoutX="142.0" fx:id="telefone" layoutY="495.0" prefHeight="38.0" prefWidth="740.0" promptText="Telefone" styleClass="input-default">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font></TextField>
-      <TextField layoutX="142.0" layoutY="435.0" prefHeight="38.0" prefWidth="740.0" promptText="CEP" styleClass="input-default">
+      <TextField layoutX="142.0" fx:id="cep" layoutY="435.0" prefHeight="38.0" prefWidth="740.0" promptText="CEP" styleClass="input-default">
          <font>
             <Font size="18.0" />
          </font></TextField>
       <Button layoutX="49.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnCancelAction" styleClass="bt-cancelar" text="Cancelar" />
-      <Button layoutX="539.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnYesAction" styleClass="bt-blue-sm" text="Prosseguir" />
+      <Button layoutX="539.0" fx:id="btnYesAction" layoutY="595.0" mnemonicParsing="false" onAction="#btnYesAction" styleClass="bt-blue-sm" text="Prosseguir" />
       <Pane prefHeight="200.0" prefWidth="200.0" styleClass="header-page-service">
          <children>
             <Label layoutX="320.0" layoutY="56.0" styleClass="txt-label-service-teste" text="Venda de Embalagem" />

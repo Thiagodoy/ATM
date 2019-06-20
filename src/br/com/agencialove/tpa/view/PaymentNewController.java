@@ -96,7 +96,7 @@ public class PaymentNewController implements IController {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {		
-		//progressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+		
 		
 		
 		this.btnCancelar.setOnAction((event)->{
@@ -248,64 +248,7 @@ public class PaymentNewController implements IController {
 		this.progressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
 		
 		this.startPaymentProcess(selectedService.getValor(), selectedService.getCodigoServico(),
-			selectedService.getDescricaoServico(), stage);	
-		
-		 //import javafx.concurrent.Service;
-	
-		
-		
-//		
-//		new Thread(new Task<Void>() {
-//
-//			@Override
-//			protected Void call() throws Exception {
-//				
-//				try {
-//            		Thread.sleep(20000);
-//            		PaymentNewController.this.changeStage(StageStatus.SUCCESS);
-//            	}catch(Exception e) {
-//            		
-//            	}
-//				
-//				return null;
-//			}
-//		}).start();
-		
-		
-		
-		
-//        Service<Void> service = new Service<Void>() {
-//            @Override
-//            protected Task<Void> createTask() {
-//                return new Task<Void>() {
-//                    @Override
-//                    protected Void call() throws Exception {
-//                    	
-//                    	PaymentNewController.this.changeStage(StageStatus.LOADING);
-//                    	PaymentNewController.this.progressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
-//                        
-//                    	try {
-//                    		Thread.sleep(20000);
-//                    	}catch(Exception e) {
-//                    		
-//                    	}
-//                        return null;
-//                    }
-//                };
-//            }
-//        };
-//        service.setOnSucceeded((eee) -> {
-//        	System.out.println("Finalizado");
-//        });
-//        service.setOnFailed(eee -> {
-//
-//        	System.out.println("Erro");
-//        });
-//        service.start();
-		
-		
-		
-		
+			selectedService.getDescricaoServico(), stage);		
 		
 	}
 	

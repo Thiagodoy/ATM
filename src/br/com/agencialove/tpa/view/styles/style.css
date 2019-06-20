@@ -52,10 +52,17 @@
 -fx-background-color: #fff;
 }
 
+.box-add{
+
+
+
+}
+
 .label-remetente{
+-fx-font-size:40px;
   -fx-text-fill: #000;
 -fx-font-family:"Trebuchet MS";
- -fx-font-size: 40px;
+ 
 }
 
 .input-default{
@@ -65,14 +72,50 @@
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
     -fx-pref-height: 45px; 
-    -fx-text-fill: #444;
-   
+    -fx-text-fill: #666; 
+    -fx-font-size: 22px;
+-fx-font:ccc;
+}
+
+.input-search{
+   -fx-border-radius: 8px;
+   -fx-background-radius: 8px;
+   -fx-border-color:#aaa;
+   -fx-border-width:2px;
+   -fx-font-family:"Trebuchet MS";
+    -fx-pref-height: 50px; 
+    -fx-text-fill: #444; 
+    -fx-font-size: 18px;
 }
 
 .label-itens{
  -fx-font-family:"Trebuchet MS";
  -fx-text-fill: #999;
  -fx-font-size: 40px;
+}
+
+.check-box {
+    /* default properties */
+    selected-box-color:  #FFD700;
+    box-color: #FFD700;
+    mark-color: #333;
+
+}
+
+.check-box:selected > .box {
+    /* background color for selected checkbox */
+    
+}
+
+.check-box > .box {
+    /* background color of unselected checkbox */
+    
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    /* modify mark color */
+    -fx-background-color: mark-color;
 }
 
 
@@ -114,18 +157,26 @@
     -fx-padding:5px;
     -fx-font-size:20px;
     -fx-text-alignment:center;
+    -fx-alignment: center;
+   
+}
+
+.table-cell {
+    -fx-alignment: center;
 }
 
 .table-row-cell{
     -fx-background-color:#eeeeee;
     -fx-table-cell-border-color	:tranparent;
     -fx-text-alignment:center;
+    -fx-alignment: center;
 }	
 
 .table-row-cell:odd{
     -fx-background-color:#fff;
     -fx-table-cell-border-color	:tranparent;
     -fx-text-alignment:center;
+    -fx-alignment: center;
 }
 
 
@@ -155,6 +206,14 @@
 .font-resumo{
     -fx-font-family:"Trebuchet MS";
  
+
+}
+
+.bt-imprimir{
+-fx-font-family:"Trebuchet MS";
+-fx-background-color: #fff;
+-fx-font-size: 30px;
+-fx-text-fill: #19b5e6;
 
 }
 
