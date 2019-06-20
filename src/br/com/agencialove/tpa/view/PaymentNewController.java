@@ -319,7 +319,7 @@ public class PaymentNewController implements IController {
 			relatorio.setType(RelatorioType.EMBALAGEM);
 			relatorio.setSender(this.sender);
 			relatorio.setAgencia(agencia);
-			relatorio.setPaymentData(paymentData);					
+			relatorio.setPaymentData(paymentData);
 			break;
 		case PRE_POSTING:
 		case SERVICE:
@@ -382,15 +382,8 @@ public class PaymentNewController implements IController {
 			break;
 		}
 		
+		Session.getSession().put(Session.RELATORIO, relatorio);
 		
-		if(relatorio.getType().equals(RelatorioType.EMBALAGEM)) {
-			Embalagem embalagem = relatorio.getEmbalagem();  
-			EmbalagemDao.save(embalagem);
-			
-		}else {
-			Postagem postagem = relatorio.getPostagem();
-			PostagemDao.save(postagem);
-		}
 		
 
 		Platform.runLater(() -> {

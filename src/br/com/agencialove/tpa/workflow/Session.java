@@ -17,9 +17,12 @@ import br.com.agencialove.tpa.hardware.HardwareServiceMock;
 import br.com.agencialove.tpa.hardware.IHardwareCallback;
 import br.com.agencialove.tpa.hardware.IHardwareService;
 import br.com.agencialove.tpa.hardware.IPrinterService;
+import br.com.agencialove.tpa.hardware.IPrinterThermal;
 import br.com.agencialove.tpa.hardware.ITEFService;
 import br.com.agencialove.tpa.hardware.PrinterServiceImpl;
 import br.com.agencialove.tpa.hardware.PrinterServiceMock;
+import br.com.agencialove.tpa.hardware.PrinterThemalImpl;
+import br.com.agencialove.tpa.hardware.PrinterThermalServiceMock;
 import br.com.agencialove.tpa.hardware.TEFServiceImpl;
 import br.com.agencialove.tpa.hardware.TEFServiceMock;
 import br.com.agencialove.tpa.hardware.arduino.Debug;
@@ -53,6 +56,7 @@ public class Session{
 	public static final String INPUT_PACKAGE = "INPUT_PACKAGE"; //$NON-NLS-1$
 	public static final String PRE_POST = "PRE_POST"; //$NON-NLS-1$
 	public static final String ID_PLP = "ID_PLP"; //$NON-NLS-1$
+	public static final String RELATORIO = "RELATORIO";
 
 	public static final int MAX_BARCODE_ATTEMPS = 10;
 	private static final long ERROR_SCREEN_DELAY = 10000;
@@ -63,7 +67,8 @@ public class Session{
 	private static ITEFService tefService;
 	private static IPrinterService printerService;
 	private static IWebService webService;
-	private static IDBService dbService;
+	private static IDBService dbService;	
+	private static IPrinterThermal printerThermalService;
 
 	private static Stage primaryStage;
 	private static Map<String,Object> SESSION = new HashMap<>();
@@ -100,6 +105,13 @@ public class Session{
 			Session.printerService = new PrinterServiceImpl();
 
 		return Session.printerService;
+	}
+	
+	public static IPrinterThermal getPrinterThermalService() {
+		if(Session.printerThermalService == null)
+			Session.printerThermalService = new PrinterThemalImpl();
+
+		return Session.printerThermalService;
 	}
 
 	public static void reset() {
@@ -198,6 +210,7 @@ public class Session{
 		Session.printerService = new PrinterServiceMock();
 		Session.webService = new WebServiceMock();
 		Session.dbService = Session.getDBService();
+		Session.printerThermalService = new PrinterThermalServiceMock();
 	}
 
 	public static void setSomeMocks() {

@@ -28,6 +28,10 @@ public class SearchSatisfactionController implements IController {
 
 	@FXML
 	private void btnNoAction(final ActionEvent e) {
+
+		FinishController control = (FinishController) Windows.FINISH.getScene().getUserData();
+		control.finish();
+
 		final Scene scene = Windows.FINISH.getScene();
 		Session.setScene(scene);
 	}
@@ -43,6 +47,5 @@ public class SearchSatisfactionController implements IController {
 		// TODO Auto-generated method stub
 
 	}
-
 
 }

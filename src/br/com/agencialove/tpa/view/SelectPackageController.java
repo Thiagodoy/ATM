@@ -60,6 +60,11 @@ public class SelectPackageController implements IController {
 		Session.getSession().put(Session.SELECTED_PACKAGE, this.selectedPack);
 
 		Scene nextScene = Windows.DETAIL_PACKAGE_SELECTED.getScene();
+		
+		DetailPackageSelectedController control = (DetailPackageSelectedController)Windows.DETAIL_PACKAGE_SELECTED.getScene().getUserData();
+		control.populateInfo();	
+		control.setPreviousScene(Windows.SELECT_PACKAGE.getScene());
+		
 		Session.setScene(nextScene);
 	}
 

@@ -11,7 +11,7 @@
 
 
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.StartController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="br.com.agencialove.tpa.view.StartController">
     <children>
 	      <StackPane fx:id="stake" prefHeight="778.0" prefWidth="1024.0"> 
 	      <children>

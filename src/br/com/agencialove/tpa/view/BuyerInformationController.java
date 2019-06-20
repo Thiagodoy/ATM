@@ -34,7 +34,7 @@ public class BuyerInformationController implements IController {
 
 	@FXML
 	public void btnCancelAction() {
-		Session.reset();
+		Session.setScene(Windows.SEND_NFE_EMAIL.getScene());
 	}
 
 	@FXML
