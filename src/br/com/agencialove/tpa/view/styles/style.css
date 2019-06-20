@@ -72,7 +72,9 @@
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
     -fx-pref-height: 45px; 
-    -fx-text-fill: #ff0; 
+    -fx-text-fill: #666; 
+    -fx-font-size: 22px;
+-fx-font:ccc;
 }
 
 .input-search{
