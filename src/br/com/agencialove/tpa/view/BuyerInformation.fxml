@@ -25,9 +25,9 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField layoutX="142.0" layoutY="495.0" prefHeight="38.0" prefWidth="740.0" promptText="Telefone" styleClass="input-default">
+      <TextField layoutX="142.0" layoutY="495.0" prefHeight="38.0" prefWidth="740.0" promptText="Telefone" style="-fx-font-size: 25px;" styleClass="input-default">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font></TextField>
       <TextField layoutX="142.0" layoutY="435.0" prefHeight="38.0" prefWidth="740.0" promptText="CEP" styleClass="input-default">
          <font>
