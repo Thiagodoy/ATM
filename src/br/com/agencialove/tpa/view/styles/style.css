@@ -125,19 +125,26 @@
     -fx-padding:5px;
     -fx-font-size:20px;
     -fx-text-alignment:center;
+    -fx-alignment: center;
    
+}
+
+.table-cell {
+    -fx-alignment: center;
 }
 
 .table-row-cell{
     -fx-background-color:#eeeeee;
     -fx-table-cell-border-color	:tranparent;
     -fx-text-alignment:center;
+    -fx-alignment: center;
 }	
 
 .table-row-cell:odd{
     -fx-background-color:#fff;
     -fx-table-cell-border-color	:tranparent;
     -fx-text-alignment:center;
+    -fx-alignment: center;
 }
 
 

@@ -22,7 +22,7 @@
        			<Label text="" />
     		</placeholder>
 	        <columns>
-				<TableColumn id="tbcolStreet" prefWidth="300.0" resizable="false" text="Logradouro/Nome">
+				<TableColumn id="tbcolStreet" prefWidth="300.0" resizable="false" text="Logradouro">
 					 <cellValueFactory><PropertyValueFactory property="street" /></cellValueFactory>
 				</TableColumn>
 				<TableColumn id="tbcolQuarter" prefWidth="250.0" resizable="false" text="Bairro">
