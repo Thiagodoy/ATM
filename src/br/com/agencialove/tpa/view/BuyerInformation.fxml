@@ -24,10 +24,11 @@
       <TextField layoutX="142.0" fx:id="email" layoutY="315.0" prefHeight="38.0" prefWidth="740.0" promptText="E-mail*" styleClass="input-default">
          <font>
             <Font size="18.0" />
-         </font></TextField>
+         </font>         	
+       </TextField>
       <TextField layoutX="142.0" fx:id="telefone" layoutY="495.0" prefHeight="38.0" prefWidth="740.0" promptText="Telefone" styleClass="input-default">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font></TextField>
       <TextField layoutX="142.0" fx:id="cep" layoutY="435.0" prefHeight="38.0" prefWidth="740.0" promptText="CEP" styleClass="input-default">
          <font>

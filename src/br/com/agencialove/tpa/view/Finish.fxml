@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="778.0" prefWidth="1024.0"  stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FinishController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FinishController">
     <children>
-        <Pane fx:id="paneSearch" layoutX="0.0" layoutY="80" prefHeight="8" prefWidth="1024.0" styleClass="footer-page">
-	         
-      	</Pane>
         
         
-        <Pane fx:id="paneSearch" layoutX="0.0" layoutY="90" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
-	     	<Label styleClass="labelAviso2"  style="-fx-font-size: 35px;" fx:id="lbTitle" alignment="CENTER"  contentDisplay="CENTER" layoutY="150" layoutX="100.0" prefHeight="122.0" prefWidth="800.0" 
-	     		text="Os Correios agradecem" wrapText="true">           
+        <Pane fx:id="paneSearch" layoutX="0.0" layoutY="129.0" prefHeight="611.0" prefWidth="1024.0" styleClass="sub-header-page">
+	     	<Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="90.0" prefHeight="62.0" prefWidth="800.0" style="-fx-font-size: 45; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labelAviso2" text="Os Correios agradecem" wrapText="true">           
 	        </Label>
-	        <Label styleClass="labelAviso2" style="-fx-font-size: 35px;"  fx:id="lbTitle" alignment="CENTER"  contentDisplay="CENTER" layoutY="195" layoutX="100.0" prefHeight="122.0" prefWidth="800.0" 
-	     		text="por utilizar nosso terminal em" wrapText="true">           
+	        <Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="137.0" prefHeight="56.0" prefWidth="800.0" style="-fx-font-size: 45; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labelAviso2" text="por utilizar nosso terminal em" wrapText="true">           
 	        </Label>
-          	<Label styleClass="labelAviso2" style="-fx-font-size: 35px;"  fx:id="lbTitle" alignment="CENTER"  contentDisplay="CENTER" layoutY="240" layoutX="100.0" prefHeight="122.0" prefWidth="800.0" 
-	     		text="fase experimental" wrapText="true">           
+          	<Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="182.0" prefHeight="56.0" prefWidth="800.0" style="-fx-font-size: 45; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labelAviso2" text="fase experimental" wrapText="true">           
 	        </Label>
 	        
-	        <Button fx:id="btnBack" styleClass="btn-yes-prepost-confirmation" layoutX="310	" layoutY="415"  mnemonicParsing="false"  prefHeight="45.0" prefWidth="400"
-         	 text="Imprimir comprovante">
+	        <Button fx:id="btnBack" layoutX="166.0" layoutY="456.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="596.0" styleClass="bt-tela-inicial" text="Imprimir comprovante">
                <font>
                   <Font size="10.0" />
                </font>              
         </Button>
+         <Label layoutX="300.0" layoutY="350.0" style="-fx-font-size: 22; -fx-font-family: &quot;Trebuchet MS&quot;; -fx-text-fill: #999;" text="Favor retirar a sua embalagem no dispenser" />
 	        
     	</Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
+      <Pane layoutX="772.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
         
       
     </children>
