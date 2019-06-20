@@ -22,19 +22,19 @@
        			<Label text="" />
     		</placeholder>
 	        <columns>
-				<TableColumn id="tbcolStreet" prefWidth="300.0" resizable="false" styleClass="table-view" text="Logradouro/Nome">
+				<TableColumn id="tbcolStreet" prefWidth="300.0" resizable="false" style="-fx-text-alignment: center;" styleClass="table-view" text="Logradouro/Nome">
 					 <cellValueFactory><PropertyValueFactory property="street" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolQuarter" prefWidth="250.0" resizable="false" text="Bairro">
+				<TableColumn id="tbcolQuarter" prefWidth="250.0" resizable="false" style="-fx-text-alignment: center;" styleClass="table-view" text="Bairro">
 					<cellValueFactory><PropertyValueFactory property="neighborhood" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolCity" prefWidth="100.0" text="Cidade">
+				<TableColumn id="tbcolCity" prefWidth="100.0" style="-fx-text-alignment: center;" styleClass="table-view" text="Cidade">
 					<cellValueFactory><PropertyValueFactory property="city" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolState" prefWidth="100.0" resizable="false" text="UF">
+				<TableColumn id="tbcolState" prefWidth="100.0" resizable="false" style="-fx-text-alignment: center;" styleClass="table-view" text="UF">
 					<cellValueFactory><PropertyValueFactory property="state" /></cellValueFactory>
 				</TableColumn>
-				<TableColumn id="tbcolZip" prefWidth="110.0" resizable="false" text="CEP">
+				<TableColumn id="tbcolZip" prefWidth="110.0" resizable="false" style="-fx-text-alignment: center;" styleClass="table-view" text="CEP">
 					<cellValueFactory><PropertyValueFactory property="zip" /></cellValueFactory>
 				</TableColumn>
 			</columns> 
