@@ -209,6 +209,14 @@
 
 }
 
+.bt-imprimir{
+-fx-font-family:"Trebuchet MS";
+-fx-background-color: #fff;
+-fx-font-size: 30px;
+-fx-text-fill: #19b5e6;
+
+}
+
 .bt-cancelar{
    -fx-background-color: #e17a35;
    -fx-background-radius: 10px;
