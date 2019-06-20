@@ -31,7 +31,6 @@ public class SelectPackageController implements IController {
 	@FXML
 	private Button btnNext;
 
-
 	@FXML
 	public Button btnPack1;
 
@@ -46,11 +45,10 @@ public class SelectPackageController implements IController {
 
 	private Scene previousScene;
 
-
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
 		final Scene startScene = Windows.START.getScene();
-		if(startScene == this.previousScene)
+		if (startScene == this.previousScene)
 			Session.reset();
 		else
 			Session.setScene(this.previousScene);
@@ -65,14 +63,17 @@ public class SelectPackageController implements IController {
 		Session.setScene(nextScene);
 	}
 
-
 	@Override
 	public void initialize(final URL url, final ResourceBundle resourceBundle) {
+		this.btnNext.setDisable(true);
 	}
 
 	@Override
 	public void clear() {
-		if(this.hbox != null) this.hbox.getChildren().clear();
+		if (this.hbox != null)
+			this.hbox.getChildren().clear();
+
+		this.btnNext.setDisable(true);
 	}
 
 	public Scene getPreviousScene() {
@@ -86,12 +87,12 @@ public class SelectPackageController implements IController {
 	public void loadPacksFromDB() {
 		try {
 			final List<Pack> packs = Session.getDBService().listPacks();
-			for(final Pack p : packs) {
+			for (final Pack p : packs) {
 				final Button b = this.newButton(p);
 				this.hbox.getChildren().add(b);
 			}
 		} catch (final SQLException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE,"Erro no banco de dados carregar pacotes.",e);
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Erro no banco de dados carregar pacotes.", e);
 			Session.error();
 		}
 
@@ -127,13 +128,10 @@ public class SelectPackageController implements IController {
 		ret.setPrefHeight(630.0);
 		ret.setTranslateY(130);
 
-		//		ret.setText(p.getDescricao() + "\r\n" + p.getDimensoes() + " \r\n " + p.getValor());
-		//		ret.setWrapText(true);
-		//		ret.getStyleClass().add("btn");
-		//		ret.setContentDisplay(ContentDisplay.TOP);
-
 		ret.setOnAction((final ActionEvent event) -> {
 			this.selectedPack = p;
+			this.btnNext.setDisable(false);
+
 		});
 		return ret;
 	}
