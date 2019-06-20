@@ -26,6 +26,8 @@ public class SendNfeEmailController implements IController {
 	@FXML
 	private void btnNoAction(final ActionEvent e) {
 		final Scene scene = Windows.FINISH.getScene();
+		FinishController control = (FinishController)Windows.FINISH.getScene().getUserData();
+		control.finish();
 		Session.setScene(scene);
 	}
 

@@ -71,10 +71,9 @@
    -fx-border-color:#aaa;
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
-    -fx-pref-height: 45px; 
-    -fx-text-fill: #666; 
-    -fx-font-size: 22px;
--fx-font:ccc;
+   -fx-pref-height: 45px; 
+   -fx-text-fill: #666; 
+   -fx-font-size: 22px;   
 }
 
 .input-search{
@@ -151,7 +150,7 @@
  
 }
 
-.table-view .table-cell{
+.table-view > .table-cell{
     -fx-text-fill: #8e8d89;
     -fx-font-family:"Trebuchet MS";
     -fx-padding:5px;
@@ -167,14 +166,14 @@
 
 .table-row-cell{
     -fx-background-color:#eeeeee;
-    -fx-table-cell-border-color	:tranparent;
+    -fx-table-cell-border-color	:transparent;
     -fx-text-alignment:center;
     -fx-alignment: center;
 }	
 
 .table-row-cell:odd{
     -fx-background-color:#fff;
-    -fx-table-cell-border-color	:tranparent;
+    -fx-table-cell-border-color	:transparent;
     -fx-text-alignment:center;
     -fx-alignment: center;
 }
@@ -205,6 +204,8 @@
 
 .font-resumo{
     -fx-font-family:"Trebuchet MS";
+    -fx-font-size: 30px; 
+    -fx-text-alignment: center;
  
 
 }

@@ -1,22 +1,8 @@
 package br.com.agencialove.tpa.hardware;
 
-import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-
 import br.com.agencialove.tpa.model.PaymentData;
 import br.com.agencialove.tpa.model.PaymentResult;
-import br.com.agencialove.tpa.workflow.Session;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.text.Text;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 public class TEFServiceMock implements ITEFService {
@@ -29,7 +15,7 @@ public class TEFServiceMock implements ITEFService {
 		
 		
 	}
-
+	
 	@Override
 	public void charge(final String value, final String code, final String description, final TEFCallback callback) {
 

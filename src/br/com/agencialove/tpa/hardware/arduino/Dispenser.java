@@ -12,4 +12,18 @@ public enum Dispenser {
 	public int getId() {
 		return this.id;
 	}
+	
+	public static Dispenser getDispenser(int codigo) {
+		
+		for (Dispenser	d : Dispenser.values()) {
+			if(d.getId() == codigo) {
+				return d;	
+			}
+		}	
+		
+		return null;
+	}
+	
+	
+	
 }

@@ -3,13 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FinishController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" maxWidth="-Infinity" minHeight="-Infinity" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FinishController">
     <children>
         
-        
+       
+         
         <Pane fx:id="paneSearch" layoutX="0.0" layoutY="129.0" prefHeight="611.0" prefWidth="1024.0" styleClass="sub-header-page">
 	     	<Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="90.0" prefHeight="62.0" prefWidth="800.0" style="-fx-font-size: 45; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labelAviso2" text="Os Correios agradecem" wrapText="true">           
 	        </Label>
@@ -18,7 +20,7 @@
           	<Label fx:id="lbTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="182.0" prefHeight="56.0" prefWidth="800.0" style="-fx-font-size: 45; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labelAviso2" text="fase experimental" wrapText="true">           
 	        </Label>
 	        
-	        <Button fx:id="btnBack" layoutX="166.0" layoutY="456.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="596.0" styleClass="bt-tela-inicial" text="Imprimir comprovante">
+	        <Button fx:id="btnPrintReceipt" layoutX="166.0" layoutY="456.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="596.0" styleClass="bt-tela-inicial" text="Imprimir comprovante">
                <font>
                   <Font size="10.0" />
                </font>              
@@ -29,6 +31,6 @@
       <Pane prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
       <Pane layoutX="772.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
         
-      
+       
     </children>
 </AnchorPane>

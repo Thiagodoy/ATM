@@ -29,37 +29,8 @@ public class HardwareServiceMock implements IHardwareService {
 	}
 
 	@Override
-	public DispenserState dispensePack(final Dispenser dispenser) throws IOException {
-
-		switch (dispenser) {
-		case A:
-			-- this.counterD1;
-			break;
-		case B:
-			-- this.counterD2;
-			break;
-		case C:
-			-- this.counterD3;
-			break;
-		case D:
-			-- this.counterD4;
-			break;
-		default:
-			throw new IOException("Dispenser inválido");
-		}
-
-		Platform.runLater(()->{
-			final Alert alert = new Alert(AlertType.WARNING);
-			final Label label = new Label("Pacote dispensado no dispenser: " + dispenser.getId());
-
-			final GridPane expContent = new GridPane();
-			expContent.setMaxWidth(Double.MAX_VALUE);
-			expContent.add(label, 0, 0);
-
-			alert.getDialogPane().setExpandableContent(expContent);
-			alert.setHeight(800);
-
-			alert.showAndWait();});
+	public DispenserState dispensePack(final Dispenser dispenser) throws IOException {	
+		
 		return DispenserState.IDLE;
 	}
 

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.com.agencialove.tpa.model.Pack;
-import br.com.agencialove.tpa.utils.Utils;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +35,7 @@ public class DetailPackageSelectedController implements IController {
 	@FXML
 	public void btnBackAction(final ActionEvent e) {
 		Session.setScene(previousScene);
+		this.clear();
 	}
 
 	@FXML
@@ -60,6 +60,7 @@ public class DetailPackageSelectedController implements IController {
 
 	@Override
 	public void clear() {
+		this.packages.clear();
 	}
 
 	public Scene getPreviousScene() {
@@ -73,17 +74,7 @@ public class DetailPackageSelectedController implements IController {
 	public void populateInfo() {
 
 		Pack pack = (Pack) Session.getSession().get(Session.SELECTED_PACKAGE);
-
 		this.packages.add(new PackageInfo(pack));
-		PackageInfo infoTotal = new PackageInfo();
-		infoTotal.setCodigo("");
-		infoTotal.setQuantidade("");
-
-		double valor = Double.valueOf(pack.getValor().replace(",", ".").replace("R$", ""));
-		Double total = (valor * 1);
-		infoTotal.setValor(Utils.format(total));
-
-		this.packages.add(infoTotal);
 
 	}
 
@@ -97,8 +88,8 @@ public class DetailPackageSelectedController implements IController {
 		}
 
 		public PackageInfo(Pack pack) {
-			this.codigo = pack.getCodigo();
-			this.quantidade = String.valueOf(pack.getQuantidade());
+			this.codigo = pack.getDescricao() + " " + pack.getDimensoes();
+			this.quantidade = String.valueOf(1);
 			this.valor = pack.getValor();
 		}
 
