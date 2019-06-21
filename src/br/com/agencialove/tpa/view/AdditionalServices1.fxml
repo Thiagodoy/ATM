@@ -20,7 +20,7 @@
    
    	<Pane fx:id="paneSearch" layoutY="133.0" prefHeight="645.0" prefWidth="1024.0" styleClass="sub-header-page">
       <children>
-   	      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-16.0" prefHeight="60.0" prefWidth="1024.0" style="-fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="txt-label" text="Escolha os serviços adicionais">
+   	      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-16.0" prefHeight="60.0" prefWidth="1024.0" style="-fx-font-family: &quot;Trebuchet MS&quot;; -fx-font-size: 30px; -fx-text-fill: #777;" text="Escolha os serviços adicionais">
    	         <font>
    	            <Font size="64.0" />
    	         </font>
