@@ -298,6 +298,16 @@ public class PaymentNewController implements IController {
 	}
 	
 	public void chargeSuccess(final PaymentData paymentData, final String toPrint, final Stage stage) {
+		
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		final IPrinterService printerService = Session.getPrinterService();
 
 		// imprime recibo do TEF
