@@ -260,11 +260,55 @@
 }
 
 
+/*labels */
+
+.label-h1{
+  -fx-font-family:"Trebuchet MS";
+  -fx-text-fill: #888;
+}
+
+.label-default{
+   -fx-font-family:"Trebuchet MS";
+   -fx-text-fill: #888;
+}
+
+.label-total{
+-fx-font-family:"Trebuchet MS";
+  -fx-text-fill: #e17a35;
+}
+
+/*Cores de fonte */
+
+.fonte-cinza-escuro{
+ 
+}
 
 
 
+.icone-erro{
+-fx-background-image: url("../img/icon-caution2.png");
+-fx-background-repeat: no-repeat;	
+ -fx-pref-width: 160px;
+ -fx-pref-height: 160px;
+ -fx-background-position:center;
 
+}
 
+.icone-sucesso{
+-fx-background-image: url("../img/icon-success.png");
+-fx-background-repeat: no-repeat;	
+ -fx-pref-width: 160px;
+ -fx-pref-height: 160px;
+ -fx-background-position:center;
+}
+
+.incon-card-machine{
+-fx-background-image: url("../img/card-machine.png");
+-fx-background-repeat: no-repeat;	
+ -fx-pref-width: 160px;
+ -fx-pref-height: 160px;
+ -fx-background-position:center;
+}
 
 
 .pane-tela-inicial{
