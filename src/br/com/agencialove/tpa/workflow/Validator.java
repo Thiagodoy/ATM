@@ -27,8 +27,9 @@ public class Validator {
 	private Map<Node,String> invalidFields = new HashMap<>();
 
 	private String error(final TextField field, final boolean store, final String message) {
-		if(!field.getStyleClass().contains("error"))
-			field.getStyleClass().add("error");
+		if(!field.getStyleClass().contains("input-error"))
+			//field.getStyleClass().clear();
+			field.getStyleClass().add("input-error");
 
 		if(store)
 			this.invalidFields.put(field, message);
@@ -48,7 +49,7 @@ public class Validator {
 		if(!matcher.matches())
 			return this.error(field, store, ret);
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 	}
 
@@ -64,7 +65,7 @@ public class Validator {
 		if(!matcher.matches())
 			return this.error(field, store, ret);
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 	}
 
@@ -130,7 +131,7 @@ public class Validator {
 			return this.error(field, store, ret);
 		}
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 
 	}
@@ -150,7 +151,7 @@ public class Validator {
 			return this.error(field, store, ret);
 		}
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 	}
 
@@ -168,7 +169,7 @@ public class Validator {
 			return this.error(field, store, ret);
 		}
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 	}
 
@@ -182,7 +183,7 @@ public class Validator {
 		if(value.length() < min || value.length() > max)
 			return this.error(field, store, ret);
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 	}
 
@@ -205,7 +206,7 @@ public class Validator {
 		}else
 			return this.error(field, store, ret);
 
-		field.getStyleClass().remove("error");
+		field.getStyleClass().remove("input-error");
 		return null;
 	}
 

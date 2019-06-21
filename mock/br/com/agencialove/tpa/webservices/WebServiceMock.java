@@ -512,7 +512,23 @@ public class WebServiceMock implements IWebService{
 
 	@Override
 	public ServicesRequest getServiceRequest(final Address pSender, final Address pReceiver, final AdditionalServices pServices, final PackageMeasures pMeasures) {
-		// TODO Auto-generated method stub
-		return null;
+
+		final ServicesRequest req = new ServicesRequest();
+		req.setCepOrigem(pSender.getZip());
+		req.setCepDestino(pReceiver.getZip());
+		req.setPeso(pMeasures.getWeight());
+		req.setFormato("1");
+		req.setComprimento(pMeasures.getDepth());
+		req.setAltura(pMeasures.getHeight());
+		req.setLargura(pMeasures.getWidth());
+		req.setDiametro(pMeasures.getDiameter());
+		req.setMaoPropria(pServices.isOnwHands() ? "S" : "N"); //$NON-NLS-1$ //$NON-NLS-2$
+		req.setValorDeclarado(pServices.isValueDeclaration() ? pServices.getContentValue() : "0"); //$NON-NLS-1$
+		req.setAvisoRecebimento(pServices.isDeliveryNotice() ? "S" : "N"); //$NON-NLS-1$ //$NON-NLS-2$
+
+		System.out.println(req.toString());
+		
+		
+		return req;
 	}
 }
