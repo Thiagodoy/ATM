@@ -1,6 +1,8 @@
 package br.com.agencialove.tpa.view;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import br.com.agencialove.tpa.model.AdditionalServices;
@@ -10,27 +12,38 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.layout.Pane;
 
 public class AdditionalServices1Controller implements IController {
 
-	@FXML
-	private CheckBox chkNone;
-
-	@FXML
-	private CheckBox chkOwnHand;
-
-	@FXML
-	private CheckBox chkNotice;
-
-	@FXML
-	private CheckBox chkValueDeclaration;
+	
+	private boolean chkNone;	
+	private boolean chkOwnHand;	
+	private boolean chkNotice;
+	private boolean chkValueDeclaration;
 
 	@FXML
 	private Button btnBack;
 
 	@FXML
 	private Button btnNext;
+	
+	
+	@FXML
+	private Pane panelSemServicoAdicional;
+	
+	@FXML
+	private Pane panelMaoPropria;
+	
+	@FXML
+	private Pane panelAvisoRecebimento;
+	
+	@FXML
+	private Pane panelDeclaracaoValor;
+	
+	private List<Pane>options = new ArrayList<Pane>();
+	
+	
 
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
@@ -43,9 +56,9 @@ public class AdditionalServices1Controller implements IController {
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
 		final AdditionalServices services = new AdditionalServices();
-		services.setOnwHands(this.chkOwnHand.isSelected());
-		services.setDeliveryNotice(this.chkNotice.isSelected());
-		services.setValueDeclaration(this.chkValueDeclaration.isSelected());
+		services.setOnwHands(this.chkOwnHand);
+		services.setDeliveryNotice(this.chkNotice);
+		services.setValueDeclaration(this.chkValueDeclaration);
 		Session.getSession().put(Session.ADDITIONAL_SERVICES, services);
 
 		Scene scene = null;
@@ -65,45 +78,85 @@ public class AdditionalServices1Controller implements IController {
 
 	@FXML
 	public void chkNoneAction() {
-		if(this.chkNone.isSelected()) {
-			this.chkOwnHand.setSelected(false);
-			this.chkOwnHand.setDisable(true);
-			this.chkNotice.setSelected(false);
-			this.chkNotice.setDisable(true);
-			this.chkValueDeclaration.setSelected(false);
-			this.chkValueDeclaration.setDisable(true);
-		}else {
-			this.chkOwnHand.setDisable(false);
-			this.chkNotice.setDisable(false);
-			this.chkValueDeclaration.setDisable(false);
-		}
+//		if(this.chkNone.isSelected()) {
+//			this.chkOwnHand.setSelected(false);
+//			this.chkOwnHand.setDisable(true);
+//			this.chkNotice.setSelected(false);
+//			this.chkNotice.setDisable(true);
+//			this.chkValueDeclaration.setSelected(false);
+//			this.chkValueDeclaration.setDisable(true);
+//		}else {
+//			this.chkOwnHand.setDisable(false);
+//			this.chkNotice.setDisable(false);
+//			this.chkValueDeclaration.setDisable(false);
+//		}
 
 	}
 
 	@Override
-	public void initialize(final URL url, final ResourceBundle resourceBundle) {
-
+	public void initialize(final URL url, final ResourceBundle resourceBundle) {		
+		
+		this.panelSemServicoAdicional.setOnMouseClicked((event)->{
+			this.chkNone = true;	
+			this.chkOwnHand = false;	
+			this.chkNotice = false;
+			this.chkValueDeclaration = false;
+			
+			this.panelMaoPropria.getStyleClass().remove("box-add-borda");
+			this.panelAvisoRecebimento.getStyleClass().remove("box-add-borda");
+			this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
+			this.panelSemServicoAdicional.getStyleClass().add("box-add-borda");			
+		});
+		this.panelMaoPropria.setOnMouseClicked((event)->{				
+			this.chkOwnHand = true;		
+			this.chkNone = false;
+			this.panelMaoPropria.getStyleClass().add("box-add-borda");
+			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");		
+					
+		});
+		this.panelAvisoRecebimento.setOnMouseClicked((event)->{				
+			this.chkNotice = true;
+			this.chkNone = false;
+			this.panelAvisoRecebimento.getStyleClass().add("box-add-borda");
+			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
+					
+		});
+		this.panelDeclaracaoValor.setOnMouseClicked((event)->{
+			this.chkValueDeclaration = true;
+			this.chkNone = false;
+			this.panelDeclaracaoValor.getStyleClass().add("box-add-borda");	
+			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
+		});
+		
+		
 	}
 
 	public void loadValues() {
-		final AdditionalServices services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
-		if(services != null){
-			this.chkOwnHand.setSelected(services.isOnwHands());
-			this.chkNotice.setSelected(services.isDeliveryNotice());
-			this.chkValueDeclaration.setSelected(services.isValueDeclaration());
-		}else {
-			this.chkOwnHand.setSelected(false);
-			this.chkNotice.setSelected(false);
-			this.chkValueDeclaration.setSelected(false);
-		}
+//		final AdditionalServices services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
+//		if(services != null){
+//			this.chkOwnHand.setSelected(services.isOnwHands());
+//			this.chkNotice.setSelected(services.isDeliveryNotice());
+//			this.chkValueDeclaration.setSelected(services.isValueDeclaration());
+//		}else {
+//			this.chkOwnHand.setSelected(false);
+//			this.chkNotice.setSelected(false);
+//			this.chkValueDeclaration.setSelected(false);
+//		}
 	}
 
 	@Override
 	public void clear() {
-		if(this.chkNone != null) this.chkNone.setSelected(false);
-		if(this.chkOwnHand != null) this.chkOwnHand.setSelected(false);
-		if(this.chkNotice != null) this.chkNotice.setSelected(false);
-		if(this.chkValueDeclaration != null) this.chkValueDeclaration.setSelected(false);
+		this.chkNone = true;	
+		this.chkOwnHand = false;	
+		this.chkNotice = false;
+		this.chkValueDeclaration = false;
+		
+		this.panelMaoPropria.getStyleClass().remove("box-add-borda");
+		this.panelAvisoRecebimento.getStyleClass().remove("box-add-borda");
+		this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
+		this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");
+		
+		this.btnNext.setDisable(true);
 	}
 
 }

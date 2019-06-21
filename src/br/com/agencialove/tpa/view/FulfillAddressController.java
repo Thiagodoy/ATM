@@ -120,9 +120,9 @@ public class FulfillAddressController implements IController {
 		final Validator validator = new Validator();
 		//validator.validateNotEmpty(this.txtLogradouro, true);
 		//validator.validateNotEmpty(this.txtNumero, true);
-		validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
-		//validator.validateNotEmpty(this.txtCEP, true);
-		//validator.validateCelullar(this.txtCelular, true);
+		//validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
+		///validator.validateNotEmpty(this.txtCEP, true);
+	//	validator.validateCelullar(this.txtCelular, true);
 
 		if(this.type == ZipType.SENDER)
 			validator.validateCPF(this.txtCPF, true);

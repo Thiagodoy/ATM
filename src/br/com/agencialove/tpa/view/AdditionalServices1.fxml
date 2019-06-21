@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.AdditionalServices1Controller">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.AdditionalServices1Controller">
    <children>
    		<Pane fx:id="paneSearch" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
 	         <children>
@@ -39,31 +43,29 @@
                         		<Pane fx:id="paneSearch" layoutY="-22.0" prefHeight="8" prefWidth="1024.0" styleClass="linha">
 	         
       	</Pane>
-            <Pane layoutX="84.8" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
+            <Pane fx:id="panelSemServicoAdicional" layoutX="84.8" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
                <children>
                   <Label layoutX="11.0" layoutY="35.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px; -fx-wrap-text: true;" styleClass="label-default" text="Sem serviço adicional" textAlignment="CENTER" wrapText="true" />
                </children>
             </Pane>
-            <Pane layoutX="789.2" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="panelDeclaracaoValor" layoutX="789.2" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
                <styleClass>
-                  <String fx:value="box-add" />
-                  <String fx:value="box-add-borda" />
+                  <String fx:value="box-add" />                  
                </styleClass>
                <children>
                   <Label layoutX="12.0" layoutY="5.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Declaração de valor" textAlignment="CENTER" wrapText="true" />
                   <Label layoutX="12.0" layoutY="101.0" style="-fx-font-weight: bold; -fx-font-size: 25;" styleClass="label-default" text="Valor:1,5%" />
                </children>
             </Pane>
-            <Pane layoutX="554.4" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
+            <Pane fx:id="panelAvisoRecebimento" layoutX="554.4" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
                <children>
                   <Label layoutX="11.0" layoutY="22.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Aviso de recebimento AR" textAlignment="CENTER" wrapText="true" />
                   <Label layoutX="18.0" layoutY="103.0" style="-fx-font-weight: bold; -fx-font-size: 28;" styleClass="label-default" text="R$ 5,75" />
                </children>
             </Pane>
-            <Pane layoutX="319.6" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="panelMaoPropria" layoutX="319.6" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
                <styleClass>
-                  <String fx:value="box-add" />
-                  <String fx:value="box-add-borda" />
+                  <String fx:value="box-add" />                  
                </styleClass>
                <children>
                   <Label layoutX="11.0" layoutY="26.0" prefHeight="60.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Mão Própria MP" textAlignment="CENTER" wrapText="true" />
