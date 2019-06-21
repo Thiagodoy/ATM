@@ -1,6 +1,13 @@
 ﻿.error{
-    -fx-border-color:#ff0000;
-    -fx-border-width:2px;
+    -fx-border-color:red !important;    
+    -fx-border-radius: 8px;
+   -fx-background-radius: 8px;   
+   -fx-border-width:2px;
+   -fx-font-family:"Trebuchet MS";
+   -fx-pref-height: 45px; 
+   -fx-text-fill: #666; 
+   -fx-font-size: 22px; 
+    
 }
 
 .border-post{
@@ -80,6 +87,12 @@
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
    -fx-pref-height: 45px; 
+   -fx-text-fill: #666; 
+   -fx-font-size: 22px;   
+}
+
+.input-error{
+   -fx-border-color:red !important;
    -fx-text-fill: #666; 
    -fx-font-size: 22px;   
 }
