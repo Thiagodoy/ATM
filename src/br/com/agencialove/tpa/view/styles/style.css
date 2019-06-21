@@ -53,9 +53,17 @@
 }
 
 .box-add{
+-fx-pref-width: 150px;
+-fx-pref-height: 150px;	
+-fx-background-color: #ffd700;
+ -fx-background-radius: 10px;
 
+}
 
-
+.box-add-borda{
+-fx-border-width:3;
+-fx-border-color: #0083ca;
+-fx-border-radius: 10px;
 }
 
 .label-remetente{

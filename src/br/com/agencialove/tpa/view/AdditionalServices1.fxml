@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -10,7 +9,7 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.AdditionalServices1Controller">
    <children>
-   		<Pane fx:id="paneSearch" layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
+   		<Pane fx:id="paneSearch" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
 	         <children>
 			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutY="56.0" prefHeight="30" prefWidth="1024.0" styleClass="txt-label-service-teste" text="Postagem Nacional">
 
@@ -20,34 +19,11 @@
    
    	<Pane fx:id="paneSearch" layoutY="133.0" prefHeight="645.0" prefWidth="1024.0" styleClass="sub-header-page">
       <children>
-   	      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-16.0" prefHeight="60.0" prefWidth="1024.0" style="-fx-font-family: &quot;Trebuchet MS&quot;; -fx-font-size: 30px; -fx-text-fill: #777;" text="Escolha os serviços adicionais">
+   	      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-10.0" prefHeight="60.0" prefWidth="1024.0" style="-fx-font-family: &quot;Trebuchet MS&quot;; -fx-font-size: 30px; -fx-text-fill: #777;" text="Escolha os serviços adicionais">
    	         <font>
    	            <Font size="64.0" />
    	         </font>
-   	      </Label>   
-   	      <CheckBox fx:id="chkNone" alignment="TOP_LEFT" graphicTextGap="2.0" layoutX="84.8" layoutY="69.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#chkNoneAction" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #FFD700; -fx-text-fill: #fff; -fx-padding: 5;" styleClass="box-add" text="Sem servico adicional" textAlignment="CENTER">         
-   	         <font>
-   	            <Font size="24.0" />
-   	         </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-   	      </CheckBox>    
-   	      <CheckBox fx:id="chkOwnHand" alignment="TOP_LEFT" layoutX="320.0" layoutY="69.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #FFD700; -fx-text-fill: #fff; -fx-padding: 5;" text="Mão própria ( R$ 6,80 )">         
-   	         <font>
-   	            <Font size="24.0" />
-   	         </font>
-   	      </CheckBox>
-   	      <CheckBox fx:id="chkNotice" alignment="TOP_LEFT" layoutX="554.4" layoutY="69.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #FFD700; -fx-text-fill: #fff; -fx-padding: 5;" text="Aviso de Recebimento ( R$ 5,70 )">
-   	         <font>
-   	            <Font size="24.0" />
-   	         </font>
-   	      </CheckBox>
-   	      <CheckBox fx:id="chkValueDeclaration" alignment="TOP_LEFT" layoutX="789.2" layoutY="69.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #FFD700; -fx-text-fill: #fff; -fx-padding: 5;" text="Declaraçao de valor ( R$ 1,5% )">
-   	         <font>
-   	            <Font size="24.0" />
-   	         </font>
-   	      </CheckBox>
+   	      </Label>
             <Button fx:id="btnNext" layoutX="540.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
                <font>
                   <Font size="18.0" />
@@ -60,9 +36,45 @@
             </Button>
             <Button layoutX="295.0" layoutY="522.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
             	
-                        		<Pane fx:id="paneSearch" layoutY="-17.0" prefHeight="8" prefWidth="1024.0" styleClass="linha">
+                        		<Pane fx:id="paneSearch" layoutY="-22.0" prefHeight="8" prefWidth="1024.0" styleClass="linha">
 	         
       	</Pane>
+            <Pane layoutX="84.8" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
+               <children>
+                  <Label layoutX="11.0" layoutY="35.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px; -fx-wrap-text: true;" styleClass="label-default" text="Sem serviço adicional" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </Pane>
+            <Pane layoutX="789.2" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="box-add" />
+                  <String fx:value="box-add-borda" />
+               </styleClass>
+               <children>
+                  <Label layoutX="12.0" layoutY="5.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Declaração de valor" textAlignment="CENTER" wrapText="true" />
+                  <Label layoutX="12.0" layoutY="101.0" style="-fx-font-weight: bold; -fx-font-size: 25;" styleClass="label-default" text="Valor:1,5%" />
+               </children>
+            </Pane>
+            <Pane layoutX="554.4" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
+               <children>
+                  <Label layoutX="11.0" layoutY="22.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Aviso de recebimento AR" textAlignment="CENTER" wrapText="true" />
+                  <Label layoutX="18.0" layoutY="103.0" style="-fx-font-weight: bold; -fx-font-size: 28;" styleClass="label-default" text="R$ 5,75" />
+               </children>
+            </Pane>
+            <Pane layoutX="319.6" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="box-add" />
+                  <String fx:value="box-add-borda" />
+               </styleClass>
+               <children>
+                  <Label layoutX="11.0" layoutY="26.0" prefHeight="60.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Mão Própria MP" textAlignment="CENTER" wrapText="true" />
+                  <Label layoutX="25.0" layoutY="102.0" style="-fx-font-weight: bold; -fx-font-size: 28;" styleClass="label-default" text="R$ 6,80" />
+               </children>
+            </Pane>
+            <Label layoutX="330.0" layoutY="249.0" prefHeight="80.0" prefWidth="129.0" styleClass="label-default" text="Garantia de que o objeto será entregue ao pŕoprio destinatário através da confirmação da identidade" textAlignment="JUSTIFY" wrapText="true" />
+            <Label layoutX="561.0" layoutY="248.0" prefHeight="47.0" prefWidth="137.0" styleClass="label-default" text="Formulário que permite compravação de entrega do objeto" textAlignment="JUSTIFY" wrapText="true" />
+            <Label layoutX="800.0" layoutY="247.0" prefHeight="47.0" prefWidth="129.0" styleClass="label-default" text="Garantia sobre o valor real do objeto em caso de extravio ou avaria" textAlignment="JUSTIFY" wrapText="true" />
+            <Pane layoutX="69.0" layoutY="437.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+            <Pane layoutX="935.0" layoutY="437.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
       </children>
 	  </Pane>
    </children>
