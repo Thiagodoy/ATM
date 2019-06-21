@@ -24,7 +24,7 @@
       	</Pane>
       		<Pane prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
          <children>
-         		  <Label fx:id="lblInitial" alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="347.0" prefHeight="54.0" prefWidth="586.0" style="-fx-font-size: 40px;" styleClass="label-h1" text="Deseja realizar o pagamento?" visible="false">
+         		  <Label fx:id="lblInitial" alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="347.0" prefHeight="54.0" prefWidth="586.0" style="-fx-font-size: 40px;" styleClass="label-h1" text="Deseja realizar o pagamento?">
          	            <font>
          	                <Font size="48.0" />
          	            </font>
@@ -60,7 +60,7 @@
                   <Pane layoutX="432.0" layoutY="190.0" prefHeight="237.0" prefWidth="365.0" style="-fx-background-position: center;" styleClass="icone-erro" visible="false" />
                   <Pane layoutX="432.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0" styleClass="icone-sucesso" visible="false" />
                   <Label layoutX="195.0" layoutY="335.0" style="-fx-font-size: 40px;" styleClass="label-default" text="Pagamento realizado com sucesso !" visible="false" />
-                  <Pane layoutX="445.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" styleClass="incon-card-machine" visible="false" />
+                  <Pane layoutX="445.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" styleClass="incon-card-machine" />
                   <Label layoutX="121.0" layoutY="167.0" prefHeight="47.0" prefWidth="784.0" style="-fx-font-size: 40px;" styleClass="label-default" text="Insira seu cartão ou aproxime seu telefone" visible="false" wrapText="true" />
                   <Label layoutX="349.0" layoutY="300.0" style="-fx-font-size: 40px; -fx-font-weight: bold;" styleClass="label-total" text="Total : R$ 200,00" visible="false" />
                   <Label layoutX="417.0" layoutY="411.0" style="-fx-font-size: 30px;" styleClass="label-default" text="Digite a senha" visible="false" />
@@ -68,7 +68,7 @@
                   <Button layoutX="539.0" layoutY="504.0" mnemonicParsing="false" styleClass="bt-blue-sm" text="Pagar" visible="false" />
                   <Button layoutX="296.0" layoutY="613.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
                   <Pane layoutX="64.0" layoutY="529.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" visible="false" />
-                  <ProgressBar layoutX="312.0" layoutY="318.0" prefHeight="10.0" prefWidth="400.0" progress="0.67" style="-fx-color: #00b894;" />
+                  <ProgressBar layoutX="312.0" layoutY="318.0" prefHeight="10.0" prefWidth="400.0" progress="0.34" style="-fx-color: #0083CA;" visible="false" />
          </children>			
       		</Pane>
          </children>
