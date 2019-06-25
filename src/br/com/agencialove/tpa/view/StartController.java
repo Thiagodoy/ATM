@@ -10,8 +10,7 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.SessionType;
@@ -47,6 +46,10 @@ public class StartController implements IController {
 	private void btnPostAction(final ActionEvent e) {	
 		
 		Session.setScene(Windows.TEST_CONFIRMATION.getScene());
+		
+		PrePostagemRequest request = new PrePostagemRequest();
+		Session.getSession().put(Session.PRE_POSTAGEM, request);
+		
 		this.cancelTime();
 		Session.getSession().put(Session.SESSION_TYPE, SessionType.SERVICE);
 	}

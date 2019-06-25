@@ -4,6 +4,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import br.com.agencia.rest.CorreiosImpl;
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
+import br.com.agencia.tpa.rest.response.CepResponse;
 import br.com.agencialove.tpa.Messages;
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.ZipType;
@@ -22,7 +26,7 @@ import javafx.scene.control.TextField;
 
 public class SearchZipController implements IController {
 
-	private List<Address> lstAddress;
+	private List<CepResponse> ceps;
 
 	@FXML
 	private Label titleLabel;
@@ -54,25 +58,26 @@ public class SearchZipController implements IController {
 	 *
 	 * @param evt
 	 */
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void btnSearchAction(final ActionEvent e) {
 		if (!this.txtCep.getText().isEmpty()) {
 
 			this.tableView.getItems().clear();
 
-			final IWebService ws = Session.getWebService();
-			this.lstAddress = ws.getAddressFromZip(this.txtCep.getText().replace("-", "")); //$NON-NLS-1$ //$NON-NLS-2$
+			final CorreiosImpl ws = Session.getCorreiosWebService();
+			this.ceps = ws.buscarEndereco(this.txtCep.getText().replace("-", "")); //$NON-NLS-1$ //$NON-NLS-2$
 
-			if (this.lstAddress.isEmpty()) {
+			if (this.ceps.isEmpty()) {
 				this.statusLabel.setText(Messages.getString("SearchZipController.2")); //$NON-NLS-1$
 				this.statusLabel.setVisible(true);
 			} else {
-				final ObservableList<Address> tableModel = FXCollections.observableArrayList(this.lstAddress);
+				final ObservableList<CepResponse> tableModel = FXCollections.observableArrayList(this.ceps);
 				this.tableView.setItems(tableModel);
-				if(this.lstAddress.size() == 1) {
+				if(this.ceps.size() == 1) {
 					this.statusLabel.setText(Messages.getString("SearchZipController.3")); //$NON-NLS-1$
 				}else {
-					this.statusLabel.setText(Messages.getString("SearchZipController.4").replace(Messages.getString("SearchZipController.5"), Integer.toString(this.lstAddress.size()))); //$NON-NLS-1$ //$NON-NLS-2$
+					this.statusLabel.setText(Messages.getString("SearchZipController.4").replace(Messages.getString("SearchZipController.5"), Integer.toString(this.ceps.size()))); //$NON-NLS-1$ //$NON-NLS-2$
 					this.tableView.setVisible(true);
 				}
 			}
@@ -130,12 +135,12 @@ public class SearchZipController implements IController {
 		@Override
 		public void handle(final javafx.scene.input.MouseEvent event) {
 			if(!SearchZipController.this.tableView.getItems().isEmpty()) {
-				final Address address = (Address) SearchZipController.this.tableView.getSelectionModel().getSelectedItem();
-				if (address == null) {
+				final CepResponse cep = (CepResponse) SearchZipController.this.tableView.getSelectionModel().getSelectedItem();
+				if (cep == null) {
 					SearchZipController.this.btnNext.setDisable(true);
 				}else {
 					SearchZipController.this.btnNext.setDisable(false);
-					Session.getSession().put(SearchZipController.this.type.name() + "_ADDRESS",address); //$NON-NLS-1$
+					Session.getSession().put(SearchZipController.this.type.name() + "_ADDRESS",cep); //$NON-NLS-1$
 				}
 			}
 		}
@@ -143,7 +148,7 @@ public class SearchZipController implements IController {
 
 	@Override
 	public void clear() {
-		if(this.lstAddress != null) this.lstAddress = null;
+		if(this.ceps != null) this.ceps = null;
 		if(this.type != null) this.type = null;
 		if(this.titleLabel != null) this.titleLabel.setText(""); //$NON-NLS-1$
 		if(this.txtCep != null) {this.txtCep.setText(""); this.txtCep.setText(""); this.txtCep.clear();}//$NON-NLS-1$

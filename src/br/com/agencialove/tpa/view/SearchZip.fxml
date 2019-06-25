@@ -23,19 +23,19 @@
     		</placeholder>
 	        <columns>
 				<TableColumn id="tbcolStreet" prefWidth="300.0" resizable="false" text="Logradouro">
-					 <cellValueFactory><PropertyValueFactory property="street" /></cellValueFactory>
+					 <cellValueFactory><PropertyValueFactory property="rua" /></cellValueFactory>
 				</TableColumn>
 				<TableColumn id="tbcolQuarter" prefWidth="250.0" resizable="false" text="Bairro">
-					<cellValueFactory><PropertyValueFactory property="neighborhood" /></cellValueFactory>
+					<cellValueFactory><PropertyValueFactory property="bairro" /></cellValueFactory>
 				</TableColumn>
 				<TableColumn id="tbcolCity" prefWidth="100.0" text="Cidade">
-					<cellValueFactory><PropertyValueFactory property="city" /></cellValueFactory>
+					<cellValueFactory><PropertyValueFactory property="cidade" /></cellValueFactory>
 				</TableColumn>
 				<TableColumn id="tbcolState" prefWidth="100.0" resizable="false" text="UF">
-					<cellValueFactory><PropertyValueFactory property="state" /></cellValueFactory>
+					<cellValueFactory><PropertyValueFactory property="estado" /></cellValueFactory>
 				</TableColumn>
 				<TableColumn id="tbcolZip" prefWidth="110.0" resizable="false" text="CEP">
-					<cellValueFactory><PropertyValueFactory property="zip" /></cellValueFactory>
+					<cellValueFactory><PropertyValueFactory property="cep" /></cellValueFactory>
 				</TableColumn>
 			</columns> 
         </TableView>

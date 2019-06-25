@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.PackageMeasures;
 import br.com.agencialove.tpa.model.Resume;
@@ -37,10 +38,9 @@ public class CheckoutController implements IController {
 
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
-		final Scene scene = Windows.PAYMENT.getScene();
-		final PaymentController controller = (PaymentController) scene.getUserData();
-		controller.clear();
-		scene.getUserData();
+		final Scene scene = Windows.PAYMENT_NEW.getScene();
+		final PaymentNewController controller = (PaymentNewController) scene.getUserData();
+		controller.clear();		
 		Session.setScene(scene);
 	}
 
@@ -50,6 +50,7 @@ public class CheckoutController implements IController {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void loadInfo() {
 		final List<Resume> itens = new ArrayList<>();
 
@@ -68,25 +69,26 @@ public class CheckoutController implements IController {
 		itens.add(new Resume(sb.toString(), "", ""));
 
 		final ServicesResponse selectedService = (ServicesResponse)Session.getSession().get(Session.SELECTED_SERVICE);
+		final AdditionalServices addionalServices = (AdditionalServices)Session.getSession().get(Session.ADDITIONAL_SERVICES);
+		
+		
+		
+		if(addionalServices.isOnwHands()) {			
+			itens.add(new Resume("Mão própria", "1", "R$ " + selectedService.getValorMaoPropria()));
+		}
+		
+		if(addionalServices.isDeliveryNotice()) {			
+			itens.add(new Resume("Aviso de recebimento", "1", "R$ " + selectedService.getValorAvisoRecebimento()));
+		}
+		
+		
+		if(addionalServices.isValueDeclaration()) {			
+			itens.add(new Resume("Declaração de valor", "1", "R$ " + selectedService.getValorValorDeclarado()));
+		}	
 
-		final String vService = selectedService.getValor();
-		final String vSemServiceAdc = selectedService.getValorSemAdicionais();
-		final String vOwnsHand = selectedService.getValorMaoPropria();
-		final String vDeliveryNotice = selectedService.getValorAvisoRecebimento();
-		final String vValueDeclaration = selectedService.getValorValorDeclarado();
+		itens.add(new Resume(selectedService.getDescricaoServico(), "1", "R$ " + selectedService.getValorSemAdicionais()));		
 
-		itens.add(new Resume(selectedService.getDescricaoServico(), "1", "R$ " + vSemServiceAdc));
-		Session.getSession().get(Session.ADDITIONAL_SERVICES);
-
-
-		itens.add(new Resume("Mão própria", "1", "R$ " + vOwnsHand));
-		itens.add(new Resume("Aviso de recebimento", "1", "R$" + vDeliveryNotice));
-		itens.add(new Resume("Declaração de valor", "1", "R$" + vValueDeclaration));
-
-		final String vTotal = Session.getTotal(vService, vOwnsHand, vDeliveryNotice, vValueDeclaration);
-
-		//selectedService.setValorTotal(valorTotal);
-
+		final String vTotal = Session.getTotal(selectedService.getValor(), selectedService.getValorMaoPropria(), selectedService.getValorAvisoRecebimento(), selectedService.getValorValorDeclarado());
 		itens.add(new Resume("Total","", "R$ " +  vTotal));
 
 		final ObservableList<Resume> tableModel = FXCollections.observableArrayList(itens);

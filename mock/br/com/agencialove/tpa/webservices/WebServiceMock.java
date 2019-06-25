@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
+//
+//import com.squareup.okhttp.MediaType;
+//import com.squareup.okhttp.OkHttpClient;
+//import com.squareup.okhttp.Request;
+//import com.squareup.okhttp.RequestBody;
+//import com.squareup.okhttp.Response;
 
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.Address;
@@ -29,44 +29,44 @@ public class WebServiceMock implements IWebService{
 	public List<Address> getAddressFromZip(final String zipCode) {
 		final List<Address> ret = new ArrayList<>();
 
-		try {
-			final OkHttpClient client = new OkHttpClient();
-			final Request request = new Request.Builder()
-
-					.url("http://wsmobile.correios.com.br/DNECWService/rest/cep/" + zipCode)
-					.get()
-					.build();
-
-			final Response response = client.newCall(request).execute();
-
-			if (response.code() != 200) {
-				//TODO to treat the webservices requestion errors
-				throw new RuntimeException("Failed : HTTP error code : "
-						+ response.code());
-			} else {
-				final String json = response.body().string();
-				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
-
-				if(objectMap == null || !objectMap.containsKey("ceps"))
-					return ret;
-
-				for (final Object obj : (List) objectMap.get("ceps")) {
-					final Map<String, String> m = (Map) obj;
-					final Address address = new Address();
-					address.setZip(m.get("CEP"));
-					address.setState(m.get("UF"));
-					address.setCity(m.get("LOCAL"));
-					address.setStreet(m.get("ENDERECO"));
-					address.setNeighborhood(m.get("BAIRRO"));
-
-					ret.add(address);
-				}
-			}
-
-		} catch (final Exception e) {
-			//TODO to treat the webservices requestion errors
-			e.printStackTrace();
-		}
+//		try {
+//			final OkHttpClient client = new OkHttpClient();
+//			final Request request = new Request.Builder()
+//
+//					.url("http://wsmobile.correios.com.br/DNECWService/rest/cep/" + zipCode)
+//					.get()
+//					.build();
+//
+//			final Response response = client.newCall(request).execute();
+//
+//			if (response.code() != 200) {
+//				//TODO to treat the webservices requestion errors
+//				throw new RuntimeException("Failed : HTTP error code : "
+//						+ response.code());
+//			} else {
+//				final String json = response.body().string();
+//				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
+//
+//				if(objectMap == null || !objectMap.containsKey("ceps"))
+//					return ret;
+//
+//				for (final Object obj : (List) objectMap.get("ceps")) {
+//					final Map<String, String> m = (Map) obj;
+//					final Address address = new Address();
+//					address.setZip(m.get("CEP"));
+//					address.setState(m.get("UF"));
+//					address.setCity(m.get("LOCAL"));
+//					address.setStreet(m.get("ENDERECO"));
+//					address.setNeighborhood(m.get("BAIRRO"));
+//
+//					ret.add(address);
+//				}
+//			}
+//
+//		} catch (final Exception e) {
+//			//TODO to treat the webservices requestion errors
+//			e.printStackTrace();
+//		}
 
 		return ret;
 	}
@@ -75,65 +75,65 @@ public class WebServiceMock implements IWebService{
 	public List<ServicesResponse> getAvailableServices(final ServicesRequest ppr) {
 		final List<ServicesResponse> lstResponse = new ArrayList<>();
 
-		try {
-			final OkHttpClient client = new OkHttpClient();
-
-
-			final String bodyContent = ppr.toString().replace("'", "\"");
-
-
-
-			new ServicesResponse(
-					"04014",
-					"SEDEX",
-					"94,10",
-					"3",
-					"0,00",
-					"0,00",
-					"0,00",
-					"S",
-					"S",
-					"0",
-					"",
-					"",
-					"94,10");
-
-			final MediaType mediaType = MediaType.parse("application/json");
-
-			final RequestBody body = RequestBody.create(mediaType, bodyContent);
-			final Request request = new Request.Builder()
-					.header("Authorization", "Basic YWdlbmNpYWxvdmU6NzUzNjIzMTA3NA==")
-					.url("https://apps.correios.com.br/preatendimento-rs/v1/atendimento/precoPrazoCartao?cartaopostagem=0074290380")
-					.post(body)
-					.build();
-			final Response response = client.newCall(request).execute();
-
-			if (response.code() != 200) {
-				//TODO to treat the webservices requestion errors
-				throw new RuntimeException("Failed : HTTP error code : "
-						+ response.code());
-			} else{
-				final String json = response.body().string();
-
-				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
-
-
-				for (final Object obj : (List) objectMap.get("listaPrecoPrazo")) {
-					final Map<String, String> m = (Map) obj;
-					lstResponse.add(new ServicesResponse(m.get("codigoServico"), m.get("descricaoServico"),
-							m.get("valor"), m.get("prazoEntrega"), m.get("valorMaoPropria"), m.get("valorAvisoRecebimento"),
-							m.get("valorValorDeclarado"), m.get("entregaDomiciliar"), m.get("entregaSabado"), m.get("codigoErro"),
-							m.get("msgErro"), m.get("observacao"), m.get("valorSemAdicionais")));
-
-				}
-				return lstResponse;
-			}
-
-
-		} catch (final IOException e) {
-			//TODO to treat the webservices requestion errors
-			e.printStackTrace();
-		}
+//		try {
+//			final OkHttpClient client = new OkHttpClient();
+//
+//
+//			final String bodyContent = ppr.toString().replace("'", "\"");
+//
+//
+//
+//			new ServicesResponse(
+//					"04014",
+//					"SEDEX",
+//					"94,10",
+//					"3",
+//					"0,00",
+//					"0,00",
+//					"0,00",
+//					"S",
+//					"S",
+//					"0",
+//					"",
+//					"",
+//					"94,10");
+//
+//			final MediaType mediaType = MediaType.parse("application/json");
+//
+//			final RequestBody body = RequestBody.create(mediaType, bodyContent);
+//			final Request request = new Request.Builder()
+//					.header("Authorization", "Basic YXRtMTIzNDU6YXRtMTIzNDU=")
+//					.url("https://apphom.correios.com.br/preatendimento-rs/v1/atendimento/precoPrazoCartao?cartaopostagem=0074290380")
+//					.post(body)
+//					.build();
+//			final Response response = client.newCall(request).execute();
+//
+//			if (response.code() != 200) {
+//				//TODO to treat the webservices requestion errors
+//				throw new RuntimeException("Failed : HTTP error code : "
+//						+ response.code());
+//			} else{
+//				final String json = response.body().string();
+//
+//				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
+//
+//
+//				for (final Object obj : (List) objectMap.get("listaPrecoPrazo")) {
+//					final Map<String, String> m = (Map) obj;
+//					lstResponse.add(new ServicesResponse(m.get("codigoServico"), m.get("descricaoServico"),
+//							m.get("valor"), m.get("prazoEntrega"), m.get("valorMaoPropria"), m.get("valorAvisoRecebimento"),
+//							m.get("valorValorDeclarado"), m.get("entregaDomiciliar"), m.get("entregaSabado"), m.get("codigoErro"),
+//							m.get("msgErro"), m.get("observacao"), m.get("valorSemAdicionais")));
+//
+//				}
+//				return lstResponse;
+//			}
+//
+//
+//		} catch (final IOException e) {
+//			//TODO to treat the webservices requestion errors
+//			e.printStackTrace();
+//		}
 		return lstResponse;
 	}
 
@@ -142,37 +142,37 @@ public class WebServiceMock implements IWebService{
 	@Override
 	public PrePostResponse serviceRegisterResponse(final PrePost prePost) {
 		final PrePostResponse ret = new PrePostResponse();
-		try {
-			final OkHttpClient client = new OkHttpClient();
-
-			final String bodyContent = prePost.toJSON();
-
-			final MediaType mediaType = MediaType.parse("application/json");
-			final RequestBody body = RequestBody.create(mediaType, bodyContent);
-			final Request request = new Request.Builder()
-					.header("Authorization", "Basic YWdlbmNpYWxvdmU6NzUzNjIzMTA3NA==")
-					.url("https://apps.correios.com.br/preatendimento-rs/v1/atendimento/unico?cartaopostagem=0074290380&emiteetiqueta=true")
-					.post(body)
-					.build();
-			final Response response = client.newCall(request).execute();
-
-			if (response.code() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : "
-						+ response.code());
-			} else {
-				final String json = response.body().string();
-				System.out.println(json);
-
-
-				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
-
-				ret.setNumeroPLP((String)objectMap.get("numeroPLP"));
-				ret.setNumeroEtiqueta((String)objectMap.get("numeroEtiqueta"));
-			}
-		} catch (final IOException e) {
-			//TODO to treat the webservices requestion errors
-			e.printStackTrace();
-		}
+//		try {
+//			final OkHttpClient client = new OkHttpClient();
+//
+//			final String bodyContent = prePost.toJSON();
+//			System.out.println("serviceRegisterResponse > "+ bodyContent);
+//			final MediaType mediaType = MediaType.parse("application/json");
+//			final RequestBody body = RequestBody.create(mediaType, bodyContent);
+//			final Request request = new Request.Builder()
+//					.header("Authorization", "Basic YXRtMTIzNDU6YXRtMTIzNDU=")
+//					.url("https://apphom.correios.com.br/preatendimento-rs/v1/atendimento/unico?cartaopostagem=0074290380&emiteetiqueta=true")
+//					.post(body)
+//					.build();
+//			final Response response = client.newCall(request).execute();
+//
+//			if (response.code() != 200) {
+//				throw new RuntimeException("Failed : HTTP error code : "
+//						+ response.code());
+//			} else {
+//				final String json = response.body().string();
+//				System.out.println(json);
+//
+//
+//				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
+//
+//				ret.setNumeroPLP((String)objectMap.get("numeroPLP"));
+//				ret.setNumeroEtiqueta((String)objectMap.get("numeroEtiqueta"));
+//			}
+//		} catch (final IOException e) {
+//			//TODO to treat the webservices requestion errors
+//			e.printStackTrace();
+//		}
 
 		return ret;
 
@@ -256,102 +256,102 @@ public class WebServiceMock implements IWebService{
 	public PrePost prePostGet(final PrePostResponse prePost) {
 		new ArrayList<>();
 		final PrePost ret = new PrePost();
-		try {
-			final OkHttpClient client = new OkHttpClient();
-
-			final String bodyContent = prePost.toJSON();
-
-			final MediaType mediaType = MediaType.parse("application/json");
-			final RequestBody body = RequestBody.create(mediaType, bodyContent);
-			final Request request = new Request.Builder()
-					.header("Authorization", "Basic YWdlbmNpYWxvdmU6NzUzNjIzMTA3NA==")
-					.url("http://apphom.correios.com.br/serviceExterno/rest/atendimentoRest/atendimento/retornoEtiqueta")
-					.post(body)
-					.build();
-			final Response response = client.newCall(request).execute();
-
-			if (response.code() != 200) {
-				System.out.println("\n" + bodyContent);
-				throw new RuntimeException("Failed : HTTP error code : "
-						+ response.code());
-			} else{
-				final String json = response.body().string();
-				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
-
-
-				//Retornar dados do Destinatario
-				for (final Object obj : (List) objectMap.get("objeto_postal")) {
-					final Map<String, String> m = (Map) obj;
-					final List<Object> jsonResponseDestinatario = new ArrayList<>();
-					final List<Object> jsonResponseNacional = new ArrayList<>();
-					final List<Object> jsonResponseServicoAdicional = new ArrayList<>();
-					final List<Object> jsonResponseDimensaoObjeto = new ArrayList<>();
-
-
-					jsonResponseDestinatario.add(m.get("destinatario"));
-
-					for (final Object objResponse : (List) jsonResponseDestinatario) {
-						final Map<Object, String> m2 = (Map) objResponse;
-						ret.setNomeDestinatario(m2.get("nome_destinatario"));
-						ret.setNumeroEndDestinatario(m2.get("numero_end_destinatario"));
-						ret.setLogradouroDestinatario(m2.get("logradouro_destinatario"));
-						ret.setEmailDestinatario(m2.get("email_destinatario"));
-						ret.setTelefoneDestinatario(m2.get("celular_destinatario"));
-					}
-
-					jsonResponseNacional.add(m.get("nacional"));
-					for (final Object objResponse : (List) jsonResponseNacional) {
-						final Map<Object, String> m2 = (Map) objResponse;
-						ret.setCepDestinatario(m2.get("cep_destinatario"));
-					}
-
-					jsonResponseServicoAdicional.add(m.get("servico_adicional"));
-					for (final Object objResponse : (List) jsonResponseServicoAdicional) {
-						final List<Object> jsonResponseCodigo = new ArrayList<>();
-						final Map<Object, String> m2 = (Map) objResponse;
-						jsonResponseCodigo.add(m2.get("codigo_servico_adicional"));
-						for(final Object objResponseCodigo : (List) jsonResponseCodigo) {
-
-
-						}
-
-					}
-
-					jsonResponseDimensaoObjeto.add(m.get("dimensao_objeto"));
-					for (final Object objResponse : (List) jsonResponseDimensaoObjeto) {
-						final Map<Object, String> m2 = (Map) objResponse;
-						ret.setTipoObjeto(m2.get("tipo_objeto"));
-						ret.setDimensaoLargura(m2.get("dimensao_largura"));
-						ret.setDimensaoAltura(m2.get("dimensao_altura"));
-						ret.setDimensaoComprimento(m2.get("dimensao_comprimento"));
-						ret.setDimensaoDiametro(m2.get("dimensao_diametro"));
-					}
-				}
-
-				//Retornar dados do Remetente
-				final List<Object> jsonResponse = new ArrayList<>();
-				jsonResponse.add(objectMap.get("remetente"));
-				for (final Object obj : (List) jsonResponse) {
-					final Map<Object, String> m = (Map) obj;
-
-					ret.setNomeRemetente(m.get("nome_remetente"));
-					ret.setCepRemetente(m.get("cep_remetente"));
-					ret.setNumeroEndRemetente(m.get("numero_remetente"));
-					ret.setLogradouroRemetente(m.get("logradouro_remetente"));
-					ret.setEmailRemetente(m.get("email_remetente"));
-					ret.setCelularRemetente(m.get("telefone_remetente"));
-				}
-
-				//System.out.println("ReturValues: " + ret.returnValues() + "\n");
-				return ret;
-
-				//ret.setNumeroPLP((String)objectMap.get("numeroPLP"));
-				//ret.setNumeroEtiqueta((String)objectMap.get("numeroEtiqueta"));
-			}
-		} catch (final IOException e) {
-			//TODO to treat the webservices requestion errors
-			e.printStackTrace();
-		}
+//		try {
+//			final OkHttpClient client = new OkHttpClient();
+//
+//			final String bodyContent = prePost.toJSON();
+//
+//			final MediaType mediaType = MediaType.parse("application/json");
+//			final RequestBody body = RequestBody.create(mediaType, bodyContent);
+//			final Request request = new Request.Builder()
+//					.header("Authorization", "Basic YXRtMTIzNDU6YXRtMTIzNDU=")
+//					.url("http://apphom.correios.com.br/serviceExterno/rest/atendimentoRest/atendimento/retornoEtiqueta")
+//					.post(body)
+//					.build();
+//			final Response response = client.newCall(request).execute();
+//
+//			if (response.code() != 200) {
+//				System.out.println("\n" + bodyContent);
+//				throw new RuntimeException("Failed : HTTP error code : "
+//						+ response.code());
+//			} else{
+//				final String json = response.body().string();
+//				final Map<String, Object> objectMap = JsonUtils.fromJson(json);
+//
+//
+//				//Retornar dados do Destinatario
+//				for (final Object obj : (List) objectMap.get("objeto_postal")) {
+//					final Map<String, String> m = (Map) obj;
+//					final List<Object> jsonResponseDestinatario = new ArrayList<>();
+//					final List<Object> jsonResponseNacional = new ArrayList<>();
+//					final List<Object> jsonResponseServicoAdicional = new ArrayList<>();
+//					final List<Object> jsonResponseDimensaoObjeto = new ArrayList<>();
+//
+//
+//					jsonResponseDestinatario.add(m.get("destinatario"));
+//
+//					for (final Object objResponse : (List) jsonResponseDestinatario) {
+//						final Map<Object, String> m2 = (Map) objResponse;
+//						ret.setNomeDestinatario(m2.get("nome_destinatario"));
+//						ret.setNumeroEndDestinatario(m2.get("numero_end_destinatario"));
+//						ret.setLogradouroDestinatario(m2.get("logradouro_destinatario"));
+//						ret.setEmailDestinatario(m2.get("email_destinatario"));
+//						ret.setTelefoneDestinatario(m2.get("celular_destinatario"));
+//					}
+//
+//					jsonResponseNacional.add(m.get("nacional"));
+//					for (final Object objResponse : (List) jsonResponseNacional) {
+//						final Map<Object, String> m2 = (Map) objResponse;
+//						ret.setCepDestinatario(m2.get("cep_destinatario"));
+//					}
+//
+//					jsonResponseServicoAdicional.add(m.get("servico_adicional"));
+//					for (final Object objResponse : (List) jsonResponseServicoAdicional) {
+//						final List<Object> jsonResponseCodigo = new ArrayList<>();
+//						final Map<Object, String> m2 = (Map) objResponse;
+//						jsonResponseCodigo.add(m2.get("codigo_servico_adicional"));
+//						for(final Object objResponseCodigo : (List) jsonResponseCodigo) {
+//
+//
+//						}
+//
+//					}
+//
+//					jsonResponseDimensaoObjeto.add(m.get("dimensao_objeto"));
+//					for (final Object objResponse : (List) jsonResponseDimensaoObjeto) {
+//						final Map<Object, String> m2 = (Map) objResponse;
+//						ret.setTipoObjeto(m2.get("tipo_objeto"));
+//						ret.setDimensaoLargura(m2.get("dimensao_largura"));
+//						ret.setDimensaoAltura(m2.get("dimensao_altura"));
+//						ret.setDimensaoComprimento(m2.get("dimensao_comprimento"));
+//						ret.setDimensaoDiametro(m2.get("dimensao_diametro"));
+//					}
+//				}
+//
+//				//Retornar dados do Remetente
+//				final List<Object> jsonResponse = new ArrayList<>();
+//				jsonResponse.add(objectMap.get("remetente"));
+//				for (final Object obj : (List) jsonResponse) {
+//					final Map<Object, String> m = (Map) obj;
+//
+//					ret.setNomeRemetente(m.get("nome_remetente"));
+//					ret.setCepRemetente(m.get("cep_remetente"));
+//					ret.setNumeroEndRemetente(m.get("numero_remetente"));
+//					ret.setLogradouroRemetente(m.get("logradouro_remetente"));
+//					ret.setEmailRemetente(m.get("email_remetente"));
+//					ret.setCelularRemetente(m.get("telefone_remetente"));
+//				}
+//
+//				//System.out.println("ReturValues: " + ret.returnValues() + "\n");
+//				return ret;
+//
+//				//ret.setNumeroPLP((String)objectMap.get("numeroPLP"));
+//				//ret.setNumeroEtiqueta((String)objectMap.get("numeroEtiqueta"));
+//			}
+//		} catch (final IOException e) {
+//			//TODO to treat the webservices requestion errors
+//			e.printStackTrace();
+//		}
 
 		return ret;
 
@@ -436,16 +436,18 @@ public class WebServiceMock implements IWebService{
 		final PrePost req = new PrePost();
 		req.setBairroDestinatario("Vila Harmonia");
 		req.setComplementoDestinatario("Próximo ao balão das roseira");
-		req.setEmailDestinatario("danilopietroheitordossantos..danilopietroheitordossantos@santander.com.br");
+		req.setEmailDestinatario("danilopietroheitordossantos.danilopietroheitordossantos@santander.com.br");
 		req.setNomeDestinatario("Danilo Pietro Heitor dos Santos");
-		req.setNumeroEndDestinatario("2323");
-		req.setCelularDestinatario("(91) 98537-7810");
-		req.setTelefoneDestinatario("(91) 3888-2603");
+		req.setNumeroEndDestinatario("483");
+		req.setCelularDestinatario("");
+		req.setTelefoneDestinatario("");
 		req.setCpf_cnpj_destinatario("339.861.195-82");
-		req.setUfDestinatario("MG");
-		req.setCepDestinatario("66030-050");
+		req.setUfDestinatario("");
+		req.setCepDestinatario("14806005");
 		req.setCidadeDestinatario("Belém");
-		req.setLogradouroDestinatario("Passagem Paulo Roberto\n");
+		req.setLogradouroDestinatario("Passagem Paulo Roberto");
+		//obrigatorio
+		req.setCodigoServicoPostagem(servicesResponse.getCodigoServico());
 
 		if(pSender.getPerson().getType() == ZipType.SENDER) {
 			req.setBairroRemetente(pSender.getNeighborhood());
@@ -467,8 +469,7 @@ public class WebServiceMock implements IWebService{
 		req.setCentroCustoCliente("0069950016");
 		req.setCodigoAdministrativo("17000190");
 		req.setCodigoObjetoCliente("");
-		req.setCodigoServicoAdicional("025");
-		req.setCodigoServicoPostagem("");
+		req.setCodigoServicoAdicional("025");		
 		req.setCodigoUsuarioPostal("");
 		req.setDataPostagemSara("");
 		req.setDescricaoObjeto("");
@@ -494,7 +495,7 @@ public class WebServiceMock implements IWebService{
 		req.setRt2("");
 		req.setSerieNotaFiscal("");
 		req.setStatusProcessamento("0");
-		req.setTipoObjeto("001");
+		req.setTipoObjeto("0");
 		req.setUfDestinatario(pReceiver.getStreet());
 		req.setValorACobrar("000000,00");
 		req.setValorCobrado("");
@@ -507,7 +508,7 @@ public class WebServiceMock implements IWebService{
 		
 		
 		
-		return null;
+		return req;
 	}
 
 	@Override
@@ -521,6 +522,7 @@ public class WebServiceMock implements IWebService{
 		req.setComprimento(pMeasures.getDepth());
 		req.setAltura(pMeasures.getHeight());
 		req.setLargura(pMeasures.getWidth());
+		req.setPeso(pMeasures.getVolume());
 		req.setDiametro(pMeasures.getDiameter());
 		req.setMaoPropria(pServices.isOnwHands() ? "S" : "N"); //$NON-NLS-1$ //$NON-NLS-2$
 		req.setValorDeclarado(pServices.isValueDeclaration() ? pServices.getContentValue() : "0"); //$NON-NLS-1$

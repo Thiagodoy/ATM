@@ -1,8 +1,14 @@
 package br.com.agencialove.tpa.view;
 
 import java.net.URL;
+import java.text.MessageFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
+import br.com.agencia.tpa.rest.request.RemetenteRequest;
+import br.com.agencia.tpa.rest.response.CepResponse;
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.ZipType;
 import br.com.agencialove.tpa.workflow.Session;
@@ -20,7 +26,10 @@ import javafx.scene.input.KeyEvent;
 public class FulfillAddressController implements IController {
 
 	private ZipType type;
-	private Address address;
+	private CepResponse cep;
+
+	private DestinatarioRequest destinatario;
+	private RemetenteRequest remetente;
 
 	@FXML
 	private Label lbTitle;
@@ -36,12 +45,6 @@ public class FulfillAddressController implements IController {
 
 	@FXML
 	private TextField txtComplemento;
-
-	@FXML
-	private ComboBox lblCidade;
-
-	@FXML
-	private ComboBox lblEstado;
 
 	@FXML
 	private TextField txtCEP;
@@ -61,7 +64,7 @@ public class FulfillAddressController implements IController {
 	@FXML
 	private Button btnNext;
 
-	//    Postagem do destinatário Confirmação
+	// Postagem do destinatário Confirmação
 
 	@FXML
 	private Label lbLogradouroConfirmacao;
@@ -93,24 +96,33 @@ public class FulfillAddressController implements IController {
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
 		final Scene scene = Windows.SEARCH_ZIP.getScene();
-		final SearchZipController controller = (SearchZipController)scene.getUserData();
+		final SearchZipController controller = (SearchZipController) scene.getUserData();
 		controller.setType(this.type);
 		Session.setScene(scene);
 	}
 
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
-		this.fulfillAddress();
-		Session.getSession().put(this.type.name() + "_ADDRESS", this.address);
+		
+		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
+		
+		if(this.type.equals(ZipType.RECEIVER)) {
+			DestinatarioRequest destinatarioRequest = this.destinatario();
+			request.getObjetoPostalRequest().get(0).setDestinatario(destinatarioRequest);
+		}else {
+			RemetenteRequest remetenteRequest = this.remetente();
+			request.setRemetenteRequest(remetenteRequest);
+		}		
+		
 		final Scene scene = Windows.CONFIRM_ADDRESS.getScene();
-		final ConfirmAddressController controller = (ConfirmAddressController)scene.getUserData();
+		final ConfirmAddressController controller = (ConfirmAddressController) scene.getUserData();
 		controller.setType(this.type);
 		Session.setScene(scene);
 	}
 
 	@FXML
 	private void mandatoryTextFieldReleased(final KeyEvent e) {
-		if(this.areMandatoriesFilled())
+		if (this.areMandatoriesFilled())
 			this.btnNext.setDisable(false);
 		else
 			this.btnNext.setDisable(true);
@@ -118,29 +130,60 @@ public class FulfillAddressController implements IController {
 
 	private boolean areMandatoriesFilled() {
 		final Validator validator = new Validator();
-		//validator.validateNotEmpty(this.txtLogradouro, true);
-		//validator.validateNotEmpty(this.txtNumero, true);
-		//validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
-		///validator.validateNotEmpty(this.txtCEP, true);
-	//	validator.validateCelullar(this.txtCelular, true);
+		// validator.validateNotEmpty(this.txtLogradouro, true);
+		// validator.validateNotEmpty(this.txtNumero, true);
+		// validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
+		/// validator.validateNotEmpty(this.txtCEP, true);
+		// validator.validateCelullar(this.txtCelular, true);
 
-		if(this.type == ZipType.SENDER)
+		if (this.type == ZipType.SENDER)
 			validator.validateCPF(this.txtCPF, true);
-
 
 		return validator.isEmpty();
 	}
+	
+	private RemetenteRequest remetente() {
 
-	private void fulfillAddress() {
-		this.address.getPerson().setType(this.type);
-		this.address.getPerson().setName(this.txtNome.getText().trim());
-		this.address.getPerson().setCPF_CPNJ(this.txtCPF.getText().trim());
-		this.address.getPerson().setCellPhone(this.txtCelular.getText().trim());
-		//this.address.getPerson().setCellPhone(this.txtCelular.getPlainText().trim());
-		this.address.getPerson().setEmail(this.txtEmail.getText().trim());
-		//this.address.setNumber(this.txtNumero.getPlainText().trim());
-		this.address.setNumber(this.txtNumero.getText().trim());
-		this.address.setComplement(this.txtComplemento.getText().trim());
+		RemetenteRequest remetente = new RemetenteRequest();
+		remetente.setNome(this.txtNome.getText().trim());
+		remetente.setCpf(this.txtCPF.getText().trim());
+
+		String celular = this.txtCelular.getText().trim().replace("[^0-9]", "");
+
+		if (celular.length() > 0)
+			remetente.setCelular(Long.parseLong(celular));
+
+		remetente.setEmail(this.txtEmail.getText().trim());
+		remetente.setNumero(this.txtNumero.getText().trim());
+		remetente.setComplemento(this.txtComplemento.getText().trim());
+		remetente.setCep(this.txtCEP.getText());
+		remetente.setCidade(this.cep.getCidade());
+		String logradouro = MessageFormat.format("{0} {1} {2} ",cep.getRua(), cep.getBairro(), cep.getCidade());
+		remetente.setLogradouro(logradouro);		
+
+		return remetente;
+	}
+
+	private DestinatarioRequest destinatario() {
+
+		DestinatarioRequest destinatarioRequest = new DestinatarioRequest();
+		destinatarioRequest.setNome(this.txtNome.getText().trim());
+		destinatarioRequest.setCpf(this.txtCPF.getText().trim());
+
+		String celular = this.txtCelular.getText().trim().replace("[^0-9]", "");
+
+		if (celular.length() > 0)
+			destinatarioRequest.setCelular(Long.parseLong(celular));
+
+		destinatarioRequest.setEmail(this.txtEmail.getText().trim());
+		destinatarioRequest.setNumero(this.txtNumero.getText().trim());
+		destinatarioRequest.setComplemento(this.txtComplemento.getText().trim());
+		destinatarioRequest.setCep(this.txtCEP.getText());
+		destinatarioRequest.setCidade(this.cep.getCidade());
+		String logradouro = MessageFormat.format("{0} {1} {2} ",cep.getRua(), cep.getBairro(), cep.getCidade());
+		destinatarioRequest.setLogradouro(logradouro);		
+
+		return destinatarioRequest;
 	}
 
 	public void setTitle(final String str) {
@@ -158,58 +201,83 @@ public class FulfillAddressController implements IController {
 
 	public void setType(final ZipType type) {
 		this.type = type;
-		switch(this.type) {
+
+		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
+		String nome = "";
+		String cpf = "";
+		String email = "";
+		String celular = "";
+
+		switch (this.type) {
 		case RECEIVER:
 			this.lbTitle.setText("Complemente os dados do destinatário.");
+			this.destinatario = request.getObjetoPostalRequest().get(0).getDestinatario() != null
+					? request.getObjetoPostalRequest().get(0).getDestinatario()
+					: new DestinatarioRequest();
+
+			nome = destinatario.getNome();
+			cpf = destinatario.getCpf();
+			email = destinatario.getEmail();
+			celular = String.valueOf(destinatario.getCelular());
+
 			break;
 		case SENDER:
 			this.lbTitle.setText("Complemente os dados do remetente.");
+			this.remetente = request.getRemetenteRequest() != null ? request.getRemetenteRequest()
+					: new RemetenteRequest();
+			nome = remetente.getNome();
+			cpf = remetente.getCpf();
+			email = remetente.getEmail();
+			celular = String.valueOf(remetente.getCelular());
 		}
 
-		Address address = (Address) Session.getSession().get(this.type.name() + "_ADDRESS");
-		if(address == null)
-			address = new Address();
-		this.setAddress(address);
-	}
+		CepResponse c = (CepResponse) Session.getSession().get(this.type.name() + "_ADDRESS");
+		this.cep = c;
 
-	public Address getAddress() {
-		return this.address;
-	}
+		c = Optional.ofNullable(c).isPresent() ? c : new CepResponse();
 
-	private void setAddress(final Address pAddress) {
-		this.address = pAddress;
-		this.txtLogradouro.setText(this.get(this.address.getStreet()));;
-		this.txtBairro.setText(this.address.getNeighborhood());
-		this.lblCidade.getItems().add(this.get(this.address.getCity()));
-		this.lblCidade.getSelectionModel().select(0);
-		this.lblEstado.getItems().add(this.get(this.address.getState()));
-		this.lblEstado.getSelectionModel().select(0);
-		this.txtCEP.setText(this.get(this.address.getZip()));
-		this.txtNome.setText(this.get(this.address.getPerson().getName()));
-		this.txtCPF.setText(this.get(this.address.getPerson().getCPF_CPNJ()));;
-		this.txtCelular.setText(this.get(this.address.getPerson().getCellPhone()));;
-		this.txtEmail.setText(this.get(this.address.getPerson().getEmail()));
-
+		this.txtLogradouro.setText(c.getRua());
 		this.txtLogradouro.setDisable(("".equals(this.txtLogradouro.getText().trim())) ? false : true);
 		this.txtBairro.setDisable(("".equals(this.txtBairro.getText().trim())) ? false : true);
-	}
 
-	private String get(final String str) {
-		return (str == null) ? "" : str;
-	}
+		this.txtBairro.setText(c.getBairro());
+		this.txtCEP.setText(c.getCep());
 
+		this.txtNome.setText(nome);
+		this.txtCPF.setText(cpf);
+		this.txtCelular.setText(celular);
+		this.txtEmail.setText(email);
+
+	}
+	
 	@Override
 	public void clear() {
-		if(this.txtLogradouro != null) this.txtLogradouro.setText("");
-		//if(this.txtNumero != null) {this.txtNumero.setText(""); this.txtNumero.setPlainText(""); this.txtNumero.clear(); this.txtNumero.requestFocus();};
-		if(this.txtComplemento != null) this.txtComplemento.setText("");
-		if(this.lblCidade != null) this.lblCidade.getItems().clear();
-		if(this.lblEstado != null) this.lblEstado.getItems().clear();
-		if(this.txtCEP != null) this.txtCEP.setText("");
-		if(this.txtNome != null) this.txtNome.setText("");
-		if(this.txtCPF != null) this.txtCPF.setText("");
-		//if(this.txtCelular != null) {this.txtCelular.setText(""); this.txtCelular.setPlainText(""); this.txtCelular.clear();};
-		if(this.txtEmail != null) this.txtEmail.setText("");
-		if(this.btnNext != null) this.btnNext.setDisable(true);
+
+		if (Optional.ofNullable(this.remetente).isPresent())
+			this.remetente = null;
+		if (Optional.ofNullable(this.destinatario).isPresent())
+			this.destinatario = null;
+
+		if (this.txtLogradouro != null)
+			this.txtLogradouro.setText("");
+		// if(this.txtNumero != null) {this.txtNumero.setText("");
+		// this.txtNumero.setPlainText(""); this.txtNumero.clear();
+		// this.txtNumero.requestFocus();};
+		if (this.txtComplemento != null)
+			this.txtComplemento.setText("");
+		// if(this.lblCidade != null) this.lblCidade.getItems().clear();
+		// if(this.lblEstado != null) this.lblEstado.getItems().clear();
+		if (this.txtCEP != null)
+			this.txtCEP.setText("");
+		if (this.txtNome != null)
+			this.txtNome.setText("");
+		if (this.txtCPF != null)
+			this.txtCPF.setText("");
+		// if(this.txtCelular != null) {this.txtCelular.setText("");
+		// this.txtCelular.setPlainText(""); this.txtCelular.clear();};
+		if (this.txtEmail != null)
+			this.txtEmail.setText("");
+		if (this.btnNext != null)
+			this.btnNext.setDisable(true);
 	}
 }

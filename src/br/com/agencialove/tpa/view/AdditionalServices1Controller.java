@@ -17,10 +17,10 @@ import javafx.scene.layout.Pane;
 public class AdditionalServices1Controller implements IController {
 
 	
-	private boolean chkNone;	
-	private boolean chkOwnHand;	
-	private boolean chkNotice;
-	private boolean chkValueDeclaration;
+	private boolean chkNone = false;	
+	private boolean chkOwnHand = false;	
+	private boolean chkNotice = false;
+	private boolean chkValueDeclaration = false;
 
 	@FXML
 	private Button btnBack;
@@ -107,24 +107,52 @@ public class AdditionalServices1Controller implements IController {
 			this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
 			this.panelSemServicoAdicional.getStyleClass().add("box-add-borda");			
 		});
-		this.panelMaoPropria.setOnMouseClicked((event)->{				
-			this.chkOwnHand = true;		
+		this.panelMaoPropria.setOnMouseClicked((event)->{		
+			
+			boolean has = this.panelMaoPropria.getStyleClass().contains("box-add-borda");		
+			
+			this.chkOwnHand = has;		
 			this.chkNone = false;
-			this.panelMaoPropria.getStyleClass().add("box-add-borda");
+			
+			if(has) {
+				this.panelMaoPropria.getStyleClass().remove("box-add-borda");
+			}else {
+				this.panelMaoPropria.getStyleClass().add("box-add-borda");
+			}		
+			
 			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");		
 					
 		});
-		this.panelAvisoRecebimento.setOnMouseClicked((event)->{				
-			this.chkNotice = true;
+		this.panelAvisoRecebimento.setOnMouseClicked((event)->{
+			
+			boolean has = this.panelAvisoRecebimento.getStyleClass().contains("box-add-borda");
+			
+			this.chkNotice = has;
 			this.chkNone = false;
-			this.panelAvisoRecebimento.getStyleClass().add("box-add-borda");
+			
+			
+			if(has) {
+				this.panelAvisoRecebimento.getStyleClass().remove("box-add-borda");
+			}else {
+				this.panelAvisoRecebimento.getStyleClass().add("box-add-borda");
+			}
+			
 			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
 					
 		});
 		this.panelDeclaracaoValor.setOnMouseClicked((event)->{
-			this.chkValueDeclaration = true;
+			boolean has = this.panelDeclaracaoValor.getStyleClass().contains("box-add-borda");
+			this.chkValueDeclaration = has;
 			this.chkNone = false;
-			this.panelDeclaracaoValor.getStyleClass().add("box-add-borda");	
+			
+			if(has) {
+				this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
+			}else {
+				this.panelDeclaracaoValor.getStyleClass().add("box-add-borda");
+			}
+			
+			
+			this.panelDeclaracaoValor.getStyleClass().add(has ? "": "box-add-borda");	
 			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
 		});
 		

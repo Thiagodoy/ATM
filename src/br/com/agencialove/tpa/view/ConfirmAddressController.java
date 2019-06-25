@@ -1,8 +1,13 @@
 package br.com.agencialove.tpa.view;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
+import br.com.agencia.tpa.rest.request.RemetenteRequest;
+import br.com.agencia.tpa.rest.response.CepResponse;
 import br.com.agencialove.tpa.Messages;
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.ZipType;
@@ -16,6 +21,11 @@ public class ConfirmAddressController implements IController {
 
 	private ZipType type;
 	private Address address;
+	
+	
+	private DestinatarioRequest destinatario;
+	private RemetenteRequest remetente;
+	
 
 	@FXML
 	private Label lbTitle;
@@ -101,46 +111,83 @@ public class ConfirmAddressController implements IController {
 
 	public void setType(final ZipType type) {
 		this.type = type;
-		switch(this.type) {
+		
+		
+		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
+		String lbLogradouroConfirmacao = "";
+		String lbNumeroConfirmacao = "";
+		String lbBairro = "";
+		String lbComplementoConfirmacao = "";
+		String lbEstadoConfirmacao = "";
+		String lbCEPConfirmacao = "";
+		String lbCidadeConfirmacao = "";
+		String lbNomeDestinatarioConfirmacao = "";
+		String lbCPFDestinatario = "";
+		String lbCelularDestinatarioConfirmacao = "";
+		String lbEmailConfirmacao = "";
+		CepResponse cep = (CepResponse) Session.getSession().get(this.type.name() + "_ADDRESS");
+		cep = Optional.ofNullable(cep).isPresent() ? cep : new CepResponse();
+		switch (this.type) {
 		case RECEIVER:
-			this.lbTitle.setText(Messages.getString("ConfirmAddressController.0")); //$NON-NLS-1$
+			this.lbTitle.setText("Complemente os dados do destinatário.");
+			this.destinatario = request.getObjetoPostalRequest().get(0).getDestinatario() != null
+					? request.getObjetoPostalRequest().get(0).getDestinatario()
+					: new DestinatarioRequest();
+
+					 lbLogradouroConfirmacao = this.destinatario.getLogradouro();
+					 lbNumeroConfirmacao = this.destinatario.getNumero();
+					 lbBairro = cep.getBairro();
+					 lbComplementoConfirmacao = this.destinatario.getComplemento();
+					 lbEstadoConfirmacao = cep.getEstado();
+					 lbCEPConfirmacao = this.destinatario.getCep();
+					 lbCidadeConfirmacao = this.destinatario.getCidade();
+					 lbNomeDestinatarioConfirmacao = this.destinatario.getNome();
+					 lbCPFDestinatario = this.destinatario.getCpf();
+					 lbCelularDestinatarioConfirmacao = this.destinatario.getCelular() == 0 ? "" : String.valueOf(this.destinatario.getCelular()) ;
+					 lbEmailConfirmacao = this.destinatario.getEmail();
+
 			break;
 		case SENDER:
-			this.lbTitle.setText(Messages.getString("ConfirmAddressController.1")); //$NON-NLS-1$
+			this.lbTitle.setText("Complemente os dados do remetente.");
+			this.remetente = request.getRemetenteRequest() != null ? request.getRemetenteRequest()
+					: new RemetenteRequest();
+			
+			lbLogradouroConfirmacao = this.remetente.getLogradouro();
+			 lbNumeroConfirmacao = this.remetente.getNumero();
+			 lbBairro = cep.getBairro();
+			 lbComplementoConfirmacao = this.remetente.getComplemento();
+			 lbEstadoConfirmacao = cep.getEstado();
+			 lbCEPConfirmacao = this.remetente.getCep();
+			 lbCidadeConfirmacao = this.remetente.getCidade();
+			 lbNomeDestinatarioConfirmacao = this.remetente.getNome();
+			 lbCPFDestinatario = this.remetente.getCpf();
+			 lbCelularDestinatarioConfirmacao = this.remetente.getCelular() == 0 ? "" : String.valueOf(this.remetente.getCelular()) ;
+			 lbEmailConfirmacao = this.remetente.getEmail();
+
 		}
-
-		Address address = (Address) Session.getSession().get(this.type.name() + "_ADDRESS");
-		if(address == null)
-			address = new Address();
-		this.setAddress(address);
-	}
-
-	public Address getAddress() {
-		return this.address;
-	}
-
-	private void setAddress(final Address pAddress) {
-		this.address = pAddress;
-
-		this.lbLogradouroConfirmacao.setText(this.get(this.address.getStreet()));
-		this.lbNumeroConfirmacao.setText(this.get(this.address.getNumber()));
-		this.lbBairro.setText(this.get(this.address.getNeighborhood()));
-		this.lbComplementoConfirmacao.setText(this.get(this.address.getComplement()));
-		this.lbEstadoConfirmacao.setText(this.get(this.address.getState()));
-		this.lbCEPConfirmacao.setText(this.get(this.address.getZip()));
-		this.lbCidadeConfirmacao.setText(this.get(this.address.getCity()));
-		this.lbNomeDestinatarioConfirmacao.setText(this.get(this.address.getPerson().getName()));
-		this.lbCPFDestinatario.setText(this.get(this.address.getPerson().getCPF_CPNJ()));
-		this.lbCelularDestinatarioConfirmacao.setText(this.get(this.address.getPerson().getCellPhone()));
-		this.lbEmailConfirmacao.setText(this.get(this.address.getPerson().getEmail()));
-	}
-
-	private String get(final String str) {
-		return (str == null) ? "" : str; //$NON-NLS-1$
+		
+		this.lbLogradouroConfirmacao.setText(lbLogradouroConfirmacao);
+		this.lbNumeroConfirmacao.setText(lbNumeroConfirmacao);
+		this.lbBairro.setText(lbBairro);
+		this.lbComplementoConfirmacao.setText(lbComplementoConfirmacao);
+		this.lbEstadoConfirmacao.setText(lbEstadoConfirmacao);
+		this.lbCEPConfirmacao.setText(lbCEPConfirmacao);
+		this.lbCidadeConfirmacao.setText(lbCidadeConfirmacao);
+		this.lbNomeDestinatarioConfirmacao.setText(lbNomeDestinatarioConfirmacao);
+		this.lbCPFDestinatario.setText(lbCPFDestinatario);
+		this.lbCelularDestinatarioConfirmacao.setText(lbCelularDestinatarioConfirmacao);
+		this.lbEmailConfirmacao.setText(lbEmailConfirmacao);
+	
 	}
 
 	@Override
 	public void clear() {
+		
+		if (Optional.ofNullable(this.remetente).isPresent())
+			this.remetente = null;
+		if (Optional.ofNullable(this.destinatario).isPresent())
+			this.destinatario = null;
+		
 		if(this.lbLogradouroConfirmacao != null) this.lbLogradouroConfirmacao.setText("");
 		if(this.lbNumeroConfirmacao != null) this.lbNumeroConfirmacao.setText(""); //$NON-NLS-1$
 		if(this.lbBairro != null) this.lbBairro.setText(""); //$NON-NLS-1$

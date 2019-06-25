@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 
 import javax.print.PrintException;
 
+import br.com.agencia.rest.CorreiosImpl;
+import br.com.agencia.rest.CorreiosPreAtendimentoApi;
+import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencialove.tpa.hardware.HardwareServiceImpl;
 import br.com.agencialove.tpa.hardware.HardwareServiceMock;
 import br.com.agencialove.tpa.hardware.IHardwareCallback;
@@ -57,6 +60,10 @@ public class Session{
 	public static final String PRE_POST = "PRE_POST"; //$NON-NLS-1$
 	public static final String ID_PLP = "ID_PLP"; //$NON-NLS-1$
 	public static final String RELATORIO = "RELATORIO";
+	
+	
+	public static final String PRE_POSTAGEM = "PRE_POSTAGEM";
+	
 
 	public static final int MAX_BARCODE_ATTEMPS = 10;
 	private static final long ERROR_SCREEN_DELAY = 10000;
@@ -69,6 +76,10 @@ public class Session{
 	private static IWebService webService;
 	private static IDBService dbService;	
 	private static IPrinterThermal printerThermalService;
+	
+	
+	private static CorreiosImpl correiosWebService;
+	private static CorreiosPreAtendimentoImpl correiosPreAtendimentoWebService;
 
 	private static Stage primaryStage;
 	private static Map<String,Object> SESSION = new HashMap<>();
@@ -231,6 +242,22 @@ public class Session{
 		Session.dbService = Session.getDBService();
 	}
 
+	public static CorreiosImpl getCorreiosWebService() {
+		if(Session.correiosWebService == null)
+			Session.correiosWebService = new CorreiosImpl();
+
+		return Session.correiosWebService;
+	}
+	
+	public static  CorreiosPreAtendimentoImpl getCorreiosPreAtentimentoWebService() {
+		if(Session.correiosPreAtendimentoWebService == null)
+			Session.correiosPreAtendimentoWebService = new CorreiosPreAtendimentoImpl();
+
+		return Session.correiosPreAtendimentoWebService;
+	}
+	
+	
+	
 	public static IWebService getWebService() {
 		if(Session.webService == null)
 			Session.webService = new WebServiceImpl();
