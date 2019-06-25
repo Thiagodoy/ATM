@@ -77,7 +77,7 @@ public class PaymentNewController implements IController {
 	private StackPane stake;	
 	
 	@FXML
-	private ProgressBar progressBar;
+	private  ProgressBar progressBar;
 	
 	private Scene nextScene;
 	private Address sender;
@@ -142,6 +142,7 @@ public class PaymentNewController implements IController {
 	@Override
 	public void clear() {		
 		this.changeStage(StageStatus.PAYMENT);
+		this.progressBar.setProgress(0.0);
 	}
 	
 	private void cancelar(final ActionEvent e) {
@@ -241,11 +242,10 @@ public class PaymentNewController implements IController {
 		this.receiver = (Address) Session.getSession().get(Session.RECEIVER_ADDRESS);
 		this.services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
 		this.measures = (PackageMeasures) Session.getSession().get(Session.MEASURES);
-
 		final ServicesResponse selectedService = (ServicesResponse) Session.getSession().get(Session.SELECTED_SERVICE);		
-
-		this.changeStage(StageStatus.LOADING);
-		this.progressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+		this.selectedService = selectedService;
+		
+		this.changeStage(StageStatus.LOADING);		
 		
 		this.startPaymentProcess(selectedService.getValor(), selectedService.getCodigoServico(),
 			selectedService.getDescricaoServico(), stage);		
@@ -261,25 +261,29 @@ public class PaymentNewController implements IController {
 			this.panelProsseguir.setVisible(false);
 			this.panelSucesso.setVisible(false);
 			this.panelErro.setVisible(false);
-			this.panelLoading.setVisible(true);			
+			this.panelLoading.setVisible(true);	
+			this.progressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
 			break;
 		case ERROR:			
 			this.panelProsseguir.setVisible(false);
 			this.panelSucesso.setVisible(false);
 			this.panelErro.setVisible(true);
 			this.panelLoading.setVisible(false);
+			
 			break;
 		case PAYMENT:
 			this.panelProsseguir.setVisible(true);
 			this.panelSucesso.setVisible(false);
 			this.panelErro.setVisible(false);
 			this.panelLoading.setVisible(false);
+			
 			break;
 		case SUCCESS:
 			this.panelProsseguir.setVisible(false);
 			this.panelSucesso.setVisible(true);
 			this.panelErro.setVisible(false);
 			this.panelLoading.setVisible(false);
+			
 			break;
 		}
 		
@@ -342,7 +346,14 @@ public class PaymentNewController implements IController {
 					PaymentNewController.this.measures,
 					PaymentNewController.this.selectedService);
 			
-			final PrePostResponse resp = webService.serviceRegisterResponse(req);
+			 PrePostResponse resp = null;
+			try {
+				 resp = webService.serviceRegisterResponse(req);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			//final PrePostResponse resp = webService.serviceRegisterResponse(req);
 
 			final String plp = resp.getNumeroPLP();
 			final String nEtq = resp.getNumeroEtiqueta();
@@ -397,8 +408,9 @@ public class PaymentNewController implements IController {
 		
 
 		Platform.runLater(() -> {
-			Session.setScene(this.nextScene);
 			this.changeStage(StageStatus.PAYMENT);
+			Session.setScene(this.nextScene);
+			
 		});
 
 		

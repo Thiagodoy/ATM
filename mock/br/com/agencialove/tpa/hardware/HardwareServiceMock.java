@@ -98,6 +98,7 @@ public class HardwareServiceMock implements IHardwareService {
 		ret.setWidth("13.5");
 		ret.setDepth("18");
 		ret.setDiameter("0");
+		ret.setVolume("1.5");
 		return ret;
 	}
 	@Override

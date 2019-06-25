@@ -104,6 +104,9 @@ public class MeasuresController implements IController {
 
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
+		
+		
+		
 		final Address sender = (Address) Session.getSession().get(Session.SENDER_ADDRESS);
 		final Address receiver = (Address) Session.getSession().get(Session.RECEIVER_ADDRESS);
 		final AdditionalServices services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
