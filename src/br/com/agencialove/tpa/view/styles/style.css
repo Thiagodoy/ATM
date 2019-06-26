@@ -215,9 +215,6 @@
     -fx-alignment: center;
 }
 
-.table-row-cell:focused {
-   
-}
 
 .table-row-cell:filled:focused:selected {
     -fx-background-color: #FFD700;
