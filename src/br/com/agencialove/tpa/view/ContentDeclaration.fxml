@@ -17,22 +17,15 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="bg-white" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.ContentDeclarationController">
    <children>
-      <Pane layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
+      <Pane layoutX="1.0" layoutY="136.0" prefHeight="403.0" prefWidth="1024.0" styleClass="sub-header-page">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="56.0" prefHeight="47.0" prefWidth="550.0" styleClass="txt-label-service-teste" text="Postagem Nacional" />
-         </children>
-      </Pane>
-      <Pane layoutY="112.0" prefHeight="8.0" prefWidth="1024.0" styleClass="linha" />
-      <Pane layoutX="1.0" layoutY="120.0" prefHeight="441.0" prefWidth="1024.0" styleClass="sub-header-page">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="212.0" layoutY="8.0" prefHeight="45.0" prefWidth="601.0" style="-fx-font-size: 38px; -fx-text-fill: #666; -fx-font-family: &quot;Trebuchet MS&quot;;" text="Declaraçao de Conteúdo" />
-            <ScrollPane layoutX="56.0" layoutY="60.0" prefHeight="338.0" prefWidth="913.0" style="-fx-background-color: #fff;" styleClass="bg-white">
+            <ScrollPane layoutX="56.0" layoutY="60.0" prefHeight="328.0" prefWidth="913.0" style="-fx-background-color: #fff;" styleClass="bg-white">
                <content>
                <VBox>
                   <children>
-                  	  <HBox alignment="top_left" spacing="10" styleClass="bg-white" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                  	  <HBox alignment="top_left" prefHeight="81.0" prefWidth="911.0" spacing="10" styleClass="bg-white" GridPane.columnIndex="0" GridPane.rowIndex="2">
                      <children>
-      			          <TextField fx:id="txtId" visible="false" disable="true" maxHeight="50.0" maxWidth="90.0" minHeight="50.0" minWidth="25.0" onKeyReleased="#validateFields" prefHeight="50.0" prefWidth="90.0" promptText="Item" styleClass="input-default">
+      			          <TextField fx:id="txtId" disable="true" maxHeight="50.0" maxWidth="90.0" minHeight="50.0" minWidth="25.0" onKeyReleased="#validateFields" prefHeight="50.0" prefWidth="90.0" promptText="Item" styleClass="input-default" visible="false">
                                  <HBox.margin>
                                     <Insets left="5.0" top="5.0" />
                                  </HBox.margin></TextField>
@@ -48,13 +41,13 @@
                                  <HBox.margin>
                                     <Insets top="5.0" />
                                  </HBox.margin></TextField>
-      			          <Button fx:id="btnAdd" minHeight="50.0" minWidth="50.0" onAction="#btnAddAction" styleClass="bt-mais" text="+">
+      			          <Button fx:id="btnAdd" minHeight="50.0" minWidth="50.0" onAction="#btnAddAction" style="-fx-font-size: 24;" styleClass="bt-mais" text="+">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin></Button>
                      </children>
    			     </HBox>
-                     <TableView fx:id="tableView" layoutX="13.0" layoutY="354.0" prefHeight="276.0" prefWidth="911.0" style="-fx-font-size: 22;" styleClass="bg-white">
+                     <TableView fx:id="tableView" layoutX="13.0" layoutY="354.0" prefHeight="243.0" prefWidth="911.0" style="-fx-font-size: 22;">
            				<columnResizePolicy>
    			            	<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
            				</columnResizePolicy>
@@ -100,13 +93,16 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="295.0" layoutY="673.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
-      <Button fx:id="btnBack" layoutX="49.0" layoutY="567.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
+      <Button layoutX="295.0" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
+      <Button fx:id="btnBack" layoutX="49.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
       <Pane layoutX="64.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
       <Pane layoutX="934.0" layoutY="592.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="212.0" layoutY="120.0" prefHeight="30.0" prefWidth="601.0" style="-fx-font-size: 35;" styleClass="label-default" text="Declaraçao de Conteúdo" />
+      <Pane layoutX="-1.0" prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
+      <Pane layoutX="763.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
    </children>
 </AnchorPane>
