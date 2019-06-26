@@ -34,7 +34,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="224.0" layoutY="120.0" prefHeight="42.0" prefWidth="576.0" style="-fx-font-size: 35;" styleClass="label-default" text="Selecione o serviço de postagem">
+			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="224.0" layoutY="120.0" prefHeight="42.0" prefWidth="576.0" style="-fx-font-size: 35px;" styleClass="label-default" text="Selecione o serviço de postagem">
 
 					</Label>
       <Pane prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
