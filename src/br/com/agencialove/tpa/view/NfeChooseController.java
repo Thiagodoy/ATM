@@ -32,6 +32,7 @@ public class NfeChooseController implements IController {
 		final Scene scene = Windows.CONTENT_DECLARATION.getScene();
 		final ContentDeclarationController controller = (ContentDeclarationController) scene.getUserData();
 		controller.clear();
+		controller.setBackScene(Windows.NFE_CHOOSE.getScene());
 		Session.setScene(scene);
 	}
 

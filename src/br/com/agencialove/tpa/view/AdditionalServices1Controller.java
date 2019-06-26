@@ -62,7 +62,7 @@ public class AdditionalServices1Controller implements IController {
 			scene = Windows.CONTENT_DECLARATION.getScene();
 			final ContentDeclarationController controller = (ContentDeclarationController) scene.getUserData();
 			controller.clear();
-			//controller.loadValues();
+			controller.setBackScene(Windows.ADDITIONAL_SERVICES1.getScene());
 		}else {
 			scene = Windows.MEASURES.getScene();
 			final MeasuresController controller = (MeasuresController)scene.getUserData();

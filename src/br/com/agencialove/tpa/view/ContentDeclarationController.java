@@ -172,6 +172,10 @@ public class ContentDeclarationController implements IController {
 		count = 0;
 		this.btnNext.setDisable(true);
 	}
+	
+	public void setBackScene(Scene scene) {
+		this.backScene = scene;
+	}
 
 	public class Item {
 		public Item(final String pId, final String pDescription, final String pQuantity, final String pValue,
