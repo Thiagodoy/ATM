@@ -1,8 +1,6 @@
 package br.com.agencialove.tpa.view;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import br.com.agencialove.tpa.model.AdditionalServices;
@@ -17,6 +15,7 @@ import javafx.scene.layout.Pane;
 public class AdditionalServices1Controller implements IController {
 
 	
+	@SuppressWarnings("unused")
 	private boolean chkNone = false;	
 	private boolean chkOwnHand = false;	
 	private boolean chkNotice = false;
@@ -39,10 +38,7 @@ public class AdditionalServices1Controller implements IController {
 	private Pane panelAvisoRecebimento;
 	
 	@FXML
-	private Pane panelDeclaracaoValor;
-	
-	private List<Pane>options = new ArrayList<Pane>();
-	
+	private Pane panelDeclaracaoValor;	
 	
 
 	@FXML
@@ -63,10 +59,10 @@ public class AdditionalServices1Controller implements IController {
 
 		Scene scene = null;
 		if(services.isValueDeclaration()) {
-			scene = Windows.ADDITIONAL_SERVICES2.getScene();
-			final AdditionalServices2Controller controller = (AdditionalServices2Controller) scene.getUserData();
+			scene = Windows.CONTENT_DECLARATION.getScene();
+			final ContentDeclarationController controller = (ContentDeclarationController) scene.getUserData();
 			controller.clear();
-			controller.loadValues();
+			//controller.loadValues();
 		}else {
 			scene = Windows.MEASURES.getScene();
 			final MeasuresController controller = (MeasuresController)scene.getUserData();
@@ -78,19 +74,6 @@ public class AdditionalServices1Controller implements IController {
 
 	@FXML
 	public void chkNoneAction() {
-//		if(this.chkNone.isSelected()) {
-//			this.chkOwnHand.setSelected(false);
-//			this.chkOwnHand.setDisable(true);
-//			this.chkNotice.setSelected(false);
-//			this.chkNotice.setDisable(true);
-//			this.chkValueDeclaration.setSelected(false);
-//			this.chkValueDeclaration.setDisable(true);
-//		}else {
-//			this.chkOwnHand.setDisable(false);
-//			this.chkNotice.setDisable(false);
-//			this.chkValueDeclaration.setDisable(false);
-//		}
-
 	}
 
 	@Override
@@ -109,15 +92,17 @@ public class AdditionalServices1Controller implements IController {
 		});
 		this.panelMaoPropria.setOnMouseClicked((event)->{		
 			
-			boolean has = this.panelMaoPropria.getStyleClass().contains("box-add-borda");		
 			
-			this.chkOwnHand = has;		
+			
+			boolean has = this.panelMaoPropria.getStyleClass().contains("box-add-borda");			
+			this.chkOwnHand = !has;
 			this.chkNone = false;
 			
 			if(has) {
 				this.panelMaoPropria.getStyleClass().remove("box-add-borda");
 			}else {
 				this.panelMaoPropria.getStyleClass().add("box-add-borda");
+				
 			}		
 			
 			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");		
@@ -127,7 +112,7 @@ public class AdditionalServices1Controller implements IController {
 			
 			boolean has = this.panelAvisoRecebimento.getStyleClass().contains("box-add-borda");
 			
-			this.chkNotice = has;
+			this.chkNotice = !has;
 			this.chkNone = false;
 			
 			
@@ -142,17 +127,15 @@ public class AdditionalServices1Controller implements IController {
 		});
 		this.panelDeclaracaoValor.setOnMouseClicked((event)->{
 			boolean has = this.panelDeclaracaoValor.getStyleClass().contains("box-add-borda");
-			this.chkValueDeclaration = has;
+			this.chkValueDeclaration = !has;
 			this.chkNone = false;
 			
 			if(has) {
 				this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
 			}else {
 				this.panelDeclaracaoValor.getStyleClass().add("box-add-borda");
-			}
-			
-			
-			this.panelDeclaracaoValor.getStyleClass().add(has ? "": "box-add-borda");	
+			}		
+		
 			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
 		});
 		

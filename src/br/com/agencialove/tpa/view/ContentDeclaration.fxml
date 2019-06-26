@@ -32,7 +32,7 @@
                   <children>
                   	  <HBox alignment="top_left" spacing="10" styleClass="bg-white" GridPane.columnIndex="0" GridPane.rowIndex="2">
                      <children>
-      			          <TextField fx:id="txtId" disable="true" maxHeight="50.0" maxWidth="90.0" minHeight="50.0" minWidth="25.0" onKeyReleased="#validateFields" prefHeight="50.0" prefWidth="90.0" promptText="Item" styleClass="input-default">
+      			          <TextField fx:id="txtId" visible="false" disable="true" maxHeight="50.0" maxWidth="90.0" minHeight="50.0" minWidth="25.0" onKeyReleased="#validateFields" prefHeight="50.0" prefWidth="90.0" promptText="Item" styleClass="input-default">
                                  <HBox.margin>
                                     <Insets left="5.0" top="5.0" />
                                  </HBox.margin></TextField>

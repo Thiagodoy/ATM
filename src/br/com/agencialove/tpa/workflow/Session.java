@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javax.print.PrintException;
 
 import br.com.agencia.rest.CorreiosImpl;
-import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencialove.tpa.hardware.HardwareServiceImpl;
 import br.com.agencialove.tpa.hardware.HardwareServiceMock;
@@ -63,6 +62,7 @@ public class Session{
 	
 	
 	public static final String PRE_POSTAGEM = "PRE_POSTAGEM";
+	public static final String CONTEUDO_DECLARADO = "CONTEUDO_DECLARADO";
 	
 
 	public static final int MAX_BARCODE_ATTEMPS = 10;

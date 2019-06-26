@@ -29,7 +29,7 @@ public class CorreiosPreAtendimentoImpl {
 		
 		Retrofit retrofit2 = new Retrofit.Builder()
 						  
-			    .baseUrl("http://wsmobile.correios.com.br/DNECWService/rest/")
+			    .baseUrl("https://apphom.correios.com.br/preatendimento-rs/v1/atendimento/")
 			    .addConverterFactory(JacksonConverterFactory.create())	
 			    .client(client)
 			    .build();

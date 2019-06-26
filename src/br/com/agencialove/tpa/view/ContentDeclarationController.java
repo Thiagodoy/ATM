@@ -1,8 +1,11 @@
 package br.com.agencialove.tpa.view;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.request.DeclaracaoConteudoRequest;
+import br.com.agencia.tpa.rest.request.ItemDeclaracaoConteudoRequest;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.Validator;
 import javafx.collections.ObservableList;
@@ -13,8 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javassist.compiler.ast.CondExpr;
 
 public class ContentDeclarationController implements IController {
+
+	private static long count = 0;
 
 	@FXML
 	private Button btnBack;
@@ -37,16 +43,47 @@ public class ContentDeclarationController implements IController {
 	@FXML
 	private TextField txtValue;
 
+	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView tableView;
 
+	private Scene backScene;
+
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
-		final Scene scene = Windows.CHECKOUT.getScene();
-		final CheckoutController controller = (CheckoutController) scene.getUserData();
-		controller.clear();
-		controller.loadInfo();
-		Session.setScene(scene);
+		
+		
+		
+		DeclaracaoConteudoRequest conteudoRequest = new DeclaracaoConteudoRequest();
+		double total = 0.0;
+		final BigDecimal t = new BigDecimal(total);
+		
+		@SuppressWarnings("unchecked")
+		ObservableList<Item> items = this.tableView.getItems();
+		items.forEach(i->{			
+			t.add(BigDecimal.valueOf(Double.parseDouble(i.getValue())));
+			ItemDeclaracaoConteudoRequest item = new ItemDeclaracaoConteudoRequest(i.getId(), i.getDescription(), i.getQuantity(), i.getValue());
+			conteudoRequest.getItens().add(item);
+		});
+		
+		conteudoRequest.setTotal(t.doubleValue());		
+		Session.getSession().put(Session.CONTEUDO_DECLARADO, conteudoRequest);
+		
+
+		if (this.backScene.equals(Windows.ADDITIONAL_SERVICES1.getScene())) {
+			Scene scene = Windows.MEASURES.getScene();
+			final MeasuresController controller = (MeasuresController) scene.getUserData();
+			controller.setPreviousScene(Windows.ADDITIONAL_SERVICES1.getScene());
+			controller.clear();
+			Session.setScene(scene);
+		} else {
+
+			final Scene scene = Windows.CHECKOUT.getScene();
+			final CheckoutController controller = (CheckoutController) scene.getUserData();
+			controller.clear();
+			controller.loadInfo();
+			Session.setScene(scene);
+		}
 	}
 
 	@FXML
@@ -55,44 +92,54 @@ public class ContentDeclarationController implements IController {
 		Session.setScene(scene);
 	}
 
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void btnAddAction(final ActionEvent e) {
 		final Validator validator = new Validator();
 
-		validator.validateIntegerNotEmpty(this.txtId, true);
+		// validator.validateIntegerNotEmpty(this.txtId, true);
 		validator.validateStringNotEmpty(this.txtDescription, true, 3, 100);
 		validator.validateIntegerNotEmpty(this.txtQuantity, true);
 		validator.validatePriceNotEmpty(this.txtValue, true, 6, 2);
 
-		if(validator.isEmpty())
+		if (validator.isEmpty())
 			this.btnAdd.setDisable(true);
 		else
 			return;
 
 		final Button b = new Button("X");
-		final Item item = new Item(this.txtId.getText(), this.txtDescription.getText(), this.txtQuantity.getText(), this.txtValue.getText(), b);
+
+		long quantidade = Long.parseLong(this.txtQuantity.getText());
+		double valor = Double.parseDouble(this.txtValue.getText());
+
+		double total = quantidade * valor;
+
+		final Item item = new Item(String.valueOf(++count), this.txtDescription.getText(), this.txtQuantity.getText(),
+				String.valueOf(total), b);
 
 		final ObservableList<Item> items = this.tableView.getItems();
 		items.add(item);
 
-		b.setOnAction((event)->{
+		b.setOnAction((event) -> {
+			--count;
 			items.remove(item);
-			for(int i = 0; i < items.size(); ++i)
-				items.get(i).setId(Integer.toString(i+1));
-			this.txtId.setText(Integer.toString(items.size()+1));
+
+			for (int i = 0; i < items.size(); ++i)
+				items.get(i).setId(Integer.toString(i + 1));
+			this.txtId.setText(Integer.toString(items.size() + 1));
 			this.txtDescription.requestFocus();
-			if(items.size() == 0)
+			if (items.size() == 0)
 				this.btnNext.setDisable(true);
 		});
 
-		this.txtId.setText(Integer.toString(items.size()+1));
+		this.txtId.setText(Integer.toString(items.size() + 1));
 		this.txtDescription.setText("");
 		this.txtQuantity.setText("");
 		this.txtValue.setText("");
 
 		this.txtDescription.requestFocus();
 
-		if(items.size() > 0)
+		if (items.size() > 0)
 			this.btnNext.setDisable(false);
 	}
 
@@ -100,12 +147,12 @@ public class ContentDeclarationController implements IController {
 	private void validateFields(final KeyEvent e) {
 		final Validator validator = new Validator();
 
-		validator.validateIntegerNotEmpty(this.txtId, true);
+		// validator.validateIntegerNotEmpty(this.txtId, true);
 		validator.validateStringNotEmpty(this.txtDescription, true, 3, 100);
 		validator.validateIntegerNotEmpty(this.txtQuantity, true);
 		validator.validatePriceNotEmpty(this.txtValue, true, 6, 2);
 
-		if(validator.isEmpty())
+		if (validator.isEmpty())
 			this.btnAdd.setDisable(false);
 		else
 			this.btnAdd.setDisable(true);
@@ -122,12 +169,13 @@ public class ContentDeclarationController implements IController {
 		this.txtDescription.setText("");
 		this.txtQuantity.setText("");
 		this.txtValue.setText("");
-
+		count = 0;
 		this.btnNext.setDisable(true);
 	}
 
 	public class Item {
-		public Item(final String pId, final String pDescription, final String pQuantity, final String pValue, final Button pDelete) {
+		public Item(final String pId, final String pDescription, final String pQuantity, final String pValue,
+				final Button pDelete) {
 			this.id = pId;
 			this.description = pDescription;
 			this.quantity = pQuantity;
@@ -144,30 +192,39 @@ public class ContentDeclarationController implements IController {
 		public String getId() {
 			return this.id;
 		}
+
 		public void setId(final String id) {
 			this.id = id;
 		}
+
 		public String getDescription() {
 			return this.description;
 		}
+
 		public void setDescription(final String description) {
 			this.description = description;
 		}
+
 		public String getQuantity() {
 			return this.quantity;
 		}
+
 		public void setQuantity(final String quantity) {
 			this.quantity = quantity;
 		}
+
 		public String getValue() {
 			return this.value;
 		}
+
 		public void setValue(final String value) {
 			this.value = value;
 		}
+
 		public Button getDelete() {
 			return this.delete;
 		}
+
 		public void setDelete(final Button delete) {
 			this.delete = delete;
 		}

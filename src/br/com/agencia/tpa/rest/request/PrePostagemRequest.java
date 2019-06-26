@@ -7,18 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PrePostagemRequest {	
 	
-	
-	
-	
-	public PrePostagemRequest() {
-		
-		ObjetoPostalRequest obj = new ObjetoPostalRequest();		
-		objetoPostalRequest = new ArrayList<ObjetoPostalRequest>();
-		objetoPostalRequest.add(obj);
-		
-	}
-	
-	
 	@JsonProperty("forma_pagamento")
 	public String formaPagamento;
 	
@@ -30,6 +18,17 @@ public class PrePostagemRequest {
 	
 	@JsonProperty(value = "remetente")
 	public RemetenteRequest remetenteRequest;
+	
+	
+	public PrePostagemRequest() {
+		
+		ObjetoPostalRequest obj = new ObjetoPostalRequest();		
+		objetoPostalRequest = new ArrayList<ObjetoPostalRequest>();
+		objetoPostalRequest.add(obj);
+		
+	}
+	
+	
 
 	public String getFormaPagamento() {
 		return formaPagamento;
