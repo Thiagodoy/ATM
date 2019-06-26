@@ -187,9 +187,9 @@
 }
 
 .table-row-cell:focused {
-   -fx-dark-text-color: #000000;
-   -fx-mid-text-color: #000000;
-   -fx-light-text-color: #000000;
+   -fx-dark-text-color: #0083CA;
+   -fx-mid-text-color: #0083CA;
+   -fx-light-text-color: #0083CA;
 }
 
 .table-view > .table-cell{
