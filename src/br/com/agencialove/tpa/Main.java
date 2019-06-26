@@ -20,7 +20,7 @@ public class Main extends Application{
 		FolderConfiguration.config();
 		JobConfiguration.config();
 
-	//	FolderConfiguration.config();
+		//	FolderConfiguration.config();
 
 		//final IDBService dbService = Session.getDBService();
 
@@ -43,7 +43,7 @@ public class Main extends Application{
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
 		new Session(primaryStage);
-		Session.setScene(Windows.START.getScene());
+		Session.setScene(Windows.ADDITIONAL_SERVICES1.getScene());
 		Platform.setImplicitExit(true);
 		primaryStage.show();
 	}

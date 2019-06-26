@@ -53,14 +53,12 @@
                   <String fx:value="box-add" />                  
                </styleClass>
                <children>
-                  <Label layoutX="12.0" layoutY="5.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Declaração de valor" textAlignment="CENTER" wrapText="true" />
-                  <Label layoutX="12.0" layoutY="101.0" style="-fx-font-weight: bold; -fx-font-size: 25;" styleClass="label-default" text="Valor:1,5%" />
+                  <Label layoutX="12.0" layoutY="36.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Declaração de valor" textAlignment="CENTER" wrapText="true" />
                </children>
             </Pane>
             <Pane fx:id="panelAvisoRecebimento" layoutX="554.4" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
                <children>
-                  <Label layoutX="11.0" layoutY="22.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Aviso de recebimento AR" textAlignment="CENTER" wrapText="true" />
-                  <Label layoutX="18.0" layoutY="103.0" style="-fx-font-weight: bold; -fx-font-size: 28;" styleClass="label-default" text="R$ 5,75" />
+                  <Label layoutX="11.0" layoutY="37.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Aviso de recebimento AR" textAlignment="CENTER" wrapText="true" />
                </children>
             </Pane>
             <Pane fx:id="panelMaoPropria" layoutX="319.6" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
@@ -68,8 +66,7 @@
                   <String fx:value="box-add" />                  
                </styleClass>
                <children>
-                  <Label layoutX="11.0" layoutY="26.0" prefHeight="60.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Mão Própria MP" textAlignment="CENTER" wrapText="true" />
-                  <Label layoutX="25.0" layoutY="102.0" style="-fx-font-weight: bold; -fx-font-size: 28;" styleClass="label-default" text="R$ 6,80" />
+                  <Label layoutX="11.0" layoutY="47.0" prefHeight="60.0" prefWidth="129.0" style="-fx-font-size: 22px;" styleClass="label-default" text="Mão Própria MP" textAlignment="CENTER" wrapText="true" />
                </children>
             </Pane>
             <Label layoutX="330.0" layoutY="249.0" prefHeight="80.0" prefWidth="129.0" styleClass="label-default" text="Garantia de que o objeto será entregue ao pŕoprio destinatário através da confirmação da identidade" textAlignment="JUSTIFY" wrapText="true" />

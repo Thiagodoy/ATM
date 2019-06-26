@@ -62,7 +62,7 @@ public class SearchZipController implements IController {
 	@FXML
 	private void btnSearchAction(final ActionEvent e) {
 		if (!this.txtCep.getText().isEmpty()) {
-
+			this.statusLabel.setVisible(false);
 			this.tableView.getItems().clear();
 
 			final CorreiosImpl ws = Session.getCorreiosWebService();

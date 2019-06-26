@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.PackageMeasures;
 import br.com.agencialove.tpa.model.Resume;
-import br.com.agencialove.tpa.model.rest.ServicesResponse;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +27,7 @@ public class CheckoutController implements IController {
 	@FXML
 	private Button btnNext;
 
+	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView tableView;
 
@@ -68,7 +69,7 @@ public class CheckoutController implements IController {
 
 		itens.add(new Resume(sb.toString(), "", ""));
 
-		final ServicesResponse selectedService = (ServicesResponse)Session.getSession().get(Session.SELECTED_SERVICE);
+		final PrecoPrazoResponse selectedService = (PrecoPrazoResponse)Session.getSession().get(Session.SELECTED_SERVICE);
 		final AdditionalServices addionalServices = (AdditionalServices)Session.getSession().get(Session.ADDITIONAL_SERVICES);
 		
 		

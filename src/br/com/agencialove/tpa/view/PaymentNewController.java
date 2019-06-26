@@ -229,7 +229,7 @@ public class PaymentNewController implements IController {
 				ServicesResponse selectedService = new ServicesResponse();
 				selectedService.setCodigoServico("04022");
 				Double valor = Utils.parse(pack.getValor());
-				selectedService.setValor(Utils.format(valor));
+				selectedService.setValor(Utils.formatCurrency(valor));
 				selectedService.setDescricaoServico("Venda de embalagem");
 				Session.getSession().put(Session.SELECTED_SERVICE, selectedService);
 				break;
