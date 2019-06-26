@@ -156,8 +156,8 @@ public class PaymentNewController implements IController {
 			JFXButton buttonNo = new JFXButton("Não");
 
 			// :FIXME Alinhar com o Luis Para definir as classes dos botoes
-			// buttonNo.setStyle("");
-			// buttonYes.setStyle("");
+			 buttonNo.setStyle("-fx-background-color:#ff7675");
+			 buttonYes.setStyle("-fx-background-color:#00b894");
 
 			JFXDialogLayout layout = new JFXDialogLayout();
 			layout.setBody(new Text("Deseja realmente cancelar a operação ?"));
