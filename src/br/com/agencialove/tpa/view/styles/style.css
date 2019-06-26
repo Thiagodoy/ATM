@@ -186,11 +186,7 @@
  
 }
 
-.table-row-cell:focused {
-   -fx-dark-text-color: #0083CA;
-   -fx-mid-text-color: #0083CA;
-   -fx-light-text-color: #0083CA;
-}
+
 
 .table-view > .table-cell{
     -fx-text-fill: #8e8d89;
@@ -213,10 +209,15 @@
 }
 
 .table-row-cell{
-    -fx-background-color:#ff0;
+    -fx-background-color:#eeeeee;
     -fx-table-cell-border-color	:transparent;
     -fx-text-alignment:center;
     -fx-alignment: center;
+}
+
+.table-row-cell:focused {
+    -fx-background-color:#ff0;
+    -fx-text-fill: #333;
 }	
 
 .table-row-cell:odd{
