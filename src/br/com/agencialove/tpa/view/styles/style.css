@@ -220,10 +220,10 @@
 }
 
 .table-row-cell:filled:focused:selected {
-    -fx-background-color: red;
+    -fx-background-color: #FFD700;
     -fx-background-insets: 0, 1, 2;
     -fx-background: -fx-accent;
-    -fx-text-fill: -fx-selection-bar-text;
+    -fx-text-fill: #fff;
 }	
 
 .table-row-cell:odd{
