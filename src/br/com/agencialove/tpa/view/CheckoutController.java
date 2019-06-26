@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
+import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.Address;
@@ -54,11 +57,17 @@ public class CheckoutController implements IController {
 	@SuppressWarnings("unchecked")
 	public void loadInfo() {
 		final List<Resume> itens = new ArrayList<>();
+		
+		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
+		RemetenteRequest remetente = request.getRemetenteRequest();
+		DestinatarioRequest destinatario = request.getObjetoPostalRequest().get(0).getDestinatario();
+		
+		
 
 		final StringBuilder sb = new StringBuilder();
-		sb.append("Destinatário CEP ").append(((Address)Session.getSession().get(Session.RECEIVER_ADDRESS)).getZip());
+		sb.append("Destinatário CEP ").append(destinatario.getCep());
 		sb.append("\r\n");
-		sb.append("Remetente CEP ").append(((Address)Session.getSession().get(Session.SENDER_ADDRESS)).getZip());
+		sb.append("Remetente CEP ").append(remetente.getCep());
 		sb.append("\r\n");
 		final PackageMeasures measures = (PackageMeasures)Session.getSession().get(Session.MEASURES);
 		sb.append("Encomenda ")
