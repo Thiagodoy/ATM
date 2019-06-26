@@ -634,14 +634,18 @@
 }
 
 .label-confirmation{
-	-fx-font-size: 21px;
+	-fx-font-size: 18px;
 	-fx-text-fill: #3881c5;
 	-fx-font-weight: bold
+-fx-font-family:"Trebuchet MS";
 }
 
 
 .label-response-confirmation{
-	-fx-font-size: 21px;
+    -fx-font-size: 21px;
+    -fx-border-color: #eee;
+    -fx-border-width: 2px;
+-fx-border-radius:5px;
 }
 
 .txt-label-lg{
