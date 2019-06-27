@@ -13,7 +13,6 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
-import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
