@@ -1,5 +1,6 @@
 package br.com.agencia.tpa.rest.request;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,7 +11,7 @@ public class ServicoAdicionalRequest {
 //	public String status;
 	
 	@JsonProperty(value = "codigo_servico_adicional", required = true)
-	public List<String> codigos;
+	public List<String> codigos = new ArrayList<String>();
 	
 	
 	@JsonProperty(value = "valor_declarado", required = false)

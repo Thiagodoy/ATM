@@ -1,5 +1,8 @@
 package br.com.agencia.tpa.rest.request;
 
+import java.text.MessageFormat;
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RemetenteRequest {
@@ -199,6 +202,18 @@ public class RemetenteRequest {
 
 	public void setCelular(Long celular) {
 		this.celular = celular;
+	}
+	
+	public String toFormatedAddress() {
+		String logradouro = Optional.ofNullable(this.logradouro).isPresent() ? this.logradouro : "";
+		String neighborhood = Optional.ofNullable(this.bairro).isPresent() ? this.bairro : "";
+		String number = Optional.ofNullable(this.numero).isPresent() ? this.numero : "";
+		String city = Optional.ofNullable(this.cidade).isPresent() ? this.cidade : "";
+		String state = Optional.ofNullable(this.estado).isPresent() ? this.estado : "";
+		String complement = Optional.ofNullable(this.complemento).isPresent() ? this.complemento : "";
+		String zipCode = Optional.ofNullable(this.cep).isPresent() ? this.cep : "";
+		
+		return MessageFormat.format("Endereço: {0}, n° {1} - {2}, {3} - {4} \nComplemento: {5}\nCep{6}",logradouro,number, neighborhood, city,state,complement,zipCode );
 	}
 
 }

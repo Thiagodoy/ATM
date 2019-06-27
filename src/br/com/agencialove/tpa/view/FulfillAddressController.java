@@ -9,7 +9,6 @@ import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.CepResponse;
-import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.ZipType;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.Validator;
@@ -17,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -223,7 +221,7 @@ public class FulfillAddressController implements IController {
 			break;
 		case SENDER:
 			this.lbTitle.setText("Complemente os dados do remetente.");
-			this.remetente = request.getRemetenteRequest() != null ? request.getRemetenteRequest()
+			this.remetente = request.getRemetente() != null ? request.getRemetente()
 					: new RemetenteRequest();
 			nome = remetente.getNome();
 			cpf = remetente.getCpf();

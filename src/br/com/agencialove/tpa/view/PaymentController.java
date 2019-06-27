@@ -288,36 +288,36 @@ public class PaymentController implements IController {
 
 			ServicesResponse service = (ServicesResponse) Session.getSession().get(Session.SELECTED_SERVICE);
 
-			
-			Relatorio relatorio = new Relatorio(this.sender, this.receiver, this.services, this.measures, service,
-					agencia, paymentData, nEtq, plp);
+//			
+//			Relatorio relatorio = new Relatorio(this.sender, this.receiver, this.services, this.measures, service,
+//					agencia, paymentData, nEtq, plp);
 
-			// Gera um relatorio
-			this.persistInfo(relatorio);
-
-			// prepara objeto para as requisições ao WebService
-			final EmiteEtiquetaRequest eer = new EmiteEtiquetaRequest();
-			eer.setNumeroPLP(plp);
-			eer.setNumeroEtiqueta(nEtq);
-
-			// emite etiqueta [IWebService.getPdfBytesEmiteEtiqueta]
-			final byte[] lbl = webService.getPdfBytesEmiteEtiqueta(eer);
-			// TODO exitir alert e continuar
-			try {
-				printerService.printLabel(lbl);
-			} catch (final PrintException e) {
-				e.printStackTrace();
-			}			
-
-			// imprime aviso de recebimento
-			if (this.services.isDeliveryNotice()) {
-				webService.getPdfBytesAvisoRecebimento(eer);
-			}
-
-			// imprime declaração de conteudo
-			if (this.services.isValueDeclaration()) {
-				webService.getPdfBytesDeclaracaoDeConteudo(eer);
-			}
+//			// Gera um relatorio
+//			this.persistInfo(relatorio);
+//
+//			// prepara objeto para as requisições ao WebService
+//			final EmiteEtiquetaRequest eer = new EmiteEtiquetaRequest();
+//			eer.setNumeroPLP(plp);
+//			eer.setNumeroEtiqueta(nEtq);
+//
+//			// emite etiqueta [IWebService.getPdfBytesEmiteEtiqueta]
+//			final byte[] lbl = webService.getPdfBytesEmiteEtiqueta(eer);
+//			// TODO exitir alert e continuar
+//			try {
+//				printerService.printLabel(lbl);
+//			} catch (final PrintException e) {
+//				e.printStackTrace();
+//			}			
+//
+//			// imprime aviso de recebimento
+//			if (this.services.isDeliveryNotice()) {
+//				webService.getPdfBytesAvisoRecebimento(eer);
+//			}
+//
+//			// imprime declaração de conteudo
+//			if (this.services.isValueDeclaration()) {
+//				webService.getPdfBytesDeclaracaoDeConteudo(eer);
+//			}
 			break;
 
 		default:

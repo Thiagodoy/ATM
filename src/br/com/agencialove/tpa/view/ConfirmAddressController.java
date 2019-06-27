@@ -8,8 +8,6 @@ import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.CepResponse;
-import br.com.agencialove.tpa.Messages;
-import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.ZipType;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
@@ -19,8 +17,7 @@ import javafx.scene.control.Label;
 
 public class ConfirmAddressController implements IController {
 
-	private ZipType type;
-	private Address address;
+	private ZipType type;	
 	
 	
 	private DestinatarioRequest destinatario;
@@ -149,7 +146,7 @@ public class ConfirmAddressController implements IController {
 			break;
 		case SENDER:
 			this.lbTitle.setText("Complemente os dados do remetente.");
-			this.remetente = request.getRemetenteRequest() != null ? request.getRemetenteRequest()
+			this.remetente = request.getRemetente() != null ? request.getRemetente()
 					: new RemetenteRequest();
 			
 			lbLogradouroConfirmacao = this.remetente.getLogradouro();

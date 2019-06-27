@@ -1,12 +1,14 @@
 package br.com.agencialove.tpa.model;
 
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencialove.tpa.model.rest.ServicesResponse;
 
 public class Relatorio {
 
 	
-	private Address sender;
-	private Address receiver;
+	private RemetenteRequest sender;
+	private DestinatarioRequest receiver;
 	private AdditionalServices additionalServices;
 	private PackageMeasures measures;
 	private ServicesResponse servicesResponse;
@@ -20,21 +22,6 @@ public class Relatorio {
 	public enum RelatorioType {POSTAGEM,EMBALAGEM}
 	
 	public Relatorio() {
-		
-	}
-	
-	public Relatorio(Address sender, Address receiver, AdditionalServices additionalServices, PackageMeasures measures,
-			ServicesResponse servicesResponse, Agencia agencia, PaymentData paymentData, String etiqueta, String plp) {
-		super();
-		this.sender = sender;
-		this.receiver = receiver;
-		this.additionalServices = additionalServices;
-		this.measures = measures;
-		this.servicesResponse = servicesResponse;
-		this.agencia = agencia;
-		this.paymentData = paymentData;
-		this.etiqueta = etiqueta;
-		this.plp = plp;
 		
 	}
 	
@@ -68,19 +55,17 @@ public class Relatorio {
 
 	public void setType(RelatorioType type) {
 		this.type = type;
-	}
-	
-	
-	public Address getSender() {
+	}	
+	public RemetenteRequest getSender() {
 		return sender;
 	}
-	public void setSender(Address sender) {
+	public void setSender(RemetenteRequest sender) {
 		this.sender = sender;
 	}
-	public Address getReceiver() {
+	public DestinatarioRequest getReceiver() {
 		return receiver;
 	}
-	public void setReceiver(Address receiver) {
+	public void setReceiver(DestinatarioRequest receiver) {
 		this.receiver = receiver;
 	}
 	public AdditionalServices getAdditionalServices() {

@@ -12,4 +12,27 @@ public class PrePostagemResponse {
 	@JsonProperty(value = "numeroEtiqueta")
 	public String numeroEtiqueta;
 
+
+	public String getNumeroPlp() {
+		return numeroPlp;
+	}
+
+
+	public void setNumeroPlp(String numeroPlp) {
+		this.numeroPlp = numeroPlp;
+	}
+
+
+	public String getNumeroEtiqueta() {
+		return numeroEtiqueta;
+	}
+
+
+	public void setNumeroEtiqueta(String numeroEtiqueta) {
+		this.numeroEtiqueta = numeroEtiqueta;
+	}
+	
+	
+	
+
 }

@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -42,6 +43,9 @@ public class ContentDeclarationController implements IController {
 
 	@FXML
 	private TextField txtValue;
+	
+	@FXML
+	private Label labelErro;
 
 	@SuppressWarnings("rawtypes")
 	@FXML
@@ -49,6 +53,7 @@ public class ContentDeclarationController implements IController {
 
 	private Scene backScene;
 
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
 		
@@ -56,17 +61,15 @@ public class ContentDeclarationController implements IController {
 		
 		DeclaracaoConteudoRequest conteudoRequest = new DeclaracaoConteudoRequest();
 		double total = 0.0;
-		final BigDecimal t = new BigDecimal(total);
 		
-		@SuppressWarnings("unchecked")
-		ObservableList<Item> items = this.tableView.getItems();
-		items.forEach(i->{			
-			t.add(BigDecimal.valueOf(Double.parseDouble(i.getValue())));
-			ItemDeclaracaoConteudoRequest item = new ItemDeclaracaoConteudoRequest(i.getId(), i.getDescription(), i.getQuantity(), i.getValue());
-			conteudoRequest.getItens().add(item);
-		});
+		ObservableList<Item> items = this.tableView.getItems();	
 		
-		conteudoRequest.setTotal(t.doubleValue());		
+		 total = items.stream().mapToDouble(i->{
+			return Double.parseDouble(i.getValue());
+		}).sum();
+		
+		
+		conteudoRequest.setTotal(total);		
 		Session.getSession().put(Session.CONTEUDO_DECLARADO, conteudoRequest);
 		
 
@@ -96,11 +99,15 @@ public class ContentDeclarationController implements IController {
 	@FXML
 	private void btnAddAction(final ActionEvent e) {
 		final Validator validator = new Validator();
+		this.labelErro.setVisible(false);	
 
 		// validator.validateIntegerNotEmpty(this.txtId, true);
 		validator.validateStringNotEmpty(this.txtDescription, true, 3, 100);
-		validator.validateIntegerNotEmpty(this.txtQuantity, true);
-		validator.validatePriceNotEmpty(this.txtValue, true, 6, 2);
+		validator.validateIntegerNotEmpty(this.txtQuantity, true);		
+		
+		String message = validator.validateValue(this.txtValue, true, 20.00, 1000.0);
+		
+		
 
 		if (validator.isEmpty())
 			this.btnAdd.setDisable(true);

@@ -10,7 +10,6 @@ import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.model.AdditionalServices;
-import br.com.agencialove.tpa.model.Address;
 import br.com.agencialove.tpa.model.PackageMeasures;
 import br.com.agencialove.tpa.model.Resume;
 import br.com.agencialove.tpa.workflow.Session;
@@ -59,7 +58,7 @@ public class CheckoutController implements IController {
 		final List<Resume> itens = new ArrayList<>();
 		
 		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
-		RemetenteRequest remetente = request.getRemetenteRequest();
+		RemetenteRequest remetente = request.getRemetente();
 		DestinatarioRequest destinatario = request.getObjetoPostalRequest().get(0).getDestinatario();
 		
 		
@@ -98,7 +97,7 @@ public class CheckoutController implements IController {
 
 		itens.add(new Resume(selectedService.getDescricaoServico(), "1", "R$ " + selectedService.getValorSemAdicionais()));		
 
-		final String vTotal = Session.getTotal(selectedService.getValor(), selectedService.getValorMaoPropria(), selectedService.getValorAvisoRecebimento(), selectedService.getValorValorDeclarado());
+		final String vTotal = Session.getTotal(selectedService.getValorSemAdicionais(), selectedService.getValorMaoPropria(), selectedService.getValorAvisoRecebimento(), selectedService.getValorValorDeclarado());
 		itens.add(new Resume("Total","", "R$ " +  vTotal));
 
 		final ObservableList<Resume> tableModel = FXCollections.observableArrayList(itens);

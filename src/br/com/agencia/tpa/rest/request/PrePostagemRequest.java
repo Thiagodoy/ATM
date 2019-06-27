@@ -54,7 +54,7 @@ public class PrePostagemRequest {
 		this.plpRequest = plpRequest;
 	}
 
-	public RemetenteRequest getRemetenteRequest() {
+	public RemetenteRequest getRemetente() {
 		return remetenteRequest;
 	}
 

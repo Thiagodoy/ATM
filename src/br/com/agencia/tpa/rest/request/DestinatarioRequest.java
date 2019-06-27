@@ -1,5 +1,8 @@
 package br.com.agencia.tpa.rest.request;
 
+import java.text.MessageFormat;
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DestinatarioRequest {
@@ -149,7 +152,15 @@ public class DestinatarioRequest {
 	}
 	
 	
-	
+	public String toFormatedAddress() {
+		String logradouro = Optional.ofNullable(this.logradouro).isPresent() ? this.logradouro : "";		
+		String number = Optional.ofNullable(this.numero).isPresent() ? this.numero : "";
+		String city = Optional.ofNullable(this.cidade).isPresent() ? this.cidade : "";		
+		String complement = Optional.ofNullable(this.complemento).isPresent() ? this.complemento : "";
+		String zipCode = Optional.ofNullable(this.cep).isPresent() ? this.cep : "";
+		
+		return MessageFormat.format("Endereço: {0}, n° {1} , {2} \nComplemento: {3}\nCep{4}",logradouro,number,  city,complement,zipCode );
+	}
 	
 
 }

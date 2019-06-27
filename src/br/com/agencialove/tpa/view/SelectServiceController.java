@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
@@ -99,13 +100,12 @@ public class SelectServiceController implements IController {
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
 		
+		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
+		request.getObjetoPostalRequest().get(0).setCodigoServicoPostagem(this.selectedService.codigoServico);
 		
 		Session.getSession().put(Session.SELECTED_SERVICE, this.selectedService);
 		final Scene scene = Windows.NFE_CHOOSE.getScene();
-		Session.setScene(scene);
-		
-		
-		
+		Session.setScene(scene);	
 		
 	}
 	

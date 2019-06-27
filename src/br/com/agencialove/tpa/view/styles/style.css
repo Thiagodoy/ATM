@@ -655,8 +655,8 @@
 .label-confirmation{
 	-fx-font-size: 18px;
 	-fx-text-fill: #3881c5;
-	-fx-font-weight: bold
--fx-font-family:"Trebuchet MS";
+	-fx-font-weight: bold;
+	-fx-font-family:"Trebuchet MS";
 }
 
 

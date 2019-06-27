@@ -1,5 +1,7 @@
 package br.com.agencialove.tpa.model;
 
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencialove.tpa.model.rest.*;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -148,16 +150,16 @@ public class Postagem implements Serializable{
 		
 	}
 	
-	public Postagem(Address sender,Address receiver, AdditionalServices additionalServices,PackageMeasures measures, ServicesResponse servicesResponse, Agencia agencia, PaymentData paymentData ) {
-		this.remetenteNome = sender.getPerson().getName();
-		this.remetenteEmail = sender.getPerson().getEmail();
+	public Postagem(RemetenteRequest sender,DestinatarioRequest receiver, AdditionalServices additionalServices,PackageMeasures measures, ServicesResponse servicesResponse, Agencia agencia, PaymentData paymentData ) {
+		this.remetenteNome = sender.getNome();
+		this.remetenteEmail = sender.getEmail();
 		this.remetenteEndereco = sender.toFormatedAddress();
-		this.remetenteTelefone = sender.getPerson().getCellPhone();
+		this.remetenteTelefone = String.valueOf(sender.getCelular());
 		
-		this.destinatarioNome = receiver.getPerson().getName();
-		this.destinatarioEmail = receiver.getPerson().getEmail();
+		this.destinatarioNome = receiver.getNome();
+		this.destinatarioEmail = receiver.getEmail();
 		this.destinatarioEndereco = receiver.toFormatedAddress();
-		this.destinatarioTelefone = receiver.getPerson().getCellPhone();
+		this.destinatarioTelefone = String.valueOf(sender.getCelular());
 		
 		this.nomeAgencia = agencia.getNomeAgencia();
 		this.modeloAtm = agencia.getModeloAtm();
