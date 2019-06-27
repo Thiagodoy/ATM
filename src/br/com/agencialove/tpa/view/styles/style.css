@@ -97,9 +97,9 @@
    -fx-border-color:#aaa;
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
-   -fx-pref-height: 32px; 
+   -fx-pref-height: 28px; 
    -fx-text-fill: #666; 
-   -fx-font-size: 20px;   
+   -fx-font-size: 18px;   
 }
 .input-error{
    -fx-border-color:red !important;
@@ -244,7 +244,12 @@
 }
 
 
-
+.label-input-sm{
+ -fx-font-size: 18px;
+ -fx-text-fill: #3881c5;
+ -fx-font-weight: bold;
+ -fx-font-family:"Trebuchet MS";
+}
 
 
 
