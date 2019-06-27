@@ -3,43 +3,58 @@ package br.com.agencia.tpa.rest.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NacionalRequest {
-	
+
 	@JsonProperty(value = "bairro_destinatario", required = true)
 	public String bairro;
-	
+
 	@JsonProperty(value = "cidade_destinatario", required = true)
 	public String cidade;
 
 	@JsonProperty(value = "uf_destinatario", required = true)
 	public String estado;
-	
+
 	@JsonProperty(value = "cep_destinatario", required = true)
 	public String cep;
-	
+
 	@JsonProperty(value = "codigo_usuario_postal", required = false)
 	public String codigoUsuarioPostal;
-	
+
 	@JsonProperty(value = "centro_custo_cliente", required = false)
 	public String centroCustoCliente;
-	
+
 	@JsonProperty(value = "numero_nota_fiscal", required = false)
 	public String numeroNotaFiscal;
-	
+
 	@JsonProperty(value = "serie_nota_fiscal", required = false)
 	public String serieNotaFiscal;
-	
+
 	@JsonProperty(value = "valor_nota_fiscal", required = false)
-	public Double valorNotaFiscal;	
-	
+	public Double valorNotaFiscal;
+
 	@JsonProperty(value = "natureza_nota_fiscal", required = false)
 	public String naturezaNotaFiscal;
-	
+
 	@JsonProperty(value = "descricao_objeto", required = false)
 	public String descricaoObjeto;
-	
+
 	@JsonProperty(value = "valor_a_cobrar", required = false)
 	public Double valorACobrar;
-	
+
+	public NacionalRequest() {
+
+		this.bairro = "";
+		this.cidade = "";
+		this.estado = "";
+		this.cep = "";
+		this.codigoUsuarioPostal = "";
+		this.centroCustoCliente = "";
+		this.numeroNotaFiscal = "";
+		this.serieNotaFiscal = "";
+		this.valorNotaFiscal = 0d;
+		this.naturezaNotaFiscal = "";
+		this.descricaoObjeto = "";
+		this.valorACobrar = 0d;
+	}
 
 	public String getBairro() {
 		return bairro;
@@ -136,9 +151,5 @@ public class NacionalRequest {
 	public void setValorACobrar(Double valorACobrar) {
 		this.valorACobrar = valorACobrar;
 	}
-	
-	
-	
-	
-	
+
 }

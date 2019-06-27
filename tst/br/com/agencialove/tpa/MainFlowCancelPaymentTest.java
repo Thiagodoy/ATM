@@ -14,7 +14,7 @@ import br.com.agencialove.tpa.workflow.Session;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-class MainFlowTest extends ApplicationTest {
+class MainFlowCancelPaymentTest extends ApplicationTest {
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(final Stage stage) {
@@ -96,7 +96,7 @@ class MainFlowTest extends ApplicationTest {
 		this.sleep(1000);
 		
 		//Pagamento
-		this.clickOn("#btnProsseguir");
+		this.clickOn("#btnCancelar");
 		this.sleep(10000);
 		this.clickOn("#btnNext");
 		

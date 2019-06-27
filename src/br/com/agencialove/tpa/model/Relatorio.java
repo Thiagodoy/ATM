@@ -2,6 +2,7 @@ package br.com.agencialove.tpa.model;
 
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
+import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.model.rest.ServicesResponse;
 
 public class Relatorio {
@@ -11,7 +12,7 @@ public class Relatorio {
 	private DestinatarioRequest receiver;
 	private AdditionalServices additionalServices;
 	private PackageMeasures measures;
-	private ServicesResponse servicesResponse;
+	private PrecoPrazoResponse servicesResponse;
 	private Agencia agencia;
 	private PaymentData paymentData;
 	private String etiqueta;
@@ -32,8 +33,7 @@ public class Relatorio {
 		embalagem.setBandeira(this.paymentData.getBandeira());
 		embalagem.setModeloAtm(agencia.getModeloAtm());
 		embalagem.setNomeAgencia(agencia.getNomeAgencia());		
-		embalagem.setNumeroCartao(paymentData.getNumeroCartao());
-			
+		embalagem.setNumeroCartao(paymentData.getNumeroCartao());		
 		
 		return embalagem;
 	}
@@ -80,10 +80,10 @@ public class Relatorio {
 	public void setMeasures(PackageMeasures measures) {
 		this.measures = measures;
 	}
-	public ServicesResponse getServicesResponse() {
+	public PrecoPrazoResponse getServicesResponse() {
 		return servicesResponse;
 	}
-	public void setServicesResponse(ServicesResponse servicesResponse) {
+	public void setServicesResponse(PrecoPrazoResponse servicesResponse) {
 		this.servicesResponse = servicesResponse;
 	}
 	public Agencia getAgencia() {

@@ -53,11 +53,22 @@ public class SelectServiceController implements IController {
 	@FXML
 	private Label labelSedexValor;
 	
+	@FXML
+	private Label labelObservacaoSedex;
+	
+	@FXML
+	private Label labelObservacaoPac;
+	
 	
 	
 
 	public void loadInfo() {
 
+		this.labelObservacaoPac.setVisible(false);
+		this.labelObservacaoSedex.setVisible(false);
+		
+		this.btnNext.setDisable(true);
+		
 		@SuppressWarnings("unchecked")
 		final List<PrecoPrazoResponse> avaliableServices = (List<PrecoPrazoResponse>) Session.getSession()
 				.get(Session.AVAILABLE_SERVICES);
@@ -73,6 +84,12 @@ public class SelectServiceController implements IController {
 					+ ((dias <= 1) ? dias.toString() + " dia útil" : dias.toString() + " dias útil"));
 			this.labelSedexValor.setText("R$ " + optSedex.get().getValor());
 			this.sedexService = optSedex.get();
+			
+			if(Optional.ofNullable(optSedex.get().observacao).isPresent()) {
+				this.labelObservacaoSedex.setText(optSedex.get().getObservacao());
+				this.labelObservacaoSedex.setVisible(true);
+			}
+			
 		}
 
 		if (optPac.isPresent()) {
@@ -83,8 +100,15 @@ public class SelectServiceController implements IController {
 			
 			this.pacService = optPac.get();
 			this.selectedService = optPac.get();
-			this.btnNext.setDisable(false);
+			
+			if(Optional.ofNullable(optPac.get().observacao).isPresent()) {
+				this.labelObservacaoPac.setText(optSedex.get().getObservacao());
+				this.labelObservacaoPac.setVisible(true);
+			}				
+			
 		}
+		
+			
 		
 
 	}

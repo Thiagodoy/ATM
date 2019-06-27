@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.print.PrintException;
 
 import br.com.agencia.rest.CorreiosImpl;
+import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencialove.tpa.hardware.HardwareServiceImpl;
 import br.com.agencialove.tpa.hardware.HardwareServiceMock;
@@ -36,6 +37,7 @@ import br.com.agencialove.tpa.view.IController;
 import br.com.agencialove.tpa.view.OverAttemptsController;
 import br.com.agencialove.tpa.view.StartController;
 import br.com.agencialove.tpa.view.Windows;
+import br.com.agencialove.tpa.webservices.CorreiosPreAtendimentoImplMock;
 import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.webservices.WebServiceImpl;
 import br.com.agencialove.tpa.webservices.WebServiceMock;
@@ -79,7 +81,7 @@ public class Session{
 	
 	
 	private static CorreiosImpl correiosWebService;
-	private static CorreiosPreAtendimentoImpl correiosPreAtendimentoWebService;
+	private static CorreiosPreAtendimentoApi correiosPreAtendimentoWebService;
 
 	private static Stage primaryStage;
 	private static Map<String,Object> SESSION = new HashMap<>();
@@ -222,6 +224,8 @@ public class Session{
 		Session.webService = new WebServiceMock();
 		Session.dbService = Session.getDBService();
 		Session.printerThermalService = new PrinterThermalServiceMock();
+		Session.correiosPreAtendimentoWebService = new CorreiosPreAtendimentoImplMock();
+		Session.correiosWebService = new CorreiosImpl();
 	}
 
 	public static void setSomeMocks() {
@@ -249,7 +253,7 @@ public class Session{
 		return Session.correiosWebService;
 	}
 	
-	public static  CorreiosPreAtendimentoImpl getCorreiosPreAtentimentoWebService() {
+	public static  CorreiosPreAtendimentoApi getCorreiosPreAtentimentoWebService() {
 		if(Session.correiosPreAtendimentoWebService == null)
 			Session.correiosPreAtendimentoWebService = new CorreiosPreAtendimentoImpl();
 

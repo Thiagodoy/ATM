@@ -5,8 +5,13 @@ import java.util.ResourceBundle;
 
 import javax.print.PrintException;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.qoppa.pdf.PDFException;
 
+import br.com.agencia.rest.CorreiosPreAtendimentoApi;
+import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencialove.tpa.hardware.PrinterServiceImpl;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.ZipType;
@@ -18,6 +23,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class PrePostagemConfirmationController implements IController {
 
@@ -30,6 +38,10 @@ public class PrePostagemConfirmationController implements IController {
 	private Label ldPlp3;
 
 	private String plp;
+	
+	
+//	@FXML
+//	private StackPane stack;
 
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
@@ -49,15 +61,12 @@ public class PrePostagemConfirmationController implements IController {
 
 	@FXML
 	private void btnImprimirRotulo(final ActionEvent e) throws PDFException {
-		final EmiteEtiquetaRequest ppr = new EmiteEtiquetaRequest();
-		ppr.setNumeroPLP(this.plp);
+		EmiteRequest request  = new EmiteRequest();
+		request.setNumeroPlp(this.plp);
 
-		final IWebService ws = Session.getWebService();
-		final byte[] respGetPdfBytesEmiteEtiqueta = ws.getPdfBytesEmiteEtiqueta(ppr);
+		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+		final byte[] respGetPdfBytesEmiteEtiqueta = api.emitirAvisoRecebimento(request);
 
-
-
-		//System.out.println("respGetPdfBytesTwo: >>>>>>> : " + respGetPdfBytes);
 
 		final PrinterServiceImpl printer = new PrinterServiceImpl();
 		try {
@@ -71,11 +80,12 @@ public class PrePostagemConfirmationController implements IController {
 
 	@FXML
 	private void btnImprimirDeclaracaoDeConteudo(final ActionEvent e) throws PDFException {
-		final EmiteEtiquetaRequest ppr = new EmiteEtiquetaRequest();
-		ppr.setNumeroPLP(this.plp);
+		EmiteRequest request  = new EmiteRequest();
+		request.setNumeroPlp(this.plp);
 
-		final IWebService ws = Session.getWebService();
-		final byte[] respGetPdfBytesAvisoRecebimento = ws.getPdfBytesAvisoRecebimento(ppr);
+		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+		final byte[] respGetPdfBytesAvisoRecebimento = api.emitirDeclaracaoDeConteudo(request);
+
 
 
 		//System.out.println("respGetPdfBytesTwo: >>>>>>> : " + respGetPdfBytesTwo);
@@ -92,21 +102,66 @@ public class PrePostagemConfirmationController implements IController {
 
 	@FXML
 	private void btnImprimirAR(final ActionEvent e) throws PDFException {
-		final EmiteEtiquetaRequest ppr = new EmiteEtiquetaRequest();
-		ppr.setNumeroPLP(this.plp);
+		EmiteRequest request  = new EmiteRequest();
+		request.setNumeroPlp(this.plp);
 
-		final IWebService ws = Session.getWebService();
-		final byte[] respGetPdfBytesDeclaracaoDeConteudo= ws.getPdfBytesDeclaracaoDeConteudo(ppr);
+		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+		final byte[] avisoDeRecebimento = api.emitirAvisoRecebimento(request);
 
 
 		//System.out.println("respGetPdfBytesTwo: >>>>>>> : " + respGetPdfBytesTwo);
 
 		final PrinterServiceImpl printer = new PrinterServiceImpl();
-		try {
-			//printer.printLabel(respGetPdfBytes);
-			printer.printTicket(respGetPdfBytesDeclaracaoDeConteudo);
-		} catch (final PrintException e1) {
-			// TODO Auto-generated catch block
+		try {			
+			//printer.printTicket(avisoDeRecebimento);
+			
+//			JFXButton buttonYes = new JFXButton("Ok");		
+//			 buttonYes.getStyleClass().add("bt-blue-sm");
+//			 VBox vBox = new VBox();
+//			 vBox.getChildren().add(new Text("Informação"));
+//			 vBox.getChildren().add(new Text("Retire o seu aviso de recebimento!"));
+//			 
+//			JFXDialogLayout layout = new JFXDialogLayout();
+//			layout.setBody(vBox);
+//			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
+//			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
+//				dialog.close();
+//				Session.reset();
+//			});
+
+			
+
+//			layout.setActions(buttonYes);
+//			dialog.setFocusTraversable(true);
+//			dialog.show();
+			
+			
+			
+		} catch (final Exception e1) {		
+			
+
+			
+//			JFXButton buttonYes = new JFXButton("Ok");		
+//			 buttonYes.getStyleClass().add("bt-blue-sm");
+//			 VBox vBox = new VBox();
+//			 vBox.getChildren().add(new Text("Informação"));
+//			 vBox.getChildren().add(new Text("Retire o seu aviso de recebimento!"));
+//			 
+//			JFXDialogLayout layout = new JFXDialogLayout();
+//			layout.setBody();
+//			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
+//			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
+//				dialog.close();
+//				Session.reset();
+//			});
+//
+//			
+//
+//			layout.setActions(buttonYes);
+//			dialog.setFocusTraversable(true);
+//			dialog.show();
+			
+			
 			e1.printStackTrace();
 		}
 	}

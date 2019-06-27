@@ -37,6 +37,11 @@ public class TEFServiceMock implements ITEFService {
 					ret1.setValue(value);
 					ret1.setCode(code);
 					ret1.setCurrency("0");
+					ret1.setBandeira("0");
+					ret1.setCnpjCpf("6468787654688");
+					ret1.setCurrency("10.00");
+					ret1.setNsu("wqeqwe");
+					ret1.setValue("10.00");
 					callback.charged(PaymentResult.SUCCESS, ret1,
 							"                 AMEX\n" +
 									"\n" +
@@ -73,6 +78,11 @@ public class TEFServiceMock implements ITEFService {
 					ret2.setValue(value);
 					ret2.setCode(code);
 					ret2.setCurrency("0");
+					ret2.setBandeira("0");
+					ret2.setCnpjCpf("6468787654688");
+					ret2.setCurrency("10.00");
+					ret2.setNsu("wqeqwe");
+					ret2.setValue("10.00");
 					callback.charged(PaymentResult.FAIL, ret2, "Não foi possível cobrar");
 				}
 				return null;

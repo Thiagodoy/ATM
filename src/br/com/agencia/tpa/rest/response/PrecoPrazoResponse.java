@@ -41,6 +41,19 @@ public class PrecoPrazoResponse {
 	
 	@JsonProperty(value = "valorSemAdicionais")
 	public String valorSemAdicionais;
+	
+	@JsonProperty(value = "observacao")
+	public String observacao;
+	
+	
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
 
 	public String getCodigoServico() {
 		return codigoServico;

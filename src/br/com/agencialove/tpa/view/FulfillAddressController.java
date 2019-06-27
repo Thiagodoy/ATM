@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.NacionalRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.CepResponse;
@@ -107,6 +108,7 @@ public class FulfillAddressController implements IController {
 		if(this.type.equals(ZipType.RECEIVER)) {
 			DestinatarioRequest destinatarioRequest = this.destinatario();
 			request.getObjetoPostalRequest().get(0).setDestinatario(destinatarioRequest);
+			request.getObjetoPostalRequest().get(0).setNacionalRequest(this.nacional());
 		}else {
 			RemetenteRequest remetenteRequest = this.remetente();
 			request.setRemetenteRequest(remetenteRequest);
@@ -128,11 +130,11 @@ public class FulfillAddressController implements IController {
 
 	private boolean areMandatoriesFilled() {
 		final Validator validator = new Validator();
-		// validator.validateNotEmpty(this.txtLogradouro, true);
-		// validator.validateNotEmpty(this.txtNumero, true);
-		// validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
-		/// validator.validateNotEmpty(this.txtCEP, true);
-		// validator.validateCelullar(this.txtCelular, true);
+		 validator.validateNotEmpty(this.txtLogradouro, true);
+		 validator.validateNotEmpty(this.txtNumero, true);
+		 validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
+		 validator.validateNotEmpty(this.txtCEP, true);
+		 //validator.validateCelullar(this.txtCelular, true);
 
 		if (this.type == ZipType.SENDER)
 			validator.validateCPF(this.txtCPF, true);
@@ -162,6 +164,19 @@ public class FulfillAddressController implements IController {
 		return remetente;
 	}
 
+	private NacionalRequest nacional() {
+		
+		NacionalRequest nacionalRequest = new NacionalRequest();
+		CepResponse c = (CepResponse) Session.getSession().get(this.type.name() + "_ADDRESS");
+		nacionalRequest.setBairro(c.getBairro());
+		nacionalRequest.setCep(c.getCep());
+		nacionalRequest.setCidade(c.getCidade());
+		nacionalRequest.setEstado(c.getEstado());
+		nacionalRequest.setCentroCustoCliente("0069950016");
+		return nacionalRequest;
+		
+		
+	}
 	private DestinatarioRequest destinatario() {
 
 		DestinatarioRequest destinatarioRequest = new DestinatarioRequest();

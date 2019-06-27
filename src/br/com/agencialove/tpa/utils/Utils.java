@@ -10,6 +10,7 @@ import java.util.Locale;
 import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
 import br.com.agencia.tpa.rest.request.ServicoAdicionalRequest;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
+import javafx.scene.layout.StackPane;
 
 public class Utils {
 
@@ -48,5 +49,9 @@ public class Utils {
 
 		return servicosAdicionais;
 	}
+	
+	
+	
+	
 
 }

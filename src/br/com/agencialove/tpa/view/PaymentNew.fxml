@@ -46,7 +46,7 @@
                   <Label layoutX="246.0" layoutY="389.0" style="-fx-font-size: 40px;" styleClass="label-h1" text="Deseja realizar o pagamento?" />
                   <Button layoutX="293.0" layoutY="671.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
                   <Pane layoutX="430.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0" styleClass="incon-card-machine" />
-                  <Label layoutX="341.0" layoutY="331.0" style="-fx-font-size: 40px; -fx-font-weight: bold;" styleClass="label-total" text="Total :  R$ 200,00" />
+                  <Label layoutX="341.0" fx:id="labelTotal" layoutY="331.0" style="-fx-font-size: 40px; -fx-font-weight: bold;" styleClass="label-total" text="Total :  R$ 200,00" />
                </children>
             </Pane>
          </children>
