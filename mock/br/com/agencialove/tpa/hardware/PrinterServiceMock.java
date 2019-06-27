@@ -15,32 +15,32 @@ public class PrinterServiceMock implements IPrinterService {
 
 	@Override
 	public void printTicket(final String response) {
-		Platform.runLater(()->{
-			final Alert alert = new Alert(AlertType.INFORMATION);
-
-			final Label label = new Label("A impressora de tickets imprimiu:");
-
-			final TextArea textArea = new TextArea();
-			textArea.setEditable(false);
-			textArea.setWrapText(true);
-			textArea.setText(response);
-
-			textArea.setMaxWidth(Double.MAX_VALUE);
-			textArea.setMaxHeight(Double.MAX_VALUE);
-			GridPane.setVgrow(textArea, Priority.ALWAYS);
-			GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-			final GridPane expContent = new GridPane();
-			expContent.setMaxWidth(Double.MAX_VALUE);
-			expContent.add(label, 0, 0);
-			expContent.add(textArea, 0, 1);
-
-			alert.getDialogPane().setExpandableContent(expContent);
-			alert.setHeight(800);
-
-			alert.showAndWait();
-
-		});
+//		Platform.runLater(()->{
+//			final Alert alert = new Alert(AlertType.INFORMATION);
+//
+//			final Label label = new Label("A impressora de tickets imprimiu:");
+//
+//			final TextArea textArea = new TextArea();
+//			textArea.setEditable(false);
+//			textArea.setWrapText(true);
+//			textArea.setText(response);
+//
+//			textArea.setMaxWidth(Double.MAX_VALUE);
+//			textArea.setMaxHeight(Double.MAX_VALUE);
+//			GridPane.setVgrow(textArea, Priority.ALWAYS);
+//			GridPane.setHgrow(textArea, Priority.ALWAYS);
+//
+//			final GridPane expContent = new GridPane();
+//			expContent.setMaxWidth(Double.MAX_VALUE);
+//			expContent.add(label, 0, 0);
+//			expContent.add(textArea, 0, 1);
+//
+//			alert.getDialogPane().setExpandableContent(expContent);
+//			alert.setHeight(800);
+//
+//			alert.showAndWait();
+//
+//		});
 	}
 
 	@Override

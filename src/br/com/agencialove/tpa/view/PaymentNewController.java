@@ -1,6 +1,7 @@
 package br.com.agencialove.tpa.view;
 
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +12,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 
+import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
@@ -31,6 +33,7 @@ import br.com.agencialove.tpa.model.PackageMeasures;
 import br.com.agencialove.tpa.model.PaymentData;
 import br.com.agencialove.tpa.model.PaymentResult;
 import br.com.agencialove.tpa.model.Relatorio;
+import br.com.agencialove.tpa.model.Relatorio.RelatorioType;
 import br.com.agencialove.tpa.model.rest.ServicesResponse;
 import br.com.agencialove.tpa.utils.Utils;
 import br.com.agencialove.tpa.workflow.Session;
@@ -41,6 +44,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -72,6 +76,9 @@ public class PaymentNewController implements IController {
 
 	@FXML
 	private StackPane stake;
+	
+	@FXML
+	private Label labelTotal;
 
 	@FXML
 	private ProgressBar progressBar;
@@ -181,24 +188,7 @@ public class PaymentNewController implements IController {
 
 			PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
 
-//			this.sender = request.getRemetenteRequest();
-//			this.receiver = request.getObjetoPostalRequest().get(0).getDestinatario();
-//			this.services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
-//			this.measures = (PackageMeasures) Session.getSession().get(Session.MEASURES);
-//			final ServicesResponse selectedService = (ServicesResponse) Session.getSession()
-//					.get(Session.SELECTED_SERVICE);
-
-//			// gera PLP [IWebService.serviceRegisterResponse]
-//			final IWebService webService = Session.getWebService();
-//			final PrePost req = webService.getPrePostRequest(PaymentNewController.this.sender,
-//																PaymentNewController.this.receiver, 
-//																PaymentNewController.this.services, 
-//																PaymentNewController.this.measures,
-//																selectedService);
-
-			// final PrePostResponse resp = webService.serviceRegisterResponseUnpaid(req);
-
-			CorreiosPreAtendimentoImpl service = Session.getCorreiosPreAtentimentoWebService();
+			CorreiosPreAtendimentoApi service = Session.getCorreiosPreAtentimentoWebService();
 			PrePostagemResponse response = service.gerarPrePostagem(request, false);
 
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
@@ -324,39 +314,40 @@ public class PaymentNewController implements IController {
 
 		switch (type) {
 		case PACKAGE:
-//			relatorio = new Relatorio();
-//			relatorio.setType(RelatorioType.EMBALAGEM);
-//			relatorio.setSender(this.sender);
-//			relatorio.setAgencia(agencia);
-//			relatorio.setPaymentData(paymentData);
+			relatorio = new Relatorio();
+			relatorio.setType(RelatorioType.EMBALAGEM);
+			relatorio.setSender(this.sender);
+			relatorio.setAgencia(agencia);
+			relatorio.setPaymentData(paymentData);
 			break;
 		case PRE_POSTING:
 		case SERVICE:
 
 			PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
-			CorreiosPreAtendimentoImpl service = Session.getCorreiosPreAtentimentoWebService();
-			PrePostagemResponse response = service.gerarPrePostagem(request, false);
+			CorreiosPreAtendimentoApi service = Session.getCorreiosPreAtentimentoWebService();
+			PrePostagemResponse response = service.gerarPrePostagem(request, true);
 			
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
 
 			
 
-//			relatorio = new Relatorio();
-//			relatorio.setType(RelatorioType.POSTAGEM);
-//			relatorio.setSender(this.sender); 
-//			relatorio.setReceiver(this.receiver); 
-//			relatorio.setAdditionalServices(this.services); 
-//			relatorio.setMeasures(this.measures);
-//			relatorio.setServicesResponse(service);
-//			relatorio.setAgencia(agencia);
-//			relatorio.setPaymentData(paymentData);
-//			relatorio.setEtiqueta(nEtq);
-//			relatorio.setPlp(plp);			
+			relatorio = new Relatorio();
+			relatorio.setType(RelatorioType.POSTAGEM);
+			relatorio.setSender(this.sender); 
+			relatorio.setReceiver(this.receiver); 
+			relatorio.setAdditionalServices(this.services); 
+			relatorio.setMeasures(this.measures);
+			relatorio.setServicesResponse(this.selectedService);
+			relatorio.setAgencia(agencia);
+			relatorio.setPaymentData(paymentData);
+			relatorio.setEtiqueta(response.getNumeroEtiqueta());
+			relatorio.setPlp(response.getNumeroPlp());			
 
 			EmiteRequest emiteRequest = new EmiteRequest();
 			emiteRequest.setNumeroEtiqueta(response.getNumeroEtiqueta());
 			emiteRequest.setNumeroPlp(response.getNumeroPlp());
-
+			
+			//TODO: Aguradando retorno do correios para averiguar as apis
 			try {
 
 				byte[] etiqueta = service.emitirEtiqueta(emiteRequest);
@@ -403,20 +394,24 @@ public class PaymentNewController implements IController {
 		@Override
 		public void charged(final PaymentResult result, final PaymentData paymentData, final String toPrint) {
 
-			if (result == PaymentResult.SUCCESS) {
+			try {
+				if (result == PaymentResult.SUCCESS) {
 
-				PaymentNewController.this.changeStage(StageStatus.SUCCESS);
-				PaymentNewController.this.chargeSuccess(paymentData, toPrint, this.stage);
-			} else {
-				++PaymentNewController.this.tryCounter;
-				if (PaymentNewController.this.tryCounter > PaymentNewController.MAX_PAYMENT_TRY) {
-					Session.overAttempts(OverAttemptsType.PAYMENT);
-				} else if (!PaymentNewController.this.canceled) {
-					// PaymentNewController.this.setDefaultView(true);
-					final ITEFService tefService = Session.getTEFService();
-					tefService.charge(PaymentNewController.this.value, PaymentNewController.this.code,
-							PaymentNewController.this.description, this);
+					PaymentNewController.this.changeStage(StageStatus.SUCCESS);
+					PaymentNewController.this.chargeSuccess(paymentData, toPrint, this.stage);
+				} else {
+					++PaymentNewController.this.tryCounter;
+					if (PaymentNewController.this.tryCounter > PaymentNewController.MAX_PAYMENT_TRY) {
+						Session.overAttempts(OverAttemptsType.PAYMENT);
+					} else if (!PaymentNewController.this.canceled) {
+						// PaymentNewController.this.setDefaultView(true);
+						final ITEFService tefService = Session.getTEFService();
+						tefService.charge(PaymentNewController.this.value, PaymentNewController.this.code,
+								PaymentNewController.this.description, this);
+					}
 				}
+			}catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -433,6 +428,10 @@ public class PaymentNewController implements IController {
 
 	}
 
+	public void loadInformation() {
+		final PrecoPrazoResponse selectedService = (PrecoPrazoResponse) Session.getSession().get(Session.SELECTED_SERVICE);
+		labelTotal.setText(MessageFormat.format("Total :  R$ {0}", selectedService.getValor()));
+	}
 	
 
 }

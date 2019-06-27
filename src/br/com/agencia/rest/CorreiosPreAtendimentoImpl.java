@@ -1,9 +1,7 @@
 package br.com.agencia.rest;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -13,26 +11,24 @@ import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
 import br.com.agencia.tpa.rest.response.ListaPrecoPrazoResponse;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
-import br.com.agencialove.tpa.Configuration;
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
-import br.com.agencialove.tpa.model.rest.EmiteEtiquetaRequest;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-public class CorreiosPreAtendimentoImpl {
+public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
-	private CorreiosPreAtendimentoApi service;
+	private CorreiosPreAtendimentoService service;
 	private Agencia agencia;
 
 	public CorreiosPreAtendimentoImpl() {
 		HttpLoggingInterceptor i = new HttpLoggingInterceptor();
 		i.setLevel(Level.BODY);
+		
 
 		OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(i).build();
 
@@ -41,7 +37,7 @@ public class CorreiosPreAtendimentoImpl {
 				.baseUrl("https://apphom.correios.com.br/preatendimento-rs/v1/atendimento/")
 				.addConverterFactory(JacksonConverterFactory.create()).client(client).build();
 
-		service = retrofit2.create(CorreiosPreAtendimentoApi.class);
+		service = retrofit2.create(CorreiosPreAtendimentoService.class);
 
 		this.agencia = AgenciaDao.getAgencia();
 
@@ -66,6 +62,7 @@ public class CorreiosPreAtendimentoImpl {
 
 		Response<PrePostagemResponse> response = null;
 		try {
+			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.gerarPrePostagem(request, agencia.getCartaoPostagem(), emitiEtiqueta).execute();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -79,6 +76,7 @@ public class CorreiosPreAtendimentoImpl {
 
 		byte[] response = null;
 		try {
+			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.emitiEtiqueta(request, agencia.getCartaoPostagem()).execute().body().bytes();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -92,6 +90,7 @@ public class CorreiosPreAtendimentoImpl {
 
 		byte[] response = null;
 		try {
+			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.emitiAvisoRecebimento(request, agencia.getCartaoPostagem()).execute().body().bytes();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -105,6 +104,7 @@ public class CorreiosPreAtendimentoImpl {
 
 		byte[] response = null;
 		try {
+			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.emitiDeclaracaoConteudo(request, agencia.getCartaoPostagem()).execute().body().bytes();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -22,9 +22,12 @@ public class PrePostagemRequest {
 	
 	public PrePostagemRequest() {
 		
-		ObjetoPostalRequest obj = new ObjetoPostalRequest();		
-		objetoPostalRequest = new ArrayList<ObjetoPostalRequest>();
-		objetoPostalRequest.add(obj);
+		ObjetoPostalRequest obj = new ObjetoPostalRequest();	
+		DimensaoObjetoRequest dimensaoObjetoRequest = new DimensaoObjetoRequest("001"); 
+		obj.setDimensaoObjetoRequest(dimensaoObjetoRequest);
+		this.objetoPostalRequest = new ArrayList<ObjetoPostalRequest>();
+		this.objetoPostalRequest.add(obj);
+		this.formaPagamento = "0";
 		
 	}
 	

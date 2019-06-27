@@ -43,7 +43,8 @@ public class CheckoutController implements IController {
 	private void btnNextAction(final ActionEvent e) {
 		final Scene scene = Windows.PAYMENT_NEW.getScene();
 		final PaymentNewController controller = (PaymentNewController) scene.getUserData();
-		controller.clear();		
+		controller.clear();
+		controller.loadInformation();
 		Session.setScene(scene);
 	}
 

@@ -26,7 +26,7 @@ public class DescansoController implements IController {
        me = new Media(new File(path).toURI().toString());
        mp = new MediaPlayer(me);
        mediaView.setMediaPlayer(mp);
-       mp.setAutoPlay(true);
+       
        mp.setCycleCount(MediaPlayer.INDEFINITE);
        
        mediaView.setOnTouchPressed((event)->this.startWrokFlow());
@@ -40,8 +40,17 @@ public class DescansoController implements IController {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
+	
+	
+	public void play() {
+		mp.setAutoPlay(true);
+	}
+	
+	private void stop() {
+		mp.stop();
+	}
+	
 
 }

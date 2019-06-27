@@ -69,6 +69,7 @@ public class AdditionalServices1Controller implements IController {
 			controller.setPreviousScene(Windows.ADDITIONAL_SERVICES1.getScene());
 			controller.clear();
 		}
+		this.btnNext.setDisable(true);
 		Session.setScene(scene);
 	}
 

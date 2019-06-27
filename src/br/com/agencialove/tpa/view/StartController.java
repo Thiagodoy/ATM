@@ -5,7 +5,9 @@
  */
 
 package br.com.agencialove.tpa.view;
+
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,14 +30,13 @@ import javafx.scene.layout.StackPane;
 public class StartController implements IController {
 
 	private Timer timer;
-	
 
 	@FXML
 	private StackPane stake;
-	
+
 	@FXML
-	private void btnConsultingAction(final ActionEvent e) {		
-		Scene scene = Windows.WEB_BROWSER.getScene();	
+	private void btnConsultingAction(final ActionEvent e) {
+		Scene scene = Windows.WEB_BROWSER.getScene();
 		this.cancelTime();
 		Session.setScene(Windows.WEB_BROWSER.getScene());
 		WebBrowserController controller = (WebBrowserController) scene.getUserData();
@@ -43,19 +44,19 @@ public class StartController implements IController {
 	}
 
 	@FXML
-	private void btnPostAction(final ActionEvent e) {	
-		
+	private void btnPostAction(final ActionEvent e) {
+
 		Session.setScene(Windows.TEST_CONFIRMATION.getScene());
-		
+
 		PrePostagemRequest request = new PrePostagemRequest();
 		Session.getSession().put(Session.PRE_POSTAGEM, request);
-		
+
 		this.cancelTime();
 		Session.getSession().put(Session.SESSION_TYPE, SessionType.SERVICE);
 	}
 
 	@FXML
-	private void btnPrePostingAction(final ActionEvent e) {	
+	private void btnPrePostingAction(final ActionEvent e) {
 		this.cancelTime();
 		Session.setScene(Windows.PRE_POSTING.getScene());
 		Session.getSession().put(Session.SESSION_TYPE, SessionType.PRE_POSTING);
@@ -63,7 +64,7 @@ public class StartController implements IController {
 
 	@FXML
 	private void btnBuyPackageAction(final ActionEvent e) {
-		
+
 		final Scene scene = Windows.SELECT_PACKAGE.getScene();
 		final SelectPackageController controller = (SelectPackageController) scene.getUserData();
 		controller.setPreviousScene(Windows.START.getScene());
@@ -71,25 +72,31 @@ public class StartController implements IController {
 		Session.getSession().put(Session.SESSION_TYPE, SessionType.PACKAGE);
 		Session.setScene(scene);
 	}
-	
+
 	private void cancelTime() {
-		this.timer.cancel();
+		if (Optional.ofNullable(this.timer).isPresent())
+			this.timer.cancel();
 	}
 
-	public void activeRest() {	
-		
-		if(timer != null) {
+	public void activeRest() {
+
+		if (Optional.ofNullable(this.timer).isPresent()) {
 			timer.cancel();
 		}
-		
+
 		timer = new Timer();
-		
-//		timer.schedule(new TimerTask() {			
-//			@Override
-//			public void run() {
-//				Platform.runLater(()-> Session.setScene( Windows.DESCANSO.getScene()));				
-//			}
-//		}, 30000);
+
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				Platform.runLater(() -> {
+					DescansoController control = (DescansoController) Windows.DESCANSO.getScene().getUserData();
+					control.play();
+					Session.setScene(Windows.DESCANSO.getScene());
+					timer.cancel();
+				});
+			}
+		}, 15000);
 
 	}
 

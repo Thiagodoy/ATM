@@ -1,5 +1,4 @@
-package br.com.agencia.rest;
-
+package br.com.agencialove.tpa.webservices;
 
 import java.util.List;
 
@@ -25,4 +24,3 @@ public interface CorreiosPreAtendimentoApi {
 	
 	
 }
-

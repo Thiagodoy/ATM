@@ -132,6 +132,7 @@ public class SelectPackageController implements IController {
 		ret.setPrefWidth(255.0);
 		ret.setPrefHeight(630.0);
 		ret.setTranslateY(130);
+		ret.setId("caixa" + p.getCodigo());
 
 		ret.setOnAction((final ActionEvent event) -> {
 			this.selectedPack = p;

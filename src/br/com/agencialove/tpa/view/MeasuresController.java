@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.tpa.rest.request.DeclaracaoConteudoRequest;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
@@ -156,7 +157,7 @@ public class MeasuresController implements IController {
 
 		prePostagemRequest.getObjetoPostalRequest().get(0).setServico(servicosAdicionais);
 
-		CorreiosPreAtendimentoImpl correiosApi = Session.getCorreiosPreAtentimentoWebService();
+		CorreiosPreAtendimentoApi correiosApi = Session.getCorreiosPreAtentimentoWebService();
 		List<PrecoPrazoResponse> list = correiosApi.servicosDisponiveis(precoPrazoRequest);
 
 		Session.getSession().put(Session.AVAILABLE_SERVICES, list);

@@ -3,7 +3,9 @@ package br.com.agencia.tpa.rest.request;
 import java.text.MessageFormat;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.JsonAdapter;
 
 public class DestinatarioRequest {
 	
@@ -11,7 +13,7 @@ public class DestinatarioRequest {
 	@JsonProperty(value = "nome_destinatario", required = true)
 	public String nome;
 	
-	@JsonProperty(value = "nome_destinatario", required = true)
+	@JsonProperty(value = "cpf_cnpj_destinatario", required = true)
 	public String cpf;
 	
 	@JsonProperty(value = "telefone_destinatario", required = false)
@@ -32,10 +34,10 @@ public class DestinatarioRequest {
 	@JsonProperty(value = "numero_end_destinatario", required = true)
 	public String numero;
 	
-	@JsonProperty(value = "cep_destinatario", required = true)
+	@JsonIgnore	
 	public String cep;	
 	
-	@JsonProperty(value = "cidade_destinatario", required = true)
+	@JsonIgnore	
 	public String cidade;
 	
 	

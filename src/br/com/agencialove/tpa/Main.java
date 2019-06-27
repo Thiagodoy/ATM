@@ -43,7 +43,7 @@ public class Main extends Application{
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
 		new Session(primaryStage);
-		Session.setScene(Windows.START.getScene());
+		Session.setScene(Windows.PRE_POSTAGEM_CONFIRMATION_CONTROLLER.getScene());
 		Platform.setImplicitExit(true);
 		primaryStage.show();
 	}
