@@ -6,16 +6,16 @@ import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.util.WaitForAsyncUtils;
 
 import br.com.agencialove.tpa.dao.AgenciaDao;
+import br.com.agencialove.tpa.hardware.TEFServiceMock;
 import br.com.agencialove.tpa.model.Agencia;
 import br.com.agencialove.tpa.view.Windows;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-class MainFlowCancelPaymentTest extends ApplicationTest {
+class MainFlowErroPayment extends ApplicationTest {
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(final Stage stage) {
@@ -97,12 +97,33 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 		this.sleep(1000);
 		
 		//Pagamento
-		this.clickOn("#btnCancelar");
+		TEFServiceMock.payment = false;
+		TEFServiceMock.time = 1000;
+		
+		this.clickOn("#btnProsseguir");
+		this.sleep(20000);
+		
+		this.sleep(10000);
+		this.clickOn("#btnErroProsseguir");
+		
+		TEFServiceMock.payment = true;
+		TEFServiceMock.time = 2000;
 		this.sleep(10000);
 		this.clickOn("#btnNext");
+		this.sleep(1000);
+		//coleta
+		this.clickOn("#btnNext");
+		this.sleep(1000);
+		
+		//Pesquisa Satisfacao
+		this.clickOn("#btnNo");
+		this.sleep(1000);
+		
+		//Print o comprovante
+		this.clickOn("#btnPrintReceipt");
 		
 		
-		this.sleep(10000);
+		this.sleep(50000);
 
 		// start
 //		this.clickOn("#btnPost");
@@ -158,7 +179,7 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 //		this.clickOn("#btnNext");
 //		//payment
 //		this.clickOn("#btnYes");
-		//WaitForAsyncUtils.waitFor(30, TimeUnit.SECONDS,() -> MainFlowTest.this.lookup("#imgInstruction").query().isVisible());
+//		WaitForAsyncUtils.waitFor(30, TimeUnit.SECONDS,() -> MainFlowTest.this.lookup("#imgInstruction").query().isVisible());
 //		this.sleep(20000);
 //		//openBox
 //		this.clickOn("#btnNext");

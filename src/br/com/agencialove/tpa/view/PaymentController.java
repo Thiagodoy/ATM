@@ -215,8 +215,7 @@ public class PaymentController implements IController {
 	public void clear() {
 		this.value = null;
 		this.code = null;
-		this.description = null;
-		this.selectedService = (ServicesResponse) Session.getSession().get(Session.SELECTED_SERVICE);
+		this.description = null;		
 		this.setDefaultView(false);
 	}
 

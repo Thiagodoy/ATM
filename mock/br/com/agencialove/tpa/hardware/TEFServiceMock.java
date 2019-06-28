@@ -9,7 +9,8 @@ public class TEFServiceMock implements ITEFService {
 
 	
 	
-	public static final boolean payment = true;
+	public static boolean payment = true;
+	public static long time = 5000;
 	
 	public TEFServiceMock(final Stage pStage) {
 		
@@ -27,7 +28,7 @@ public class TEFServiceMock implements ITEFService {
 			protected Void call() throws Exception {
 				// TODO Auto-generated method stub
 				
-				Thread.sleep(5000);
+				Thread.sleep(time);
 				
 				if(payment) {
 

@@ -99,9 +99,20 @@ class MainFlowTest extends ApplicationTest {
 		this.clickOn("#btnProsseguir");
 		this.sleep(10000);
 		this.clickOn("#btnNext");
+		this.sleep(1000);
+		//coleta
+		this.clickOn("#btnNext");
+		this.sleep(1000);
+		
+		//Pesquisa Satisfacao
+		this.clickOn("#btnNo");
+		this.sleep(1000);
+		
+		//Print o comprovante
+		this.clickOn("#btnPrintReceipt");
 		
 		
-		this.sleep(10000);
+		this.sleep(50000);
 
 		// start
 //		this.clickOn("#btnPost");

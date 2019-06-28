@@ -13,7 +13,6 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
-import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
@@ -79,6 +78,9 @@ public class PaymentNewController implements IController {
 	
 	@FXML
 	private Label labelTotal;
+	
+	@FXML
+	private Label labelErro;
 
 	@FXML
 	private ProgressBar progressBar;
@@ -98,7 +100,7 @@ public class PaymentNewController implements IController {
 	private String code;
 	private String description;
 	private int tryCounter;
-	private boolean canceled;
+	private boolean canceled = false;
 
 	public enum StageStatus {
 		LOADING, PAYMENT, ERROR, SUCCESS
@@ -402,16 +404,24 @@ public class PaymentNewController implements IController {
 				} else {
 					++PaymentNewController.this.tryCounter;
 					if (PaymentNewController.this.tryCounter > PaymentNewController.MAX_PAYMENT_TRY) {
-						Session.overAttempts(OverAttemptsType.PAYMENT);
+						//Session.overAttempts(OverAttemptsType.PAYMENT);
+						//PaymentNewController.this.labelErro.setText("Limite de tentativas de pagamento excedido.");
+						PaymentNewController.this.changeStage(StageStatus.ERROR);
+						PaymentNewController.this.tryCounter = 0;
 					} else if (!PaymentNewController.this.canceled) {
-						// PaymentNewController.this.setDefaultView(true);
+						// PaymentNewController.this.setDefaultView(true);	
+						System.out.println("Tetativas -> " + PaymentNewController.this.tryCounter);
 						final ITEFService tefService = Session.getTEFService();
+						
 						tefService.charge(PaymentNewController.this.value, PaymentNewController.this.code,
 								PaymentNewController.this.description, this);
+						
 					}
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				Session.overAttempts(OverAttemptsType.PAYMENT);
+				//PaymentNewController.this.labelErro.setText("Não foi possível realizar o pagamento. Deseja tentar novamente?");
+				PaymentNewController.this.tryCounter = 0;
 			}
 		}
 

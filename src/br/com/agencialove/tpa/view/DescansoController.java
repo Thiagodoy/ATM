@@ -13,44 +13,49 @@ import javafx.scene.media.MediaView;
 
 public class DescansoController implements IController {
 
-	
 	@FXML
 	private MediaView mediaView;
-	
+
 	private MediaPlayer mp;
 	private Media me;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		String path = new File("src/br/com/agencialove/tpa/media/descanso-atm.mp4").getAbsolutePath();
+		me = new Media(new File(path).toURI().toString());
+		mp = new MediaPlayer(me);
+		mediaView.setMediaPlayer(mp);
+
+		mp.setCycleCount(MediaPlayer.INDEFINITE);
+
+		mediaView.setOnTouchPressed((event) -> {
+			this.startWrokFlow();
+			this.stop();
+		});
 		
-       String path = new File("src/br/com/agencialove/tpa/media/descanso-atm.mp4").getAbsolutePath();
-       me = new Media(new File(path).toURI().toString());
-       mp = new MediaPlayer(me);
-       mediaView.setMediaPlayer(mp);
-       
-       mp.setCycleCount(MediaPlayer.INDEFINITE);
-       
-       mediaView.setOnTouchPressed((event)->this.startWrokFlow());
-       mediaView.setOnMouseClicked((event)->this.startWrokFlow());
-		
+		mediaView.setOnMouseClicked((event) -> {
+			this.startWrokFlow();
+			this.stop();
+		});
+
 	}
-	
+
 	private void startWrokFlow() {
-		Session.setScene(Windows.START.getScene());		
+		Session.setScene(Windows.START.getScene());
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
-	
-	
+
 	public void play() {
-		mp.setAutoPlay(true);
+		mp.play();
 	}
-	
+
 	private void stop() {
 		mp.stop();
 	}
-	
 
 }

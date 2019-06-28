@@ -21,8 +21,11 @@ import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -40,8 +43,8 @@ public class PrePostagemConfirmationController implements IController {
 	private String plp;
 	
 	
-//	@FXML
-//	private StackPane stack;
+	@FXML
+	private StackPane stack;
 
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
@@ -115,25 +118,35 @@ public class PrePostagemConfirmationController implements IController {
 		try {			
 			//printer.printTicket(avisoDeRecebimento);
 			
-//			JFXButton buttonYes = new JFXButton("Ok");		
-//			 buttonYes.getStyleClass().add("bt-blue-sm");
-//			 VBox vBox = new VBox();
-//			 vBox.getChildren().add(new Text("Informação"));
-//			 vBox.getChildren().add(new Text("Retire o seu aviso de recebimento!"));
-//			 
-//			JFXDialogLayout layout = new JFXDialogLayout();
-//			layout.setBody(vBox);
-//			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
-//			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
-//				dialog.close();
-//				Session.reset();
-//			});
+			JFXButton buttonYes = new JFXButton("Ok");		
+			 buttonYes.getStyleClass().add("bt-blue-alert");
+			 VBox vBox = new VBox();
+			 Pane pane = new Pane();
+			
+			 pane.getStyleClass().add("info");
+			 
+			 vBox.getChildren().add(pane);
+			 
+			 Text text = new Text("Retire o seu aviso de recebimento!");
+			 text.setStyle("-fx-text-fill: #777; -fx-font-size: 24px; -fx-font-family:Trebuchet MS;");
+			 vBox.getChildren().add(text);
+			 vBox.setAlignment(Pos.CENTER);
+			 
+			JFXDialogLayout layout = new JFXDialogLayout();
+			layout.setBody(vBox);
+			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
+			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
+				dialog.close();
+				Session.reset();
+			});
 
 			
 
-//			layout.setActions(buttonYes);
-//			dialog.setFocusTraversable(true);
-//			dialog.show();
+			layout.setActions(buttonYes);
+			dialog.setOverlayClose(false);
+			
+			
+			dialog.show();
 			
 			
 			
@@ -141,25 +154,25 @@ public class PrePostagemConfirmationController implements IController {
 			
 
 			
-//			JFXButton buttonYes = new JFXButton("Ok");		
-//			 buttonYes.getStyleClass().add("bt-blue-sm");
-//			 VBox vBox = new VBox();
-//			 vBox.getChildren().add(new Text("Informação"));
-//			 vBox.getChildren().add(new Text("Retire o seu aviso de recebimento!"));
-//			 
-//			JFXDialogLayout layout = new JFXDialogLayout();
-//			layout.setBody();
-//			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
-//			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
-//				dialog.close();
-//				Session.reset();
-//			});
-//
-//			
-//
-//			layout.setActions(buttonYes);
-//			dialog.setFocusTraversable(true);
-//			dialog.show();
+			JFXButton buttonYes = new JFXButton("Ok");		
+			 buttonYes.getStyleClass().add("bt-blue-sm");
+			 VBox vBox = new VBox();
+			 vBox.getChildren().add(new Text("Informação"));
+			 vBox.getChildren().add(new Text("Retire o seu aviso de recebimento!"));
+			 
+			JFXDialogLayout layout = new JFXDialogLayout();
+			layout.setBody();
+			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
+			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
+				dialog.close();
+				Session.reset();
+			});
+
+			
+
+			layout.setActions(buttonYes);
+			dialog.setFocusTraversable(true);
+			dialog.show();
 			
 			
 			e1.printStackTrace();
