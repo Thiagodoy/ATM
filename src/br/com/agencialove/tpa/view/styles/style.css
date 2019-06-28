@@ -322,6 +322,16 @@
 
 }
 
+.bt-pesagem{
+ -fx-background-color:#e17a35;
+   -fx-background-radius: 10px;
+   -fx-text-fill: #fff;
+   -fx-font-size: 25px;
+   -fx-pref-width: 435px;
+   -fx-pref-height: 80px;	
+   -fx-font-family:"Trebuchet MS";
+}
+
 .bt-cancelar{
    -fx-background-color: #e17a35;
    -fx-background-radius: 10px;
@@ -344,6 +354,16 @@
    -fx-pref-height: 30px;
    -fx-background-image: url("../img/seta-next.png");
     -fx-background-repeat: no-repeat;		
+}
+
+.pane-envelope{
+-fx-background-image: url("../img/packageE.jpeg");
+
+}
+
+.pane-dimension-envelope{
+ -fx-background-image: url("../img/dimensionsPackageE.jpeg");
+
 }
 
 /* Tela TestConfirmation */
