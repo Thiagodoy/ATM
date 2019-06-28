@@ -65,8 +65,8 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Pane layoutX="64.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
-      <Pane layoutX="933.0" layoutY="596.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Pane layoutX="65.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+      <Pane layoutX="929.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
       <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="269.0" layoutY="268.0" prefHeight="17.0" prefWidth="424.0" text="Label" textFill="#e80f0f" visible="false" />
       <Pane prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
       <Pane layoutX="761.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
