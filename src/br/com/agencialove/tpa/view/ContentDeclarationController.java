@@ -115,6 +115,7 @@ public class ContentDeclarationController implements IController {
 			return;
 
 		final Button b = new Button("X");
+		b.getStyleClass().add("bt-excluir-linha");
 
 		long quantidade = Long.parseLong(this.txtQuantity.getText());
 		double valor = Double.parseDouble(this.txtValue.getText());

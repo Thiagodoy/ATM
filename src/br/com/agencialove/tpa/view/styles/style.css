@@ -273,6 +273,13 @@
    -fx-font-family:"Trebuchet MS";
 }
 
+.bt-excluir-linha{
+ -fx-background-color: #f00;
+ -fx-font-family:"Trebuchet MS";
+ -fx-text-fill: #fff;
+ -fx-font-size: 26px;
+}
+
 .font-resumo{
     -fx-font-family:"Trebuchet MS";
     -fx-font-size: 30px; 
