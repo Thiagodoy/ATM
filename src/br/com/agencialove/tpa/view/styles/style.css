@@ -98,7 +98,7 @@
 	-fx-font-family:"Trebuchet MS";
         -fx-pref-height: 28px;
        -fx-border-radius:6px;
-        -fx-border-color:#ddd;
+        -fx-border-color:#bbb;
         -fx-background-color:#fff;
           
 }
@@ -678,9 +678,9 @@
 
 .label-response-confirmation{
     -fx-font-size: 21px;
-    -fx-border-color: #eee;
-    -fx-border-width: 2px;
-    -fx-border-radius:8px;
+    -fx-border-color: #bbb;
+   
+    -fx-border-radius:6px;
 }
 
 .txt-label-lg{
