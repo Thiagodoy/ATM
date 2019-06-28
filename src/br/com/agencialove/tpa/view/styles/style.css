@@ -282,8 +282,8 @@
  -fx-pref-height: 30px;	
  -fx-alignment: center;
   -fx-font-size: 18px;
- -fx-border-insets: 3,0,0,0;
--fx-background-insets : 3,0,0,0;
+ -fx-insets: 8,0,0,0;
+-fx-background-insets : 8,0,0,0;
  
 }
 
