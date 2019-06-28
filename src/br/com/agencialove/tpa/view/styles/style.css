@@ -80,6 +80,13 @@
  
 }
 
+.panel-pesquisa{
+  -fx-border-width:1;
+  -fx-border-color: #ccc;
+  -fx-border-radius: 10px;
+ -fx-background-radius: 10px
+}
+
 .input-default{
    -fx-border-radius: 8px;
    -fx-background-radius: 8px;
