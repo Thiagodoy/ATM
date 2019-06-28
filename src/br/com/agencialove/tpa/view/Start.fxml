@@ -28,6 +28,7 @@
                      </font></Button>
                   <Button fx:id="btnBuyPackage" layoutX="162.0" layoutY="603.0" mnemonicParsing="false" onAction="#btnPrePostingAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Finalização do pré-atendimento" />
                   <Button fx:id="btnPrePosting" layoutX="162.0" layoutY="458.0" mnemonicParsing="false" onAction="#btnBuyPackageAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Venda de Embalagem" />
+                  <Button fx:id="btnPrePosting" layoutX="162.0" layoutY="458.0" mnemonicParsing="false" onAction="#btnBuyPackageAction" prefHeight="91.0" prefWidth="385.0" styleClass="bt-tela-inicial" text="Venda de Embalagem" />
                   <Label fx:id="titleLabel" alignment="CENTER" prefHeight="60.0" prefWidth="443.0" styleClass="txt-label" text="Terminal de Auto-Atendimento" textAlignment="CENTER">
                      <font>
                         <Font size="46.0" />

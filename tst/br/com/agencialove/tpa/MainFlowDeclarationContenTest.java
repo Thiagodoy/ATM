@@ -2,6 +2,8 @@ package br.com.agencialove.tpa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
@@ -15,7 +17,7 @@ import br.com.agencialove.tpa.workflow.Session;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-class MainFlowCancelPaymentTest extends ApplicationTest {
+class MainFlowDeclarationContenTest extends ApplicationTest {
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(final Stage stage) {
@@ -35,6 +37,9 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 
 	@Test
 	public void testContainsButtons() throws InterruptedException, TimeoutException {
+		
+		
+		
 
 		this.clickOn("#btnPost");
 		this.sleep(500);
@@ -45,15 +50,17 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 		this.sleep(500);
 		final Node rowReceiver = this.lookup(".table-row-cell").nth(0).query();
 		this.clickOn(rowReceiver);
+		this.sleep(500);		
 		this.clickOn("#btnNext");
-		this.sleep(500);
+		///Destinatario
 		this.clickOn("#txtNome").write("Benício Nelson Ian Nascimento");
 		this.clickOn("#txtNumero").write("123");
 		this.clickOn("#txtCPF").write("827.263.460-06");
 		this.clickOn("#txtCelular").eraseText(1).write("81985109450");
 		this.clickOn("#txtEmail").write("laishele@robiel.com.br");
+		this.sleep(1000);
 		this.clickOn("#btnNext");
-		this.sleep(500);
+		this.sleep(1000);
 		this.clickOn("#btnNext");
 
 		this.clickOn("#txtCep").write("14806005");
@@ -61,31 +68,52 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 		this.sleep(500);
 		final Node rowReceiver1 = this.lookup(".table-row-cell").nth(0).query();
 		this.clickOn(rowReceiver1);
+		this.sleep(1000);
 		this.clickOn("#btnNext");
-		this.sleep(500);
+		
 		this.clickOn("#txtNome").write("Mariah Agatha Luana Lopes");
 		this.clickOn("#txtNumero").write("123");
 		this.clickOn("#txtCPF").write("34053685885");
 		this.clickOn("#txtCelular").eraseText(1).write("81985109450");
 		this.clickOn("#txtEmail").write("maria@aichele.com.br");
+		this.sleep(1000);
 		this.clickOn("#btnNext");
 
+		this.sleep(1000);
+		this.clickOn("#btnNext");
+
+		//Seleciona os servicos adicionais
+		this.clickOn("#panelSemServicoAdicional");
+		this.sleep(300);
+		this.clickOn("#panelMaoPropria");
+		this.sleep(300);
+		this.clickOn("#panelDeclaracaoValor");		
 		this.sleep(500);
-		this.clickOn("#btnNext");
-
-		this.clickOn("#panelSemServicoAdicional")
-		.clickOn("#panelMaoPropria");
 		this.clickOn("#btnNext");	
-
+		
+		//Declaração de Conteudo
+		this.clickOn("#txtDescription").write("Relogio Rolex");
+		this.clickOn("#txtQuantity").write("2");
+		this.clickOn("#txtValue").write("20");
+		this.clickOn("#btnAdd");
+		this.sleep(500);
+		this.clickOn("#txtDescription").write("Iphone X");
+		this.clickOn("#txtQuantity").write("1");
+		this.clickOn("#txtValue").write("200");
+		this.clickOn("#btnAdd");		
+		this.sleep(300);
+		this.clickOn("#btnNext");		
+		this.sleep(1000);
+		//Definição da embalagem				
 		this.clickOn("#btnPackageG");
 		this.clickOn("#btnMeasures");
-		
+		this.sleep(300);
 		this.clickOn("#btnNext");
 		
 		assertEquals(this.lookup("#btnNext").queryButton().isDisable(), true);
-		
+		this.sleep(300);
 		this.clickOn("#panelSedex");
-		
+		this.sleep(300);
 		this.clickOn("#btnNext");
 		this.sleep(2000);
 		this.clickOn("#btnYes");
@@ -97,12 +125,23 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 		this.sleep(1000);
 		
 		//Pagamento
-		this.clickOn("#btnCancelar");
+		this.clickOn("#btnProsseguir");
 		this.sleep(10000);
 		this.clickOn("#btnNext");
+		this.sleep(1000);
+		//coleta
+		this.clickOn("#btnNext");
+		this.sleep(1000);
+		
+		//Pesquisa Satisfacao
+		this.clickOn("#btnNo");
+		this.sleep(1000);
+		
+		//Print o comprovante
+		this.clickOn("#btnPrintReceipt");
 		
 		
-		this.sleep(10000);
+		this.sleep(5000);
 
 		// start
 //		this.clickOn("#btnPost");
@@ -158,7 +197,7 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 //		this.clickOn("#btnNext");
 //		//payment
 //		this.clickOn("#btnYes");
-		//WaitForAsyncUtils.waitFor(30, TimeUnit.SECONDS,() -> MainFlowTest.this.lookup("#imgInstruction").query().isVisible());
+//		WaitForAsyncUtils.waitFor(30, TimeUnit.SECONDS,() -> MainFlowTest.this.lookup("#imgInstruction").query().isVisible());
 //		this.sleep(20000);
 //		//openBox
 //		this.clickOn("#btnNext");

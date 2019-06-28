@@ -96,9 +96,16 @@ public class StartController implements IController {
 					timer.cancel();
 				});
 			}
-		}, 15000);
+		}, 10000);
 
 	}
+	
+	@FXML
+	public void descanso() {
+		Session.setScene(Windows.DESCANSO.getScene());
+	}
+	
+	
 
 	@Override
 	public void initialize(final URL arg0, final ResourceBundle arg1) {
