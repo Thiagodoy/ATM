@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,7 +44,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnNext" disable="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Avançar">
+      <Button fx:id="btnNext" disable="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
          <font>
             <Font size="18.0" />
          </font>
@@ -53,6 +54,35 @@
    <Pane layoutX="933.0" layoutY="697.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
    <Label layoutX="140.0" layoutY="102.0" style="-fx-font-size: 30px;" styleClass="label-default" text="Escolha o gabarito em que a sua encomenda se encaixa" />
    <Button layoutX="295.0" layoutY="561.0" mnemonicParsing="false" prefHeight="86.0" styleClass="bt-blue-sm" text="Clique aqui quando estiver pronto para pesar!" textAlignment="CENTER" wrapText="true" />
-   <Pane layoutX="826.0" layoutY="179.0" prefHeight="420.0" prefWidth="56.0" styleClass="pane-envelope" />
-   <Pane layoutX="709.0" layoutY="186.0" prefHeight="44.0" prefWidth="119.0" styleClass="pane-dimension-envelope" />
+   <Pane layoutX="828.0" layoutY="179.0" prefHeight="418.0" prefWidth="40.0">
+      <styleClass>
+         <String fx:value="pane-envelope" />
+         <String fx:value="add-border-caixa" />
+      </styleClass>
+   </Pane>
+   <Pane layoutX="697.0" layoutY="186.0" prefHeight="44.0" prefWidth="119.0" styleClass="pane-dimension-envelope" />
+   <Pane layoutX="156.0" layoutY="330.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-size: 130px;">
+      <styleClass>
+         <String fx:value="pane-caixa-p" />
+         <String fx:value="add-border-caixa" />
+      </styleClass>
+   </Pane>
+   <Pane layoutX="326.0" layoutY="305.0" prefHeight="180.0" prefWidth="180.0" style="-fx-background-size: 180px;">
+      <styleClass>
+         <String fx:value="pane-caixa-m" />
+         <String fx:value="add-border-caixa" />
+      </styleClass>
+   </Pane>
+   <Pane layoutX="546.0" layoutY="270.0" prefHeight="248.0" prefWidth="248.0" style="-fx-background-size: 250px;">
+      <styleClass>
+         <String fx:value="pane-caixa-g" />
+         <String fx:value="add-border-caixa" />
+      </styleClass>
+   </Pane>
+   <Label layoutX="93.0" layoutY="218.0" style="-fx-font-size: 20px;" text="Objeto fora dos padrões? Dirija-se ao guichê.">
+      <styleClass>
+         <String fx:value="label-default" />
+         <String fx:value="label-confirmation" />
+      </styleClass>
+   </Label>
 </AnchorPane>

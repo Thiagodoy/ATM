@@ -35,8 +35,8 @@ public class MeasuresController implements IController {
 	@FXML
 	private Button btnNext;
 
-	@FXML
-	private Button btnMeasures;
+	 @FXML
+	private Button btnMeasures; 
 
 	@FXML
 	private Button btnPackageP;

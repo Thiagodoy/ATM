@@ -366,6 +366,24 @@
 
 }
 
+.pane-caixa-p{
+ -fx-background-image: url("../img/packageP.jpeg");
+}
+
+.pane-caixa-m{
+ -fx-background-image: url("../img/packageM.jpeg");
+}
+
+.pane-caixa-g{
+ -fx-background-image: url("../img/packageG.jpeg");
+}
+
+.add-border-caixa{
+  -fx-border-width:3;
+  -fx-border-color: #0083ca;
+
+}
+
 /* Tela TestConfirmation */
 
 .testeteste{
