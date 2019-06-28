@@ -273,14 +273,26 @@
    -fx-font-family:"Trebuchet MS";
 }
 
+/*
 .bt-excluir-linha{
 -fx-background-color: #ff7675;
 -fx-text-fill: #fff;
  -fx-background-radius: 50%;
  -fx-pref-width: 30px;
  -fx-pref-height: 30px;	
-
 }
+*/
+
+.bt-excluir-linha{
+-fx-background-color: #ff7675;
+-fx-text-fill: #fff;
+ -fx-background-radius: 8px;
+ -fx-pref-width: 40px;
+ -fx-pref-height: 25px;	
+}
+
+
+
 
 .font-resumo{
     -fx-font-family:"Trebuchet MS";
