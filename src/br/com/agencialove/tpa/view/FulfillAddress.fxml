@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import br.com.agencialove.tpa.utils.MaskField?>
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="tela-inicial" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.FulfillAddressController">
    <children>
@@ -23,11 +24,11 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtNumero" layoutX="385.0" layoutY="93.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="365.0" promptText="Número*" styleClass="input-default-sm">
+            <MaskField fx:id="txtNumero" mask="DDDDDDDDD" layoutX="385.0" layoutY="93.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="365.0" promptText="Número*" styleClass="input-default-sm">
                <font>
                   <Font size="18.0" />
                </font>
-            </TextField>
+            </MaskField>
             <TextField fx:id="txtBairro" disable="true" layoutX="10.0" layoutY="215.0" prefHeight="40.0" prefWidth="365.0" promptText="Bairro " styleClass="input-default-sm">
                <font>
                   <Font size="18.0" />
@@ -58,11 +59,11 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtCelular" layoutX="385.0" layoutY="277.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="365.0" promptText="Celular" styleClass="input-default-sm">
+            <MaskField fx:id="txtCelular" mask="(DD)D DDDD DDDD" layoutX="385.0" layoutY="277.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="365.0" promptText="Celular" styleClass="input-default-sm">
                <font>
                   <Font size="18.0" />
                </font>
-            </TextField>
+            </MaskField>
             <Label layoutX="10.0" layoutY="9.0" style="-fx-font-size: 16px;" styleClass="label-confirmation" text="Destinatário*" />
             <Label layoutX="10.0" layoutY="72.0" style="-fx-font-size: 16px;" styleClass="label-confirmation" text="CEP*" />
             <Label layoutX="385.0" layoutY="72.0" style="-fx-font-size: 16px;" styleClass="label-confirmation" text="Número*" />

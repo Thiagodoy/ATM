@@ -11,6 +11,7 @@ import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.CepResponse;
 import br.com.agencialove.tpa.model.ZipType;
+import br.com.agencialove.tpa.utils.MaskField;
 import br.com.agencialove.tpa.workflow.Session;
 import br.com.agencialove.tpa.workflow.Validator;
 import javafx.event.ActionEvent;
@@ -55,7 +56,7 @@ public class FulfillAddressController implements IController {
 	private TextField txtCPF;
 
 	@FXML
-	private TextField txtCelular;
+	private MaskField txtCelular;
 
 	@FXML
 	private TextField txtEmail;
@@ -148,7 +149,7 @@ public class FulfillAddressController implements IController {
 		remetente.setNome(this.txtNome.getText().trim());
 		remetente.setCpf(this.txtCPF.getText().trim());
 
-		String celular = this.txtCelular.getText().trim().replace("[^0-9]", "");
+		String celular = this.txtCelular.getText().trim().replaceAll("([^0-9])*", "");
 
 		if (celular.length() > 0)
 			remetente.setCelular(Long.parseLong(celular));
@@ -183,7 +184,7 @@ public class FulfillAddressController implements IController {
 		destinatarioRequest.setNome(this.txtNome.getText().trim());
 		destinatarioRequest.setCpf(this.txtCPF.getText().trim());
 
-		String celular = this.txtCelular.getText().trim().replace("[^0-9]", "");
+		String celular = this.txtCelular.getText().trim().replaceAll("([^0-9])*", "");
 
 		if (celular.length() > 0)
 			destinatarioRequest.setCelular(Long.parseLong(celular));
@@ -231,7 +232,7 @@ public class FulfillAddressController implements IController {
 			nome = destinatario.getNome();
 			cpf = destinatario.getCpf();
 			email = destinatario.getEmail();
-			celular = String.valueOf(destinatario.getCelular());
+			celular = destinatario.getCelular() == 0 ? "" : String.valueOf(destinatario.getCelular());
 
 			break;
 		case SENDER:
@@ -241,7 +242,7 @@ public class FulfillAddressController implements IController {
 			nome = remetente.getNome();
 			cpf = remetente.getCpf();
 			email = remetente.getEmail();
-			celular = String.valueOf(remetente.getCelular());
+			celular = remetente.getCelular() == 0 ? "" : String.valueOf(remetente.getCelular());
 		}
 
 		CepResponse c = (CepResponse) Session.getSession().get(this.type.name() + "_ADDRESS");

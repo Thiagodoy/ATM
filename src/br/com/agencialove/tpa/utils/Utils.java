@@ -3,14 +3,10 @@ package br.com.agencialove.tpa.utils;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
 import br.com.agencia.tpa.rest.request.ServicoAdicionalRequest;
-import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
-import javafx.scene.layout.StackPane;
 
 public class Utils {
 
