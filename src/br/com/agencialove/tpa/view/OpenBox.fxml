@@ -1,49 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.*?>
 
-<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="bg-white" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.OpenBoxController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="bg-white" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.OpenBoxController">
    <children>
-       <Label fx:id="lbTitle" alignment="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="130.0" prefWidth="832.0" style="-fx-font-size: 30px;" styleClass="labelAviso2" text="Aguarde a gaveta coletora abrir totalmente." textAlignment="CENTER" wrapText="true" AnchorPane.topAnchor="170.0">
+       <Label fx:id="lbTitle" alignment="CENTER" layoutX="116.0" layoutY="319.0" prefHeight="37.0" prefWidth="832.0" style="-fx-font-size: 25px;" styleClass="label-default" text="Aguarde a gaveta coletora abrir totalmente." textAlignment="CENTER" wrapText="true" AnchorPane.topAnchor="319.0">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      
-     
-      <Pane layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0" styleClass="footer-page">
-         <children>
-         <Button fx:id="btnNext" disable="false" layoutX="813.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-next" text="Avançar">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-               </Button>
-         </children>
-       </Pane>
-      <Label fx:id="lbTitle1" alignment="CENTER" layoutX="130.0" layoutY="270.0" prefHeight="130.0" prefWidth="832.0" style="-fx-font-size: 30px;" styleClass="labelAviso2" text="Coloque a encomenda dentro da gaveta." textAlignment="CENTER" wrapText="true">
+      <Label fx:id="lbTitle1" alignment="CENTER" layoutX="96.0" layoutY="392.0" prefHeight="30.0" prefWidth="832.0" style="-fx-font-size: 25px;" styleClass="label-default" text="Coloque a encomenda dentro da gaveta." textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="lbTitle11" alignment="CENTER" layoutX="130.0" layoutY="370.0" prefHeight="130.0" prefWidth="832.0" style="-fx-font-size: 30px;" styleClass="labelAviso2" text="Afaste as maos e pressione o botao &quot;Avançar&quot; quando estiver pronto." textAlignment="CENTER" wrapText="true">
+      <Label fx:id="lbTitle11" alignment="CENTER" layoutX="96.0" layoutY="355.0" prefHeight="37.0" prefWidth="832.0" style="-fx-font-size: 25px;" styleClass="label-default" text="Afaste as mãos e pressione o botao &quot;Avançar&quot; quando estiver pronto." textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Pane fx:id="paneSearch" layoutY="80.0" prefHeight="8" prefWidth="1024.0" styleClass="footer-page" />
-      <Pane fx:id="paneSearch" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25" prefHeight="30" prefWidth="1024.0" styleClass="txt-label-service-teste" text="COLETA DA ENCOMENDA" />
-         </children>
-      </Pane>
+      <Pane fx:id="paneSearch" layoutX="782.0" layoutY="24.0" prefHeight="8" prefWidth="1024.0" styleClass="pane-logo" />
+      <Pane fx:id="paneSearch" prefHeight="80" prefWidth="1024.0" styleClass="barra-topo" />
+   <Button fx:id="btnNext" disable="false" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Button>
+      <Pane layoutX="935.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="210.0" prefHeight="47.0" prefWidth="746.0" style="-fx-font-size: 35px;" styleClass="label-default" text="Coleta da encomenda" />
+      <Pane layoutX="930.0" layoutY="697.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
    </children>
 </AnchorPane>
