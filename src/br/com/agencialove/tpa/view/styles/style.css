@@ -84,7 +84,7 @@
    -fx-border-radius: 8px;
    -fx-background-radius: 8px;
    -fx-border-color:#ddd;
-   -fx-border-width:2px;
+   -fx-border-width:1px;
    -fx-font-family:"Trebuchet MS";
    -fx-pref-height: 45px; 
    -fx-text-fill: #666; 
@@ -92,14 +92,15 @@
 }
 
 .input-default-sm{
-   -fx-border-radius: 8px;
-   -fx-background-radius: 8px;
-   -fx-border-color:#ddd;
-   -fx-border-width:2px;
-   -fx-font-family:"Trebuchet MS";
-   -fx-pref-height: 28px; 
-   -fx-text-fill: #666; 
-   -fx-font-size: 18px;   
+   -fx-font-size: 16px;
+	-fx-text-fill: #777;
+	-fx-font-weight: bold;
+	-fx-font-family:"Trebuchet MS";
+        -fx-pref-height: 28px;
+       -fx-border-radius:6px;
+        -fx-border-color:#ddd;
+        -fx-background-color:#fff;
+          
 }
 .input-error{
    -fx-border-color:red !important;
@@ -669,8 +670,8 @@
 
 .label-confirmation{
 	-fx-font-size: 16px;
-	-fx-text-fill: #777;
-	-fx-font-weight: bold;
+	-fx-text-fill: #0083CA;
+	
 	-fx-font-family:"Trebuchet MS";
 }
 
@@ -679,7 +680,7 @@
     -fx-font-size: 21px;
     -fx-border-color: #eee;
     -fx-border-width: 2px;
--fx-border-radius:8px;
+    -fx-border-radius:8px;
 }
 
 .txt-label-lg{
