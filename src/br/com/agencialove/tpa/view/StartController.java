@@ -40,7 +40,7 @@ public class StartController implements IController {
 		this.cancelTime();
 		Session.setScene(Windows.WEB_BROWSER.getScene());
 		WebBrowserController controller = (WebBrowserController) scene.getUserData();
-		controller.loadUrl(Url.CORREIOS);
+		controller.loadUrl(Url.SATISFACAO);
 	}
 
 	@FXML
