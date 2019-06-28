@@ -677,9 +677,9 @@
 
 .label-response-confirmation{
     -fx-font-size: 21px;
-   
+    -fx-border-color: #eee;
     -fx-border-width: 2px;
--fx-border-radius:5px;
+-fx-border-radius:8px;
 }
 
 .txt-label-lg{
