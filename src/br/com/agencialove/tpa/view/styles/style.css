@@ -83,7 +83,7 @@
 .input-default{
    -fx-border-radius: 8px;
    -fx-background-radius: 8px;
-   -fx-border-color:#aaa;
+   -fx-border-color:#ddd;
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
    -fx-pref-height: 45px; 
@@ -94,7 +94,7 @@
 .input-default-sm{
    -fx-border-radius: 8px;
    -fx-background-radius: 8px;
-   -fx-border-color:#aaa;
+   -fx-border-color:#ddd;
    -fx-border-width:2px;
    -fx-font-family:"Trebuchet MS";
    -fx-pref-height: 28px; 
