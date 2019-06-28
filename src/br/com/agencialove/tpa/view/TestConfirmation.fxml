@@ -55,8 +55,8 @@
           	
             					
 					 <Button fx:id="btnYes" layoutX="539.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Prosseguir" />
-      <Pane layoutX="932.0" layoutY="593.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
-      <Pane layoutX="64.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+      <Pane layoutX="933.0" layoutY="593.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Pane layoutX="65.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
    
      
    </children>
