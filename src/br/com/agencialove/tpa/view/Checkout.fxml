@@ -38,19 +38,19 @@
                 <Font size="36.0" />
             </font>
         </Label>
-      <Button fx:id="btnBack" layoutX="49.0" layoutY="567.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
+      <Button fx:id="btnBack" layoutX="49.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnNext" disable="false" layoutX="539.0" layoutY="567.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
+      <Button fx:id="btnNext" disable="false" layoutX="539.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="296.0" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
-      <Pane layoutX="64.0" layoutY="578.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
-      <Pane layoutX="934.0" layoutY="578.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Button layoutX="294.5" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
+      <Pane layoutX="65.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+      <Pane layoutX="933.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
       <Pane prefHeight="200.0" prefWidth="200.0" styleClass="barra-topo" />
       <Pane layoutX="762.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
     </children>
