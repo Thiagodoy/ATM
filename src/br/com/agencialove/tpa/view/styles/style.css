@@ -274,10 +274,12 @@
 }
 
 .bt-excluir-linha{
- -fx-background-color: #f00;
- -fx-font-family:"Trebuchet MS";
- -fx-text-fill: #fff;
- -fx-font-size: 26px;
+-fx-background-color: #ff7675;
+-fx-text-fill: #fff;
+ -fx-background-radius: 50%;
+ -fx-pref-width: 30px;
+ -fx-pref-height: 30px;	
+
 }
 
 .font-resumo{
