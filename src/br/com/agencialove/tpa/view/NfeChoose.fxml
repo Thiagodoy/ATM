@@ -7,15 +7,9 @@
 
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="bg-white" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.NfeChooseController">
    <children>
-   		<Pane layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
-	         <children>
-			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutY="56.0" prefHeight="30" prefWidth="1024.0" styleClass="txt-label-service-teste" text="Postagem Nacional">
-
-					</Label>			            
-	         </children>
-      	</Pane>
+   		<Pane layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="barra-topo" />
       	
-      	<Pane layoutY="112.0" prefHeight="8" prefWidth="1024.0" styleClass="linha">
+      	<Pane layoutX="762.0" layoutY="24.0" prefHeight="8" prefWidth="1024.0" styleClass="pane-logo">
 	         
       	</Pane>
       	
@@ -31,10 +25,10 @@
             <Label layoutX="125.0" layoutY="348.0" style="-fx-font-family: &quot;Trebuchet MS&quot;; -fx-font-size: 30px; -fx-text-fill: #777;" text="Você está com a Nota Fiscal do conteúdo da encomenda ?" />      			            
 	         </children>
       	</Pane>
-				      <Button fx:id="btnNo" layoutX="49.0" layoutY="549.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Nao" />
+				      <Button fx:id="btnNo" layoutX="49.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnNoAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Nao" />
           	
 					
-					 <Button fx:id="btnYes" layoutX="539.0" layoutY="549.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Sim" />
-      <Button layoutX="295.0" layoutY="659.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
+					 <Button fx:id="btnYes" layoutX="539.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnYesAction" prefHeight="65" prefWidth="240.0" styleClass="bt-blue-sm" text="Sim" />
+      <Button layoutX="294.5" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
    </children>
 </AnchorPane>
