@@ -12,6 +12,7 @@ import br.com.agencialove.tpa.hardware.arduino.DispenserState;
 import br.com.agencialove.tpa.hardware.arduino.Error;
 import br.com.agencialove.tpa.hardware.arduino.Warning;
 import br.com.agencialove.tpa.hardware.arduino.Working;
+import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -188,5 +189,11 @@ public class ArduinoController implements IController {
 	public void working(final Working working) {
 		this.txtResult.appendText("Working Callback -- " + working.getMessage());
 		this.txtResult.appendText("\r\n");
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 }

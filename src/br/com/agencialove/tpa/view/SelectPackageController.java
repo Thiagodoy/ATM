@@ -141,4 +141,10 @@ public class SelectPackageController implements IController {
 		});
 		return ret;
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

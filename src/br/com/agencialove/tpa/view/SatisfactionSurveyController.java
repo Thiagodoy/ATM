@@ -32,6 +32,12 @@ public class SatisfactionSurveyController implements IController {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 
 }

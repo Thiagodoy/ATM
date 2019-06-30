@@ -94,7 +94,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="295.0" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
+      <Button onAction="#cancel" layoutX="295.0" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
       <Button fx:id="btnBack" layoutX="49.0" layoutY="566.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
          <font>
             <Font size="18.0" />

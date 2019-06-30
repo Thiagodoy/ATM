@@ -92,6 +92,8 @@ public class FulfillAddressController implements IController {
 
 	@FXML
 	private Label lbEmailConfirmacao;
+	
+	@FXML Label labelErro;
 
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
@@ -103,18 +105,18 @@ public class FulfillAddressController implements IController {
 
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
-		
+
 		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
-		
-		if(this.type.equals(ZipType.RECEIVER)) {
+
+		if (this.type.equals(ZipType.RECEIVER)) {
 			DestinatarioRequest destinatarioRequest = this.destinatario();
 			request.getObjetoPostalRequest().get(0).setDestinatario(destinatarioRequest);
 			request.getObjetoPostalRequest().get(0).setNacionalRequest(this.nacional());
-		}else {
+		} else {
 			RemetenteRequest remetenteRequest = this.remetente();
 			request.setRemetenteRequest(remetenteRequest);
-		}		
-		
+		}
+
 		final Scene scene = Windows.CONFIRM_ADDRESS.getScene();
 		final ConfirmAddressController controller = (ConfirmAddressController) scene.getUserData();
 		controller.setType(this.type);
@@ -131,18 +133,23 @@ public class FulfillAddressController implements IController {
 
 	private boolean areMandatoriesFilled() {
 		final Validator validator = new Validator();
-		 validator.validateNotEmpty(this.txtLogradouro, true);
-		 validator.validateNotEmpty(this.txtNumero, true);
-		 validator.validateStringNotEmpty(this.txtNome,true, 3, 100);
-		 validator.validateNotEmpty(this.txtCEP, true);
-		 //validator.validateCelullar(this.txtCelular, true);
+		
+		
+		
+		validator.validateNotEmpty(this.txtLogradouro, true);
+		validator.validateNotEmpty(this.txtNumero, true);
+		validator.validateStringNotEmpty(this.txtNome, true, 3, 100);
+		validator.validateNotEmpty(this.txtCEP, true);
+		validator.validateCelullar(this.txtCelular, true);
 
 		if (this.type == ZipType.SENDER)
 			validator.validateCPF(this.txtCPF, true);
 
+		labelErro.setVisible(!validator.isEmpty());
+		
 		return validator.isEmpty();
 	}
-	
+
 	private RemetenteRequest remetente() {
 
 		RemetenteRequest remetente = new RemetenteRequest();
@@ -150,23 +157,27 @@ public class FulfillAddressController implements IController {
 		remetente.setCpf(this.txtCPF.getText().trim());
 
 		String celular = this.txtCelular.getText().trim().replaceAll("([^0-9])*", "");
+		
+		
 
 		if (celular.length() > 0)
 			remetente.setCelular(Long.parseLong(celular));
 
 		remetente.setEmail(this.txtEmail.getText().trim());
-		remetente.setNumero(this.txtNumero.getText().trim());
+		
+		String numero = this.txtNumero.getText().replaceAll("[_]*", "").trim();
+		remetente.setNumero(numero);
 		remetente.setComplemento(this.txtComplemento.getText().trim());
 		remetente.setCep(this.txtCEP.getText());
 		remetente.setCidade(this.cep.getCidade());
-		String logradouro = MessageFormat.format("{0} {1} {2} ",cep.getRua(), cep.getBairro(), cep.getCidade());
-		remetente.setLogradouro(logradouro);		
+		String logradouro = MessageFormat.format("{0} {1} {2} ", cep.getRua(), cep.getBairro(), cep.getCidade());
+		remetente.setLogradouro(logradouro);
 
 		return remetente;
 	}
 
 	private NacionalRequest nacional() {
-		
+
 		NacionalRequest nacionalRequest = new NacionalRequest();
 		CepResponse c = (CepResponse) Session.getSession().get(this.type.name() + "_ADDRESS");
 		nacionalRequest.setBairro(c.getBairro());
@@ -175,9 +186,9 @@ public class FulfillAddressController implements IController {
 		nacionalRequest.setEstado(c.getEstado());
 		nacionalRequest.setCentroCustoCliente("0069950016");
 		return nacionalRequest;
-		
-		
+
 	}
+
 	private DestinatarioRequest destinatario() {
 
 		DestinatarioRequest destinatarioRequest = new DestinatarioRequest();
@@ -190,12 +201,15 @@ public class FulfillAddressController implements IController {
 			destinatarioRequest.setCelular(Long.parseLong(celular));
 
 		destinatarioRequest.setEmail(this.txtEmail.getText().trim());
-		destinatarioRequest.setNumero(this.txtNumero.getText().trim());
+		
+		String numero = this.txtNumero.getText().replaceAll("[_]*", "").trim();
+		
+		destinatarioRequest.setNumero(numero);
 		destinatarioRequest.setComplemento(this.txtComplemento.getText().trim());
 		destinatarioRequest.setCep(this.txtCEP.getText());
 		destinatarioRequest.setCidade(this.cep.getCidade());
-		String logradouro = MessageFormat.format("{0} {1} {2} ",cep.getRua(), cep.getBairro(), cep.getCidade());
-		destinatarioRequest.setLogradouro(logradouro);		
+		String logradouro = MessageFormat.format("{0} {1} {2} ", cep.getRua(), cep.getBairro(), cep.getCidade());
+		destinatarioRequest.setLogradouro(logradouro);
 
 		return destinatarioRequest;
 	}
@@ -237,8 +251,7 @@ public class FulfillAddressController implements IController {
 			break;
 		case SENDER:
 			this.lbTitle.setText("Complemente os dados do remetente.");
-			this.remetente = request.getRemetente() != null ? request.getRemetente()
-					: new RemetenteRequest();
+			this.remetente = request.getRemetente() != null ? request.getRemetente() : new RemetenteRequest();
 			nome = remetente.getNome();
 			cpf = remetente.getCpf();
 			email = remetente.getEmail();
@@ -263,7 +276,7 @@ public class FulfillAddressController implements IController {
 		this.txtEmail.setText(email);
 
 	}
-	
+
 	@Override
 	public void clear() {
 
@@ -274,24 +287,40 @@ public class FulfillAddressController implements IController {
 
 		if (this.txtLogradouro != null)
 			this.txtLogradouro.setText("");
-		// if(this.txtNumero != null) {this.txtNumero.setText("");
-		// this.txtNumero.setPlainText(""); this.txtNumero.clear();
-		// this.txtNumero.requestFocus();};
+		if (this.txtNumero != null) {
+			this.txtNumero.setText("");
+			this.txtNumero.clear();
+			this.txtNumero.requestFocus();
+		}
+		;
 		if (this.txtComplemento != null)
 			this.txtComplemento.setText("");
-		// if(this.lblCidade != null) this.lblCidade.getItems().clear();
-		// if(this.lblEstado != null) this.lblEstado.getItems().clear();
+
 		if (this.txtCEP != null)
 			this.txtCEP.setText("");
 		if (this.txtNome != null)
 			this.txtNome.setText("");
 		if (this.txtCPF != null)
 			this.txtCPF.setText("");
-		// if(this.txtCelular != null) {this.txtCelular.setText("");
-		// this.txtCelular.setPlainText(""); this.txtCelular.clear();};
+		if (this.txtCelular != null) {
+			this.txtCelular.setText("");
+			this.txtCelular.setPlainText("");
+			this.txtCelular.clear();
+		}
+		
 		if (this.txtEmail != null)
 			this.txtEmail.setText("");
 		if (this.btnNext != null)
 			this.btnNext.setDisable(true);
+		
+		//labelErro.setText("");
+		labelErro.setVisible(false);
+		
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 }

@@ -156,4 +156,10 @@ public class SearchZipController implements IController {
 		if(this.tableView != null) this.tableView.getItems().clear();
 		if(this.statusLabel != null) this.statusLabel.setText(Messages.getString("SearchZipController.11")); //$NON-NLS-1$
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

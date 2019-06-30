@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 public class MeasuresController implements IController {
 
@@ -39,16 +40,16 @@ public class MeasuresController implements IController {
 	private Button btnMeasures; 
 
 	@FXML
-	private Button btnPackageP;
+	private Pane btnPackageP;
 
 	@FXML
-	private Button btnPackageM;
+	private Pane btnPackageM;
 
 	@FXML
-	private Button btnPackageG;
+	private Pane btnPackageG;
 
 	@FXML
-	private Button btnPackageL;
+	private Pane btnPackageE;
 
 	private PackageMeasures measures;
 	private ObjectType objectType;
@@ -66,44 +67,45 @@ public class MeasuresController implements IController {
 		Session.setScene(this.previousScene);
 	}
 
-	@FXML
-	private void btnPackageAction(final ActionEvent e) {
-		if (this.btnPackageP.isArmed()) {
-			this.objectType = ObjectType.SMALL;
-			final String dimensions = Configuration.getConfigurations().get("package.template.small");
-			Session.getHardwareService().setVolumeMeasured(dimensions);
-			this.setSelectedButton(this.btnPackageP);
-		}
+//	@FXML
+//	private void btnPackageAction(final ActionEvent e) {
+//		if (this.btnPackageP.isArmed()) {
+//			this.objectType = ObjectType.SMALL;
+//			final String dimensions = Configuration.getConfigurations().get("package.template.small");
+//			Session.getHardwareService().setVolumeMeasured(dimensions);
+//			this.setSelectedButton(this.btnPackageP);
+//		}
+//
+//		else if (this.btnPackageM.isArmed()) {
+//			this.objectType = ObjectType.MID;
+//			final String dimensions = Configuration.getConfigurations().get("package.template.mid");
+//			Session.getHardwareService().setVolumeMeasured(dimensions);
+//			this.setSelectedButton(this.btnPackageM);
+//		}
+//
+//		else if (this.btnPackageG.isArmed()) {
+//			this.objectType = ObjectType.BIG;
+//			final String dimensions = Configuration.getConfigurations().get("package.template.big");
+//			Session.getHardwareService().setVolumeMeasured(dimensions);
+//			this.setSelectedButton(this.btnPackageG);
+//		}
+//
+//		if (this.objectType != null)
+//			this.btnMeasures.setDisable(false);
+//	}
 
-		else if (this.btnPackageM.isArmed()) {
-			this.objectType = ObjectType.MID;
-			final String dimensions = Configuration.getConfigurations().get("package.template.mid");
-			Session.getHardwareService().setVolumeMeasured(dimensions);
-			this.setSelectedButton(this.btnPackageM);
-		}
-
-		else if (this.btnPackageG.isArmed()) {
-			this.objectType = ObjectType.BIG;
-			final String dimensions = Configuration.getConfigurations().get("package.template.big");
-			Session.getHardwareService().setVolumeMeasured(dimensions);
-			this.setSelectedButton(this.btnPackageG);
-		}
-
-		if (this.objectType != null)
-			this.btnMeasures.setDisable(false);
-	}
-
-	private void setSelectedButton(final Button armed) {
-		final Button[] buttons = new Button[3];
+	private void setSelectedButton(final Pane armed) {
+		final Pane[] buttons = new Pane[4];
 		buttons[0] = this.btnPackageP;
 		buttons[1] = this.btnPackageM;
 		buttons[2] = this.btnPackageG;
+		buttons[3] = this.btnPackageE;
 
-		for (final Button b : buttons)
-			if (b == armed)
-				b.getStyleClass().add("selectedButton");
+		for (final Pane b : buttons)
+			if (b.equals(armed))
+				b.getStyleClass().add("add-border-caixa");
 			else
-				b.getStyleClass().remove("selectedButton");
+				b.getStyleClass().remove("add-border-caixa");
 	}
 
 	@FXML
@@ -188,6 +190,41 @@ public class MeasuresController implements IController {
 	@Override
 	public void initialize(final URL location, final ResourceBundle resources) {
 
+		
+		btnPackageP.setOnMouseClicked((event)->{
+			final String dimensions = Configuration.getConfigurations().get("package.template.small");
+			Session.getHardwareService().setVolumeMeasured(dimensions);
+			this.objectType = ObjectType.SMALL;
+			this.setSelectedButton(btnPackageP);
+		});
+		
+		btnPackageM.setOnMouseClicked((event)->{
+			final String dimensions = Configuration.getConfigurations().get("package.template.mid");
+			Session.getHardwareService().setVolumeMeasured(dimensions);
+			this.objectType = ObjectType.MID;
+			this.setSelectedButton(btnPackageM);
+			this.btnMeasures.setDisable(false);
+		});
+		
+		btnPackageG.setOnMouseClicked((event)->{
+			final String dimensions = Configuration.getConfigurations().get("package.template.big");
+			Session.getHardwareService().setVolumeMeasured(dimensions);
+			this.objectType = ObjectType.BIG;
+			this.setSelectedButton(btnPackageG);
+			this.btnMeasures.setDisable(false);
+		});
+		
+		btnPackageE.setOnMouseClicked((event)->{
+			final String dimensions = Configuration.getConfigurations().get("package.template.env");
+			Session.getHardwareService().setVolumeMeasured(dimensions);
+			this.objectType = ObjectType.ENVELOPE;
+			this.setSelectedButton(btnPackageE);
+			this.btnMeasures.setDisable(false);
+		});
+		
+		
+		
+		
 	}
 
 	@Override
@@ -208,4 +245,12 @@ public class MeasuresController implements IController {
 	public void setPreviousScene(final Scene previousScene) {
 		this.previousScene = previousScene;
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
+	
+	
 }

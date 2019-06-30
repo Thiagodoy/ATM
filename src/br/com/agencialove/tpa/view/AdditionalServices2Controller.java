@@ -67,5 +67,11 @@ public class AdditionalServices2Controller implements IController {
 		if(this.txtValue != null) this.txtValue.setText("");
 		if(this.txtContentDeclaration != null) this.txtContentDeclaration.setText("");
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

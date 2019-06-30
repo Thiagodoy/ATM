@@ -167,5 +167,11 @@ public class SelectServiceController implements IController {
 	public void clear() {	
 		this.btnNext.setDisable(true);
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

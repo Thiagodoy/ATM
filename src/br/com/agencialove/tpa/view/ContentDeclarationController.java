@@ -241,4 +241,10 @@ public class ContentDeclarationController implements IController {
 			this.delete = delete;
 		}
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

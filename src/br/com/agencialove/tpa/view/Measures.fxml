@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,82 +11,51 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="bg-white" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.MeasuresController">
+<AnchorPane prefHeight="778.0" prefWidth="1024.0" styleClass="bg-white" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.MeasuresController">
+  
    <children>
-   		<Pane layoutX="0.0" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="header-page-service">
-	         <children>
-			   		<Label alignment="CENTER" contentDisplay="CENTER" layoutY="0" prefHeight="80" prefWidth="1024.0" styleClass="txt-label-service-measures" text="Escolha o gabarito em que a sua encomenda se encaixa">
-
-					</Label>			            
-	         </children>
-      	</Pane>
-      	
-      	
-   <Pane layoutX="0.0" layoutY="90" prefHeight="650" prefWidth="1024.0" styleClass="sub-header-page">
-      <Label alignment="CENTER" layoutX="-120" layoutY="14.0" prefHeight="130.0" prefWidth="832.0" styleClass="txt-label-measures" text="Objeto fora dos padrões? Dirija-se ao guichê." textAlignment="CENTER" wrapText="true">
-        
+            <Pane prefHeight="60.0" prefWidth="1024.0" styleClass="barra-topo" />
+         <Button fx:id="btnBack" layoutX="49.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Button>
+         <Button fx:id="btnNext" disable="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Button>
+      <Pane layoutX="762.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
+      <Pane layoutX="65.0" layoutY="697.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
+      <Pane layoutX="933.0" layoutY="697.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
+      <Label layoutX="140.0" layoutY="102.0" style="-fx-font-size: 30px;" styleClass="label-default" text="Escolha o gabarito em que a sua encomenda se encaixa" />
+      <Button fx:id="btnMeasures" onAction="#btnMeasureAction" layoutX="295.0" layoutY="561.0" mnemonicParsing="false" prefHeight="86.0" styleClass="bt-blue-sm" text="Clique aqui quando estiver pronto para pesar!" textAlignment="CENTER" wrapText="true" />
+      <Pane fx:id="btnPackageE" layoutX="828.0" layoutY="179.0" prefHeight="418.0" prefWidth="55.0">
+         <styleClass>
+            <String fx:value="pane-envelope" />         
+         </styleClass>
+      </Pane>
+      <Pane layoutX="697.0" layoutY="186.0" prefHeight="44.0" prefWidth="119.0" styleClass="pane-dimension-envelope" />
+      <Pane fx:id="btnPackageP" layoutX="156.0" layoutY="330.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-size: 130px;">
+         <styleClass>
+            <String fx:value="pane-caixa-p" />         
+         </styleClass>
+      </Pane>
+      <Pane fx:id="btnPackageM" layoutX="326.0" layoutY="305.0" prefHeight="180.0" prefWidth="180.0" style="-fx-background-size: 180px;">
+         <styleClass>
+            <String fx:value="pane-caixa-m" />         
+         </styleClass>
+      </Pane>
+      <Pane fx:id="btnPackageG" layoutX="546.0" layoutY="270.0" prefHeight="253.0" prefWidth="248.0" style="-fx-background-size: 250px;">
+         <styleClass>
+            <String fx:value="pane-caixa-g" />         
+         </styleClass>
+      </Pane>
+      <Label layoutX="93.0" layoutY="218.0" style="-fx-font-size: 20px;" text="Objeto fora dos padrões? Dirija-se ao guichê.">
+         <styleClass>
+            <String fx:value="label-default" />
+            <String fx:value="label-confirmation" />
+         </styleClass>
       </Label>
-      <Button fx:id="btnMeasures" alignment="CENTER" layoutX="387.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnMeasureAction" prefHeight="103.0" prefWidth="319.0" styleClass="bt-next" text="Clique aqui quando estiver pronto para pesar!" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnPackageP" layoutX="0" layoutY="100" mnemonicParsing="false" onAction="#btnPackageAction" prefHeight="130" prefWidth="130" styleClass="packageEncomendaP" text="" translateX="150" translateY="140">							              
-				   			
-		</Button>	
- 		<Button fx:id="btnPackageM" layoutX="150" layoutY="100" mnemonicParsing="false" onAction="#btnPackageAction" prefHeight="180" prefWidth="180" styleClass="packageEncomendaM" text="" translateX="170" translateY="115">							              
- 		
- 		</Button>			           
- 		<Button fx:id="btnPackageG" layoutX="350" layoutY="100" mnemonicParsing="false" onAction="#btnPackageAction" prefHeight="250" prefWidth="250" styleClass="packageEncomendaG" text="" translateX="190" translateY="80">							              
- 		
- 		</Button>			           
-   </Pane>
    </children>
-         <Pane prefHeight="60.0" prefWidth="1024.0" styleClass="barra-topo" />
-      <Button fx:id="btnBack" layoutX="49.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Voltar">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnNext" disable="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnNextAction" prefHeight="45.0" prefWidth="182.0" styleClass="bt-blue-sm" text="Prosseguir">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-   <Pane layoutX="762.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
-   <Pane layoutX="65.0" layoutY="697.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
-   <Pane layoutX="933.0" layoutY="697.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-next" />
-   <Label layoutX="140.0" layoutY="102.0" style="-fx-font-size: 30px;" styleClass="label-default" text="Escolha o gabarito em que a sua encomenda se encaixa" />
-   <Button layoutX="295.0" layoutY="561.0" mnemonicParsing="false" prefHeight="86.0" styleClass="bt-blue-sm" text="Clique aqui quando estiver pronto para pesar!" textAlignment="CENTER" wrapText="true" />
-   <Pane layoutX="828.0" layoutY="179.0" prefHeight="418.0" prefWidth="40.0">
-      <styleClass>
-         <String fx:value="pane-envelope" />
-         <String fx:value="add-border-caixa" />
-      </styleClass>
-   </Pane>
-   <Pane layoutX="697.0" layoutY="186.0" prefHeight="44.0" prefWidth="119.0" styleClass="pane-dimension-envelope" />
-   <Pane layoutX="156.0" layoutY="330.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-size: 130px;">
-      <styleClass>
-         <String fx:value="pane-caixa-p" />
-         <String fx:value="add-border-caixa" />
-      </styleClass>
-   </Pane>
-   <Pane layoutX="326.0" layoutY="305.0" prefHeight="180.0" prefWidth="180.0" style="-fx-background-size: 180px;">
-      <styleClass>
-         <String fx:value="pane-caixa-m" />
-         <String fx:value="add-border-caixa" />
-      </styleClass>
-   </Pane>
-   <Pane layoutX="546.0" layoutY="270.0" prefHeight="248.0" prefWidth="248.0" style="-fx-background-size: 250px;">
-      <styleClass>
-         <String fx:value="pane-caixa-g" />
-         <String fx:value="add-border-caixa" />
-      </styleClass>
-   </Pane>
-   <Label layoutX="93.0" layoutY="218.0" style="-fx-font-size: 20px;" text="Objeto fora dos padrões? Dirija-se ao guichê.">
-      <styleClass>
-         <String fx:value="label-default" />
-         <String fx:value="label-confirmation" />
-      </styleClass>
-   </Label>
 </AnchorPane>

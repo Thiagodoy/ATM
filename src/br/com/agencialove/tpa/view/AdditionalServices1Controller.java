@@ -89,12 +89,12 @@ public class AdditionalServices1Controller implements IController {
 			this.panelMaoPropria.getStyleClass().remove("box-add-borda");
 			this.panelAvisoRecebimento.getStyleClass().remove("box-add-borda");
 			this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
-			this.panelSemServicoAdicional.getStyleClass().add("box-add-borda");			
+			this.panelSemServicoAdicional.getStyleClass().add("box-add-borda");	
+			
+			this.btnNext.setDisable(false);
 		});
-		this.panelMaoPropria.setOnMouseClicked((event)->{		
-			
-			
-			
+		
+		this.panelMaoPropria.setOnMouseClicked((event)->{			
 			boolean has = this.panelMaoPropria.getStyleClass().contains("box-add-borda");			
 			this.chkOwnHand = !has;
 			this.chkNone = false;
@@ -106,26 +106,24 @@ public class AdditionalServices1Controller implements IController {
 				
 			}		
 			
-			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");		
-					
+			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");
+			this.btnNext.setDisable(false);
 		});
-		this.panelAvisoRecebimento.setOnMouseClicked((event)->{
-			
-			boolean has = this.panelAvisoRecebimento.getStyleClass().contains("box-add-borda");
-			
+		
+		this.panelAvisoRecebimento.setOnMouseClicked((event)->{			
+			boolean has = this.panelAvisoRecebimento.getStyleClass().contains("box-add-borda");			
 			this.chkNotice = !has;
-			this.chkNone = false;
-			
+			this.chkNone = false;		
 			
 			if(has) {
 				this.panelAvisoRecebimento.getStyleClass().remove("box-add-borda");
 			}else {
 				this.panelAvisoRecebimento.getStyleClass().add("box-add-borda");
-			}
-			
-			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
-					
+			}			
+			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");
+			this.btnNext.setDisable(false);
 		});
+		
 		this.panelDeclaracaoValor.setOnMouseClicked((event)->{
 			boolean has = this.panelDeclaracaoValor.getStyleClass().contains("box-add-borda");
 			this.chkValueDeclaration = !has;
@@ -135,9 +133,9 @@ public class AdditionalServices1Controller implements IController {
 				this.panelDeclaracaoValor.getStyleClass().remove("box-add-borda");
 			}else {
 				this.panelDeclaracaoValor.getStyleClass().add("box-add-borda");
-			}		
-		
+			}
 			this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");	
+			this.btnNext.setDisable(false);
 		});
 		
 		
@@ -169,6 +167,12 @@ public class AdditionalServices1Controller implements IController {
 		this.panelSemServicoAdicional.getStyleClass().remove("box-add-borda");
 		
 		this.btnNext.setDisable(true);
+	}
+
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 
 }

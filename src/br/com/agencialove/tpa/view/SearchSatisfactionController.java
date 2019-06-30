@@ -20,9 +20,7 @@ public class SearchSatisfactionController implements IController {
 
 	@FXML
 	private void btnYesAction(final ActionEvent e) {
-		final Scene scene = Windows.WEB_BROWSER.getScene();
-		WebBrowserController controller = (WebBrowserController) scene.getUserData();
-		controller.loadUrl(Url.SATISFACAO);
+		final Scene scene = Windows.QUIZ.getScene();
 		Session.setScene(scene);
 	}
 
@@ -46,6 +44,12 @@ public class SearchSatisfactionController implements IController {
 	public void clear() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 
 }

@@ -86,5 +86,11 @@ public class BuyerInformationController implements IController {
 		this.cep.setText("");
 		this.endereco.setText("");
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

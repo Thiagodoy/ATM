@@ -121,5 +121,11 @@ public class DetailPackageSelectedController implements IController {
 		}
 
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

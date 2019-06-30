@@ -443,5 +443,11 @@ public class PaymentNewController implements IController {
 		labelTotal.setText(MessageFormat.format("Total :  R$ {0}", selectedService.getValor()));
 	}
 	
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

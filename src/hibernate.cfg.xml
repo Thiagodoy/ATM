@@ -15,6 +15,7 @@
         <property name="connection.pool_size">5</property>  
         <mapping class="br.com.agencialove.tpa.model.Postagem"/>
         <mapping class="br.com.agencialove.tpa.model.Agencia"/>
-        <mapping class="br.com.agencialove.tpa.model.Embalagem" />
+        <mapping class="br.com.agencialove.tpa.model.Embalagem"/>
+        <mapping class="br.com.agencialove.tpa.model.PesquisaSatisfacao"/>
     </session-factory>
 </hibernate-configuration>

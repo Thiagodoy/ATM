@@ -132,4 +132,10 @@ public class WebBrowserController implements IController {
 		
 	}
 	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
+	
 }

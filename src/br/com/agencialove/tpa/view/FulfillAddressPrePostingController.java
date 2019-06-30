@@ -233,4 +233,10 @@ public class FulfillAddressPrePostingController implements IController {
 		if(this.txtEmail != null) this.txtEmail.setText("");
 		if(this.btnNext != null) this.btnNext.setDisable(true);
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

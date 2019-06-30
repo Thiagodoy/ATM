@@ -64,5 +64,11 @@ public class WrongMeasurementsController implements IController {
 		controller.clear();
 		Session.setScene(scene);
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

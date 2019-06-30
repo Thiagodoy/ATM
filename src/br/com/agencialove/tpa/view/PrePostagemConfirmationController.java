@@ -188,5 +188,11 @@ public class PrePostagemConfirmationController implements IController {
 		this.plp = (this.plp != null) ? this.plp : "";
 		this.ldPlp3.setText(this.plp);
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

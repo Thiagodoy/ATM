@@ -57,5 +57,11 @@ public class DescansoController implements IController {
 	private void stop() {
 		mp.stop();
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

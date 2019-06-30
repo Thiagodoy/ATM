@@ -110,5 +110,11 @@ public class CheckoutController implements IController {
 	public void clear() {
 		if(this.tableView != null) this.tableView.getItems().clear();
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }
