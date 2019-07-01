@@ -44,10 +44,11 @@ class MainFlowDeclarationContenTest extends ApplicationTest {
 		this.clickOn(rowReceiver);
 		this.sleep(500);
 		this.clickOn("#btnNext");
+		
 		/// Destinatario
 		this.clickOn("#txtNome").write("Benício Nelson Ian Nascimento");
 		this.clickOn("#txtNumero").write("123");
-		this.clickOn("#txtCPF").write("827	26346006");
+		this.clickOn("#txtCPF").write("34053285885");
 		this.clickOn("#txtCelular").eraseText(1).write("81985109450");
 		this.clickOn("#txtEmail").write("laishele@robiel.com.br");
 		this.sleep(1000);
@@ -55,6 +56,8 @@ class MainFlowDeclarationContenTest extends ApplicationTest {
 		this.sleep(1000);
 		this.clickOn("#btnNext");
 
+		
+		/// Remetente		
 		this.clickOn("#txtCep").write("14806005");
 		this.clickOn("#btnSearch");
 		this.sleep(500);

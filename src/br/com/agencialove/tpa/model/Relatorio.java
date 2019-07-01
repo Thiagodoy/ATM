@@ -3,7 +3,6 @@ package br.com.agencialove.tpa.model;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
-import br.com.agencialove.tpa.model.rest.ServicesResponse;
 
 public class Relatorio {
 
@@ -43,7 +42,7 @@ public class Relatorio {
 		Postagem postagem = new Postagem(this.getSender(), this.getReceiver(),
 				this.getAdditionalServices(), this.getMeasures(), this.getServicesResponse(),
 				this.getAgencia(), this.getPaymentData());
-		postagem.setCodigoRastreio(this.getEtiqueta());
+		postagem.setEtiqueta(this.getEtiqueta());
 		postagem.setNumeroPlp(this.getPlp());
 		
 		return postagem;

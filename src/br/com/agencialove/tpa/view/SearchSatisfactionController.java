@@ -3,7 +3,6 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.com.agencialove.tpa.utils.Url;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

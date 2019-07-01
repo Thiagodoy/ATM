@@ -138,6 +138,8 @@ public class AdditionalServices1Controller implements IController {
 			this.btnNext.setDisable(false);
 		});
 		
+		this.btnNext.setDisable(true);
+		
 		
 	}
 

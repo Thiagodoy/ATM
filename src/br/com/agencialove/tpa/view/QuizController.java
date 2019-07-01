@@ -203,6 +203,10 @@ public class QuizController implements IController{
 		
 		PesquisaSatisfacaoDao.save(satisfacao);		
 		Session.setScene(Windows.FINISH.getScene());	
+		
+		FinishController control = (FinishController) Windows.FINISH.getScene().getUserData();
+		control.finish();
+		
 	}	
 
 	@Override
