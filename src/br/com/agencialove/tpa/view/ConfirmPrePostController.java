@@ -73,7 +73,7 @@ public class ConfirmPrePostController implements IController {
 	private void btnNextAction(final ActionEvent e) {
 		Session.getSession().put(Session.PRE_POST, this.prePost);
 
-		final Scene scene = Windows.MEASURES_PRE_POST.getScene();
+		final Scene scene = Windows.MEASURES.getScene();
 		Session.setScene(scene);
 	}
 
@@ -113,14 +113,13 @@ public class ConfirmPrePostController implements IController {
 		
 	}
 	
-public void setPrePostDestinatario(DestinatarioRequest request, NacionalRequest nacionalRequest) {
-		
-		this.lbNomeRemetente.setText(this.get(request.getNome()));
-		this.lbCEPRemetente.setText(this.get(nacionalRequest.getCep()));
-		this.lbNumeroRemetente.setText(this.get(request.getNumero()));
-		this.lbLogradouroRemetente.setText(this.get(request.getLogradouro()));
-		this.lbEmailRemetente.setText(this.get(request.getEmail()));
-		this.lbTelefoneRemetente.setText(this.get(String.valueOf(request.getCelular())));
+public void setPrePostDestinatario(DestinatarioRequest request, NacionalRequest nacionalRequest) {		
+		this.lbNome.setText(this.get(request.getNome()));
+		this.lbCEP.setText(this.get(nacionalRequest.getCep()));
+		this.lbNumero.setText(this.get(request.getNumero()));
+		this.lbLogradouro.setText(this.get(request.getLogradouro()));
+		this.lbEmail.setText(this.get(request.getEmail()));
+		this.lbTelefone.setText(this.get(String.valueOf(request.getCelular())));
 		
 	}
 	

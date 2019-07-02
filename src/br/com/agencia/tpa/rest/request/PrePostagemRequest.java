@@ -40,10 +40,12 @@ public class PrePostagemRequest {
 		obj.setDestinatario(new DestinatarioRequest(response.getObjetoPostal().get(0).getDestinatario()));		
 		obj.setDimensaoObjetoRequest(response.getObjetoPostal().get(0).getDimensao());		
 		obj.setNacionalRequest(new NacionalRequest(response.getObjetoPostal().get(0).getNacional()));
+		obj.getDestinatario().setCep(obj.getNacionalRequest().getCep());
 		obj.setServico(new ServicoAdicionalRequest(response.getObjetoPostal().get(0).getServiceAdicional()));
 		this.plpRequest = response.getPlp();
 		this.formaPagamento = response.getFormaPagamento();
 		this.objetoPostalRequest = Arrays.asList(obj);
+		
 		
 	}
 	

@@ -52,7 +52,7 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.precoPrazoCartao(request, agencia.getCartaoPostagem()).execute();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.err.println("erro ->" + response.errorBody().toString());
 			e.printStackTrace();
 		}
 		return response.body().listaPrecoPrazo;

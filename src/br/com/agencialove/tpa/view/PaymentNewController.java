@@ -218,6 +218,7 @@ public class PaymentNewController implements IController {
 		final SessionType type = (SessionType) Session.getSession().get(Session.SESSION_TYPE);
 
 		switch (type) {
+		case PRE_POSTING:
 		case SERVICE:
 			this.nextScene = Windows.REMOVE_STICK.getScene();
 			break;
@@ -230,10 +231,7 @@ public class PaymentNewController implements IController {
 			selectedService.setValor(Utils.formatCurrency(valor));
 			selectedService.setDescricaoServico("Venda de embalagem");
 			Session.getSession().put(Session.SELECTED_SERVICE, selectedService);
-			break;
-		case PRE_POSTING:
-			this.nextScene = Windows.REMOVE_STICK.getScene();
-			break;
+			break;		
 		}
 
 		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
@@ -442,8 +440,9 @@ public class PaymentNewController implements IController {
 					}
 				}
 			}catch (Exception e) {
-				Session.overAttempts(OverAttemptsType.PAYMENT);
+				//Session.overAttempts(OverAttemptsType.PAYMENT);
 				//PaymentNewController.this.labelErro.setText("Não foi possível realizar o pagamento. Deseja tentar novamente?");
+				e.printStackTrace();
 				PaymentNewController.this.tryCounter = 0;
 			}
 		}

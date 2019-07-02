@@ -6,11 +6,15 @@ import java.util.ResourceBundle;
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.rest.CorreiosPreAtendimentoService;
+import br.com.agencia.tpa.rest.request.DeclaracaoConteudoRequest;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
+import br.com.agencia.tpa.rest.request.ServicoAdicionalRequest;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
+import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.rest.PrePost;
 import br.com.agencialove.tpa.model.rest.PrePostResponse;
+import br.com.agencialove.tpa.utils.Utils;
 import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
@@ -48,9 +52,30 @@ public class PrePostingController implements IController {
 		request.setNumeroPlp(this.txtPrePost.getText());
 		
 		PrePostagemResponse response = service.informacaoPlp(request);
-		
-		
 		PrePostagemRequest prePostagemRequest = new PrePostagemRequest(response);
+		
+		AdditionalServices services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);
+		
+		AdditionalServices se = new AdditionalServices();
+		ServicoAdicionalRequest re = prePostagemRequest.getObjetoPostalRequest().get(0).getServico();
+		
+		if(re.getCodigos().contains("046")){
+			se.setDeliveryNotice(true);
+		}
+		
+		if(re.getCodigos().contains("045")){
+			se.setOnwHands(true);
+		}
+		
+		if(re.getCodigos().contains("064")){
+			se.setValueDeclaration(true);
+			DeclaracaoConteudoRequest dc = new DeclaracaoConteudoRequest();
+			dc.setTotal(re.getValor());
+			Session.getSession().put(Session.CONTEUDO_DECLARADO, dc);
+		}		
+		
+		Session.getSession().put(Session.ADDITIONAL_SERVICES, se);
+		
 		
 		
 		Session.getSession().put(Session.PRE_POSTAGEM, prePostagemRequest);
@@ -83,6 +108,7 @@ public class PrePostingController implements IController {
 				this.btnNext.setDisable(true);
 			}
 		});
+		this.btnNext.setDisable(true);
 	}
 
 	@Override
