@@ -1,5 +1,10 @@
 package br.com.agencialove.tpa.hardware;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.print.PrintException;
 
 import br.com.agencialove.tpa.hardware.printer.PrinterCallback;
@@ -43,6 +48,24 @@ public class PrinterServiceMock implements IPrinterService {
 //		});
 	}
 
+	
+	
+	public void printPdf(final byte[] pdf, String fileName) {
+		
+		
+		try {
+			FileOutputStream fileWriter = new FileOutputStream(new File(fileName + ".pdf"));
+			fileWriter.write(pdf);
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		} 
+		
+		
+	}
+	
 	@Override
 	public void printTicket(final byte[] pdf) {
 		final StringBuilder sb = new StringBuilder();

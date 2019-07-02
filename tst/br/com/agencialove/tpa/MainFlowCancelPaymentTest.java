@@ -6,7 +6,6 @@ import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.util.WaitForAsyncUtils;
 
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
@@ -24,9 +23,7 @@ class MainFlowCancelPaymentTest extends ApplicationTest {
 		AgenciaDao.save(agencia);
 		
 		Session s = new Session(stage);		
-		s.setAllMocks();
-		
-			
+		s.setAllMocks();		
 		
 		
 		stage.setScene(Windows.START.getScene());

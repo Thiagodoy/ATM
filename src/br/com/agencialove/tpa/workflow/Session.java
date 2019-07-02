@@ -37,7 +37,6 @@ import br.com.agencialove.tpa.view.IController;
 import br.com.agencialove.tpa.view.OverAttemptsController;
 import br.com.agencialove.tpa.view.StartController;
 import br.com.agencialove.tpa.view.Windows;
-import br.com.agencialove.tpa.webservices.CorreiosPreAtendimentoImplMock;
 import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.webservices.WebServiceImpl;
 import br.com.agencialove.tpa.webservices.WebServiceMock;
@@ -224,7 +223,7 @@ public class Session{
 		Session.webService = new WebServiceMock();
 		Session.dbService = Session.getDBService();
 		Session.printerThermalService = new PrinterThermalServiceMock();
-		Session.correiosPreAtendimentoWebService = new CorreiosPreAtendimentoImplMock();
+		Session.correiosPreAtendimentoWebService = new CorreiosPreAtendimentoImpl();
 		Session.correiosWebService = new CorreiosImpl();
 	}
 

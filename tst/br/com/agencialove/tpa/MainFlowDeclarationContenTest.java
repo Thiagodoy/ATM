@@ -99,14 +99,14 @@ class MainFlowDeclarationContenTest extends ApplicationTest {
 		this.sleep(300);
 		this.clickOn("#btnNext");
 		this.sleep(1000);
+		
 		// Definição da embalagem
 		this.clickOn("#btnPackageG");
 		this.clickOn("#btnMeasures");
 		this.sleep(300);
 		this.clickOn("#btnNext");
-
 		assertEquals(this.lookup("#btnNext").queryButton().isDisable(), true);
-		this.sleep(300);
+		this.sleep(10000);
 		this.clickOn("#panelSedex");
 		this.sleep(300);
 		this.clickOn("#btnNext");
@@ -121,7 +121,7 @@ class MainFlowDeclarationContenTest extends ApplicationTest {
 
 		// Pagamento
 		this.clickOn("#btnProsseguir");
-		this.sleep(10000);
+		this.sleep(20000);
 		this.clickOn("#btnNext");
 		this.sleep(1000);
 		// coleta

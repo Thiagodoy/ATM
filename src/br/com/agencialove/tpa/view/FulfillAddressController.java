@@ -170,6 +170,8 @@ public class FulfillAddressController implements IController {
 		remetente.setComplemento(this.txtComplemento.getText().trim());
 		remetente.setCep(this.txtCEP.getText());
 		remetente.setCidade(this.cep.getCidade());
+		remetente.setEstado(this.cep.getEstado());
+		remetente.setBairro(this.cep.getBairro());
 		String logradouro = MessageFormat.format("{0} {1} {2} ", cep.getRua(), cep.getBairro(), cep.getCidade());
 		remetente.setLogradouro(logradouro);
 
@@ -185,6 +187,11 @@ public class FulfillAddressController implements IController {
 		nacionalRequest.setCidade(c.getCidade());
 		nacionalRequest.setEstado(c.getEstado());
 		nacionalRequest.setCentroCustoCliente("0069950016");
+		nacionalRequest.setCodigoUsuarioPostal("0");
+		nacionalRequest.setNumeroNotaFiscal("0");
+		nacionalRequest.setSerieNotaFiscal("0");
+		nacionalRequest.setNaturezaNotaFiscal("0");
+		nacionalRequest.setDescricaoObjeto("0");
 		return nacionalRequest;
 
 	}
@@ -207,7 +214,7 @@ public class FulfillAddressController implements IController {
 		destinatarioRequest.setNumero(numero);
 		destinatarioRequest.setComplemento(this.txtComplemento.getText().trim());
 		destinatarioRequest.setCep(this.txtCEP.getText());
-		destinatarioRequest.setCidade(this.cep.getCidade());
+		destinatarioRequest.setCidade(this.cep.getCidade());		
 		String logradouro = MessageFormat.format("{0} {1} {2} ", cep.getRua(), cep.getBairro(), cep.getCidade());
 		destinatarioRequest.setLogradouro(logradouro);
 

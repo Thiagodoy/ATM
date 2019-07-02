@@ -28,7 +28,7 @@ public class ObjetoPostalRequest {
 	public NacionalRequest nacionalRequest;
 	
 	@JsonProperty(value = "numero_comprovante_postagem")
-	public Long numeroComprovantePostagem;
+	public String numeroComprovantePostagem;
 	
 	@JsonProperty(value = "numero_etiqueta")
 	public String numeroEtiqueta;
@@ -44,6 +44,19 @@ public class ObjetoPostalRequest {
 	
 	@JsonProperty(value = "servico_adicional")
 	public ServicoAdicionalRequest servico;
+	
+	
+	
+	
+	
+
+	public ObjetoPostalRequest() {
+		this.codigoObjetoCliente = "";
+		this.dataPostagemSara = "";
+		this.numeroComprovantePostagem = "";
+		this.numeroEtiqueta = "XX999999999BB";
+		
+	}
 
 	public String getCodigoObjetoCliente() {
 		return codigoObjetoCliente;
@@ -93,11 +106,11 @@ public class ObjetoPostalRequest {
 		this.nacionalRequest = nacionalRequest;
 	}
 
-	public Long getNumeroComprovantePostagem() {
+	public String getNumeroComprovantePostagem() {
 		return numeroComprovantePostagem;
 	}
 
-	public void setNumeroComprovantePostagem(Long numeroComprovantePostagem) {
+	public void setNumeroComprovantePostagem(String numeroComprovantePostagem) {
 		this.numeroComprovantePostagem = numeroComprovantePostagem;
 	}
 

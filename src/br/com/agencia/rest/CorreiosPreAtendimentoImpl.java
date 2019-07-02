@@ -61,11 +61,10 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 	public PrePostagemResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
 
 		Response<PrePostagemResponse> response = null;
-		try {
+		try {			
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.gerarPrePostagem(request, agencia.getCartaoPostagem(), emitiEtiqueta).execute();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return response.body();
@@ -79,7 +78,6 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.emitiEtiqueta(request, agencia.getCartaoPostagem()).execute().body().bytes();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return response;
@@ -93,7 +91,6 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.emitiAvisoRecebimento(request, agencia.getCartaoPostagem()).execute().body().bytes();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return response;
