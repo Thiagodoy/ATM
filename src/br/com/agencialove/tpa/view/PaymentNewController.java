@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXDialogLayout;
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
+import br.com.agencia.tpa.rest.request.PlpRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
@@ -196,6 +197,8 @@ public class PaymentNewController implements IController {
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
 
 			this.nextScene = Windows.PRE_POSTAGEM_CONFIRMATION_CONTROLLER.getScene();
+			PrePostagemConfirmationController control =  (PrePostagemConfirmationController) Windows.PRE_POSTAGEM_CONFIRMATION_CONTROLLER.getScene().getUserData();
+			control.setPlp(response.getNumeroPlp());
 			final PrePostagemConfirmationController controller = (PrePostagemConfirmationController) this.nextScene
 					.getUserData();
 			controller.clear();
@@ -327,6 +330,12 @@ public class PaymentNewController implements IController {
 
 			PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
 			CorreiosPreAtendimentoApi service = Session.getCorreiosPreAtentimentoWebService();
+			
+			PlpRequest plpRequest = new PlpRequest();
+			plpRequest.setCartaPostagem(agencia.getCartaoPostagem());
+			request.setPlpRequest(plpRequest);			
+			
+			
 			PrePostagemResponse response = service.gerarPrePostagem(request, true);
 			
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
@@ -350,25 +359,39 @@ public class PaymentNewController implements IController {
 			emiteRequest.setNumeroPlp(response.getNumeroPlp());
 			
 			//TODO: Aguradando retorno do correios para averiguar as apis
+			IPrinterService printer = Session.getPrinterService();
 			try {
 
 				byte[] etiqueta = service.emitirEtiqueta(emiteRequest);
-				byte[] declaracao = service.emitirDeclaracaoDeConteudo(emiteRequest);
-				byte[] avisoRecebimento = service.emitirAvisoRecebimento(emiteRequest);
-
-				IPrinterService printer = Session.getPrinterService();
-				printer.printTicket(etiqueta);
+				printer.printPdf(etiqueta, emiteRequest.getNumeroEtiqueta());				
 				
-				if (this.services.isValueDeclaration())
-					printer.printTicket(declaracao);
-
-				if (this.services.isDeliveryNotice())
-					printer.printTicket(avisoRecebimento);
-
-			} catch (PrintException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
+			
+			try {
+				
+				byte[] declaracao = service.emitirDeclaracaoDeConteudo(emiteRequest);								
+				if (this.services.isValueDeclaration())
+					printer.printPdf(declaracao, emiteRequest.getNumeroEtiqueta());			
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			
+			try {				
+				byte[] avisoRecebimento = service.emitirAvisoRecebimento(emiteRequest);				
+				
+				if (this.services.isDeliveryNotice())
+					printer.printPdf(avisoRecebimento, emiteRequest.getNumeroEtiqueta());
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			
 			break;
 
 		default:
@@ -443,5 +466,11 @@ public class PaymentNewController implements IController {
 		labelTotal.setText(MessageFormat.format("Total :  R$ {0}", selectedService.getValor()));
 	}
 	
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

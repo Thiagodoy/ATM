@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.com.agencialove.tpa.Messages;
+import br.com.agencialove.tpa.workflow.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -26,6 +27,12 @@ public class OverAttemptsController implements IController {
 	@Override
 	public void clear() {
 		this.lbText.setText(Messages.getString("OverAttemptsController.0")); //$NON-NLS-1$
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 
 }

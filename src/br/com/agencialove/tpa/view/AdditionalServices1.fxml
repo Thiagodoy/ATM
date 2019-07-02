@@ -23,7 +23,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="294.5" layoutY="502.0" mnemonicParsing="false" prefHeight="44.0" styleClass="bt-cancelar" text="Cancelar" />
+            <Button onAction="#cancel" layoutX="294.5" layoutY="502.0" mnemonicParsing="false" prefHeight="44.0" styleClass="bt-cancelar" text="Cancelar" />
             <Pane fx:id="panelSemServicoAdicional" layoutX="84.8" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-add">
                <children>
                   <Label layoutX="11.0" layoutY="35.0" prefHeight="80.0" prefWidth="129.0" style="-fx-font-size: 22px; -fx-wrap-text: true;" styleClass="label-default" text="Sem serviço adicional" textAlignment="CENTER" wrapText="true" />

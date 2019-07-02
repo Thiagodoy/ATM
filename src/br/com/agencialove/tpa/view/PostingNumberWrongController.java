@@ -63,4 +63,10 @@ public class PostingNumberWrongController implements IController {
 		controller.clear();
 		Session.setScene(scene);
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

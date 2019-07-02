@@ -386,4 +386,10 @@ public class PaymentController implements IController {
 		}
 
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

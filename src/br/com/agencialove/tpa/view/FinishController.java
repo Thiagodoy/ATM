@@ -121,4 +121,10 @@ public class FinishController implements IController {
 		
 
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

@@ -14,6 +14,7 @@ import br.com.agencialove.tpa.hardware.arduino.DispenserState;
 import br.com.agencialove.tpa.model.Pack;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 
 public class RemovePackageController implements IController {
@@ -91,6 +92,12 @@ public class RemovePackageController implements IController {
 
 		final Timer timer = new Timer();
 		timer.schedule(task, 8000);
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 
 }

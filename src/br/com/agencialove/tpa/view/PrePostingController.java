@@ -76,4 +76,10 @@ public class PrePostingController implements IController {
 	@Override
 	public void clear() {
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

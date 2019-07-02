@@ -151,4 +151,11 @@ public class PrinterServiceImpl implements IPrinterService {
 
 	}
 
+
+	@Override
+	public void printPdf(byte[] pdf, String fileName) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

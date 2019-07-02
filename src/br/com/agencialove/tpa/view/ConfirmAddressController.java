@@ -197,4 +197,10 @@ public class ConfirmAddressController implements IController {
 		if(this.lbCelularDestinatarioConfirmacao != null) this.lbCelularDestinatarioConfirmacao.setText(""); //$NON-NLS-1$
 		if(this.lbEmailConfirmacao != null) this.lbEmailConfirmacao.setText(""); //$NON-NLS-1$
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

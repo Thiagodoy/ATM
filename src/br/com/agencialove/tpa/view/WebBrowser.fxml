@@ -11,10 +11,8 @@
 <AnchorPane prefHeight="778.0" prefWidth="1024.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.agencialove.tpa.view.WebBrowserController">
     <children>
       <VBox prefHeight="718.0" prefWidth="1024.0">
-         <children>
-            
-              <WebView fx:id="webView" prefHeight="718.0" prefWidth="1024.0" />
-          
+         <children>            
+              <WebView fx:id="webView" prefHeight="718.0" prefWidth="1024.0" />          
          </children>
       </VBox>
         <Pane layoutX="0.0" layoutY="718.0" prefHeight="60.0" prefWidth="1024.0" styleClass="footer-page">

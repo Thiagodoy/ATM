@@ -74,9 +74,9 @@ public class SelectServiceController implements IController {
 				.get(Session.AVAILABLE_SERVICES);
 
 		Optional<PrecoPrazoResponse> optSedex = avaliableServices.stream()
-				.filter(f -> f.getCodigoServico().equalsIgnoreCase("04022")).findFirst();
+				.filter(f -> f.getCodigoServico().equalsIgnoreCase("04022") || f.getCodigoServico().equalsIgnoreCase("04014")).findFirst();
 		Optional<PrecoPrazoResponse> optPac = avaliableServices.stream()
-				.filter(f -> f.getCodigoServico().equalsIgnoreCase("04030")).findFirst();
+				.filter(f -> f.getCodigoServico().equalsIgnoreCase("04030") || f.getCodigoServico().equalsIgnoreCase("04510")).findFirst();
 
 		if (optSedex.isPresent()) {
 			Long dias = Long.parseLong(optSedex.get().getPrazoEntrega());
@@ -84,6 +84,7 @@ public class SelectServiceController implements IController {
 					+ ((dias <= 1) ? dias.toString() + " dia útil" : dias.toString() + " dias útil"));
 			this.labelSedexValor.setText("R$ " + optSedex.get().getValor());
 			this.sedexService = optSedex.get();
+			this.sedexService.setCodigoServico("04014");
 			
 			if(Optional.ofNullable(optSedex.get().observacao).isPresent()) {
 				this.labelObservacaoSedex.setText(optSedex.get().getObservacao());
@@ -99,6 +100,7 @@ public class SelectServiceController implements IController {
 			this.labelPacValor.setText("R$ " + optPac.get().getValor());
 			
 			this.pacService = optPac.get();
+			this.pacService.setCodigoServico("04510");
 			this.selectedService = optPac.get();
 			
 			if(Optional.ofNullable(optPac.get().observacao).isPresent()) {
@@ -166,6 +168,12 @@ public class SelectServiceController implements IController {
 	@Override
 	public void clear() {	
 		this.btnNext.setDisable(true);
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 
 }

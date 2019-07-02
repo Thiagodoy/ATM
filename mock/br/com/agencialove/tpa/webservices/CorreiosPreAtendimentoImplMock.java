@@ -52,8 +52,8 @@ public class CorreiosPreAtendimentoImplMock implements CorreiosPreAtendimentoApi
 	@Override
 	public PrePostagemResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
 		PrePostagemResponse response = new PrePostagemResponse();
-		response.setNumeroEtiqueta("124213412");
-		response.setNumeroPlp("EC384261522BR");
+		response.setNumeroEtiqueta("EC384261522BR");
+		response.setNumeroPlp("2523557");
 		return response;
 	}
 

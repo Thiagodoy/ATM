@@ -7,6 +7,7 @@ import java.util.TimerTask;
 
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 
 public class HardwareFailureController implements IController {
 
@@ -34,5 +35,11 @@ public class HardwareFailureController implements IController {
 
 		final Timer timer = new Timer();
 		timer.schedule(task, 4000);
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 }

@@ -136,4 +136,10 @@ public class ConfirmPrePostController implements IController {
 		if(this.lbLogradouro != null)this.lbLogradouro.setText(""); //$NON-NLS-1$
 		if(this.lbEmail != null)this.lbEmail.setText(""); //$NON-NLS-1$
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 }

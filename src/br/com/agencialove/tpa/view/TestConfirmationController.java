@@ -41,5 +41,11 @@ public class TestConfirmationController implements IController {
 	public void clear() {
 
 	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
 
 }

@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 //gitlab.com/agencialove/tpa.git
 import br.com.agencialove.tpa.Configuration;
+import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -78,5 +79,11 @@ public class ConfigController implements IController {
 			hbox.getChildren().add(value);
 			this.vbox.getChildren().add(hbox);
 		}
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 }

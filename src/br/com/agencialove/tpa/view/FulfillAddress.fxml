@@ -85,7 +85,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="294.5" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
+      <Button onAction="#cancel" layoutX="294.5" layoutY="672.0" mnemonicParsing="false" styleClass="bt-cancelar" text="Cancelar" />
       <Pane prefHeight="100.0" prefWidth="200.0" styleClass="barra-topo" />
       <Pane layoutX="762.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane-logo" />
       <Pane layoutX="65.0" layoutY="591.0" prefHeight="200.0" prefWidth="200.0" styleClass="seta-voltar" />
@@ -107,6 +107,6 @@
             <String fx:value="input-default" />
          </styleClass>
       </ComboBox>
-      <Label layoutX="52.0" layoutY="528.0" prefHeight="30.0" prefWidth="922.0" style="-fx-font-size: 20px; -fx-text-fill: #f00; -fx-alignment: center; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labe" text="Label para exibir erros" textAlignment="CENTER" />
+      <Label fx:id="labelErro" layoutX="52.0" layoutY="528.0" prefHeight="30.0" prefWidth="922.0" style="-fx-font-size: 20px; -fx-text-fill: #f00; -fx-alignment: center; -fx-font-family: &quot;Trebuchet MS&quot;;" styleClass="labe" text="Campos obrigatórios não foram preenchidos!" textAlignment="CENTER" />
    </children>
 </AnchorPane>

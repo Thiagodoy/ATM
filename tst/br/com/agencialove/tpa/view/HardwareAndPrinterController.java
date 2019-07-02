@@ -14,6 +14,7 @@ import br.com.agencialove.tpa.hardware.arduino.Error;
 import br.com.agencialove.tpa.hardware.arduino.Warning;
 import br.com.agencialove.tpa.hardware.arduino.Working;
 import br.com.agencialove.tpa.model.PackageMeasures;
+import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -227,5 +228,11 @@ public class HardwareAndPrinterController implements IController {
 
 	public void setPrinterService(final IPrinterService printerService) {
 		this.printerService = printerService;
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 }

@@ -2,16 +2,13 @@ package br.com.agencia.tpa.rest.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PlpRequest {
-	
-	
-	
+public class PlpRequest {	
 	
 	@JsonProperty(value = "id_plp")
-	public Long idPlp;
+	public String idPlp;
 	
 	@JsonProperty(value = "valor_global")
-	public Long valorGlobal;
+	public String valorGlobal;
 	
 	@JsonProperty(value = "mcu_unidade_postagem")
 	public String mcuUnidadePostagem;
@@ -23,20 +20,30 @@ public class PlpRequest {
 	public String cartaPostagem;
 	
 	
+	public PlpRequest() {
+		
+		
+		this.idPlp = "";
+		this.valorGlobal = "";
+		this.mcuUnidadePostagem = "";
+		this.nomeUnidadePostagem = "";
+		
+	}
+	
 
-	public Long getIdPlp() {
+	public String getIdPlp() {
 		return idPlp;
 	}
 
-	public void setIdPlp(Long idPlp) {
+	public void setIdPlp(String idPlp) {
 		this.idPlp = idPlp;
 	}
 
-	public Long getValorGlobal() {
+	public String getValorGlobal() {
 		return valorGlobal;
 	}
 
-	public void setValorGlobal(Long valorGlobal) {
+	public void setValorGlobal(String valorGlobal) {
 		this.valorGlobal = valorGlobal;
 	}
 

@@ -7,6 +7,7 @@ import java.util.TimerTask;
 
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 
 public class InternetTimeOutController implements IController {
 
@@ -31,5 +32,11 @@ public class InternetTimeOutController implements IController {
 
 		final Timer timer = new Timer();
 		timer.schedule(task, 4000);
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
 	}
 }

@@ -3,11 +3,6 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.print.PrintException;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.qoppa.pdf.PDFException;
 
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
@@ -15,20 +10,13 @@ import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencialove.tpa.hardware.PrinterServiceImpl;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.ZipType;
-import br.com.agencialove.tpa.model.rest.EmiteEtiquetaRequest;
 import br.com.agencialove.tpa.model.rest.PrePost;
-import br.com.agencialove.tpa.webservices.IWebService;
 import br.com.agencialove.tpa.workflow.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class PrePostagemConfirmationController implements IController {
 
@@ -66,17 +54,12 @@ public class PrePostagemConfirmationController implements IController {
 	private void btnImprimirRotulo(final ActionEvent e) throws PDFException {
 		EmiteRequest request  = new EmiteRequest();
 		request.setNumeroPlp(this.plp);
-
-		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
-		final byte[] respGetPdfBytesEmiteEtiqueta = api.emitirAvisoRecebimento(request);
-
-
 		final PrinterServiceImpl printer = new PrinterServiceImpl();
 		try {
-			//printer.printLabel(respGetPdfBytes);
-			printer.printTicket(respGetPdfBytesEmiteEtiqueta);
-		} catch (final PrintException e1) {
-			// TODO Auto-generated catch block
+			CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+			final byte[] respGetPdfBytesEmiteEtiqueta = api.emitirAvisoRecebimento(request);
+			printer.printPdf(respGetPdfBytesEmiteEtiqueta, request.getNumeroPlp());
+		} catch (final Exception e1) {
 			e1.printStackTrace();
 		}
 	}
@@ -85,20 +68,13 @@ public class PrePostagemConfirmationController implements IController {
 	private void btnImprimirDeclaracaoDeConteudo(final ActionEvent e) throws PDFException {
 		EmiteRequest request  = new EmiteRequest();
 		request.setNumeroPlp(this.plp);
-
-		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
-		final byte[] respGetPdfBytesAvisoRecebimento = api.emitirDeclaracaoDeConteudo(request);
-
-
-
-		//System.out.println("respGetPdfBytesTwo: >>>>>>> : " + respGetPdfBytesTwo);
-
+		
 		final PrinterServiceImpl printer = new PrinterServiceImpl();
 		try {
-			//printer.printLabel(respGetPdfBytes);
-			printer.printTicket(respGetPdfBytesAvisoRecebimento);
-		} catch (final PrintException e1) {
-			// TODO Auto-generated catch block
+			CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+			final byte[] respGetPdfBytesAvisoRecebimento = api.emitirDeclaracaoDeConteudo(request);
+			printer.printPdf(respGetPdfBytesAvisoRecebimento, request.getNumeroPlp());
+		} catch (final Exception e1) {
 			e1.printStackTrace();
 		}
 	}
@@ -108,73 +84,12 @@ public class PrePostagemConfirmationController implements IController {
 		EmiteRequest request  = new EmiteRequest();
 		request.setNumeroPlp(this.plp);
 
-		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
-		final byte[] avisoDeRecebimento = api.emitirAvisoRecebimento(request);
-
-
-		//System.out.println("respGetPdfBytesTwo: >>>>>>> : " + respGetPdfBytesTwo);
-
 		final PrinterServiceImpl printer = new PrinterServiceImpl();
-		try {			
-			//printer.printTicket(avisoDeRecebimento);
-			
-			JFXButton buttonYes = new JFXButton("Ok");		
-			 buttonYes.getStyleClass().add("bt-blue-alert");
-			 VBox vBox = new VBox();
-			 Pane pane = new Pane();
-			
-			 pane.getStyleClass().add("info");
-			 
-			 vBox.getChildren().add(pane);
-			 
-			 Text text = new Text("Retire o seu aviso de recebimento!");
-			 text.setStyle("-fx-text-fill: #777; -fx-font-size: 24px; -fx-font-family:Trebuchet MS;");
-			 vBox.getChildren().add(text);
-			 vBox.setAlignment(Pos.CENTER);
-			 
-			JFXDialogLayout layout = new JFXDialogLayout();
-			layout.setBody(vBox);
-			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
-			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
-				dialog.close();
-				Session.reset();
-			});
-
-			
-
-			layout.setActions(buttonYes);
-			dialog.setOverlayClose(false);
-			
-			
-			dialog.show();
-			
-			
-			
-		} catch (final Exception e1) {		
-			
-
-			
-			JFXButton buttonYes = new JFXButton("Ok");		
-			 buttonYes.getStyleClass().add("bt-blue-sm");
-			 VBox vBox = new VBox();
-			 vBox.getChildren().add(new Text("Informação"));
-			 vBox.getChildren().add(new Text("Retire o seu aviso de recebimento!"));
-			 
-			JFXDialogLayout layout = new JFXDialogLayout();
-			layout.setBody();
-			JFXDialog dialog = new JFXDialog(stack, layout, JFXDialog.DialogTransition.TOP);
-			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (ed) -> {
-				dialog.close();
-				Session.reset();
-			});
-
-			
-
-			layout.setActions(buttonYes);
-			dialog.setFocusTraversable(true);
-			dialog.show();
-			
-			
+		try {		
+			CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+			final byte[] avisoDeRecebimento = api.emitirAvisoRecebimento(request);
+			printer.printPdf(avisoDeRecebimento, request.getNumeroPlp());			
+		} catch (final Exception e1) {
 			e1.printStackTrace();
 		}
 	}
@@ -187,6 +102,16 @@ public class PrePostagemConfirmationController implements IController {
 		this.plp = (String) Session.getSession().get(Session.ID_PLP);
 		this.plp = (this.plp != null) ? this.plp : "";
 		this.ldPlp3.setText(this.plp);
+	}
+	
+	@FXML
+	@Override
+	public void cancel() {
+		Session.reset();		
+	}
+	
+	public void setPlp(String plp) {
+		this.ldPlp3.setText(plp);
 	}
 
 }
