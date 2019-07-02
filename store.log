@@ -1,4 +1,4 @@
-/*C4*/SET SCHEMA PUBLIC
+/*C3*/SET SCHEMA PUBLIC
 drop table Agencia if exists
 drop table Embalagem if exists
 drop table Postagem if exists
