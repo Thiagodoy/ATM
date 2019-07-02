@@ -91,6 +91,7 @@ public class RemetenteRequest {
 		this.email = "";
 		this.cpf = "";
 	}
+	
 
 	public String getContrato() {
 		return contrato;

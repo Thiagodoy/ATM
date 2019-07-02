@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.agencia.tpa.rest.response.ServicoAdicionalResponse;
+import br.com.agencialove.tpa.utils.Utils;
+
 public class ServicoAdicionalRequest {
 	
 //	@JsonProperty(value = "status_processamento", required = true)
@@ -17,9 +20,15 @@ public class ServicoAdicionalRequest {
 	@JsonProperty(value = "valor_declarado", required = false)
 	public Double valor;
 	
-//	@JsonProperty(value = "valor_cobrado", required = false)
-//	public Double valorCobrado;
-
+	
+	public ServicoAdicionalRequest() {
+		
+	}
+	
+	public ServicoAdicionalRequest(ServicoAdicionalResponse response) {
+		this.codigos = response.getCodigo_servico_adicional();
+		this.valor = Utils.parse(response.getValor_declarado());
+	}
 
 	public List<String> getCodigos() {
 		return codigos;
@@ -41,25 +50,7 @@ public class ServicoAdicionalRequest {
 	}
 
 
-//	public String getStatus() {
-//		return status;
-//	}
-//
-//
-//	public void setStatus(String status) {
-//		this.status = status;
-//	}
 
-
-//	public Double getValorCobrado() {
-//		return valorCobrado;
-//	}
-//
-//
-//	public void setValorCobrado(Double valorCobrado) {
-//		this.valorCobrado = valorCobrado;
-//	}
-	
 	
 	
 	

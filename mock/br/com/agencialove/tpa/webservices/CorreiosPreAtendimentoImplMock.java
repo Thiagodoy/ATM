@@ -7,6 +7,7 @@ import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
+import br.com.agencia.tpa.rest.response.EtiquetaResponse;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 
@@ -50,8 +51,8 @@ public class CorreiosPreAtendimentoImplMock implements CorreiosPreAtendimentoApi
 	}
 
 	@Override
-	public PrePostagemResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
-		PrePostagemResponse response = new PrePostagemResponse();
+	public EtiquetaResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
+		EtiquetaResponse response = new EtiquetaResponse();
 		response.setNumeroEtiqueta("EC384261522BR");
 		response.setNumeroPlp("2523557");
 		return response;
@@ -70,6 +71,12 @@ public class CorreiosPreAtendimentoImplMock implements CorreiosPreAtendimentoApi
 	@Override
 	public byte[] emitirDeclaracaoDeConteudo(EmiteRequest request) {
 		return "emitirDeclaracaoDeConteudo".getBytes();
+	}
+
+	@Override
+	public PrePostagemResponse informacaoPlp(EmiteRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

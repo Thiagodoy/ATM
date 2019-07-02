@@ -18,7 +18,7 @@ import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencia.tpa.rest.request.PlpRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.RemetenteRequest;
-import br.com.agencia.tpa.rest.response.PrePostagemResponse;
+import br.com.agencia.tpa.rest.response.EtiquetaResponse;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.Messages;
 import br.com.agencialove.tpa.dao.AgenciaDao;
@@ -192,7 +192,7 @@ public class PaymentNewController implements IController {
 			PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
 
 			CorreiosPreAtendimentoApi service = Session.getCorreiosPreAtentimentoWebService();
-			PrePostagemResponse response = service.gerarPrePostagem(request, false);
+			EtiquetaResponse response = service.gerarPrePostagem(request, false);
 
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
 
@@ -336,7 +336,7 @@ public class PaymentNewController implements IController {
 			request.setPlpRequest(plpRequest);			
 			
 			
-			PrePostagemResponse response = service.gerarPrePostagem(request, true);
+			EtiquetaResponse response = service.gerarPrePostagem(request, true);
 			
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
 

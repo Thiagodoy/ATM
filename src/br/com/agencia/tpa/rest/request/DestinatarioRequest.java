@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.JsonAdapter;
 
+import br.com.agencia.tpa.rest.response.DestinatarioResponse;
+
 public class DestinatarioRequest {
 	
 	
@@ -56,6 +58,23 @@ public class DestinatarioRequest {
 		this.cep = "";
 		this.cidade = "";
 		}
+	
+	public DestinatarioRequest(DestinatarioResponse response) {
+		
+		this.nome = response.getNomeDestinatario();
+		this.cpf = response.getCpfCnpj();
+		this.telefone = Long.parseLong(response.getTelefoneDestinatario());
+		this.celular = Long.parseLong(response.getCelularDestinatario());
+		this.email = response.getEmailDestinatario();
+		this.logradouro = response.getLogradouroDestinatario();
+		this.complemento = response.getComplementoDestinatario();
+		this.numero = response.getNumeroEndDestinatario();
+		this.cep = "";
+		this.cidade = "";
+		
+		
+		
+	}
 	
 	
 	

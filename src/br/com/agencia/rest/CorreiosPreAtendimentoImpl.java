@@ -10,6 +10,7 @@ import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
 import br.com.agencia.tpa.rest.response.ListaPrecoPrazoResponse;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
+import br.com.agencia.tpa.rest.response.EtiquetaResponse;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
@@ -58,9 +59,9 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
 	}
 
-	public PrePostagemResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
+	public EtiquetaResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
 
-		Response<PrePostagemResponse> response = null;
+		Response<EtiquetaResponse> response = null;
 		try {			
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.gerarPrePostagem(request, agencia.getCartaoPostagem(), emitiEtiqueta).execute();
@@ -109,6 +110,20 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 		}
 		return response;
 
+	}
+
+	@Override
+	public PrePostagemResponse informacaoPlp(EmiteRequest request) {
+		
+
+		Response<PrePostagemResponse> response = null;
+		try {			
+			System.out.println(new ObjectMapper().writeValueAsString(request));
+			response = service.informacaoPlp(request).execute();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return response.body();
 	}
 
 }

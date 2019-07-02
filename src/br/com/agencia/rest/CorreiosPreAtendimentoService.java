@@ -5,6 +5,7 @@ import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
 import br.com.agencia.tpa.rest.response.ListaPrecoPrazoResponse;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
+import br.com.agencia.tpa.rest.response.EtiquetaResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -36,7 +37,11 @@ public interface CorreiosPreAtendimentoService {
 	
 	@Headers("Authorization:Basic YXRtMTIzNDU6YXRtMTIzNDU=")
 	@POST(value = "unico")
-	Call<PrePostagemResponse> gerarPrePostagem(@Body PrePostagemRequest request, @Query("cartaopostagem") String cartaopostagem,@Query("emiteetiqueta") boolean emiteetiqueta);
+	Call<EtiquetaResponse> gerarPrePostagem(@Body PrePostagemRequest request, @Query("cartaopostagem") String cartaopostagem,@Query("emiteetiqueta") boolean emiteetiqueta);
+	
+	@Headers("Authorization:Basic YXRtMTIzNDU6YXRtMTIzNDU=")
+	@POST(value = "plp")
+	Call<PrePostagemResponse> informacaoPlp(@Body EmiteRequest request);
 	
 	@Headers("Authorization:Basic YXRtMTIzNDU6YXRtMTIzNDU=")
 	@POST(value = "cancela-objeto")

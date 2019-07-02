@@ -3,6 +3,10 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.agencia.tpa.rest.request.DestinatarioRequest;
+import br.com.agencia.tpa.rest.request.NacionalRequest;
+import br.com.agencia.tpa.rest.request.PrePostagemRequest;
+import br.com.agencia.tpa.rest.request.RemetenteRequest;
 import br.com.agencialove.tpa.model.AdditionalServices;
 import br.com.agencialove.tpa.model.rest.PrePost;
 import br.com.agencialove.tpa.workflow.Session;
@@ -101,8 +105,34 @@ public class ConfirmPrePostController implements IController {
 		this.lbTelefoneRemetente.setText(this.get(telefoneRemetente));
 	}
 
-	public void setPrePostRemetente() {
-
+	public void loadInfo() {
+		
+		PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
+		setPrePostRemetente(request.getRemetente());
+		setPrePostDestinatario(request.getObjetoPostalRequest().get(0).getDestinatario(),request.getObjetoPostalRequest().get(0).getNacionalRequest());	
+		
+	}
+	
+public void setPrePostDestinatario(DestinatarioRequest request, NacionalRequest nacionalRequest) {
+		
+		this.lbNomeRemetente.setText(this.get(request.getNome()));
+		this.lbCEPRemetente.setText(this.get(nacionalRequest.getCep()));
+		this.lbNumeroRemetente.setText(this.get(request.getNumero()));
+		this.lbLogradouroRemetente.setText(this.get(request.getLogradouro()));
+		this.lbEmailRemetente.setText(this.get(request.getEmail()));
+		this.lbTelefoneRemetente.setText(this.get(String.valueOf(request.getCelular())));
+		
+	}
+	
+	public void setPrePostRemetente(RemetenteRequest request) {
+		
+		this.lbNomeRemetente.setText(this.get(request.getNome()));
+		this.lbCEPRemetente.setText(this.get(request.getCep()));
+		this.lbNumeroRemetente.setText(this.get(request.getNumero()));
+		this.lbLogradouroRemetente.setText(this.get(request.getLogradouro()));
+		this.lbEmailRemetente.setText(this.get(request.getEmail()));
+		this.lbTelefoneRemetente.setText(this.get(String.valueOf(request.getCelular())));
+		
 	}
 
 
