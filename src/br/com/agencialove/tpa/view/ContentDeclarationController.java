@@ -91,7 +91,7 @@ public class ContentDeclarationController implements IController {
 
 	@FXML
 	private void btnBackAction(final ActionEvent e) {
-		final Scene scene = Windows.NFE_CHOOSE.getScene();
+		final Scene scene = this.backScene;
 		Session.setScene(scene);
 	}
 

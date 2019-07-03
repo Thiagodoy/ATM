@@ -13,17 +13,17 @@ import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 public interface CorreiosPreAtendimentoApi {
 
 	
-	public List<PrecoPrazoResponse> servicosDisponiveis(PrecoPrazoRequest request);
+	public List<PrecoPrazoResponse> servicosDisponiveis(PrecoPrazoRequest request) throws ApiException;
 
-	public EtiquetaResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta);
+	public EtiquetaResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) throws ApiException;
 
-	public byte[] emitirEtiqueta(EmiteRequest request);
+	public byte[] emitirEtiqueta(EmiteRequest request) throws ApiException;
 	
-	public PrePostagemResponse informacaoPlp(EmiteRequest request);
+	public PrePostagemResponse informacaoPlp(EmiteRequest request) throws ApiException;
 
-	public byte[] emitirAvisoRecebimento(EmiteRequest request) ;
+	public byte[] emitirAvisoRecebimento(EmiteRequest request) throws ApiException ;
 
-	byte[] emitirDeclaracaoDeConteudo(EmiteRequest request);
+	byte[] emitirDeclaracaoDeConteudo(EmiteRequest request) throws ApiException;
 
 	
 	

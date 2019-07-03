@@ -137,6 +137,7 @@ public class FulfillAddressController implements IController {
 		
 		
 		validator.validateNotEmpty(this.txtLogradouro, true);
+		validator.validateNotEmpty(this.txtBairro, true);
 		validator.validateNotEmpty(this.txtNumero, true);
 		validator.validateStringNotEmpty(this.txtNome, true, 3, 100);
 		validator.validateNotEmpty(this.txtCEP, true);
@@ -144,6 +145,8 @@ public class FulfillAddressController implements IController {
 
 		if (this.type == ZipType.SENDER)
 			validator.validateCPF(this.txtCPF, true);
+		else
+			
 
 		labelErro.setVisible(!validator.isEmpty());
 		

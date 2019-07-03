@@ -3,6 +3,12 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 
 import br.com.agencia.rest.CorreiosImpl;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
@@ -23,6 +29,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 public class SearchZipController implements IController {
 
@@ -48,6 +56,9 @@ public class SearchZipController implements IController {
 
 	@FXML
 	private Label statusLabel;
+	
+	@FXML
+	private StackPane stake;
 
 	private ZipType type;
 	private Windows previousWindow;
@@ -69,8 +80,14 @@ public class SearchZipController implements IController {
 			this.ceps = ws.buscarEndereco(this.txtCep.getText().replace("-", "")); //$NON-NLS-1$ //$NON-NLS-2$
 
 			if (this.ceps.isEmpty()) {
-				this.statusLabel.setText(Messages.getString("SearchZipController.2")); //$NON-NLS-1$
-				this.statusLabel.setVisible(true);
+				
+				Pattern p = Pattern.compile("^\\d{2}\\.?\\d{3}-?\\d{3}$");
+				Matcher m = p.matcher(this.txtCep.getText().replace("-", ""));
+				boolean isZipCode = m.find();
+				 String message = isZipCode ? "A consulta não retornou um cep válido." : "A consulta não retornou um endereço válido.";
+				this.openDialog(message);
+				//this.statusLabel.setText(Messages.getString("SearchZipController.2")); //$NON-NLS-1$
+				//this.statusLabel.setVisible(true);
 			} else {
 				final ObservableList<CepResponse> tableModel = FXCollections.observableArrayList(this.ceps);
 				this.tableView.setItems(tableModel);
@@ -84,6 +101,29 @@ public class SearchZipController implements IController {
 		}
 	}
 
+	
+	private void openDialog(String message) {
+		
+		JFXButton buttonYes = new JFXButton("Ok");	
+		buttonYes.setStyle("-fx-background-color: #0083CA;");
+
+		// :FIXME Alinhar com o Luis Para definir as classes dos botoes
+		// buttonNo.setStyle("");
+		// buttonYes.setStyle("");
+
+		JFXDialogLayout layout = new JFXDialogLayout();
+		layout.setBody(new Text(message));
+		JFXDialog dialog = new JFXDialog(stake, layout, JFXDialog.DialogTransition.TOP);
+		buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
+			dialog.close();			
+		});
+		
+		layout.setActions(buttonYes);
+		dialog.setOverlayClose(true);;
+		dialog.show();
+		
+	}
+	
 	@FXML
 	private void btnNextAction(final ActionEvent e) {
 		final Scene scene = Windows.FULFILL_ADDRESS.getScene();

@@ -6,6 +6,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.agencia.rest.ApiException;
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.tpa.rest.request.DeclaracaoConteudoRequest;
@@ -160,7 +163,13 @@ public class MeasuresController implements IController {
 		prePostagemRequest.getObjetoPostalRequest().get(0).setServico(servicosAdicionais);
 
 		CorreiosPreAtendimentoApi correiosApi = Session.getCorreiosPreAtentimentoWebService();
-		List<PrecoPrazoResponse> list = correiosApi.servicosDisponiveis(precoPrazoRequest);
+		List<PrecoPrazoResponse> list = null;
+		try {
+			list = correiosApi.servicosDisponiveis(precoPrazoRequest);
+		} catch (ApiException e1) {
+			System.err.println(e1);
+			return;
+		}
 
 		Session.getSession().put(Session.AVAILABLE_SERVICES, list);
 		final Scene scene = Windows.SELECT_SERVICE.getScene();

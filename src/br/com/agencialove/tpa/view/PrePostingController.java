@@ -3,6 +3,7 @@ package br.com.agencialove.tpa.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.agencia.rest.ApiException;
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.rest.CorreiosPreAtendimentoImpl;
 import br.com.agencia.rest.CorreiosPreAtendimentoService;
@@ -51,7 +52,13 @@ public class PrePostingController implements IController {
 		EmiteRequest request = new EmiteRequest();
 		request.setNumeroPlp(this.txtPrePost.getText());
 		
-		PrePostagemResponse response = service.informacaoPlp(request);
+		PrePostagemResponse response = null;
+		try {
+			response = service.informacaoPlp(request);
+		} catch (ApiException e1) {
+			System.out.println(e1.getMessage());
+			e1.printStackTrace();
+		}
 		PrePostagemRequest prePostagemRequest = new PrePostagemRequest(response);
 		
 		AdditionalServices services = (AdditionalServices) Session.getSession().get(Session.ADDITIONAL_SERVICES);

@@ -54,6 +54,7 @@ public class FinishController implements IController {
 
 	@Override
 	public void clear() {
+		btnPrintReceipt.setDisable(false);
 	}
 
 	private void openDialogError(String message) {

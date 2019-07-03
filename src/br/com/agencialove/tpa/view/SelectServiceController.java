@@ -84,7 +84,7 @@ public class SelectServiceController implements IController {
 					+ ((dias <= 1) ? dias.toString() + " dia útil" : dias.toString() + " dias útil"));
 			this.labelSedexValor.setText("R$ " + optSedex.get().getValor());
 			this.sedexService = optSedex.get();
-			this.sedexService.setCodigoServico("04014");
+			//this.sedexService.setCodigoServico("04014");
 			
 			if(Optional.ofNullable(optSedex.get().observacao).isPresent()) {
 				this.labelObservacaoSedex.setText(optSedex.get().getObservacao());
@@ -100,7 +100,7 @@ public class SelectServiceController implements IController {
 			this.labelPacValor.setText("R$ " + optPac.get().getValor());
 			
 			this.pacService = optPac.get();
-			this.pacService.setCodigoServico("04510");
+			//this.pacService.setCodigoServico("04510");
 			this.selectedService = optPac.get();
 			
 			if(Optional.ofNullable(optPac.get().observacao).isPresent()) {

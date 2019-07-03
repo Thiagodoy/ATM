@@ -1,6 +1,8 @@
 package br.com.agencia.rest;
 
 import java.io.IOException;
+import java.text.Annotation;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,8 +17,10 @@ import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
+import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -25,6 +29,7 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
 	private CorreiosPreAtendimentoService service;
 	private Agencia agencia;
+	private Retrofit retrofit2;
 
 	public CorreiosPreAtendimentoImpl() {
 		HttpLoggingInterceptor i = new HttpLoggingInterceptor();
@@ -33,33 +38,46 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
 		OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(i).build();
 
-		Retrofit retrofit2 = new Retrofit.Builder()
+		retrofit2 = new Retrofit.Builder()
 
 				.baseUrl("https://apphom.correios.com.br/preatendimento-rs/v1/atendimento/")
 				.addConverterFactory(JacksonConverterFactory.create()).client(client).build();
 
 		service = retrofit2.create(CorreiosPreAtendimentoService.class);
+		
 
 		this.agencia = AgenciaDao.getAgencia();
 
 	}
 
-	public List<PrecoPrazoResponse> servicosDisponiveis(PrecoPrazoRequest request) {
+	public List<PrecoPrazoResponse> servicosDisponiveis(PrecoPrazoRequest request) throws ApiException {
 
 		Response<ListaPrecoPrazoResponse> response = null;
 
 		try {
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.precoPrazoCartao(request, agencia.getCartaoPostagem()).execute();
-		} catch (IOException e) {
-			System.err.println("erro ->" + response.errorBody().toString());
-			e.printStackTrace();
+			
+			if(response.isSuccessful()) {
+				return response.body().listaPrecoPrazo;
+			}else {				
+				 Converter<ResponseBody, Error> converter = retrofit2.responseBodyConverter(Error.class,new java.lang.annotation.Annotation[0]);
+				 Error errors = converter.convert(response.errorBody());
+				 throw new ApiException(errors);
+			}
+			
+		}catch (ApiException e) {
+			throw e;
 		}
-		return response.body().listaPrecoPrazo;
+		catch (Exception e) {			
+			e.printStackTrace();
+			throw new ApiException(e.getMessage());
+		}
+		
 
 	}
 
-	public EtiquetaResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) {
+	public EtiquetaResponse gerarPrePostagem(PrePostagemRequest request, boolean emitiEtiqueta) throws ApiException {
 
 		Response<EtiquetaResponse> response = null;
 		try {			
@@ -72,7 +90,7 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
 	}
 
-	public byte[] emitirEtiqueta(EmiteRequest request) {
+	public byte[] emitirEtiqueta(EmiteRequest request) throws ApiException {
 
 		byte[] response = null;
 		try {
@@ -85,7 +103,7 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
 	}
 
-	public byte[] emitirAvisoRecebimento(EmiteRequest request) {
+	public byte[] emitirAvisoRecebimento(EmiteRequest request) throws ApiException {
 
 		byte[] response = null;
 		try {
@@ -98,12 +116,13 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 
 	}
 
-	public byte[] emitirDeclaracaoDeConteudo(EmiteRequest request) {
+	public byte[] emitirDeclaracaoDeConteudo(EmiteRequest request) throws ApiException {
 
 		byte[] response = null;
 		try {
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.emitiDeclaracaoConteudo(request, agencia.getCartaoPostagem()).execute().body().bytes();
+			System.out.println(new ObjectMapper().writeValueAsString(response));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,17 +132,19 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 	}
 
 	@Override
-	public PrePostagemResponse informacaoPlp(EmiteRequest request) {
+	public PrePostagemResponse informacaoPlp(EmiteRequest request) throws ApiException {
 		
 
 		Response<PrePostagemResponse> response = null;
 		try {			
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.informacaoPlp(request).execute();
+			System.out.println(new ObjectMapper().writeValueAsString(response.body()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return response.body();
 	}
-
+	
+	
 }

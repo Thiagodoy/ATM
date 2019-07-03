@@ -44,11 +44,11 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtCPF" layoutX="10.0" layoutY="277.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="365.0" promptText="CPF*" styleClass="input-default-sm">
+            <MaskField fx:id="txtCPF" mask="DDD.DDD.DDD-DD" layoutX="10.0" layoutY="277.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="365.0" promptText="CPF*" styleClass="input-default-sm">
                <font>
                   <Font size="18.0" />
                </font>
-            </TextField>
+            </MaskField>
             <TextField fx:id="txtEmail" layoutX="10.0" layoutY="338.0" onKeyReleased="#mandatoryTextFieldReleased" prefHeight="40.0" prefWidth="740.0" promptText="E-mail" styleClass="input-default-sm">
                <font>
                   <Font size="18.0" />

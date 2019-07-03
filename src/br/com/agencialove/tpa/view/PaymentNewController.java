@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 
+import br.com.agencia.rest.ApiException;
 import br.com.agencia.rest.CorreiosPreAtendimentoApi;
 import br.com.agencia.tpa.rest.request.DestinatarioRequest;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
@@ -124,11 +125,7 @@ public class PaymentNewController implements IController {
 
 			JFXDialogLayout layout = new JFXDialogLayout();
 			layout.setBody(new Text("Deseja realmente cancelar a operação ?"));
-			JFXDialog dialog = new JFXDialog(stake, layout, JFXDialog.DialogTransition.TOP);
-			buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
-				dialog.close();
-				Session.reset();
-			});
+			JFXDialog dialog = new JFXDialog(stake, layout, JFXDialog.DialogTransition.TOP);			
 
 			buttonNo.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
 				dialog.close();
@@ -147,6 +144,26 @@ public class PaymentNewController implements IController {
 			this.prosseguir(event);
 		});
 
+	}
+	
+	public void openDialod(String message) {
+		JFXButton buttonYes = new JFXButton("OK");
+		
+
+		
+		
+		buttonYes.setStyle("-fx-background-color:#00b894");
+
+		JFXDialogLayout layout = new JFXDialogLayout();
+		layout.setBody(new Text("Deseja realmente cancelar a operação ?"));
+		JFXDialog dialog = new JFXDialog(stake, layout, JFXDialog.DialogTransition.TOP);
+		buttonYes.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (event) -> {
+			dialog.close();		
+		});	
+
+		layout.setActions(buttonYes);
+		dialog.setFocusTraversable(false);
+		dialog.show();
 	}
 
 	@Override
@@ -192,7 +209,13 @@ public class PaymentNewController implements IController {
 			PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
 
 			CorreiosPreAtendimentoApi service = Session.getCorreiosPreAtentimentoWebService();
-			EtiquetaResponse response = service.gerarPrePostagem(request, false);
+			EtiquetaResponse response = null;
+			try {
+				response = service.gerarPrePostagem(request, false);
+			} catch (ApiException e1) {				
+				this.openDialod(e1.getMessage());
+				return;
+			}
 
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
 
@@ -334,8 +357,14 @@ public class PaymentNewController implements IController {
 			request.setPlpRequest(plpRequest);			
 			
 			
-			EtiquetaResponse response = service.gerarPrePostagem(request, true);
+			EtiquetaResponse response = null;
+			try {
+				response = service.gerarPrePostagem(request, true);
+			} catch (ApiException e1) {
+				this.openDialod(e1.getMessage());				
+			}	
 			
+		
 			Session.getSession().put(Session.ID_PLP, response.getNumeroPlp());
 
 			

@@ -2,6 +2,8 @@ package br.com.agencialove.tpa;
 
 import java.util.List;
 
+import br.com.agencia.rest.CorreiosPreAtendimentoApi;
+import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
 import br.com.agencialove.tpa.model.rest.ServicesRequest;
 import br.com.agencialove.tpa.model.rest.ServicesResponse;
 import br.com.agencialove.tpa.webservices.IWebService;
@@ -13,22 +15,29 @@ public class TestWebService {
 		final IWebService ws = Session.getWebService();
 
 
-		final ServicesRequest req = new ServicesRequest();
-		req.setCepOrigem("01212001");
-		req.setCepDestino("71931180");
-		req.setPeso("10");
-		req.setFormato("1");
-		req.setComprimento("18");
-		req.setAltura("10");
-		req.setLargura("20");
-		req.setDiametro("0");
-		req.setMaoPropria("N");
-		req.setValorDeclarado("0");
-		req.setAvisoRecebimento("N");
-		final List<ServicesResponse> resp = ws.getAvailableServices(req);
-		for(final ServicesResponse r : resp)
-			System.out.println(r.toString());
-
+		Session.setAllMocks();
+		
+		CorreiosPreAtendimentoApi api = Session.getCorreiosPreAtentimentoWebService();
+		
+		PrecoPrazoRequest request = new PrecoPrazoRequest();
+		request.setCepDestino("14806005");
+		request.setCepOrigem("14806005");
+		request.setPeso("10");
+		request.setFormato("1");
+		request.setAltura("9");
+		request.setLargura("13.5");
+		request.setDiametro("0");
+		request.setMaoPropria("S");
+		request.setValorDeclarado("0");
+		request.setAvisoRecebimento("S");
+		request.setComprimento("18");
+		
+		try {
+			api.servicosDisponiveis(new PrecoPrazoRequest());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
