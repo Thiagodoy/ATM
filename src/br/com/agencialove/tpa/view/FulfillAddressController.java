@@ -144,11 +144,9 @@ public class FulfillAddressController implements IController {
 		validator.validateCelullar(this.txtCelular, true);
 
 		if (this.type == ZipType.SENDER)
-			validator.validateCPF(this.txtCPF, true);
+		validator.validateCPF(this.txtCPF, true);
 		else
-			
-
-		labelErro.setVisible(!validator.isEmpty());
+		 labelErro.setVisible(!validator.isEmpty());
 		
 		return validator.isEmpty();
 	}

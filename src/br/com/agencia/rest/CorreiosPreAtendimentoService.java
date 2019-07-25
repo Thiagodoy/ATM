@@ -32,7 +32,7 @@ public interface CorreiosPreAtendimentoService {
 	
 	@Headers("Authorization:Basic YXRtMTIzNDU6YXRtMTIzNDU=")
 	@POST(value = "emitiAvisoRecebimento")
-	Call<ResponseBody> emitiDeclaracaoConteudo(@Body EmiteRequest request, @Query("cartaopostagem") String cartaopostagem);
+	Call<ResponseBody> emitiDeclaracaoConteudo();
 
 	
 	@Headers("Authorization:Basic YXRtMTIzNDU6YXRtMTIzNDU=")

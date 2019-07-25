@@ -134,6 +134,8 @@ public class Session{
 
 		Session.SESSION = new HashMap<>();
 
+		StartController comtrol = (StartController) Windows.START.getScene().getUserData();
+		comtrol.activeRest();
 		Session.primaryStage.setScene(Windows.START.getScene());
 
 	}

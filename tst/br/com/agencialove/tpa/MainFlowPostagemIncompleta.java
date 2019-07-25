@@ -46,7 +46,7 @@ class MainFlowPostagemIncompleta extends ApplicationTest {
 		this.clickOn("#btnNext");
 		
 		/// Destinatario
-		this.clickOn("#txtNome").write("Benício Nelson Ian Nascimento");
+		this.clickOn("#txtNome").write("THiago");
 		this.clickOn("#txtNumero").write("123");
 		this.clickOn("#txtCPF").write("34053285885");
 		this.clickOn("#txtCelular").eraseText(1).write("81985109450");
@@ -66,10 +66,9 @@ class MainFlowPostagemIncompleta extends ApplicationTest {
 		this.sleep(1000);
 		this.clickOn("#btnNext");
 
-		this.clickOn("#txtNome").write("Mariah Agatha Luana Lopes");
-		this.clickOn("#txtNumero").write("123");
-		this.sleep(1000);
-		this.clickOn("#txtCPF").eraseText(11).write("34053685885");
+		this.clickOn("#txtNome").write("Felipe");
+		this.clickOn("#txtNumero").write("123");		
+		this.clickOn("#txtCPF").eraseText(11).write("340.536.858-85");
 		this.clickOn("#txtCelular").eraseText(1).write("81985109450");
 		this.clickOn("#txtEmail").write("maria@aichele.com.br");
 		this.sleep(1000);
@@ -78,27 +77,12 @@ class MainFlowPostagemIncompleta extends ApplicationTest {
 		this.sleep(1000);
 		this.clickOn("#btnNext");
 
-		// Seleciona os servicos adicionais
-		this.clickOn("#panelSemServicoAdicional");
+		// Seleciona os servicos adicionais		
 		this.sleep(300);
 		this.clickOn("#panelMaoPropria");
-		this.sleep(300);
-		this.clickOn("#panelDeclaracaoValor");
 		this.sleep(500);
 		this.clickOn("#btnNext");
-
-		// Declaração de Conteudo
-		this.clickOn("#txtDescription").write("Relogio Rolex");
-		this.clickOn("#txtQuantity").write("2");
-		this.clickOn("#txtValue").write("20");
-		this.clickOn("#btnAdd");
-		this.sleep(500);
-		this.clickOn("#txtDescription").write("Iphone X");
-		this.clickOn("#txtQuantity").write("1");
-		this.clickOn("#txtValue").write("200");
-		this.clickOn("#btnAdd");
-		this.sleep(300);
-		this.clickOn("#btnNext");
+		
 		this.sleep(1000);
 		
 		// Definição da embalagem

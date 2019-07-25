@@ -28,7 +28,7 @@ public class ServicoAdicionalRequest {
 	public ServicoAdicionalRequest(ServicoAdicionalResponse response) {
 		this.codigos = response.getCodigo_servico_adicional();
 		
-		String value = (response.getValor_declarado().length() == 0 || response.getValor_declarado() == null) ? "0" : response.getValor_declarado(); 
+		String value = (response.getValor_declarado() == null || response.getValor_declarado().length() == 0 ) ? "0" : response.getValor_declarado(); 
 		
 		
 		this.valor = Utils.parse(value);

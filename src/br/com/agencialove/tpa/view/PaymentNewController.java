@@ -175,6 +175,7 @@ public class PaymentNewController implements IController {
 	private void cancelar(final ActionEvent e) {
 
 		final SessionType type = (SessionType) Session.getSession().get(Session.SESSION_TYPE);
+		Agencia agencia = AgenciaDao.getAgencia();
 
 		switch (type) {
 		case PACKAGE:
@@ -209,6 +210,10 @@ public class PaymentNewController implements IController {
 			PrePostagemRequest request = (PrePostagemRequest) Session.getSession().get(Session.PRE_POSTAGEM);
 
 			CorreiosPreAtendimentoApi service = Session.getCorreiosPreAtentimentoWebService();
+			
+			PlpRequest plpRequest = new PlpRequest();
+			plpRequest.setCartaPostagem(agencia.getCartaoPostagem());
+			request.setPlpRequest(plpRequest);	
 			EtiquetaResponse response = null;
 			try {
 				response = service.gerarPrePostagem(request, false);
@@ -225,6 +230,7 @@ public class PaymentNewController implements IController {
 			final PrePostagemConfirmationController controller = (PrePostagemConfirmationController) this.nextScene
 					.getUserData();
 			controller.clear();
+			controller.setPlp(response.getNumeroPlp());
 			Session.setScene(this.nextScene);
 
 			break;

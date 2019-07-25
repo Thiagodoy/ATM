@@ -1,8 +1,6 @@
 package br.com.agencia.rest;
 
 import java.io.IOException;
-import java.text.Annotation;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,9 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.agencia.tpa.rest.request.EmiteRequest;
 import br.com.agencia.tpa.rest.request.PrePostagemRequest;
 import br.com.agencia.tpa.rest.request.PrecoPrazoRequest;
+import br.com.agencia.tpa.rest.response.EtiquetaResponse;
 import br.com.agencia.tpa.rest.response.ListaPrecoPrazoResponse;
 import br.com.agencia.tpa.rest.response.PrePostagemResponse;
-import br.com.agencia.tpa.rest.response.EtiquetaResponse;
 import br.com.agencia.tpa.rest.response.PrecoPrazoResponse;
 import br.com.agencialove.tpa.dao.AgenciaDao;
 import br.com.agencialove.tpa.model.Agencia;
@@ -30,6 +28,7 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 	private CorreiosPreAtendimentoService service;
 	private Agencia agencia;
 	private Retrofit retrofit2;
+	Converter<ResponseBody, Error> converter;
 
 	public CorreiosPreAtendimentoImpl() {
 		HttpLoggingInterceptor i = new HttpLoggingInterceptor();
@@ -44,6 +43,7 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 				.addConverterFactory(JacksonConverterFactory.create()).client(client).build();
 
 		service = retrofit2.create(CorreiosPreAtendimentoService.class);
+		converter = retrofit2.responseBodyConverter(Error.class,new java.lang.annotation.Annotation[0]);
 		
 
 		this.agencia = AgenciaDao.getAgencia();
@@ -83,10 +83,23 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 		try {			
 			System.out.println(new ObjectMapper().writeValueAsString(request));
 			response = service.gerarPrePostagem(request, agencia.getCartaoPostagem(), emitiEtiqueta).execute();
-		} catch (IOException e) {
-			e.printStackTrace();
+			
+			if(response.isSuccessful()) {
+				System.out.println(new ObjectMapper().writeValueAsString(response.body()));
+				return  response.body();
+			}else {
+				 Error errors = converter.convert(response.errorBody());
+				 throw new ApiException(errors);
+			}
+			
+		}catch (ApiException e) {
+			throw e;
 		}
-		return response.body();
+		catch (Exception e) {			
+			e.printStackTrace();
+			throw new ApiException(e.getMessage());
+		}
+		
 
 	}
 
@@ -138,12 +151,25 @@ public class CorreiosPreAtendimentoImpl implements CorreiosPreAtendimentoApi  {
 		Response<PrePostagemResponse> response = null;
 		try {			
 			System.out.println(new ObjectMapper().writeValueAsString(request));
-			response = service.informacaoPlp(request).execute();
-			System.out.println(new ObjectMapper().writeValueAsString(response.body()));
-		} catch (IOException e) {
-			e.printStackTrace();
+			response = service.informacaoPlp(request).execute();			
+			
+			if(response.isSuccessful()) {
+				System.out.println(new ObjectMapper().writeValueAsString(response.body()));
+				return  response.body();
+			}else {	
+				 Error errors = converter.convert(response.errorBody());
+				 throw new ApiException(errors);
+			}
+			
+			
+		}catch (ApiException e) {
+			throw e;
 		}
-		return response.body();
+		catch (Exception e) {			
+			e.printStackTrace();
+			throw new ApiException(e.getMessage());
+		}
+		
 	}
 	
 	
